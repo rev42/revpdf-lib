@@ -1,5 +1,5 @@
 <?php
-class RevPDFLibTest extends PHPUnit_Framework_TestCase
+class CoreTest extends PHPUnit_Framework_TestCase
 {
     public function testPushAndPop()
     {
