@@ -1,0 +1,22 @@
+{
+    "name": "rev42/RevPDFLib",
+    "type": "library",
+    "description": "The PHP micro-framework based on the Symfony2 Components",
+    "keywords": ["revpdf", "pdf", "php"],
+    "homepage": "http://www.revpdf.org",
+    "version": "2.0.0",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Olivier Cornu",
+            "email": "contact@revpdf.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "silex/silex": ">=1.0.0-dev"
+    },
+    "autoload": {
+        "psr-0": { "RevPDFLib": "src/" }
+    }
+}
