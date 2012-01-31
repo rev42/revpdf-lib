@@ -1,7 +1,7 @@
 <?php
 namespace RevPDFLib\Reader;
 
-class ArrayReader implements ReaderInterface
+class ArrayReader implements RevPDFLib\Reader\ReaderInterface
 {
     public function __construct(array $data)
     {
