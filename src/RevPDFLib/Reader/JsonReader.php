@@ -1,7 +1,10 @@
 <?php 
 namespace RevPDFLib\Reader;
 
-class JsonReader extends File
+class JsonReader implements ReaderInterface
 {
-    
+    public function parseData()
+    {
+        
+    }
 }
