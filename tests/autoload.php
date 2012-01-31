@@ -137,3 +137,6 @@ class SplClassLoader
 
 $loader = new SplClassLoader('RevPDFLib', 'src');
 $loader->register();
+
+$loaderSf = new SplClassLoader('symfony', 'vendor');
+$loaderSf->register();
