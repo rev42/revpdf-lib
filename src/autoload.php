@@ -138,7 +138,7 @@ class SplClassLoader
                 $fileName  = str_replace($this->_namespaceSeparator, DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
             }
             $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->_fileExtension;
-            echo $fileName;
+            
             $includePaths = $this->_includePaths ?: array('.');
             foreach ($includePaths as $includePath) {
                 $unresolvedFilePath = $includePath . DIRECTORY_SEPARATOR . $fileName;
@@ -172,5 +172,5 @@ class SplClassLoader
     }
 }
 
-$loader = new SplClassLoader('RevPDFLib', array('RevPDFLib', '../vendor'));
+$loader = new SplClassLoader('RevPDFLib', array('RevPDFLib', '../../vendor'));
 $loader->register();
