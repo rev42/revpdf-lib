@@ -5,6 +5,8 @@ class Core
 {
     const VERSION = '2.0.0 (20120129)';
     
+    private $datasourceType = null;
+    
     public function __construct()
     {
         
@@ -15,13 +17,13 @@ class Core
         
     }
     
-    public function setDatasource($value)
+    public function setDatasourceType($value)
     {
-        $this->datasource = (string) $value;
+        $this->datasourceType = (string) $value;
     }
     
-    public function getDatasource()
+    public function getDatasourceType()
     {
-        return $this->datasource;
+        return $this->datasourceType;
     }
 }

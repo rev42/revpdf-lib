@@ -1,20 +1,19 @@
 <?php
+namespace RevPDFLib\Tests;
 
 use RevPDFLib\Core;
-use RevPDFLib\Reader;
 
 class CoreTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->revpdflib = new RevPDFLib\Core();
+        $this->revpdflib = new Core();
     }
     
     public function setDatasourceTest()
     {
-        $data = array();
-        $this->revpdflib->setDatasource($data);
+        $this->revpdflib->setDatasourceType('array');
         
-        $this->assertTrue(is_array($this->revpdflib->getDatasource()));
+        $this->assertEquals('array', $this->revpdflib->getDatasourceType());
     }
 }
