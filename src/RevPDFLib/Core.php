@@ -14,7 +14,7 @@ class Core
     
     public function export(array $data)
     {
-        
+        exit(1);
     }
     
     public function setDatasourceType($value)
