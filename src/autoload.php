@@ -135,8 +135,5 @@ class SplClassLoader
     }
 }
 
-$loader = new SplClassLoader('RevPDFLib', array('RevPDFLib'));
+$loader = new SplClassLoader('RevPDFLib', '.');
 $loader->register();
-
-$loaderVendor = new SplClassLoader('', '../../vendor');
-$loaderVendor->register();
