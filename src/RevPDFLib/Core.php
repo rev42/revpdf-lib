@@ -7,14 +7,20 @@ class Core
     
     private $datasourceType = null;
     
-    public function __construct()
+    public function __construct($sourceType, $data)
     {
-        
+        $this->datasourceType = (string) $sourceType;
+        $this->data = $data;
     }
     
-    public function export(array $data)
+    public function export()
     {
-        exit(1);
+        if (isset($this->data)) {
+            $data = $this->reader->parseData($data);
+            $document = $this->exporter->createDocument($data);
+            
+            return $document;
+        }
     }
     
     public function setDatasourceType($value)
