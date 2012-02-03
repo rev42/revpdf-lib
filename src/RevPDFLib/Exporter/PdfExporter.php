@@ -1,13 +1,13 @@
 <?php
 namespace RevPDFLib\Exporter;
 
-use RevPDFLib\Exporter\tFPDFExporter;
+use RevPDFLib\Writer\tFPDFWriter;
 
 class PdfExporter
 {
     public function __construct()
     {
-        $this->writer = new tFPDFExporter();
+        $this->writer = new tFPDFWriter();
         $this->buildDocument();
     }
     

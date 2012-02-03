@@ -1,10 +1,10 @@
 <?php
-namespace RevPDFLib\Exporter;
+namespace RevPDFLib\Writer;
 
-use RevPDFLib\Exporter\InterfaceExportder;
+use RevPDFLib\Writer\InterfaceWriter;
 use Tfpdf\tFPDF;
 
-class tFPDFExporter extends tFPDF implements InterfaceExporter
+class tFPDFWriter extends tFPDF implements InterfaceWriter
 {
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {
