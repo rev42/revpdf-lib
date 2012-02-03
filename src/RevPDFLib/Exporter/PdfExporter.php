@@ -4,6 +4,9 @@ namespace RevPDFLib\Exporter;
 use RevPDFLib\Writer\tFPDFWriter;
 use RevPDFLib\Writer\TcpdfWriter;
 
+use Symfony\Component\DependencyInjection;
+use Symfony\Component\DependencyInjection\Reference;
+
 /**
  * PDF Exporter
  * 
@@ -11,10 +14,13 @@ use RevPDFLib\Writer\TcpdfWriter;
  */
 class PdfExporter
 {
+    private $sc = null;
+    
     public function __construct()
     {
-        $this->writer = new tFPDFWriter();
-        $this->writer->createDocument();
+        $this->sc = new DependencyInjection\ContainerBuilder();
+        $this->sc->register('writer', 'RevPDFLib\Writer\tFPDFWriter');
+        $this->sc->get('writer')->createDocument();
     }
     
     public function buildDocument()

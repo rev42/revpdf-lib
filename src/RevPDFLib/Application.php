@@ -1,6 +1,9 @@
 <?php 
 namespace RevPDFLib;
 
+use Symfony\Component\DependencyInjection;
+use Symfony\Component\DependencyInjection\Reference;
+
 /**
  * RevPDFLib application
  * 
@@ -10,38 +13,29 @@ class Application
 {
     const VERSION = '2.0.0 (20120129)';
     
-    private $datasourceType = null;
+    private $sc = null;
     
     public function __construct()
     {
+        $this->sc = new DependencyInjection\ContainerBuilder();
+        $this->sc->register('exporter', 'RevPDFLib\Exporter\PdfExporter');
     }
     
     public function export($data)
     {
         switch (gettype($data)) {
             case 'array':
-                $this->reader = new Reader\ArrayReader();
+                $this->sc->register('reader', 'RevPDFLib\Reader\ArrayReader');
                 break;
             default:
                 throw new Exception();
         }
         // Get data properly formatted
-        $data = $this->reader->parseData($data);
+        $data = $this->sc->get('reader')->parseData($data);
         
         // Build document and generate it
-        $this->exporter = new Exporter\PdfExporter();
-        $document = $this->exporter->createDocument($data);
+        $document = $this->sc->get('exporter')->createDocument($data);
 
         return $document;
-    }
-    
-    public function setDatasourceType($value)
-    {
-        $this->datasourceType = (string) $value;
-    }
-    
-    public function getDatasourceType()
-    {
-        return $this->datasourceType;
     }
 }
