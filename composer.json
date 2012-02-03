@@ -19,6 +19,9 @@
         "symfony/dependency-injection": "2.1.*"
     },
     "autoload": {
-        "psr-0": { "RevPDFLib": "src/" }
+        "psr-0": {
+            "RevPDFLib": "src/",
+            "Tfpdf": "vendors/"
+        }
     }
 }

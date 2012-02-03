@@ -6,7 +6,7 @@ defined('BASE_DIR') or define('BASE_DIR', dirname(__file__) . '/../');
 
 require BASE_DIR . 'vendor/.composer/autoload.php';
 
-$lib = new RevPDFLib\Core('array');
+$lib = new RevPDFLib\Application();
 
 $data = array(
     'report' => array(

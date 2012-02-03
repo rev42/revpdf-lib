@@ -3,5 +3,5 @@ namespace RevPDFLib\Reader;
 
 interface ReaderInterface
 {
-    public function parseData();
+    public function parseData(array $data);
 }

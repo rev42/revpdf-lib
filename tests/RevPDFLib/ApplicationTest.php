@@ -1,13 +1,13 @@
 <?php
 namespace RevPDFLib\Tests;
 
-use RevPDFLib\Core;
+use RevPDFLib\Application;
 
-class CoreTest extends \PHPUnit_Framework_TestCase
+class ApplicationTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->revpdflib = new Core();
+        $this->revpdflib = new Application();
     }
     
     public function setDatasourceTest()
