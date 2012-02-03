@@ -21,7 +21,6 @@
     "autoload": {
         "psr-0": {
             "RevPDFLib": "src/",
-            "Tfpdf": "vendors/"
         }
     }
 }

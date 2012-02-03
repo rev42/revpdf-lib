@@ -1,6 +1,11 @@
 <?php 
 namespace RevPDFLib;
 
+/**
+ * RevPDFLib application
+ * 
+ * @author Olivier Cornu <contact@revpdf.org>
+ */
 class Application
 {
     const VERSION = '2.0.0 (20120129)';
@@ -20,8 +25,11 @@ class Application
             default:
                 throw new Exception();
         }
-        $this->exporter = new Exporter\PdfExporter();
+        // Get data properly formatted
         $data = $this->reader->parseData($data);
+        
+        // Build document and generate it
+        $this->exporter = new Exporter\PdfExporter();
         $document = $this->exporter->createDocument($data);
 
         return $document;
