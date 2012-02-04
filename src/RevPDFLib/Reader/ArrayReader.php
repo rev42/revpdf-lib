@@ -7,6 +7,6 @@ class ArrayReader implements ReaderInterface
 {
     public function parseData(array $data)
     {
-        
+        return $data;
     }
 }

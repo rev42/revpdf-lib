@@ -77,6 +77,7 @@ $data = array(
     ),
 );
 
+$data = simplexml_load_file('report.xml');
 $lib->export($data);
 
 /*

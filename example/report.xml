@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RevPDFLib
+    shortname="short"
+    fullname="full"
+    author="moi"
+    keywords="test, pdf, RevPDFLib"
+    subject="un test"
+    title="RevPDF test 1"
+    comments="any comment"
+    topMargin="10"
+    bottomMargin="10"
+    rightMargin="10"
+    leftMargin="10"
+    displayModeZoom="fullpage"
+    displayModeLayout="continuous"
+    >
+    <source>
+        <value>
+            <![CDATA[SELECT * FROM __r_article]]>
+        </value>
+    </source>
+    <pageHeader height="7" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posx="5" posy="15">Un texte</textField>
+        <textField format="text" posx="10" posy="25">Un autre texte</textField>
+        <textZone format="text" posx="15" posy="35">description</textZone>
+    </pageHeader>
+</RevPDFLib>

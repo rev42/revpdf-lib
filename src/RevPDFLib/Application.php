@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class Application
 {
+    const NAME = 'RevPDFLib';
     const VERSION = '2.0.0 (20120129)';
     
     private $sc = null;
@@ -27,6 +28,11 @@ class Application
             case 'array':
                 $this->sc->register('reader', 'RevPDFLib\Reader\ArrayReader');
                 break;
+            case 'object':
+                if (get_class($data) == 'SimpleXMLElement') {
+                    $this->sc->register('reader', 'RevPDFLib\Reader\SimpleXMLReader');
+                }
+                break;
             default:
                 throw new Exception();
         }
@@ -34,8 +40,10 @@ class Application
         $data = $this->sc->get('reader')->parseData($data);
         
         // Build document and generate it
-        $document = $this->sc->get('exporter')->createDocument($data);
-
+        $document = null;
+        if (is_array($data)) {
+            $document = $this->sc->get('exporter')->buildDocument($data);
+        }
         return $document;
     }
 }
