@@ -14,6 +14,41 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class PdfExporter
 {
+    /**
+     * Part Header constant
+     */
+    const PART_HEADER = 0;
+
+    /**
+     * Part Report Header constant
+     */
+    const PART_REPORT_HEADER = 1;
+
+    /**
+     * Part Group Header constant
+     */
+    const PART_GROUP_HEADER = 2;
+
+    /**
+     * Part Data constant
+     */
+    const PART_DATA = 3;
+
+    /**
+     * Part Group Footer constant
+     */
+    const PART_GROUP_FOOTER = 4;
+
+    /**
+     * Part Footer constant
+     */
+    const PART_FOOTER = 5;
+
+    /**
+     * Part Report Footer constant
+     */
+    const PART_REPORT_FOOTER = 6;
+    
     private $sc = null;
     
     public function __construct()
@@ -25,10 +60,13 @@ class PdfExporter
     public function buildDocument(array $data)
     {
         $this->sc->get('writer')->configure($data['report']);
-        $this->sc->get('writer')->open();
-        $txt = 'Grec : Γειά σου κόσμος';
-        $this->sc->get('writer')->write($txt);
-        $this->sc->get('writer')->close();
-        $this->sc->get('writer')->output();
+        $this->sc->get('writer')->setPageHeader($data['pageHeader']);
+        $this->sc->get('writer')->setReportHeader($data['reportHeader']);
+        $this->sc->get('writer')->openDocument();
+        
+        $this->sc->get('writer')->writeReportHeader();
+        
+        $this->sc->get('writer')->closeDocument();
+        $this->sc->get('writer')->outputDocument();
     }
 }

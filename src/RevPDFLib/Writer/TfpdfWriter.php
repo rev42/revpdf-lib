@@ -21,6 +21,8 @@ class TfpdfWriter extends AbstractWriter implements InterfaceWriter
         $this->writer->AddFont('Deja Vu Serif', 'B', 'DejaVuSerif-Bold.ttf', true);
         $this->writer->AddFont('Deja Vu Serif', 'BI', 'DejaVuSerif-BoldItalic.ttf', true);
         $this->writer->AddFont('Deja Vu Serif', 'I', 'DejaVuSerif-Italic.ttf', true);
+        $this->writer->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
+        $this->writer->SetFont('DejaVu','',14);
     }
     
     public function addPage()
@@ -53,23 +55,72 @@ class TfpdfWriter extends AbstractWriter implements InterfaceWriter
         $this->writer->Output();
     }
     
-    public function write($value)
-    {
-        // Ajoute une police Unicode (utilise UTF-8)
-        $this->writer->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
-        $this->writer->SetFont('DejaVu','',14);
-        $this->writer->Write(8, $value);
-    }
-    
-    public function open()
+    public function openDocument()
     {
         $this->writer->Open();
         $this->writer->AddPage();
     }
     
-    public function close()
+    public function closeDocument()
     {
         
+    }
+    
+    public function outputDocument()
+    {
+        $this->writer->Output();
+    }
+    
+    public function setPageHeader($data)
+    {
+        if (is_array($data)) {
+            $this->part[\RevPDFLib\Exporter\PdfExporter::PART_HEADER] = $data;
+        }
+    }
+    
+    public function getPageHeader()
+    {
+        return $this->part[\RevPDFLib\Exporter\PdfExporter::PART_HEADER];
+    }
+    
+    public function setReportHeader($data)
+    {
+        if (is_array($data)) {
+            $this->part[\RevPDFLib\Exporter\PdfExporter::PART_REPORT_HEADER] = $data;
+        }
+    }
+    
+    public function getReportHeader()
+    {
+        return $this->part[\RevPDFLib\Exporter\PdfExporter::PART_REPORT_HEADER];
+    }
+    
+    public function header()
+    {
+        $data = $this->getPageHeader();
+        if (count($data) <= 0 || $data['isVisible'] != 1) {
+            return ;
+        }
+        $this->setCurrentPartNumber($data->number);
+        // If we have an header, the startPosition is the TopMargin + header height
+        //$this->setStartPosition();
+        // The current position has to be reset at the Top Margin value
+        //$this->setCurrentPosition($this->_report->top_margin);
+        $this->writePDF($data['elements']);
+    }
+    
+    public function writePDF($data)
+    {
+        foreach ($data as $element) {
+            $this->writer->setXY($element['posX'], $element['posY']);
+            $this->writer->write($element['height'], $element['value']);
+        }
+    }
+    
+    public function writeReportHeader()
+    {
+        $data = $this->getReportHeader();
+        $this->writePDF($data['elements']);
     }
 }
 
