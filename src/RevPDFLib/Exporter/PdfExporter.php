@@ -57,15 +57,19 @@ class PdfExporter
         $this->sc->register('writer', 'RevPDFLib\Writer\TfpdfWriter');
     }
     
-    public function buildDocument(array $data)
+    public function buildDocument(array $report, array $data)
     {
-        $this->sc->get('writer')->configure($data['report']);
-        $this->sc->get('writer')->setPageHeader($data['pageHeader']);
-        $this->sc->get('writer')->setReportHeader($data['reportHeader']);
+        $this->sc->get('writer')->configure($report);
         $this->sc->get('writer')->openDocument();
         
-        $this->sc->get('writer')->writeReportHeader();
+        $rowsCount = count($data);
         
+        for ($i = 0; $i < $rowsCount; $i++) {
+            if ($this->sc->get('writer')->getReportHeaderDisplayed() === false) {
+                $this->sc->get('writer')->writeReportHeader();
+            }
+            $this->sc->get('writer')->writeDetails();
+        }
         $this->sc->get('writer')->closeDocument();
         $this->sc->get('writer')->outputDocument();
     }

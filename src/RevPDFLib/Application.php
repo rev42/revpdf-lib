@@ -42,16 +42,16 @@ class Application
                 throw new Exception();
         }
         // Get data properly formatted
-        $data = $this->sc->get('reader')->parseData($data);
+        $report = $this->sc->get('reader')->parseData($data);
         
         // Get data provider
-        $this->selectDataProvider($data['source']['provider']);
-        $this->sc->get('provider')->parse($data['source']['value']);
-        print_r($this->sc->get('provider')->data);exit;
+        $this->selectDataProvider($report['source']['provider']);
+        $this->sc->get('provider')->parse($report['source']['value']);
+        $data = $this->sc->get('provider')->data;
         // Build document and generate it
         $document = null;
-        if (is_array($data)) {
-            $document = $this->sc->get('exporter')->buildDocument($data);
+        if (is_array($report)) {
+            $document = $this->sc->get('exporter')->buildDocument($report, $data);
         }
         return $document;
     }

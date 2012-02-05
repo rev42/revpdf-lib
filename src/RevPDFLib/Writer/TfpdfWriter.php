@@ -10,6 +10,8 @@ use \tFPDF;
 
 class TfpdfWriter extends AbstractWriter implements InterfaceWriter
 {
+    var $isReportHeaderDisplayed = false;
+    
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {
         $this->writer = new \tFPDF($pageOrientation, $paperUnit, $paperFormat);
@@ -34,20 +36,24 @@ class TfpdfWriter extends AbstractWriter implements InterfaceWriter
     {
         //$this->writer->setEndPosition($report['bottomMargin']);
         //$this->writer->setCurrentPosition($report['topMargin']);
-        $this->writer->SetAuthor($report['author']);
+        $this->writer->SetAuthor($report['report']['author']);
         $this->writer->SetCreator(\RevPDFLib\Application::NAME);
         $this->writer->SetDisplayMode(
-            $report['displayModeZoom'], 
-            $report['displayModeLayout']
+            $report['report']['displayModeZoom'], 
+            $report['report']['displayModeLayout']
         );
-        $this->writer->SetKeywords($report['keywords']);
-        $this->writer->SetSubject($report['subject']);
-        $this->writer->SetTitle($report['title']);
+        $this->writer->SetKeywords($report['report']['keywords']);
+        $this->writer->SetSubject($report['report']['subject']);
+        $this->writer->SetTitle($report['report']['title']);
         $this->writer->SetMargins(
-            $report['leftMargin'],
-            $report['topMargin'],
-            $report['rightMargin']
+            $report['report']['leftMargin'],
+            $report['report']['topMargin'],
+            $report['report']['rightMargin']
         );
+        
+        $this->setPartInformation(\RevPDFLib\Exporter\PdfExporter::PART_HEADER, $report['pageHeader']);
+        $this->setPartInformation(\RevPDFLib\Exporter\PdfExporter::PART_REPORT_HEADER, $report['reportHeader']);
+        $this->setPartInformation(\RevPDFLib\Exporter\PdfExporter::PART_DATA, $report['details']);
     }
     
     public function output()
@@ -71,23 +77,9 @@ class TfpdfWriter extends AbstractWriter implements InterfaceWriter
         $this->writer->Output();
     }
     
-    public function setPageHeader($data)
-    {
-        if (is_array($data)) {
-            $this->part[\RevPDFLib\Exporter\PdfExporter::PART_HEADER] = $data;
-        }
-    }
-    
     public function getPageHeader()
     {
         return $this->part[\RevPDFLib\Exporter\PdfExporter::PART_HEADER];
-    }
-    
-    public function setReportHeader($data)
-    {
-        if (is_array($data)) {
-            $this->part[\RevPDFLib\Exporter\PdfExporter::PART_REPORT_HEADER] = $data;
-        }
     }
     
     public function getReportHeader()
@@ -95,6 +87,35 @@ class TfpdfWriter extends AbstractWriter implements InterfaceWriter
         return $this->part[\RevPDFLib\Exporter\PdfExporter::PART_REPORT_HEADER];
     }
     
+    public function getDetails()
+    {
+        return $this->part[\RevPDFLib\Exporter\PdfExporter::PART_DATA];
+    }
+    
+    public function setPartInformation($partId, $data)
+    {
+        if (is_array($data)) {
+            $this->part[$partId] = $data;
+        }
+    }
+    
+    public function getReportHeaderDisplayed()
+    {
+        return $this->isReportHeaderDisplayed;
+    }
+    
+    public function setCurrentPartNumber($value)
+    {
+        $this->currentPartNumber = $value;
+    }
+    
+    public function getCurrentPartNumber()
+    {
+        return $this->currentPartNumber;
+    }
+
+
+
     public function header()
     {
         $data = $this->getPageHeader();
@@ -121,6 +142,24 @@ class TfpdfWriter extends AbstractWriter implements InterfaceWriter
     {
         $data = $this->getReportHeader();
         $this->writePDF($data['elements']);
+        $this->isReportHeaderDisplayed = true;
+    }
+
+    /**
+     * displays the elements of Data part
+     *
+     * @return boolean true if data part exists and should be displayed
+     */
+    public function writeDetails()
+    {
+        $data = $this->getDetails();
+        if (count($data) <= 0 || $data['isVisible'] != 1) {
+            return false;
+        }
+        //$this->setCurrentPartNumber($data->number);
+        $this->writePDF($data['elements']);
+        
+        return true;
     }
 }
 

@@ -14,14 +14,22 @@
     displayModeZoom="fullpage"
     displayModeLayout="continuous"
     >
-    <source>
-        <value>
-            <![CDATA[SELECT * FROM __r_article]]>
-        </value>
+    <source provider="CsvProvider">
+        <value>books.csv</value>
     </source>
     <pageHeader height="7" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posx="5" posy="15">Un texte</textField>
-        <textField format="text" posx="10" posy="25">Un autre texte</textField>
-        <textZone format="text" posx="15" posy="35">description</textZone>
+        <textField format="text" posX="5" posY="15" height="5">pageHeader textField1</textField>
+        <textField format="text" posX="10" posY="25" height="5">pageHeader textField2</textField>
+        <textZone format="text" posX="15" posY="35" height="5">pageHeader textZone</textZone>
     </pageHeader>
+    <reportHeader height="7" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posX="5" posY="15" height="5">reportHeader textField1</textField>
+        <textField format="text" posX="10" posY="25" height="5">reportHeader textField2</textField>
+        <textZone format="text" posX="15" posY="35" height="5">reportHeader textZone</textZone>
+    </reportHeader>
+    <details height="7" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posX="5" posY="15" height="5">data textField1</textField>
+        <textField format="text" posX="10" posY="25" height="5">data textField2</textField>
+        <textZone format="text" posX="15" posY="35" height="5">data textZone</textZone>
+    </details>
 </RevPDFLib>
