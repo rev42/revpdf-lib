@@ -13,6 +13,7 @@
     leftMargin="10"
     displayModeZoom="fullpage"
     displayModeLayout="continuous"
+    pageOrientation="P"
     >
     <source provider="CsvProvider">
         <value>books.csv</value>

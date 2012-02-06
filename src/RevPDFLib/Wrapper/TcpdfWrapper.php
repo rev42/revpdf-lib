@@ -1,13 +1,13 @@
 <?php
-namespace RevPDFLib\Writer;
+namespace RevPDFLib\Wrapper;
 
 require_once BASE_DIR . 'vendors/tcpdf/tcpdf.php';
 
-use RevPDFLib\Writer\InterfaceWriter;
-use RevPDFLib\Writer\AbstractWriter;
+use RevPDFLib\Wrapper\InterfaceWrapper;
+use RevPDFLib\Wrapper\AbstractWrapper;
 use \TCPDF;
 
-class TcpdfWriter extends AbstractWriter implements InterfaceWriter
+class TcpdfWrapper extends AbstractWrapper implements InterfaceWrapper
 {
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {

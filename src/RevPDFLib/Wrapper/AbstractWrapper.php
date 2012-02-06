@@ -1,7 +1,7 @@
 <?php
-namespace RevPDFLib\Writer;
+namespace RevPDFLib\Wrapper;
 
-abstract class AbstractWriter
+abstract class AbstractWrapper
 {
     abstract function openDocument();
     abstract function closeDocument();
