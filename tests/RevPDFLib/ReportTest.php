@@ -82,4 +82,54 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('P', $this->report->getPageOrientation());
     }
+    
+    public function testGetAllProperties()
+    {
+        $this->assertNotEmpty($this->report);
+    }
+    
+    public function testSetters()
+    {
+        $this->report->setAuthor('new author');
+        $this->assertEquals('new author', $this->report->getAuthor());
+        
+        $this->report->setDisplayModeZoom('new DMZ');
+        $this->assertEquals('new DMZ', $this->report->getDisplayModeZoom());
+        
+        $this->report->setDisplayModeLayout('new DML');
+        $this->assertEquals('new DML', $this->report->getDisplayModeLayout());
+        
+        $this->report->setKeywords('new key');
+        $this->assertEquals('new key', $this->report->getKeywords());
+        
+        $this->report->setSubject('new sub');
+        $this->assertEquals('new sub', $this->report->getSubject());
+        
+        $this->report->setTitle('new tit');
+        $this->assertEquals('new tit', $this->report->getTitle());
+        
+        $this->report->setLeftMargin(1);
+        $this->assertEquals(1, $this->report->getLeftMargin());
+        
+        $this->report->setTopMargin(2);
+        $this->assertEquals(2, $this->report->getTopMargin());
+        
+        $this->report->setRightMargin(3);
+        $this->assertEquals(3, $this->report->getRightMargin());
+        
+        $this->report->setBottomMargin(4);
+        $this->assertEquals(4, $this->report->getBottomMargin());
+        
+        $this->report->setLeftMargin('A');
+        $this->assertEquals(0, $this->report->getLeftMargin());
+        
+        $this->report->setTopMargin('A');
+        $this->assertEquals(0, $this->report->getTopMargin());
+        
+        $this->report->setRightMargin('A');
+        $this->assertEquals(0, $this->report->getRightMargin());
+        
+        $this->report->setBottomMargin('A');
+        $this->assertEquals(0, $this->report->getBottomMargin());
+    }
 }
