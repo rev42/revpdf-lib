@@ -10,7 +10,11 @@ namespace RevPDFLib;
  */
 class ReportHeader extends \RevPDFLib\Part
 {
-    var $number = \RevPDFLib\Report::PART_REPORT_HEADER;
+    /**
+     * Part Report Header constant
+     */
+    const PART_REPORT_HEADER = 1;
+    
     var $height;
     
     public function __construct()

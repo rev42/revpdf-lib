@@ -9,16 +9,6 @@ namespace RevPDFLib;
 class Report
 {
     /**
-     * Part Header constant
-     */
-    const PART_HEADER = 0;
-
-    /**
-     * Part Report Header constant
-     */
-    const PART_REPORT_HEADER = 1;
-
-    /**
      * Part Group Header constant
      */
     const PART_GROUP_HEADER = 2;
