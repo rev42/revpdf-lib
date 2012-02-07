@@ -21,12 +21,44 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                 'bottomMargin' => '15'
             ),
         );
-        $part = $this->getMock('Part');
+        $details = array(
+            'height' => 20,
+            'isVisible' => 1,
+            'elements' => array(
+                'textField' => array(
+                    'posX' => 5,
+                    'posY' => 10,
+                ),
+            ),
+        );
+        
+        $pageHeader = array(
+            'height' => 20,
+            'isVisible' => 1,
+            'elements' => array(
+                'textField' => array(
+                    'posX' => 5,
+                    'posY' => 10,
+                ),
+            ),
+        );
+        
+        $reportHeader = array(
+            'height' => 20,
+            'isVisible' => 1,
+            'elements' => array(
+                'textField' => array(
+                    'posX' => 5,
+                    'posY' => 10,
+                ),
+            ),
+        );
         
         $this->report = new Report($data);
-        $this->report->parts['pageHeader'] = $part;
-        $this->report->parts['reportHeader'] = $part;
-        $this->report->parts['details'] = $part;
+        $this->report->addPart('details', $details);
+        $this->report->addPart('pageHeader', $pageHeader);
+        $this->report->addPart('reportHeader', $reportHeader);
+        $this->report->initializeParts();
     }
     
     public function testInitializeParts()
