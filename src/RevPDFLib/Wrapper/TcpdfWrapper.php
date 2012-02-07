@@ -55,12 +55,12 @@ class TcpdfWrapper extends AbstractWrapper implements InterfaceWrapper
         $this->writer->writeHTMLCell($w=0, $h=0, $x='', $y='', $value, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
     }
     
-    public function open()
+    public function openDocument()
     {
         $this->writer->AddPage();
     }
     
-    public function close()
+    public function closeDocument()
     {
         
     }
