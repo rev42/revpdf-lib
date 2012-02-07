@@ -63,7 +63,7 @@ class Report
     public function initializeParts()
     {
         if (count($this->parts) <= 0) {
-            return true;
+            return null;
         }
         
         

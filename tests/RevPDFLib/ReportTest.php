@@ -162,4 +162,10 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         
         $this->assertCount(1, $this->report->parts);
     }
+    
+    public function testInitializeParts()
+    {
+        $this->assertNull($this->report->initializeParts());
+        
+    }
 }
