@@ -20,7 +20,8 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                 'leftMargin' => '20',
                 'topMargin' => '10',
                 'rightMargin' => '5',
-                'bottomMargin' => '15'
+                'bottomMargin' => '15',
+                'pageOrientation' => 'P'
             ),
         );
         
@@ -40,5 +41,45 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     public function testGetDisplayModeLayout()
     {
         $this->assertEquals('displayModeLayout', $this->report->getDisplayModeLayout());
+    }
+    
+    public function testGetKeywords()
+    {
+        $this->assertEquals('keywordsValue', $this->report->getKeywords());
+    }
+    
+    public function testGetSubject()
+    {
+        $this->assertEquals('subjectValue', $this->report->getSubject());
+    }
+    
+    public function testGetTitle()
+    {
+        $this->assertEquals('titleValue', $this->report->getTitle());
+    }
+    
+    public function testGetLeftMargin()
+    {
+        $this->assertEquals(20, $this->report->getLeftMargin());
+    }
+    
+    public function testGetTopMargin()
+    {
+        $this->assertEquals(10, $this->report->getTopMargin());
+    }
+    
+    public function testGetRightMargin()
+    {
+        $this->assertEquals(5, $this->report->getRightMargin());
+    }
+    
+    public function testGetBottomMargin()
+    {
+        $this->assertEquals(15, $this->report->getBottomMargin());
+    }
+    
+    public function testGetPageOrientation()
+    {
+        $this->assertEquals('P', $this->report->getPageOrientation());
     }
 }
