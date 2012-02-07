@@ -150,7 +150,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->report->addPart('details', $part);
         
         $this->assertInstanceOf('RevPDFLib\Part', $this->report->getPart('details'));
-        $this->assertNull('RevPDFLib\Part', $this->report->getPart('pageHeader'));
+        $this->assertNull('RevPDFLib\Part', $this->report->getPart('pageHeaders'));
     }
     
     public function testAddPart()
