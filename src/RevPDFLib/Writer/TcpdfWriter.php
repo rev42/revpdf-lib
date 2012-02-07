@@ -1,6 +1,8 @@
 <?php
 namespace RevPDFLib\Writer;
 
+defined('BASE_DIR') or define('BASE_DIR', dirname(__file__) . '/../../../');
+
 require_once BASE_DIR . 'vendors/tcpdf/tcpdf.php';
 
 use \TCPDF;
