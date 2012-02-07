@@ -29,7 +29,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->report->parts['details'] = $part;
     }
     
-    public function initializePartsTest()
+    public function testInitializeParts()
     {
         $this->report->initializeParts();
         
