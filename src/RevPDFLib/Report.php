@@ -57,6 +57,7 @@ class Report
         $this->topMargin = $data['report']['topMargin'];
         $this->rightMargin = $data['report']['rightMargin'];
         $this->bottomMargin = $data['report']['bottomMargin'];
+        $this->pageOrientation = $data['report']['pageOrientation'];
     }
     
     public function initializeParts()

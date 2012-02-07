@@ -40,7 +40,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testGetDisplayModeLayout()
     {
-        $this->assertEquals('displayModeLayout', $this->report->getDisplayModeLayout());
+        $this->assertEquals('displayModeLayoutValue', $this->report->getDisplayModeLayout());
     }
     
     public function testGetKeywords()
@@ -144,10 +144,9 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testGetPart()
     {
-        $part = $this->getMock('RevPDFLib\Part', array(
-            'height' => 10,
-            'backgroundColor' => '#FFF'
-        ));
+        $part = $this->getMockBuilder('RevPDFLib\Part')
+                     ->disableOriginalConstructor()
+                     ->getMock();
         $this->report->addPart('details', $part);
         
         $this->assertInstanceOf('RevPDFLib\Part', $this->report->getPart('details'));
@@ -155,10 +154,9 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testAddPart()
     {
-        $part = $this->getMock('RevPDFLib\Part', array(
-            'height' => 10,
-            'backgroundColor' => '#FFF'
-        ));
+        $part = $this->getMockBuilder('RevPDFLib\Part')
+                     ->disableOriginalConstructor()
+                     ->getMock();
         $this->report->addPart('details', $part);
         
         $this->assertCount('1', $this->report->part);
