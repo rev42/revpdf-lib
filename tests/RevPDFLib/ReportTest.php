@@ -144,9 +144,23 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testGetPart()
     {
-        $part = $this->getMock('RevPDFLib\Part'); 
+        $part = $this->getMock('RevPDFLib\Part', array(
+            'height' => 10,
+            'backgroundColor' => '#FFF'
+        ));
         $this->report->addPart('details', $part);
         
         $this->assertInstanceOf('RevPDFLib\Part', $this->report->getPart('details'));
+    }
+    
+    public function testAddPart()
+    {
+        $part = $this->getMock('RevPDFLib\Part', array(
+            'height' => 10,
+            'backgroundColor' => '#FFF'
+        ));
+        $this->report->addPart('details', $part);
+        
+        $this->assertCount('1', $this->report->part);
     }
 }
