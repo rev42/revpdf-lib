@@ -44,6 +44,7 @@ class Report
     var $rightMargin;
     var $bottomMargin;
     var $pageOrientation;
+    var $parts = array();
     
     public function __construct($data)
     {
