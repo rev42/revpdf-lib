@@ -22,7 +22,7 @@ class Application
         $this->sc->register('exporter', 'RevPDFLib\Exporter\PdfExporter');
     }
     
-    public function selectDataProvider($value)
+    protected function selectDataProvider($value)
     {
         $this->sc->register('provider', 'RevPDFLib\DataProvider\\' . $value);
     }
@@ -48,6 +48,7 @@ class Application
         $this->selectDataProvider($report['source']['provider']);
         $this->sc->get('provider')->parse($report['source']['value']);
         $data = $this->sc->get('provider')->data;
+        
         // Build document and generate it
         $document = null;
         if (is_array($report)) {

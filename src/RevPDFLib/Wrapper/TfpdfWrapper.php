@@ -52,6 +52,8 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
             $report['topMargin'],
             $report['rightMargin']
         );
+        // Page header is a special part because it is automatically called when
+        // a new page is created. header() doesn't support parameters
         $this->writer->setPageHeaderElements($this->getReport()->getPart('pageHeader'));
         $this->writer->SetTopMargin($this->getReport()->getTopMargin());
         $this->writer->SetLeftMargin($this->getReport()->getLeftMargin());
@@ -94,6 +96,7 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
             return false;
         }
         
+        // Set current position at Part start position
         $this->setCurrentPosition($part->getStartPosition());
         
         foreach ($data as $element) {

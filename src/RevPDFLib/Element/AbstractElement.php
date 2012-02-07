@@ -1,6 +1,8 @@
 <?php
 namespace RevPDFLib\Element;
 
+use RevPDFLib\Element\Textfield;
+
 abstract class AbstractElement
 {
     /**
@@ -471,76 +473,39 @@ abstract class AbstractElement
      *
      * @return string Element field
      */
-    function getField()
+    function getValue()
     {
-        return $this->field;
-    }
-
-    /**
-     * Element factory
-     *
-     * @param string $type type of Element to generate
-     *
-     * @return RevPDF_Element_Line
-     */
-    public static function getFactory($type)
-    {
-        switch ($type) {
-        case 'TextZone':
-            return new RevPDF_Element_Textzone();
-            break;
-        case 'PageNumber':
-            return new RevPDF_Element_Pagenumber();
-            break;
-        case 'TextField':
-            return new RevPDF_Element_Textfield();
-            break;
-        case 'Image':
-            return new RevPDF_Element_Image();
-            break;
-        case 'RoundedBox':
-            return new RevPDF_Element_Roundedbox();
-            break;
-        case 'Rectangle':
-            return new RevPDF_Element_Rectangle();
-            break;
-        case 'Line':
-            return new RevPDF_Element_Line();
-            break;
-        default:
-            echo RevPDFGui::getLocalization()->translate('Unknown element type: ' . $type);
-            return null;
-            break;
-        }
+        return $this->value;
     }
 
     /**
      * set all properties to object
      *
-     * @param object $elementInfo Element with all its information from DB
-     * @param object $pdfDoc 	  Instance of PDF class
+     * @param object $elementInfo Element with all info from data source
      *
      * @return void
      */
-    function setProperties($elementInfo, $pdfDoc)
+    function setProperties($elementInfo)
     {
-        $this->posx = $elementInfo->posx + $pdfDoc->getReportValue('left_margin');
-        $this->posy = $elementInfo->posy + $pdfDoc->getCurrentPosition();
-        $this->font = $elementInfo->font_family;
-        $this->isAutoExtend = $elementInfo->is_auto_extend;
-        $this->style = $elementInfo->style;
-        $this->fontSize = $elementInfo->size;
-        $this->width = $elementInfo->width;
-        $this->height = $elementInfo->height;
-        $this->border = $elementInfo->border;
-        $this->borderWidth = $elementInfo->border_width;
-        $this->alignment = $elementInfo->alignment;
-        $this->setFillColor($elementInfo->fill_color);
-        $this->setTextColor($elementInfo->text_color);
-        $this->format = $elementInfo->format;
-        $this->type = $elementInfo->type;
-        $this->field = $elementInfo->field;
-
+        $this->posx = $elementInfo['posX'];
+        $this->posy = $elementInfo['posY'];
+        //$this->font = $elementInfo['fontFamily'];
+        //$this->isAutoExtend = $elementInfo['isAutoExtend'];
+        //$this->style = $elementInfo['style'];
+        //$this->fontSize = $elementInfo['size'];
+        $this->width = $elementInfo['width'];
+        $this->height = $elementInfo['height'];
+        //$this->border = $elementInfo['border'];
+        //$this->borderWidth = $elementInfo['borderWidth'];
+        //$this->alignment = $elementInfo['alignment'];
+        //$this->setFillColor($elementInfo['fillColor']);
+        //$this->setTextColor($elementInfo['textColor']);
+        //$this->fillColor = $elementInfo['fillColor'];
+        //$this->textColor = $elementInfo['textColor'];
+        //$this->format = $elementInfo['format'];
+        $this->type = $elementInfo['type'];
+        $this->value = $elementInfo['value'];
+        /*
         // calculate the cell height after extension
         if ($this->isAutoExtend != '0') {
             $cellHeight = $pdfDoc->nbLines(
@@ -561,7 +526,7 @@ abstract class AbstractElement
             if ($cellHeight > $this->height) {
                 $this->offset = $cellHeight - $this->height;
             }
-        }
+        }*/
     }
     /**
      * Write content into instance of PDF class

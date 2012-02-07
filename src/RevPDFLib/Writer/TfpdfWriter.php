@@ -44,8 +44,8 @@ class TfpdfWriter extends \tFPDF
         }
         
         foreach ($data as $element) {
-            $this->setXY($element['posX'] + $this->getLeftMargin(), $element['posY'] + $this->getTopMargin());
-            $this->Cell($element['width'], $element['height'], $element['value']);
+            $this->setXY($element->getPosX() + $this->getLeftMargin(), $element->getPosY() + $this->getTopMargin());
+            $this->Cell($element->getWidth(), $element->getHeight(), $element->getValue());
         }
     }
 }

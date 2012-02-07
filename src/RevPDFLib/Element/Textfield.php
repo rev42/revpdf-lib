@@ -1,7 +1,7 @@
 <?php
 namespace RevPDFLib\Element;
 
-class TextField extends AbstractElement
+class Textfield extends AbstractElement
 {
     
 }

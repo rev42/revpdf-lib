@@ -2,6 +2,7 @@
 namespace RevPDFLib;
 
 use RevPDFLib\Report;
+use RevPDFLib\Element;
 
 /**
  * Part
@@ -55,7 +56,11 @@ class Part
     }
     
     public function setElements($elements) {
-        $this->elements = $elements;
+        foreach ($elements as $element) {
+            $newElement = \RevPDFLib\Element\FactoryElement::getFactory($element['type']);
+            $newElement->setProperties($element);
+        }
+        $this->elements[] = $newElement;
     }
 
     public function getElements() {
