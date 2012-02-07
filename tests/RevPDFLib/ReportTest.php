@@ -5,6 +5,8 @@ use RevPDFLib\Report;
 
 class ReportTest extends \PHPUnit_Framework_TestCase
 {
+    protected $report;
+    
     public function setUp()
     {
         $reportData = array(
@@ -22,54 +24,21 @@ class ReportTest extends \PHPUnit_Framework_TestCase
             ),
         );
         
-        $detailsData = array(
-            'height' => 20,
-            'isVisible' => 1,
-            'elements' => array(
-                'textField' => array(
-                    'posX' => 5,
-                    'posY' => 10,
-                ),
-            ),
-        );
-        
-        $pageHeaderData = array(
-            'height' => 20,
-            'isVisible' => 1,
-            'elements' => array(
-                'textField' => array(
-                    'posX' => 5,
-                    'posY' => 10,
-                ),
-            ),
-        );
-        
-        $reportHeaderData = array(
-            'height' => 20,
-            'isVisible' => 1,
-            'elements' => array(
-                'textField' => array(
-                    'posX' => 5,
-                    'posY' => 10,
-                ),
-            ),
-        );
-        
         $this->report = new Report($reportData);
-        $this->report->addPart('details', new RevPDFLib\Part($detailsData));
-        $this->report->addPart('pageHeader', new RevPDFLib\Part($pageHeaderData));
-        $this->report->addPart('reportHeader', new RevPDFLib\Part($reportHeaderData));
-        $this->report->initializeParts();
     }
     
-    public function testInitializeParts()
+    public function testGetAuthor()
     {
-        $this->report->initializeParts();
-        
-        foreach ($this->report->parts as $type => $part) {
-            if ($type == 'pageHeader') {
-                $this->assertEquals(10, $part->getStartPosition());
-            }
-        }
+        $this->assertEquals('authorValue', $this->report->getAuthor());
+    }
+    
+    public function testGetDisplayModeZoom()
+    {
+        $this->assertEquals('displayModeZoomValue', $this->report->getDisplayModeZoom());
+    }
+    
+    public function testGetDisplayModeLayout()
+    {
+        $this->assertEquals('displayModeLayout', $this->report->getDisplayModeLayout());
     }
 }
