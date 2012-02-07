@@ -3,7 +3,7 @@ namespace RevPDFLib\Reader;
 
 class JsonReader implements ReaderInterface
 {
-    public function parseData()
+    public function parseData($data)
     {
         
     }
