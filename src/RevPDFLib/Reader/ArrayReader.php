@@ -5,7 +5,7 @@ use RevPDFLib\Reader\ReaderInterface;
 
 class ArrayReader implements ReaderInterface
 {
-    public function parseData(array $data)
+    public function parseData($data)
     {
         return $data;
     }
