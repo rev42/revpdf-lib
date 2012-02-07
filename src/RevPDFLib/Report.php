@@ -69,6 +69,20 @@ class Report
         $this->bottomMargin = $data['report']['bottomMargin'];
     }
     
+    public function initializeParts()
+    {
+        if (count($this->parts) <= 0) {
+            return true;
+        }
+        foreach ($this->parts as $type => $part) {
+            if ($type == 'pageHeader') {
+                $part->setStartPosition($this->getTopMargin());
+            } elseif ($type == 'reportHeader') {
+                $part->setStartPosition($this->getTopMargin() + $this->parts['pageHeader']->getHeight());
+            }
+        }
+    }
+    
     public function getAllProperties()
     {
         return get_object_vars($this);

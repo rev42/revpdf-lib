@@ -16,9 +16,13 @@ class Part
     var $height;
     var $elements;
     var $isVisible = false;
+    var $backgroundColor;
     
-    public function __construct()
+    
+    public function __construct($data)
     {
+        $this->height = $data['height'];
+        $this->backgroundColor = $data['backgroundColor'];
     }
     
     public function setIsDisplayed($value)
@@ -70,7 +74,7 @@ class Part
     }
 
     public function setIsVisible($isVisible) {
-        $this->isVisible = $isVisible;
+        $this->isVisible = (bool) $isVisible;
     }
 
 }

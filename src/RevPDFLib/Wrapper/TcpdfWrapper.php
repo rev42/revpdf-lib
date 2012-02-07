@@ -1,11 +1,8 @@
 <?php
 namespace RevPDFLib\Wrapper;
 
-require_once BASE_DIR . 'vendors/tcpdf/tcpdf.php';
-
 use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
-use \TCPDF;
 
 class TcpdfWrapper extends AbstractWrapper implements InterfaceWrapper
 {

@@ -33,19 +33,23 @@ class SimpleXMLReader implements ReaderInterface
     {
         $formattedData = array();
         
-        foreach ($data->$node->attributes() as $key => $value) {
-            $formattedData[$node][$key] = (string) $value;
-        }
-        $formattedData[$node]['elements'] = array();
-        foreach ($data->$node->children() as $key => $elements) {
-            $element['value'] = (string) $elements[0];
-            $element['type'] = $elements->getName();
-            foreach ($elements->attributes() as $j => $value) {
-                $element[$j] = (string) $value;
+        if (isset($data->$node) && count($data->$node->attributes()) > 0) {
+            foreach ($data->$node->attributes() as $key => $value) {
+                $formattedData[$node][$key] = (string) $value;
             }
-            $formattedData[$node]['elements'][] = $element;
+            $formattedData[$node]['elements'] = array();
+            foreach ($data->$node->children() as $key => $elements) {
+                $element['value'] = (string) $elements[0];
+                $element['type'] = $elements->getName();
+                foreach ($elements->attributes() as $j => $value) {
+                    $element[$j] = (string) $value;
+                }
+                $formattedData[$node]['elements'][] = $element;
+            }
+            
+            return $formattedData[$node];
+        } else {
+            return array();
         }
-        
-        return $formattedData[$node];
     }
 }

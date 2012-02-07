@@ -18,19 +18,21 @@
     <source provider="CsvProvider">
         <value>books.csv</value>
     </source>
-    <pageHeader height="7" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="5" posY="15" height="5">pageHeader textField1</textField>
-        <textField format="text" posX="10" posY="25" height="5">pageHeader textField2</textField>
-        <textZone format="text" posX="15" posY="35" height="5">pageHeader textZone</textZone>
+    <pageHeader height="40" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posX="5" posY="15" height="5" width="20">pageHeader textField1</textField>
+        <textField format="text" posX="10" posY="25" height="5" width="20">pageHeader textField2</textField>
+        <textZone format="text" posX="15" posY="35" height="5" width="20">pageHeader textZone</textZone>
     </pageHeader>
-    <reportHeader height="7" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="5" posY="15" height="5">reportHeader textField1</textField>
-        <textField format="text" posX="10" posY="25" height="5">reportHeader textField2</textField>
-        <textZone format="text" posX="15" posY="35" height="5">reportHeader textZone</textZone>
+    <reportHeader height="10" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posX="5" posY="15" height="5" width="20">reportHeader textField1</textField>
+        <textField format="text" posX="10" posY="25" height="5" width="20">reportHeader textField2</textField>
+        <textZone format="text" posX="15" posY="35" height="5" width="20">reportHeader textZone</textZone>
     </reportHeader>
-    <details height="7" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="5" posY="15" height="5">data textField1</textField>
-        <textField format="text" posX="10" posY="25" height="5">data textField2</textField>
-        <textZone format="text" posX="15" posY="35" height="5">data textZone</textZone>
+    <!--
+    <details height="20" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posX="5" posY="15" height="5" width="20">data textField1</textField>
+        <textField format="text" posX="10" posY="25" height="5" width="20">data textField2</textField>
+        <textZone format="text" posX="15" posY="35" height="5" width="20">data textZone</textZone>
     </details>
+    -->
 </RevPDFLib>

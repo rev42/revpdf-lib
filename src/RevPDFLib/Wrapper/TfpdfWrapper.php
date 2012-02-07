@@ -1,12 +1,12 @@
 <?php
 namespace RevPDFLib\Wrapper;
 
-require_once BASE_DIR . 'vendors/tfpdf/tfpdf.php';
 require_once BASE_DIR . 'vendors/tfpdf/font/unifont/ttfonts.php';
+require_once BASE_DIR . 'vendors/tfpdf/tFPDF.php';
 
 use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
-use \tFPDF;
+use RevPDFLib\Writer\TfpdfWriter;
 
 class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
 {
@@ -16,7 +16,7 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
     
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {
-        $this->writer = new \tFPDF($pageOrientation, $paperUnit, $paperFormat);
+        $this->writer = new \RevPDFLib\Writer\TfpdfWriter($pageOrientation, $paperUnit, $paperFormat);
         $this->writer->AddFont('Deja Vu Sans', '', 'DejaVuSans.ttf', true);
         $this->writer->AddFont('Deja Vu Sans', 'B', 'DejaVuSans-Bold.ttf', true);
         $this->writer->AddFont('Deja Vu Sans', 'BI', 'DejaVuSans-BoldOblique.ttf', true);
@@ -52,6 +52,9 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
             $report['topMargin'],
             $report['rightMargin']
         );
+        $this->writer->setPageHeaderElements($this->getReport()->getPart('pageHeader'));
+        $this->writer->SetTopMargin($this->getReport()->getTopMargin());
+        $this->writer->SetLeftMargin($this->getReport()->getLeftMargin());
     }
     
     public function output()
@@ -84,20 +87,6 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
     {
         return $this->currentPartNumber;
     }
-
-    public function header()
-    {
-        $data = $this->report->getPart('pageHeader')->getElements();
-        if (count($data) <= 0 || $data['isVisible'] != 1) {
-            return ;
-        }
-        $this->setCurrentPartNumber($data->number);
-        // If we have an header, the startPosition is the TopMargin + header height
-        $this->report->getPart('pageHeader')->setStartPosition($this->tMargin);
-        // The current position has to be reset at the Top Margin value
-        $this->setCurrentPosition($this->report->getTopMargin());
-        $this->writePDF($this->report->getPart('pageHeader') , $data['elements']);
-    }
     
     public function writePDF(\RevPDFLib\Part $part, array $data)
     {
@@ -105,14 +94,16 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
             return false;
         }
         
+        $this->setCurrentPosition($part->getStartPosition());
+        
         foreach ($data as $element) {
             // Create new page if overlapping
             if ($this->getCurrentPosition() + $element['height'] >= $this->getEndPosition()) {
-                $this->AddPage($this->report->getPageOrientation());
+                $this->writer->AddPage($this->report->getPageOrientation());
                 $this->setCurrentPosition($part->getStartPosition());
             }
             
-            $this->writer->setXY($element['posX'], $element['posY']);
+            $this->writer->setXY($element['posX'] + $this->getReport()->getLeftMargin(), $element['posY']+ $this->getCurrentPosition());
             $this->writer->write($element['height'], $element['value']);
         }
         
