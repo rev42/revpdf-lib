@@ -85,7 +85,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testGetAllProperties()
     {
-        $this->assertNotEmpty($this->report);
+        $this->assertNotEmpty($this->report->getAllProperties());
     }
     
     public function testSetters()
@@ -131,5 +131,22 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         
         $this->report->setBottomMargin('A');
         $this->assertEquals(0, $this->report->getBottomMargin());
+        
+        $this->report->setPageOrientation('P');
+        $this->assertEquals('P', $this->report->getPageOrientation());
+        
+        $this->report->setPageOrientation('L');
+        $this->assertEquals('L', $this->report->getPageOrientation());
+        
+        $this->report->setPageOrientation('X');
+        $this->assertEquals('P', $this->report->getPageOrientation());
+    }
+    
+    public function testGetPart()
+    {
+        $part = $this->getMock('RevPDFLib\Part'); 
+        $this->report->addPart('details', $part);
+        
+        $this->assertInstanceOf('RevPDFLib\Part', $this->report->getPart('details'));
     }
 }
