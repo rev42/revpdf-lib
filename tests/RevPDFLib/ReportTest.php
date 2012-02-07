@@ -159,6 +159,6 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                      ->getMock();
         $this->report->addPart('details', $part);
         
-        $this->assertCount('1', $this->report->parts);
+        $this->assertCount(1, $this->report->parts);
     }
 }
