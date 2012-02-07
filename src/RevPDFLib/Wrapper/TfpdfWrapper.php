@@ -101,13 +101,13 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
         
         foreach ($data as $element) {
             // Create new page if overlapping
-            if ($this->getCurrentPosition() + $element['height'] >= $this->getEndPosition()) {
+            if ($this->getCurrentPosition() + $element->getHeight() >= $this->getEndPosition()) {
                 $this->writer->AddPage($this->report->getPageOrientation());
                 $this->setCurrentPosition($part->getStartPosition());
             }
             
-            $this->writer->setXY($element['posX'] + $this->getReport()->getLeftMargin(), $element['posY']+ $this->getCurrentPosition());
-            $this->writer->write($element['height'], $element['value']);
+            $this->writer->setXY($element->getPosX() + $this->getReport()->getLeftMargin(), $element->getPosY() + $this->getCurrentPosition());
+            $this->writer->Cell($element->getWidth(), $element->getHeight(), $element->getValue());
         }
         
         return true;

@@ -53,7 +53,7 @@ class PdfExporter
         
         for ($i = 0; $i < $rowsCount; $i++) {
             if ($this->sc->get('reportHeader')->getIsDisplayed() === false) {
-                $this->sc->get('wrapper')->writePDF($this->sc->get('reportHeader'), $report['reportHeader']['elements']);
+                $this->sc->get('wrapper')->writePDF($this->sc->get('reportHeader'), $this->sc->get('reportHeader')->getElements());
                 $this->sc->get('reportHeader')->setIsDisplayed(true);
             }
             if (count($report['details']) > 0) {
@@ -61,7 +61,7 @@ class PdfExporter
                     return false;
                 }
             
-                $return = $this->sc->get('wrapper')->writePDF($this->sc->get('details'), $report['details']['elements']);
+                $return = $this->sc->get('wrapper')->writePDF($this->sc->get('details'), $this->sc->get('details')->getElements());
 
                 if ($return === false) {
                     break;

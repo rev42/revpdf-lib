@@ -59,8 +59,8 @@ class Part
         foreach ($elements as $element) {
             $newElement = \RevPDFLib\Element\FactoryElement::getFactory($element['type']);
             $newElement->setProperties($element);
+            $this->elements[] = $newElement;
         }
-        $this->elements[] = $newElement;
     }
 
     public function getElements() {
