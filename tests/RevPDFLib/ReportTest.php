@@ -7,7 +7,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $data = array(
+        $reportData = array(
             'report' => array(
                 'author' => 'authorValue',
                 'displayModeZoom' => 'displayModeZoomValue',
@@ -21,7 +21,8 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                 'bottomMargin' => '15'
             ),
         );
-        $details = array(
+        
+        $detailsData = array(
             'height' => 20,
             'isVisible' => 1,
             'elements' => array(
@@ -32,7 +33,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
             ),
         );
         
-        $pageHeader = array(
+        $pageHeaderData = array(
             'height' => 20,
             'isVisible' => 1,
             'elements' => array(
@@ -43,7 +44,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
             ),
         );
         
-        $reportHeader = array(
+        $reportHeaderData = array(
             'height' => 20,
             'isVisible' => 1,
             'elements' => array(
@@ -54,10 +55,10 @@ class ReportTest extends \PHPUnit_Framework_TestCase
             ),
         );
         
-        $this->report = new Report($data);
-        $this->report->addPart('details', $details);
-        $this->report->addPart('pageHeader', $pageHeader);
-        $this->report->addPart('reportHeader', $reportHeader);
+        $this->report = new Report($reportData);
+        $this->report->addPart('details', new RevPDFLib\Part($detailsData));
+        $this->report->addPart('pageHeader', new RevPDFLib\Part($pageHeaderData));
+        $this->report->addPart('reportHeader', new RevPDFLib\Part($reportHeaderData));
         $this->report->initializeParts();
     }
     
