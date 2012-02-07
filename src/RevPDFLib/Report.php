@@ -74,11 +74,28 @@ class Report
         if (count($this->parts) <= 0) {
             return true;
         }
+        
+        
         foreach ($this->parts as $type => $part) {
             if ($type == 'pageHeader') {
                 $part->setStartPosition($this->getTopMargin());
             } elseif ($type == 'reportHeader') {
-                $part->setStartPosition($this->getTopMargin() + $this->parts['pageHeader']->getHeight());
+                if ($this->parts['pageHeader']->getIsVisible() === true) {
+                    $offset = $this->parts['pageHeader']->getHeight();
+                } else {
+                    $offset = 0;
+                }
+                $part->setStartPosition($this->getTopMargin() + $offset);
+            } elseif ($type == 'details') {
+                if ($this->parts['pageHeader']->getIsVisible() === true) {
+                    $offset = $this->parts['pageHeader']->getHeight();
+                } else {
+                    $offset = 0;
+                }
+                if ($this->parts['reportHeader']->getIsVisible() === true) {
+                    $offset += $this->parts['reportHeader']->getHeight();
+                }
+                $part->setStartPosition($this->getTopMargin() + $offset);
             }
         }
     }

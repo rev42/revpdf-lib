@@ -9,4 +9,5 @@ namespace RevPDFLib;
 class PageHeader extends \RevPDFLib\Part
 {
     var $number = \RevPDFLib\Report::PART_HEADER;
+    
 }

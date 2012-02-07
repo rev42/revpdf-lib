@@ -23,6 +23,7 @@ class Part
     {
         $this->height = $data['height'];
         $this->backgroundColor = $data['backgroundColor'];
+        $this->startposition = 0;
     }
     
     public function setIsDisplayed($value)
