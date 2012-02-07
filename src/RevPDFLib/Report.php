@@ -148,7 +148,7 @@ class Report
     }
 
     public function setLeftMargin($leftMargin) {
-        $this->leftMargin = $leftMargin;
+        $this->leftMargin = (int) $leftMargin;
     }
 
     public function getTopMargin() {
@@ -156,7 +156,7 @@ class Report
     }
 
     public function setTopMargin($topMargin) {
-        $this->topMargin = $topMargin;
+        $this->topMargin = (int) $topMargin;
     }
 
     public function getRightMargin() {
@@ -164,7 +164,7 @@ class Report
     }
 
     public function setRightMargin($rightMargin) {
-        $this->rightMargin = $rightMargin;
+        $this->rightMargin = (int) $rightMargin;
     }
 
     public function getBottomMargin() {
@@ -172,7 +172,7 @@ class Report
     }
 
     public function setBottomMargin($bottomMargin) {
-        $this->bottomMargin = $bottomMargin;
+        $this->bottomMargin = (int) $bottomMargin;
     }
     
     public function getPageOrientation() {
@@ -180,7 +180,11 @@ class Report
     }
 
     public function setPageOrientation($pageOrientation) {
-        $this->pageOrientation = $pageOrientation;
+        $this->pageOrientation = 'P';
+        
+        if (in_array($pageOrientation, array('P', 'L'))) {
+            $this->pageOrientation = $pageOrientation;
+        }
     }
 
     public function addPart($type, \RevPDFLib\Part $object)
