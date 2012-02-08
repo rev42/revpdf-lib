@@ -17,32 +17,11 @@ class AddPartEventTest extends \PHPUnit_Framework_TestCase
     
     public function testGetPart()
     {
-        $this->assertInstanceOf('RevPDFLib\Items\Part\PageHeader', $this->getPart());
+        $this->assertInstanceOf('RevPDFLib\Items\Part\PageHeader', $this->event->getPart());
     }
     
     public function testGetOffset()
     {
-        $this->assertEquals(10, $this->getOffset());
+        $this->assertEquals(10, $this->event->getOffset());
     }
-    /*
-    private $part;
-    private $offset;
- 
-    public function __construct(\RevPDFLib\Items\Part\AbstractPart $part, $offset)
-    {
-        $this->part = $part;
-        $this->offset = $offset;
-    }
- 
-    public function getPart()
-    {
-        return $this->part;
-    }
-    
-    public function getOffset()
-    {
-        return $this->offset;
-    }*/
-    
-    
 }
