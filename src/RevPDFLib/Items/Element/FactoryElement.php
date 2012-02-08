@@ -1,5 +1,5 @@
 <?php
-namespace RevPDFLib\Element;
+namespace RevPDFLib\Items\Element;
 
 class FactoryElement {
     

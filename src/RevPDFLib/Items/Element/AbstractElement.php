@@ -1,7 +1,5 @@
 <?php
-namespace RevPDFLib\Element;
-
-use RevPDFLib\Element\Textfield;
+namespace RevPDFLib\Items\Element;
 
 abstract class AbstractElement
 {

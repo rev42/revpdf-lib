@@ -43,7 +43,7 @@ class PdfExporter
             $this->sc->get('details')->setElements($report['details']['elements']);
             $this->sc->get('report')->addPart('details', $this->sc->get('details'));
         }
-        $this->sc->get('report')->initializeParts();
+        
         $this->sc->get('wrapper')->configure($this->sc->get('report')->getAllProperties());
         
         

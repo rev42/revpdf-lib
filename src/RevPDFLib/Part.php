@@ -58,7 +58,7 @@ abstract class Part
     
     public function setElements($elements) {
         foreach ($elements as $element) {
-            $newElement = \RevPDFLib\Element\FactoryElement::getFactory($element['type']);
+            $newElement = \RevPDFLib\Items\Element\FactoryElement::getFactory($element['type']);
             $newElement->setProperties($element);
             $this->elements[] = $newElement;
         }
