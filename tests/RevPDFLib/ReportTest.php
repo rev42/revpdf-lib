@@ -184,6 +184,6 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->report->addPart('pageHeader', $part);
         $this->report->initializeParts();
         
-        $this->assertEquals(10, $part->getStartPosition());
+        $this->assertEquals(10, $this->report->parts['pageHeader']->getStartPosition());
     }
 }
