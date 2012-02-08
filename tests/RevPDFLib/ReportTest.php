@@ -170,7 +170,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testInitializePartsWithPageHeaderVisible()
     {
-        $part = $this->getMockBuilder('RevPDFLib\Part\PageHeader')
+        $part = $this->getMockBuilder('RevPDFLib\PageHeader')
                      ->disableOriginalConstructor()
                      ->getMock();
 
