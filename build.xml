@@ -23,6 +23,7 @@
  </target>
 
  <target name="parallelTasks" description="Run the pdepend, phpmd, phpcpd, phpcs, phpdoc and phploc tasks in parallel using a maximum of 2 threads.">
+  <antcall target="vendor" />
   <parallel threadCount="2">
    <sequential>
     <antcall target="pdepend"/>
@@ -33,6 +34,13 @@
    <antcall target="phpdoc"/>
    <antcall target="phploc"/>
   </parallel>
+ </target>
+ 
+ <target name="vendor">
+    <exec executable="php" failonerror="true">
+        <arg value="composer.phar" />
+        <arg value="install" />
+    </exec>
  </target>
 
  <target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend">
