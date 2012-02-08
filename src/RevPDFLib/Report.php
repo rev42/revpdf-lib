@@ -88,6 +88,8 @@ class Report
                     $offset += $this->parts['reportHeader']->getHeight();
                 }
                 $part->setStartPosition($this->getTopMargin() + $offset);
+            } else {
+                throw new \Exception();
             }
         }
     }
