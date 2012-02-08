@@ -69,7 +69,7 @@ class Report
         
         
         foreach ($this->parts as $type => $part) {
-            if ($type == 'pageHeader') {
+            if ($part instanceof \RevPDFLib\PageHeader) {
                 $part->setStartPosition($this->getTopMargin());
             } elseif ($type == 'reportHeader') {
                 if ($this->parts['pageHeader']->getIsVisible() === true) {
