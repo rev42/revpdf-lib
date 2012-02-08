@@ -211,6 +211,9 @@ class Report
             case 'ReportHeader':
                 $offset = $this->getTopMargin() + $this->getPart('PageHeader')->getStartPosition();
                 break;
+            default:
+                $offset = 0;
+                break;
         }
         $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
     }

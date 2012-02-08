@@ -158,9 +158,9 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $part = $this->getMockBuilder('RevPDFLib\PageHeader')
                      ->disableOriginalConstructor()
                      ->getMock();
-        $this->report->addPart('pageHeader', $part);
+        $this->report->addPart('PageHeader', $part);
         
-        $this->assertCount(10, $part->getStartPosition());
+        $this->assertCount(1, $this->report->getParts());
     }
     
     public function testInitializePartsWithNoPart()
