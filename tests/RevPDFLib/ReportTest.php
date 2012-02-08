@@ -155,35 +155,16 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testAddPart()
     {
-        $part = $this->getMockBuilder('RevPDFLib\Part')
+        $part = $this->getMockBuilder('RevPDFLib\PageHeader')
                      ->disableOriginalConstructor()
                      ->getMock();
-        $this->report->addPart('details', $part);
+        $this->report->addPart('pageHeader', $part);
         
-        $this->assertCount(1, $this->report->parts);
+        $this->assertCount(10, $part->getStartPosition());
     }
     
     public function testInitializePartsWithNoPart()
     {
         $this->assertNull($this->report->initializeParts());
-    }
-    
-    public function testInitializePartsWithPageHeaderVisible()
-    {
-        $part = $this->getMockBuilder('RevPDFLib\PageHeader')
-                     ->disableOriginalConstructor()
-                     ->getMock();
-
-        $part->expects($this->any())
-             ->method('setIsVisible')
-             ->will($this->returnValue(true));
-        $part->expects($this->any())
-             ->method('getHeight')
-             ->will($this->returnValue(5));
-        
-        $this->report->addPart('pageHeader', $part);
-        $this->report->initializeParts();
-        
-        $this->assertEquals(10, $this->report->parts['pageHeader']->getStartPosition());
     }
 }

@@ -1,6 +1,11 @@
 <?php 
 namespace RevPDFLib;
 
+use Symfony\Component\EventDispatcher\EventDispatcher;
+
+use RevPDFLib\Listener\PartListener;
+use RevPDFLib\Event\AddPartEvent;
+
 /**
  * Report
  * 
@@ -33,21 +38,26 @@ class Report
      */
     const PART_REPORT_FOOTER = 6;
     
-    var $author;
-    var $displayModeZoom;
-    var $displayModeLayout;
-    var $keywords;
-    var $subject;
-    var $title;
-    var $leftMargin;
-    var $topMargin;
-    var $rightMargin;
-    var $bottomMargin;
-    var $pageOrientation;
-    var $parts = array();
+    protected $author;
+    protected $displayModeZoom;
+    protected $displayModeLayout;
+    protected $keywords;
+    protected $subject;
+    protected $title;
+    protected $leftMargin;
+    protected $topMargin;
+    protected $rightMargin;
+    protected $bottomMargin;
+    protected $pageOrientation;
+    protected $parts = array();
+    
+    protected $dispatcher;
     
     public function __construct($data)
     {
+        $this->dispatcher = new EventDispatcher();
+        $this->dispatcher->addSubscriber(new PartListener());
+
         $this->author = $data['report']['author'];
         $this->displayModeZoom = $data['report']['displayModeZoom'];
         $this->displayModeLayout = $data['report']['displayModeLayout'];
@@ -191,9 +201,23 @@ class Report
         }
     }
 
-    public function addPart($type, \RevPDFLib\Part $object)
+    public function addPart($type, \RevPDFLib\Part $part)
     {
-        $this->parts[$type] = $object;
+        $this->parts[$type] = $part;
+        switch($type) {
+            case 'PageHeader':
+                $offset = $this->getTopMargin();
+                break;
+            case 'ReportHeader':
+                $offset = $this->getTopMargin() + $this->getPart('PageHeader')->getStartPosition();
+                break;
+        }
+        $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
+    }
+    
+    public function getParts()
+    {
+        return $this->parts;
     }
     
     public function getPart($type)

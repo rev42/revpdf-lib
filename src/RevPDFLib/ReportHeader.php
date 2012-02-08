@@ -17,6 +17,10 @@ class ReportHeader extends \RevPDFLib\Part
     
     var $height;
     
+    public function getIdentifier() {
+        return self::PART_REPORT_HEADER;
+    }
+    
     public function __construct()
     {
     }

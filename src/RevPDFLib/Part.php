@@ -9,7 +9,7 @@ use RevPDFLib\Element;
  * 
  * @author Olivier Cornu <contact@revpdf.org>
  */
-class Part
+abstract class Part
 {
     var $isDisplayed = false;
     var $startposition;
@@ -19,7 +19,8 @@ class Part
     var $isVisible = false;
     var $backgroundColor;
     
-    
+    abstract public function getIdentifier();
+
     public function __construct($data)
     {
         $this->height = $data['height'];
