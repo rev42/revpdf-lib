@@ -1,12 +1,14 @@
 <?php 
-namespace RevPDFLib;
+namespace RevPDFLib\Items\Part;
+
+use RevPDFLib\Items\Part\AbstractPart;
 
 /**
  * Part
  * 
  * @author Olivier Cornu <contact@revpdf.org>
  */
-class PageHeader extends \RevPDFLib\Part
+class Details extends AbstractPart
 {
     const PART_HEADER = 0;
     

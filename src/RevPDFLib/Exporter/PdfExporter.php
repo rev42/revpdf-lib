@@ -27,18 +27,18 @@ class PdfExporter
         $this->sc->register('report', 'RevPDFLib\Report')->addArgument($report);
         $this->sc->get('wrapper')->setReport($this->sc->get('report'));
         if (array_key_exists('pageHeader', $report)) {
-            $this->sc->register('pageHeader', 'RevPDFLib\PageHeader')->addArgument($report['pageHeader']);
+            $this->sc->register('pageHeader', 'RevPDFLib\Items\Part\PageHeader')->addArgument($report['pageHeader']);
             $this->sc->get('pageHeader')->setIsVisible($report['pageHeader']['isVisible']);
             $this->sc->get('pageHeader')->setElements($report['pageHeader']['elements']);
             $this->sc->get('report')->addPart('pageHeader', $this->sc->get('pageHeader'));
         }
         if (array_key_exists('reportHeader', $report)) {
-            $this->sc->register('reportHeader', 'RevPDFLib\ReportHeader')->addArgument($report['reportHeader']);
+            $this->sc->register('reportHeader', 'RevPDFLib\Items\Part\ReportHeader')->addArgument($report['reportHeader']);
             $this->sc->get('reportHeader')->setElements($report['reportHeader']['elements']);
             $this->sc->get('report')->addPart('reportHeader', $this->sc->get('reportHeader'));
         }
         if (array_key_exists('details', $report) && count($report['details']) > 0) {
-            $this->sc->register('details', 'RevPDFLib\Part')->addArgument($report['details']);
+            $this->sc->register('details', 'RevPDFLib\RevPDFLib\Items\Part\Details')->addArgument($report['details']);
             $this->sc->get('details')->setStartPosition(intval($this->sc->get('report')->getTopMargin()));
             $this->sc->get('details')->setElements($report['details']['elements']);
             $this->sc->get('report')->addPart('details', $this->sc->get('details'));

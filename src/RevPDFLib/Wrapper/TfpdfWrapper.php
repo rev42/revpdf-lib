@@ -92,7 +92,7 @@ class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
         return $this->currentPartNumber;
     }
     
-    public function writePDF(\RevPDFLib\Part $part, array $data)
+    public function writePDF(\RevPDFLib\Items\Part\AbstractPart $part, array $data)
     {
         if (count($data) <= 0) {
             return false;

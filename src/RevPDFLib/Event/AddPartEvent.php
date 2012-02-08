@@ -7,9 +7,9 @@ use Symfony\Component\EventDispatcher\Event;
 class AddPartEvent extends Event
 {
     private $part;
-    private $report;
+    private $offset;
  
-    public function __construct(\RevPDFLib\Part $part, $offset)
+    public function __construct(\RevPDFLib\Items\Part\AbstractPart $part, $offset)
     {
         $this->part = $part;
         $this->offset = $offset;

@@ -1,5 +1,5 @@
 <?php 
-namespace RevPDFLib;
+namespace RevPDFLib\Items\Part;
 
 use RevPDFLib\Report;
 use RevPDFLib\Element;
@@ -9,7 +9,7 @@ use RevPDFLib\Element;
  * 
  * @author Olivier Cornu <contact@revpdf.org>
  */
-abstract class Part
+abstract class AbstractPart
 {
     var $isDisplayed = false;
     var $startposition;

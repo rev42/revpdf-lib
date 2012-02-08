@@ -1,17 +1,17 @@
 <?php 
-namespace RevPDFLib;
+namespace RevPDFLib\Items\Part;
 
-
+use RevPDFLib\Items\Part\AbstractPart;
 
 /**
  * Part
  * 
  * @author Olivier Cornu <contact@revpdf.org>
  */
-class ReportHeader extends \RevPDFLib\Part
+class ReportHeader extends AbstractPart
 {
     /**
-     * Part Report Header constant
+     * RevPDFLib\Items\Part\AbstractPart Report Header constant
      */
     const PART_REPORT_HEADER = 1;
     

@@ -168,7 +168,7 @@ class Report
         }
     }
 
-    public function addPart($type, \RevPDFLib\Part $part)
+    public function addPart($type, \RevPDFLib\Items\Part\AbstractPart $part)
     {
         $this->parts[$type] = $part;
         switch($type) {
