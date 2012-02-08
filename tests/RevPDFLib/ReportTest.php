@@ -159,12 +159,8 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                      ->disableOriginalConstructor()
                      ->getMock();
         $this->report->addPart('PageHeader', $part);
+        $this->report->addPart('ReportHeader', $part);
         
-        $this->assertCount(1, $this->report->getParts());
-    }
-    
-    public function testInitializePartsWithNoPart()
-    {
-        $this->assertNull($this->report->initializeParts());
+        $this->assertCount(2, $this->report->getParts());
     }
 }

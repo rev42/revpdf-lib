@@ -71,39 +71,6 @@ class Report
         $this->pageOrientation = $data['report']['pageOrientation'];
     }
     
-    public function initializeParts()
-    {
-        if (count($this->parts) <= 0) {
-            return null;
-        }
-        
-        
-        foreach ($this->parts as $type => &$part) {
-            if ($part instanceof \RevPDFLib\PageHeader) {
-                $part->setStartPosition($this->getTopMargin());
-            } elseif ($type == 'reportHeader') {
-                if ($this->parts['pageHeader']->getIsVisible() === true) {
-                    $offset = $this->parts['pageHeader']->getHeight();
-                } else {
-                    $offset = 0;
-                }
-                $part->setStartPosition($this->getTopMargin() + $offset);
-            } elseif ($type == 'details') {
-                if ($this->parts['pageHeader']->getIsVisible() === true) {
-                    $offset = $this->parts['pageHeader']->getHeight();
-                } else {
-                    $offset = 0;
-                }
-                if ($this->parts['reportHeader']->getIsVisible() === true) {
-                    $offset += $this->parts['reportHeader']->getHeight();
-                }
-                $part->setStartPosition($this->getTopMargin() + $offset);
-            } else {
-                throw new \Exception();
-            }
-        }
-    }
-    
     public function getAllProperties()
     {
         return get_object_vars($this);
