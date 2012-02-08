@@ -28,6 +28,11 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->report = new Report($reportData);
     }
     
+    public function tearDown()
+    {
+        $this->report = null;
+    }
+    
     public function testGetAuthor()
     {
         $this->assertEquals('authorValue', $this->report->getAuthor());
@@ -144,18 +149,18 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     public function testGetPart()
     {
-        $part = $this->getMockBuilder('RevPDFLib\Part')
+        $part = $this->getMockBuilder('RevPDFLib\Items\Part\Details')
                      ->disableOriginalConstructor()
                      ->getMock();
         $this->report->addPart('details', $part);
         
-        $this->assertInstanceOf('RevPDFLib\Part', $this->report->getPart('details'));
+        $this->assertInstanceOf('RevPDFLib\Items\Part\Details', $this->report->getPart('details'));
         $this->assertNull($this->report->getPart('pageHeaders'));
     }
     
     public function testAddPart()
     {
-        $part = $this->getMockBuilder('RevPDFLib\PageHeader')
+        $part = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                      ->disableOriginalConstructor()
                      ->getMock();
         $this->report->addPart('PageHeader', $part);
