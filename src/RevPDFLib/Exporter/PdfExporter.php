@@ -48,7 +48,7 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class PdfExporter
 {
-    private $dic = null;
+    protected $dic = null;
 
     /**
      * Constructor
