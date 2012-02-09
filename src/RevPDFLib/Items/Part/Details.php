@@ -52,7 +52,7 @@ class Details extends AbstractPart
     /**
      * Constructor
      * 
-     * @param array $data 
+     * @param array $data Data
      */
     public function __construct($data)
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * $Id:$
  *
@@ -45,18 +46,19 @@ use RevPDFLib\Element;
  */
 abstract class AbstractPart
 {
+
     /**
      * Is Displayed
      * @var boolean
      */
     protected $isDisplayed = false;
-    
+
     /**
      * Start Position
      * @var int
      */
     protected $startPosition = 0;
-    
+
     /**
      * Current Position
      * @var int
@@ -67,11 +69,11 @@ abstract class AbstractPart
     protected $isVisible = false;
     protected $backgroundColor = '#FFF';
     protected $identifier = null;
-    
+
     /**
      * Constructor
      * 
-     * @param array $data 
+     * @param array $data Data
      */
     public function __construct(array $data)
     {
@@ -79,46 +81,51 @@ abstract class AbstractPart
             $this->$key = $value;
         }
     }
-    
+
     /**
      * Get Part Identifier
      * 
      * @return int 
      */
-    public function getIdentifier() {
+    public function getIdentifier()
+    {
         return $this->identifier;
     }
-    
+
     /**
      * Set Is Displayed
      * 
      * @param boolean $value Value
+     * 
+     * @return void
      */
     public function setIsDisplayed($value)
     {
         $this->isDisplayed = $value;
     }
-    
+
     /**
      * Get Is Displayed
      * 
      * @return boolean 
      */
-    public function getIsDisplayed()
+    public function isDisplayed()
     {
         return $this->isDisplayed;
     }
-    
+
     /**
      * Set Start Position
      * 
      * @param int $value Value
+     * 
+     * @return void
      */
-    public function setStartPosition($value=0)
+    public function setStartPosition($value = 0)
     {
         $this->startPosition = $value;
     }
-    
+
     /**
      * Get Start Position
      * 
@@ -128,13 +135,14 @@ abstract class AbstractPart
     {
         return $this->startPosition;
     }
-    
+
     /**
      * Get Height
      * 
      * @return int
      */
-    public function getHeight() {
+    public function getHeight()
+    {
         return $this->height;
     }
 
@@ -142,17 +150,23 @@ abstract class AbstractPart
      * Set Height
      * 
      * @param int $height Height value
+     * 
+     * @return void
      */
-    public function setHeight($height) {
+    public function setHeight($height)
+    {
         $this->height = $height;
     }
-    
+
     /**
      * Set Elements
      * 
-     * @param array $elements 
+     * @param array $elements Elements
+     * 
+     * @return void
      */
-    public function setElements(array $elements) {
+    public function setElements(array $elements)
+    {
         foreach ($elements as $element) {
             $newElement = \RevPDFLib\Items\Element\FactoryElement::getFactory($element['type']);
             $newElement->setProperties($element);
@@ -165,16 +179,18 @@ abstract class AbstractPart
      * 
      * @return array
      */
-    public function getElements() {
+    public function getElements()
+    {
         return $this->elements;
     }
-    
+
     /**
      * Get Current Position
      * 
      * @return int
      */
-    public function getCurrentPosition() {
+    public function getCurrentPosition()
+    {
         return $this->currentPosition;
     }
 
@@ -182,8 +198,11 @@ abstract class AbstractPart
      * Set Current Position
      * 
      * @param int $currentPosition Current Position
+     * 
+     * @return void
      */
-    public function setCurrentPosition($currentPosition) {
+    public function setCurrentPosition($currentPosition)
+    {
         $this->currentPosition = $currentPosition;
     }
 
@@ -192,34 +211,43 @@ abstract class AbstractPart
      * 
      * @return boolean
      */
-    public function getIsVisible() {
+    public function isVisible()
+    {
         return $this->isVisible;
     }
 
     /**
      * Set Is Visible
      * 
-     * @param boolean $isVisible 
+     * @param boolean $isVisible Visible (true/false)
+     * 
+     * @return void
      */
-    public function setIsVisible($isVisible) {
+    public function setIsVisible($isVisible)
+    {
         $this->isVisible = (bool) $isVisible;
     }
-    
+
     /**
      * Get Background Color
      * 
      * @return string
      */
-    public function getBackgroundColor() {
+    public function getBackgroundColor()
+    {
         return $this->backgroundColor;
     }
 
     /**
      * Set Background Color
      * 
-     * @param string $backgroundColor 
+     * @param string $backgroundColor Background Color (#FFF)
+     * 
+     * @return void
      */
-    public function setBackgroundColor($backgroundColor) {
+    public function setBackgroundColor($backgroundColor)
+    {
         $this->backgroundColor = $backgroundColor;
     }
+
 }

@@ -96,7 +96,7 @@ class TfpdfWriter extends \tFPDF
     {
         $data = $this->getPageHeaderElements();
         
-        if (count($data) <= 0 || $data->getIsVisible() === false) {
+        if (count($data) <= 0 || $data->isVisible() === false) {
             return ;
         }
         //$this->setCurrentRevPDFLib\Items\Part\AbstractPartNumber($data->number);

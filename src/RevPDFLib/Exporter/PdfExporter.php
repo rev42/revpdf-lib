@@ -80,7 +80,7 @@ class PdfExporter
         $rowsCount = count($data);
         
         for ($i = 0; $i < $rowsCount; $i++) {
-            if ($this->sc->get('reportHeader')->getIsDisplayed() === false) {
+            if ($this->sc->get('reportHeader')->isDisplayed() === false) {
                 $this->sc->get('wrapper')->writePDF($this->sc->get('reportHeader'), $this->sc->get('reportHeader')->getElements());
                 $this->sc->get('reportHeader')->setIsDisplayed(true);
             }

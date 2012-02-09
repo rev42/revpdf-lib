@@ -170,7 +170,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 
     public function setEndPosition($endPosition)
     {
-        if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->getIsVisible() != 0) {
+        if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
             $this->endPosition = intval($this->writer->h - $endPosition - $this->getReport()->getPart('partFooter')->getHeight());
             $this->writer->SetAutoPageBreak(1, $endPosition + $this->getReport()->getPart('partFooter')->getHeight());
         } else {
