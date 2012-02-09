@@ -14,7 +14,7 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
                    ->method('getIdentifier')
                    ->will($this->returnValue('1'));
         $this->part->expects($this->once())
-                   ->method('getIsDisplayed')
+                   ->method('isDisplayed')
                    ->will($this->returnValue(false));
         $this->part->expects($this->once())
                    ->method('getStartPosition')
@@ -29,7 +29,7 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
                    ->method('getCurrentPosition')
                    ->will($this->returnValue(0));
         $this->part->expects($this->once())
-                   ->method('getIsVisible')
+                   ->method('isVisible')
                    ->will($this->returnValue(false));
         $this->part->expects($this->once())
                    ->method('getBackgroundColor')
@@ -46,15 +46,15 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $this->part->getIdentifier());
     }
     
-    public function testGetIsDisplayed()
+    public function testIsDisplayed()
     {
-        $this->assertEquals(false, $this->part->getIsDisplayed());
+        $this->assertEquals(false, $this->part->isDisplayed());
     }
     
     public function testSetIsDisplayed()
     {
         $this->part->setIsDisplayed(true);
-        $this->assertEquals(true, $this->part->getIsDisplayed());
+        $this->assertEquals(true, $this->part->isDisplayed());
         
     }
     
@@ -127,15 +127,15 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
         
     }
     
-    public function testGetIsVisible()
+    public function testIsVisible()
     {
-        $this->assertEquals(false, $this->part->getIsVisible());
+        $this->assertEquals(false, $this->part->isVisible());
     }
     
     public function testSetIsVisible()
     {
         $this->part->setIsVisible(true);
-        $this->assertEquals(true, $this->part->getIsVisible());
+        $this->assertEquals(true, $this->part->isVisible());
         
     }
     

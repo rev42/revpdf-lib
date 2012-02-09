@@ -23,15 +23,15 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $this->part->getIdentifier());
     }
     
-    public function testGetIsDisplayed()
+    public function testIsDisplayed()
     {
-        $this->assertEquals(false, $this->part->getIsDisplayed());
+        $this->assertEquals(false, $this->part->isDisplayed());
     }
     
     public function testSetIsDisplayed()
     {
         $this->part->setIsDisplayed(true);
-        $this->assertEquals(true, $this->part->getIsDisplayed());
+        $this->assertEquals(true, $this->part->isDisplayed());
         
     }
     
@@ -104,15 +104,15 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
         
     }
     
-    public function testGetIsVisible()
+    public function testIsVisible()
     {
-        $this->assertEquals(false, $this->part->getIsVisible());
+        $this->assertEquals(false, $this->part->isVisible());
     }
     
     public function testSetIsVisible()
     {
         $this->part->setIsVisible(true);
-        $this->assertEquals(true, $this->part->getIsVisible());
+        $this->assertEquals(true, $this->part->isVisible());
         
     }
     
