@@ -10,28 +10,28 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->part = $this->getMockForAbstractClass('\RevPDFLib\Items\Part\AbstractPart', array(), '', false);
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('getIdentifier')
                    ->will($this->returnValue('1'));
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('isDisplayed')
                    ->will($this->returnValue(false));
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('getStartPosition')
                    ->will($this->returnValue(0));
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('getHeight')
                    ->will($this->returnValue(0));
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('getElements')
                    ->will($this->returnValue(0));
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('getCurrentPosition')
                    ->will($this->returnValue(0));
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(false));
-        $this->part->expects($this->once())
+        $this->part->expects($this->any())
                    ->method('getBackgroundColor')
                    ->will($this->returnValue('#FFF'));
     }
