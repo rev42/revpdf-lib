@@ -19,22 +19,6 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
     
     public function testParseData()
     {
-        $data = array(
-            'report' => array(
-                'author' => 'authorValue',
-                'displayModeZoom' => 'displayModeZoomValue',
-                'displayModeLayout' => 'displayModeLayoutValue',
-                'keywords' => 'keywordsValue',
-                'subject' => 'subjectValue',
-                'title' => 'titleValue',
-                'leftMargin' => '20',
-                'topMargin' => '10',
-                'rightMargin' => '5',
-                'bottomMargin' => '15',
-                'pageOrientation' => 'P'
-            ),
-        );
-        
         $data = '
 <?xml version="1.0" encoding="UTF-8"?>
 <RevPDFLib
@@ -140,6 +124,6 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             "details" => array()
         );
         
-        $this->assertSame($expected, $this->reader->parseData($data));
+        $this->assertSame($expected, $this->reader->parseData(simplexml_load_string($data)));
     }
 }
