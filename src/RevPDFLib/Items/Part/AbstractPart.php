@@ -12,20 +12,20 @@ use RevPDFLib\Element;
 abstract class AbstractPart
 {
     var $isDisplayed = false;
-    var $startposition;
-    var $currentPosition;
-    var $height;
-    var $elements;
+    var $startPosition = 0;
+    var $currentPosition = 0;
+    var $height = 0;
+    var $elements = array();
     var $isVisible = false;
-    var $backgroundColor;
+    var $backgroundColor = '#FFF';
     
     abstract public function getIdentifier();
 
-    public function __construct($data)
+    public function __construct(array $data)
     {
-        $this->height = $data['height'];
-        $this->backgroundColor = $data['backgroundColor'];
-        $this->startposition = 0;
+        foreach ($data as $key => $value) {
+            $this->$key = $value;
+        }
     }
     
     public function setIsDisplayed($value)
@@ -56,7 +56,7 @@ abstract class AbstractPart
         $this->height = $height;
     }
     
-    public function setElements($elements) {
+    public function setElements(array $elements) {
         foreach ($elements as $element) {
             $newElement = \RevPDFLib\Items\Element\FactoryElement::getFactory($element['type']);
             $newElement->setProperties($element);
@@ -83,5 +83,12 @@ abstract class AbstractPart
     public function setIsVisible($isVisible) {
         $this->isVisible = (bool) $isVisible;
     }
+    
+    public function getBackgroundColor() {
+        return $this->backgroundColor;
+    }
 
+    public function setBackgroundColor($backgroundColor) {
+        $this->backgroundColor = $backgroundColor;
+    }
 }
