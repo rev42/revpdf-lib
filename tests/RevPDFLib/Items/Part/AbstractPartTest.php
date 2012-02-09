@@ -9,7 +9,7 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
     
     public function setUp()
     {
-        $this->part = $this->getMockForAbstractClass('\RevPDFLib\Items\Part\AbstractPart', array(), 'AbstractPart', false);
+        $this->part = $this->getMockForAbstractClass('\RevPDFLib\Items\Part\AbstractPart', array(), '', false);
         $this->part->expects($this->once())
                    ->method('getIdentifier')
                    ->will($this->returnValue('1'));
