@@ -110,17 +110,18 @@ class Application
         }
         // Get data properly formatted
         $report = $this->dic->get('reader')->parseData($data);
+        if (!is_array($report)) {
+            return null;
+        }
         
-        // Get data provider
+        // Get data provider and parse data
         $this->selectDataProvider($report['source']['provider']);
         $this->dic->get('provider')->parse($report['source']['value']);
         $data = $this->dic->get('provider')->data;
         
         // Build document and generate it
-        $document = null;
-        if (is_array($report)) {
-            $document = $this->dic->get('exporter')->buildDocument($report, $data);
-        }
+        $document = $this->dic->get('exporter')->buildDocument($report, $data);
+
         return $document;
     }
 }
