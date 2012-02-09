@@ -40,7 +40,8 @@ namespace RevPDFLib\Items\Element;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class FactoryElement {
+class FactoryElement
+{
     
     /**
      * Element factory
