@@ -51,7 +51,7 @@ class AddPartEvent extends Event
      * Constructor
      * 
      * @param AbstractPart $part Part
-     * @param int $offset
+     * @param int $offset Offset
      * 
      * @return void
      */

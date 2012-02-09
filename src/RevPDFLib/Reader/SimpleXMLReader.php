@@ -45,7 +45,7 @@ class SimpleXMLReader implements ReaderInterface
     /**
      * Parse data
      * 
-     * @param array $data
+     * @param array $data Data
      * 
      * @return array
      */
@@ -67,7 +67,7 @@ class SimpleXMLReader implements ReaderInterface
         $formattedData['reportHeader'] = $this->getPartData('reportHeader', $data);
         $formattedData['details'] = $this->getPartData('details', $data);
         
-       /*
+        /*
         echo '<pre>';
         print_r($formattedData);
         echo '</pre>';exit;
@@ -78,8 +78,8 @@ class SimpleXMLReader implements ReaderInterface
     /**
      * Get Part data
      * 
-     * @param array $node
-     * @param array $data
+     * @param array $node Node
+     * @param array $data Data
      * 
      * @return array
      */

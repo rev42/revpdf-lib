@@ -1,4 +1,5 @@
 <?php
+
 /**
  * $Id:$
  *
@@ -49,24 +50,27 @@ use \tFPDF;
  */
 class TfpdfWriter extends \tFPDF
 {
+
     /**
      * Set all Page Header elements
      * 
      * @param array $elements Elements
      */
-    public function setPageHeaderElements($elements) {
+    public function setPageHeaderElements($elements)
+    {
         $this->pageHeaderElements = $elements;
     }
-    
+
     /**
      * Get all Page Header Elements
      * 
      * @return array
      */
-    public function getPageHeaderElements() {
+    public function getPageHeaderElements()
+    {
         return $this->pageHeaderElements;
     }
-    
+
     /**
      * Get Left Margin
      * 
@@ -76,7 +80,7 @@ class TfpdfWriter extends \tFPDF
     {
         return $this->lMargin;
     }
-    
+
     /**
      * Get Top Margin
      * 
@@ -86,7 +90,7 @@ class TfpdfWriter extends \tFPDF
     {
         return $this->tMargin;
     }
-    
+
     /**
      * Write Report Header
      * 
@@ -95,9 +99,9 @@ class TfpdfWriter extends \tFPDF
     public function header()
     {
         $data = $this->getPageHeaderElements();
-        
+
         if (count($data) <= 0 || $data->isVisible() === false) {
-            return ;
+            return;
         }
         //$this->setCurrentRevPDFLib\Items\Part\AbstractPartNumber($data->number);
         // If we have an header, the startPosition is the TopMargin + header height
@@ -108,10 +112,18 @@ class TfpdfWriter extends \tFPDF
         if (count($data) <= 0) {
             return false;
         }
-        
+
         foreach ($data as $element) {
-            $this->setXY($element->getPosX() + $this->getLeftMargin(), $element->getPosY() + $this->getTopMargin());
-            $this->Cell($element->getWidth(), $element->getHeight(), $element->getValue());
+            $this->setXY(
+                $element->getPosX() + $this->getLeftMargin(),
+                $element->getPosY() + $this->getTopMargin()
+            );
+            $this->Cell(
+                $element->getWidth(),
+                $element->getHeight(),
+                $element->getValue()
+            );
         }
     }
+
 }

@@ -64,6 +64,8 @@ class Application
     
     /**
      * Application Constructor 
+     * 
+     * @return void
      */
     public function __construct()
     {
@@ -75,6 +77,8 @@ class Application
      * Register data provider into dic
      * 
      * @param string $value 
+     * 
+     * @return void
      */
     protected function selectDataProvider($value)
     {
@@ -93,16 +97,16 @@ class Application
     public function export($data)
     {
         switch (gettype($data)) {
-            case 'array':
-                $this->dic->register('reader', 'RevPDFLib\Reader\ArrayReader');
-                break;
-            case 'object':
-                if (get_class($data) == 'SimpleXMLElement') {
-                    $this->dic->register('reader', 'RevPDFLib\Reader\SimpleXMLReader');
-                }
-                break;
-            default:
-                throw new Exception();
+        case 'array':
+            $this->dic->register('reader', 'RevPDFLib\Reader\ArrayReader');
+            break;
+        case 'object':
+            if (get_class($data) == 'SimpleXMLElement') {
+                $this->dic->register('reader', 'RevPDFLib\Reader\SimpleXMLReader');
+            }
+            break;
+        default:
+            throw new Exception();
         }
         // Get data properly formatted
         $report = $this->dic->get('reader')->parseData($data);

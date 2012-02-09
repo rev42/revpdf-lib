@@ -64,6 +64,6 @@ class TcpdfWriter extends \TCPDF
         $this->report->getPart('pageHeader')->setStartPosition($this->tMargin);
         // The current position has to be reset at the Top Margin value
         $this->setCurrentPosition($this->report->getTopMargin());
-        $this->writePDF($this->report->getPart('pageHeader') , $data['elements']);
+        $this->writePDF($this->report->getPart('pageHeader'), $data['elements']);
     }
 }

@@ -90,7 +90,7 @@ class Report
     /**
      * Constructeur de l'objet
      * 
-     * @param array $data 
+     * @param array $data Data
      */
     public function __construct($data)
     {
@@ -134,6 +134,8 @@ class Report
      * Set author
      * 
      * @param string $author Author
+     * 
+     * @return void
      */
     public function setAuthor($author)
     {
@@ -154,6 +156,8 @@ class Report
      * Set Display Mode Zoom
      * 
      * @param string $displayModeZoom display Mode Zoom
+     * 
+     * @return void
      */
     public function setDisplayModeZoom($displayModeZoom)
     {
@@ -174,6 +178,8 @@ class Report
      * Set Display Mode Layout
      * 
      * @param string $displayModeLayout display Mode Layout
+     * 
+     * @return void
      */
     public function setDisplayModeLayout($displayModeLayout)
     {
@@ -194,6 +200,8 @@ class Report
      * Set Keywords
      * 
      * @param string $keywords keywords
+     * 
+     * @return void
      */
     public function setKeywords($keywords)
     {
@@ -214,6 +222,8 @@ class Report
      * Set Subject
      * 
      * @param string $subject subject
+     * 
+     * @return void
      */
     public function setSubject($subject)
     {
@@ -234,6 +244,8 @@ class Report
      * Set Title
      * 
      * @param string $title title
+     * 
+     * @return void
      */
     public function setTitle($title)
     {
@@ -254,6 +266,8 @@ class Report
      * Set Left Margin
      * 
      * @param int $leftMargin Left Margin
+     * 
+     * @return void
      */
     public function setLeftMargin($leftMargin)
     {
@@ -274,6 +288,8 @@ class Report
      * Set Top Margin
      * 
      * @param int $topMargin Top Margin
+     * 
+     * @return void
      */
     public function setTopMargin($topMargin)
     {
@@ -294,6 +310,8 @@ class Report
      * Set Right Margin
      * 
      * @param int $rightMargin Right Margin
+     * 
+     * @return void
      */
     public function setRightMargin($rightMargin)
     {
@@ -314,6 +332,8 @@ class Report
      * Set Bottom Margin
      * 
      * @param int $bottomMargin Bottom Margin
+     * 
+     * @return void
      */
     public function setBottomMargin($bottomMargin)
     {
@@ -334,6 +354,8 @@ class Report
      * Set Page Orientation
      * 
      * @param char $pageOrientation Page Orientation
+     * 
+     * @return void
      */
     public function setPageOrientation($pageOrientation)
     {
@@ -349,20 +371,22 @@ class Report
      * 
      * @param string       $type Part type
      * @param AbstractPart $part Part
+     * 
+     * @return void
      */
     public function addPart($type, \RevPDFLib\Items\Part\AbstractPart $part)
     {
         $this->parts[$type] = $part;
         switch ($type) {
-            case 'PageHeader':
-                $offset = $this->getTopMargin();
-                break;
-            case 'ReportHeader':
-                $offset = $this->getTopMargin() + $this->getPart('PageHeader')->getStartPosition();
-                break;
-            default:
-                $offset = 0;
-                break;
+        case 'PageHeader':
+            $offset = $this->getTopMargin();
+            break;
+        case 'ReportHeader':
+            $offset = $this->getTopMargin() + $this->getPart('PageHeader')->getStartPosition();
+            break;
+        default:
+            $offset = 0;
+            break;
         }
         $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
     }

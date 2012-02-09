@@ -48,7 +48,7 @@ class PartListener implements EventSubscriberInterface
     /**
      * Method linked to subscribed events
      * 
-     * @param Event $event 
+     * @param Event $event Event
      * 
      * @return void
      */

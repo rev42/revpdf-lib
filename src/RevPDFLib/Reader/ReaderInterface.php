@@ -45,7 +45,7 @@ interface ReaderInterface
     /**
      * Parse data
      * 
-     * @param array $data
+     * @param array $data Data
      * 
      * @return array
      */

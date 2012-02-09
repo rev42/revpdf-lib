@@ -45,12 +45,12 @@ class JsonReader implements ReaderInterface
     /**
      * Parse data
      * 
-     * @param array $data
+     * @param array $data Data
      * 
      * @return array
      */
     public function parseData($data)
     {
-        
+        return $data;
     }
 }
