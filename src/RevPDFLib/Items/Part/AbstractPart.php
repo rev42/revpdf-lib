@@ -45,21 +45,34 @@ use RevPDFLib\Element;
  */
 abstract class AbstractPart
 {
-    var $isDisplayed = false;
-    var $startPosition = 0;
-    var $currentPosition = 0;
-    var $height = 0;
-    var $elements = array();
-    var $isVisible = false;
-    var $backgroundColor = '#FFF';
-
     /**
-     * Get Part Identifier
-     * 
-     * @return int 
+     * Is Displayed
+     * @var boolean
      */
-    abstract public function getIdentifier();
-
+    protected $isDisplayed = false;
+    
+    /**
+     * Start Position
+     * @var int
+     */
+    protected $startPosition = 0;
+    
+    /**
+     * Current Position
+     * @var int
+     */
+    protected $currentPosition = 0;
+    protected $height = 0;
+    protected $elements = array();
+    protected $isVisible = false;
+    protected $backgroundColor = '#FFF';
+    protected $identifier = null;
+    
+    /**
+     * Constructor
+     * 
+     * @param array $data 
+     */
     public function __construct(array $data)
     {
         foreach ($data as $key => $value) {
@@ -67,34 +80,78 @@ abstract class AbstractPart
         }
     }
     
+    /**
+     * Get Part Identifier
+     * 
+     * @return int 
+     */
+    public function getIdentifier() {
+        return $this->identifier;
+    }
+    
+    /**
+     * Set Is Displayed
+     * 
+     * @param boolean $value Value
+     */
     public function setIsDisplayed($value)
     {
         $this->isDisplayed = $value;
     }
     
+    /**
+     * Get Is Displayed
+     * 
+     * @return boolean 
+     */
     public function getIsDisplayed()
     {
         return $this->isDisplayed;
     }
     
+    /**
+     * Set Start Position
+     * 
+     * @param int $value Value
+     */
     public function setStartPosition($value=0)
     {
         $this->startPosition = $value;
     }
     
+    /**
+     * Get Start Position
+     * 
+     * @return int
+     */
     public function getStartPosition()
     {
         return $this->startPosition;
     }
     
+    /**
+     * Get Height
+     * 
+     * @return int
+     */
     public function getHeight() {
         return $this->height;
     }
 
+    /**
+     * Set Height
+     * 
+     * @param int $height Height value
+     */
     public function setHeight($height) {
         $this->height = $height;
     }
     
+    /**
+     * Set Elements
+     * 
+     * @param array $elements 
+     */
     public function setElements(array $elements) {
         foreach ($elements as $element) {
             $newElement = \RevPDFLib\Items\Element\FactoryElement::getFactory($element['type']);
@@ -103,30 +160,65 @@ abstract class AbstractPart
         }
     }
 
+    /**
+     * Get Elements
+     * 
+     * @return array
+     */
     public function getElements() {
         return $this->elements;
     }
     
+    /**
+     * Get Current Position
+     * 
+     * @return int
+     */
     public function getCurrentPosition() {
         return $this->currentPosition;
     }
 
+    /**
+     * Set Current Position
+     * 
+     * @param int $currentPosition Current Position
+     */
     public function setCurrentPosition($currentPosition) {
         $this->currentPosition = $currentPosition;
     }
 
+    /**
+     * Get Is Visible
+     * 
+     * @return boolean
+     */
     public function getIsVisible() {
         return $this->isVisible;
     }
 
+    /**
+     * Set Is Visible
+     * 
+     * @param boolean $isVisible 
+     */
     public function setIsVisible($isVisible) {
         $this->isVisible = (bool) $isVisible;
     }
     
+    /**
+     * Get Background Color
+     * 
+     * @return string
+     */
     public function getBackgroundColor() {
         return $this->backgroundColor;
     }
 
+    /**
+     * Set Background Color
+     * 
+     * @param string $backgroundColor 
+     */
     public function setBackgroundColor($backgroundColor) {
         $this->backgroundColor = $backgroundColor;
     }

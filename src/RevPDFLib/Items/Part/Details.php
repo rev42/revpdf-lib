@@ -44,14 +44,19 @@ use RevPDFLib\Items\Part\AbstractPart;
  */
 class Details extends AbstractPart
 {
-    const PART_HEADER = 0;
-
     /**
-     * Get Part Identifier
-     * 
-     * @return int 
+     * Par Identifier
      */
-    public function getIdentifier() {
-        return self::PART_HEADER;
+    const PART_HEADER = 0;
+    
+    /**
+     * Constructor
+     * 
+     * @param array $data 
+     */
+    public function __construct($data)
+    {
+        $this->identifier = self::PART_HEADER;
+        parent::__construct($data);
     }
 }
