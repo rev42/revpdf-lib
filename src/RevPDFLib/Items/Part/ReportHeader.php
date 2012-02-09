@@ -36,7 +36,7 @@ use RevPDFLib\Items\Part\AbstractPart;
  *
  * @category   PDF
  * @package    RevPDFLib
- * @subpackage Part
+ * @subpackage Items
  * @author     Olivier Cornu <contact@revpdf.org>
  * @license    GNU General Public License v3.0
  * @version    Release: $Revision:$

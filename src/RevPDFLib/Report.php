@@ -1,4 +1,5 @@
 <?php
+
 /**
  * $Id:$
  *
@@ -30,20 +31,26 @@
 namespace RevPDFLib;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
-
 use RevPDFLib\Listener\PartListener;
 use RevPDFLib\Event\AddPartEvent;
 
 /**
- * Report
- * 
- * @author Olivier Cornu <contact@revpdf.org>
+ * Report Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Items
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
  */
 class Report
 {
     /**
      * Part Group Header constant
      */
+
     const PART_GROUP_HEADER = 2;
 
     /**
@@ -65,7 +72,7 @@ class Report
      * Part Report Footer constant
      */
     const PART_REPORT_FOOTER = 6;
-    
+
     protected $author;
     protected $displayModeZoom;
     protected $displayModeLayout;
@@ -78,9 +85,13 @@ class Report
     protected $bottomMargin;
     protected $pageOrientation;
     protected $parts = array();
-    
     protected $dispatcher;
-    
+
+    /**
+     * Constructeur de l'objet
+     * 
+     * @param array $data 
+     */
     public function __construct($data)
     {
         $this->dispatcher = new EventDispatcher();
@@ -98,108 +109,251 @@ class Report
         $this->bottomMargin = $data['report']['bottomMargin'];
         $this->pageOrientation = $data['report']['pageOrientation'];
     }
-    
+
+    /**
+     * Return all object properties
+     * 
+     * @return array
+     */
     public function getAllProperties()
     {
         return get_object_vars($this);
     }
-    
-    public function getAuthor() {
+
+    /**
+     * Get Author
+     * 
+     * @return string
+     */
+    public function getAuthor()
+    {
         return $this->author;
     }
 
-    public function setAuthor($author) {
+    /**
+     * Set author
+     * 
+     * @param string $author Author
+     */
+    public function setAuthor($author)
+    {
         $this->author = $author;
     }
 
-    public function getDisplayModeZoom() {
+    /**
+     * Get Display Mode Zoom
+     * 
+     * @return string
+     */
+    public function getDisplayModeZoom()
+    {
         return $this->displayModeZoom;
     }
-
-    public function setDisplayModeZoom($displayModeZoom) {
+    
+    /**
+     * Set Display Mode Zoom
+     * 
+     * @param string $displayModeZoom display Mode Zoom
+     */
+    public function setDisplayModeZoom($displayModeZoom)
+    {
         $this->displayModeZoom = $displayModeZoom;
     }
 
-    public function getDisplayModeLayout() {
+    /**
+     * Get Display Mode Layout
+     * 
+     * @return string
+     */
+    public function getDisplayModeLayout()
+    {
         return $this->displayModeLayout;
     }
 
-    public function setDisplayModeLayout($displayModeLayout) {
+    /**
+     * Set Display Mode Layout
+     * 
+     * @param string $displayModeLayout display Mode Layout
+     */
+    public function setDisplayModeLayout($displayModeLayout)
+    {
         $this->displayModeLayout = $displayModeLayout;
     }
-
-    public function getKeywords() {
+    
+    /**
+     * Get Keywords
+     * 
+     * @return string
+     */
+    public function getKeywords()
+    {
         return $this->keywords;
     }
-
-    public function setKeywords($keywords) {
+    
+    /**
+     * Set Keywords
+     * 
+     * @param string $keywords keywords
+     */
+    public function setKeywords($keywords)
+    {
         $this->keywords = $keywords;
     }
 
-    public function getSubject() {
+    /**
+     * Get Subject
+     * 
+     * @return string
+     */
+    public function getSubject()
+    {
         return $this->subject;
     }
 
-    public function setSubject($subject) {
+    /**
+     * Set Subject
+     * 
+     * @param string $subject subject
+     */
+    public function setSubject($subject)
+    {
         $this->subject = $subject;
     }
 
-    public function getTitle() {
+    /**
+     * Get Title
+     * 
+     * @return string
+     */
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function setTitle($title) {
+    /**
+     * Set Title
+     * 
+     * @param string $title title
+     */
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
-    public function getLeftMargin() {
+    /**
+     * Get Left Margin
+     * 
+     * @return int
+     */
+    public function getLeftMargin()
+    {
         return $this->leftMargin;
     }
-
-    public function setLeftMargin($leftMargin) {
+    
+    /**
+     * Set Left Margin
+     * 
+     * @param int $leftMargin Left Margin
+     */
+    public function setLeftMargin($leftMargin)
+    {
         $this->leftMargin = (int) $leftMargin;
     }
 
-    public function getTopMargin() {
+    /**
+     * Get Top Margin
+     * 
+     * @return int
+     */
+    public function getTopMargin()
+    {
         return $this->topMargin;
     }
 
-    public function setTopMargin($topMargin) {
+    /**
+     * Set Top Margin
+     * 
+     * @param int $topMargin Top Margin
+     */
+    public function setTopMargin($topMargin)
+    {
         $this->topMargin = (int) $topMargin;
     }
 
-    public function getRightMargin() {
+    /**
+     * Get Right Margin
+     * 
+     * @return int
+     */
+    public function getRightMargin()
+    {
         return $this->rightMargin;
     }
 
-    public function setRightMargin($rightMargin) {
+    /**
+     * Set Right Margin
+     * 
+     * @param int $rightMargin Right Margin
+     */
+    public function setRightMargin($rightMargin)
+    {
         $this->rightMargin = (int) $rightMargin;
     }
 
-    public function getBottomMargin() {
+    /**
+     * Get Bottom Margin
+     * 
+     * @return int
+     */
+    public function getBottomMargin()
+    {
         return $this->bottomMargin;
     }
 
-    public function setBottomMargin($bottomMargin) {
+    /**
+     * Set Bottom Margin
+     * 
+     * @param int $bottomMargin Bottom Margin
+     */
+    public function setBottomMargin($bottomMargin)
+    {
         $this->bottomMargin = (int) $bottomMargin;
     }
-    
-    public function getPageOrientation() {
+
+    /**
+     * Get Page Orientation
+     * 
+     * @return char
+     */
+    public function getPageOrientation()
+    {
         return $this->pageOrientation;
     }
 
-    public function setPageOrientation($pageOrientation) {
+    /**
+     * Set Page Orientation
+     * 
+     * @param char $pageOrientation Page Orientation
+     */
+    public function setPageOrientation($pageOrientation)
+    {
         $this->pageOrientation = 'P';
-        
+
         if (in_array($pageOrientation, array('P', 'L'))) {
             $this->pageOrientation = $pageOrientation;
         }
     }
 
+    /**
+     * Add new part to report
+     * 
+     * @param string $type Part type
+     * @param \RevPDFLib\Items\Part\AbstractPart $part 
+     */
     public function addPart($type, \RevPDFLib\Items\Part\AbstractPart $part)
     {
         $this->parts[$type] = $part;
-        switch($type) {
+        switch ($type) {
             case 'PageHeader':
                 $offset = $this->getTopMargin();
                 break;
@@ -212,12 +366,24 @@ class Report
         }
         $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
     }
-    
+
+    /**
+     * Get Parts
+     * 
+     * @return array
+     */
     public function getParts()
     {
         return $this->parts;
     }
-    
+
+    /**
+     * Get Part
+     * 
+     * @param string $type Part Type
+     * 
+     * @return null|array
+     */
     public function getPart($type)
     {
         if (isset($this->parts[$type])) {
