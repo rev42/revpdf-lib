@@ -36,20 +36,42 @@ use Symfony\Component\DependencyInjection;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * PDF Exporter
- * 
- * @author Olivier Cornu <contact@revpdf.org>
+ * PdfExporter Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Exporter
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
  */
 class PdfExporter
 {
     private $sc = null;
-    
+
+    /**
+     * Constructor
+     * 
+     * @param \RevPDFLib\Items\Part\AbstractPart $part Part
+     * @param int $offset
+     * 
+     * @return void
+     */
     public function __construct()
     {
         $this->sc = new DependencyInjection\ContainerBuilder();
         $this->sc->register('wrapper', 'RevPDFLib\Wrapper\TfpdfWrapper');
     }
     
+    /**
+     * Build document 
+     * 
+     * @param array $report Report
+     * @param array $data Data
+     * 
+     * @return boolean 
+     */
     public function buildDocument(array $report, array $data)
     {
         $this->sc->register('report', 'RevPDFLib\Report')->addArgument($report);

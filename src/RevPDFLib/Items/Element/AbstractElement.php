@@ -45,49 +45,49 @@ abstract class AbstractElement
     /**
      * Position x
      *
-     * @var int $_posx
+     * @var int $posx
      */
     protected $posx;
     /**
      * Position y
      *
-     * @var int $_posy
+     * @var int $posy
      */
     protected $posy;
     /**
      * font name
      *
-     * @var string $_font
+     * @var string $font
      */
     protected $font;
     /**
      * Should element be extended if content is overlapping
      *
-     * @var boolean $_isAutoExtend
+     * @var boolean $isAutoExtend
      */
     protected $isAutoExtend;
     /**
      * Font style (Underline, Italic, Bold, Normal)
      *
-     * @var string $_style
+     * @var string $style
      */
     protected $style;
     /**
      * Font size
      *
-     * @var in $_fontSize
+     * @var in $fontSize
      */
     protected $fontSize;
     /**
      * Width
      *
-     * @var int $_width
+     * @var int $width
      */
     protected $width;
     /**
      * Height
      *
-     * @var int $_height
+     * @var int $height
      */
     protected $height;
     /**
@@ -99,61 +99,61 @@ abstract class AbstractElement
     /**
      * Border width
      *
-     * @var double $_borderWidth
+     * @var double $borderWidth
      */
     protected $borderWidth;
     /**
      * Horizontal alignment (Right, Center, Left)
      *
-     * @var string $_alignment
+     * @var string $alignment
      */
     protected $alignment;
     /**
      * Fill color
      *
-     * @var string $_fillColor
+     * @var string $fillColor
      */
     protected $fillColor;
     /**
      * Fill style
      *
-     * @var in $_fillStyle
+     * @var in $fillStyle
      */
     protected $fillStyle;
     /**
      * Text color
      *
-     * @var string $_textColor
+     * @var string $textColor
      */
     protected $textColor;
     /**
      * Field value
      *
-     * @var string $_field
+     * @var string $field
      */
     protected $field;
     /**
      * Element format (number, Fulldate, AbrevDate)
      *
-     * @var string $_format
+     * @var string $format
      */
     protected $format;
     /**
      * Element type (TextZone, PageNumber, TextField, Image...)
      *
-     * @var string $_type
+     * @var string $type
      */
     protected $type;
     /**
      * Element offset (difference between specified height and true height)
      * Used when Multicell is needed (auto extend = 1)
      *
-     * @var int $_offset
+     * @var int $offset
      */
     protected $offset;
 
     /**
-     * GetPosx
+     * Get Position x
      *
      * @return int position X
      */
@@ -162,7 +162,7 @@ abstract class AbstractElement
         return $this->posx;
     }
     /**
-     * setPosx
+     * set Position x
      *
      * @param int $posx position X
      *
@@ -173,7 +173,7 @@ abstract class AbstractElement
         $this->posx = $posx;
     }
     /**
-     * GetPosy
+     * Get Position y
      *
      * @return int position Y
      */
@@ -182,7 +182,7 @@ abstract class AbstractElement
         return $this->posy;
     }
     /**
-     * setPosy
+     * set Position y
      *
      * @param int $posy Position Y
      *
@@ -193,7 +193,7 @@ abstract class AbstractElement
         $this->posy = $posy;
     }
     /**
-     * getFont
+     * get Font
      *
      * @return string font name
      */
@@ -202,9 +202,9 @@ abstract class AbstractElement
         return $this->font;
     }
     /**
-     * setFont
+     * set Font
      *
-     * @param string $font font name
+     * @param string $font Font name
      *
      * @return void
      */
@@ -233,7 +233,7 @@ abstract class AbstractElement
         $this->isAutoExtend = $isAutoExtend;
     }
     /**
-     * getStyle
+     * get Style
      *
      * @return string Font style
      */
@@ -242,7 +242,7 @@ abstract class AbstractElement
         return $this->style;
     }
     /**
-     * setStyle
+     * Set Style
      *
      * @param string $style Font style (U, I, B, N)
      *
@@ -253,7 +253,7 @@ abstract class AbstractElement
         $this->style = $style;
     }
     /**
-     * getFontSize
+     * get Font Size
      *
      * @return int Font size
      */
@@ -262,7 +262,7 @@ abstract class AbstractElement
         return $this->fontSize;
     }
     /**
-     * setFontSize
+     * set Font Size
      *
      * @param int $fontSize Font size
      *
@@ -273,7 +273,7 @@ abstract class AbstractElement
         $this->fontSize = $fontSize;
     }
     /**
-     * getWidth
+     * get Width
      *
      * @return int Element width
      */
@@ -282,7 +282,7 @@ abstract class AbstractElement
         return $this->width;
     }
     /**
-     * setWidth
+     * set Width
      *
      * @param int $width Element width
      *
@@ -293,7 +293,7 @@ abstract class AbstractElement
         $this->width = $width;
     }
     /**
-     * getHeight
+     * get Height
      *
      * @return int Element height
      */
@@ -302,7 +302,7 @@ abstract class AbstractElement
         return intval($this->height);
     }
     /**
-     * setHeight
+     * set Height
      *
      * @param int $height Element height
      *
@@ -313,7 +313,7 @@ abstract class AbstractElement
         $this->height = $height;
     }
     /**
-     * getHeightOffset
+     * get Height Offset
      *
      * @return int Element height offset
      */
@@ -322,7 +322,7 @@ abstract class AbstractElement
         return intval($this->offset);
     }
     /**
-     * setHeightOffset
+     * set Height Offset
      *
      * @param int $value offset between desired height and real height
      *
@@ -333,7 +333,7 @@ abstract class AbstractElement
         $this->offset = $value;
     }
     /**
-     * getBorder
+     * get Border
      *
      * @return int Element border
      */
@@ -342,7 +342,7 @@ abstract class AbstractElement
         return $this->border;
     }
     /**
-     * setBorder
+     * set Border
      *
      * @param string $border Element border (L, R, B, T)
      *
@@ -353,7 +353,7 @@ abstract class AbstractElement
         $this->border = $border;
     }
     /**
-     * getBorderWidth
+     * get Border Width
      *
      * @return double Element border width
      */
@@ -362,7 +362,7 @@ abstract class AbstractElement
         return $this->borderWidth;
     }
     /**
-     * setBorderWidth
+     * set Border Width
      *
      * @param double $borderWidth Element border width
      *
@@ -373,7 +373,7 @@ abstract class AbstractElement
         $this->borderWidth = $borderWidth;
     }
     /**
-     * getAlignment
+     * get Alignment
      *
      * @return string Horizontal alignment
      */
@@ -382,7 +382,7 @@ abstract class AbstractElement
         return $this->alignment;
     }
     /**
-     * setAlignment
+     * set Alignment
      *
      * @param string $alignment Horizontal alignment
      *
@@ -393,7 +393,7 @@ abstract class AbstractElement
         $this->alignment = $alignment;
     }
     /**
-     * getFillColor
+     * get Fill Color
      *
      * @return string Fill Color (with #)
      */
@@ -402,7 +402,7 @@ abstract class AbstractElement
         return $this->fillColor;
     }
     /**
-     * setFillColor
+     * set Fill Color
      *
      * @param string $fillColor color (hexadecimal without #)
      *
@@ -414,7 +414,7 @@ abstract class AbstractElement
     }
 
     /**
-     * getFillStyle
+     * get Fill Style
      *
      * @return string fill style
      */
@@ -423,7 +423,7 @@ abstract class AbstractElement
         return $this->fillStyle;
     }
     /**
-     * setFillStyle
+     * set Fill Style
      *
      * @param string $fillStyle Fill style F, D or FD
      * (Fill only, Borders only or Filled and Borders)
@@ -436,7 +436,7 @@ abstract class AbstractElement
     }
 
     /**
-     * getTextColor
+     * get Text Color
      *
      * @return string Text Color (with #)
      */
@@ -445,7 +445,7 @@ abstract class AbstractElement
         return $this->textColor;
     }
     /**
-     * setTextColor
+     * set Text Color
      *
      * @param string $textColor color (hexadecimal without #)
      *
@@ -456,7 +456,7 @@ abstract class AbstractElement
         $this->textColor = "#" . $textColor;
     }
     /**
-     * getFormat
+     * get Format
      *
      * @return string Element format
      */
@@ -465,7 +465,7 @@ abstract class AbstractElement
         return $this->format;
     }
     /**
-     * setFormat
+     * set Format
      *
      * @param string $format Element format (Number, AbrevDate...)
      *
@@ -476,7 +476,7 @@ abstract class AbstractElement
         $this->format = $format;
     }
     /**
-     * getType
+     * get Type
      *
      * @return string Element type
      */
@@ -485,7 +485,7 @@ abstract class AbstractElement
         return $this->type;
     }
     /**
-     * setType
+     * set Type
      *
      * @param string $type Element type (TextField, TextZone...)
      *
@@ -496,7 +496,7 @@ abstract class AbstractElement
         $this->type = $type;
     }
     /**
-     * setField
+     * set Field
      *
      * @param string &$pdfDoc instance of PDF class
      *
@@ -506,7 +506,7 @@ abstract class AbstractElement
     {
     }
     /**
-     * getField
+     * get Field
      *
      * @return string Element field
      */

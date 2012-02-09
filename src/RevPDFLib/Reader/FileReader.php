@@ -29,8 +29,26 @@
 
 namespace RevPDFLib\Reader;
 
+/**
+ * FileReader Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Reader
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 class FileReader implements ReaderInterface
 {
+    /**
+     * Parse data
+     * 
+     * @param array $data
+     * 
+     * @return array
+     */
     public function parseData($data)
     {
         

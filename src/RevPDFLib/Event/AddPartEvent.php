@@ -30,23 +30,52 @@
 namespace RevPDFLib\Event;
  
 use Symfony\Component\EventDispatcher\Event;
- 
+
+/**
+ * AddPartEvent Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Event
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 class AddPartEvent extends Event
 {
     private $part;
     private $offset;
  
+    /**
+     * Constructor
+     * 
+     * @param \RevPDFLib\Items\Part\AbstractPart $part Part
+     * @param int $offset
+     * 
+     * @return void
+     */
     public function __construct(\RevPDFLib\Items\Part\AbstractPart $part, $offset)
     {
         $this->part = $part;
         $this->offset = $offset;
     }
  
+    /**
+     * Get Part
+     * 
+     * @return \RevPDFLib\Items\Part\AbstractPart
+     */
     public function getPart()
     {
         return $this->part;
     }
     
+    /**
+     * Get Offset
+     * 
+     * @return int
+     */
     public function getOffset()
     {
         return $this->offset;

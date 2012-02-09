@@ -45,11 +45,19 @@ use RevPDFLib\Wrapper\AbstractWrapper;
  */
 class TcpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
+    /**
+     * Constructor 
+     */
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {
         $this->writer = new \TCPDF($pageOrientation, $paperUnit, $paperFormat, true, 'UTF-8', false);
     }
     
+    /**
+     * Configure Report
+     * 
+     * @param array $report 
+     */
     public function configure($report)
     {
         //$this->writer->setEndPosition($report['bottomMargin']);
@@ -84,21 +92,35 @@ class TcpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->SetFont('times', 'BI', 20);
     }
     
+    /**
+     * Output Document
+     */
     public function output()
     {
         $this->writer->Output();
     }
     
+    /**
+     * Write value into document
+     * 
+     * @param string $value 
+     */
     public function write($value)
     {
         $this->writer->writeHTMLCell($w=0, $h=0, $x='', $y='', $value, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
     }
     
+    /**
+     * Open Document 
+     */
     public function openDocument()
     {
         $this->writer->AddPage();
     }
     
+    /**
+     * Close Document 
+     */
     public function closeDocument()
     {
         

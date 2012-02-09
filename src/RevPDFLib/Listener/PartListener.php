@@ -31,9 +31,27 @@ namespace RevPDFLib\Listener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\Event;
- 
+
+/**
+ * PartListener Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Listener
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 class PartListener implements EventSubscriberInterface
 {
+    /**
+     * Method linked to subscribed events
+     * 
+     * @param Event $event 
+     * 
+     * @return void
+     */
     public function onResponse(Event $event)
     {
         $part = $event->getPart();
@@ -42,6 +60,11 @@ class PartListener implements EventSubscriberInterface
         $part->setStartPosition($offset);
     }
     
+    /**
+     * List of subscribed events
+     * 
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         return array('response' => 'onResponse');

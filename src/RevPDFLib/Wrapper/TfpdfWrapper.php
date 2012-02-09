@@ -55,6 +55,11 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     var $endPosition = 0;
     var $report = null;
     
+    /**
+     * Constructor 
+     * 
+     * @return void
+     */
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {
         $this->writer = new \RevPDFLib\Writer\TfpdfWriter($pageOrientation, $paperUnit, $paperFormat);
@@ -70,11 +75,23 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->SetFont('DejaVu','',14);
     }
     
+    /**
+     * Add Page 
+     * 
+     * @return void
+     */
     public function addPage()
     {
         $this->writer->AddPage();
     }
-    
+
+    /**
+     * Configure Report
+     * 
+     * @param array $report 
+     * 
+     * @return void
+     */
     public function configure($report)
     {
         $this->setEndPosition($report['bottomMargin']);
@@ -100,37 +117,77 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->SetLeftMargin($this->getReport()->getLeftMargin());
     }
     
+    /**
+     * Output Document
+     * 
+     * @return void
+     */
     public function output()
     {
         $this->writer->Output();
     }
     
+    /**
+     * Open Document 
+     * 
+     * @return void
+     */
     public function openDocument()
     {
         $this->writer->Open();
         $this->writer->AddPage();
     }
     
+    /**
+     * Close Document 
+     * 
+     * @return void
+     */
     public function closeDocument()
     {
         
     }
     
+    /**
+     * Output Document
+     * 
+     * @return void
+     */
     public function outputDocument()
     {
         $this->writer->Output();
     }
     
+    /**
+     * Set Current Part Number
+     * 
+     * @param int $value 
+     * 
+     * @return void
+     */
     public function setCurrentPartNumber($value)
     {
         $this->currentPartNumber = $value;
     }
     
+    /**
+     * Get Current Part Number
+     * 
+     * @return int
+     */
     public function getCurrentPartNumber()
     {
         return $this->currentPartNumber;
     }
     
+    /**
+     * Write Elements into document
+     * 
+     * @param \RevPDFLib\Items\Part\AbstractPart $part Part
+     * @param array $data Data
+     * 
+     * @return boolean 
+     */
     public function writePDF(\RevPDFLib\Items\Part\AbstractPart $part, array $data)
     {
         if (count($data) <= 0) {
@@ -154,20 +211,43 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         return true;
     }
     
+    /**
+     * Set Current Position
+     * 
+     * @param int $value Position
+     */
     public function setCurrentPosition($value)
     {
         $this->currentPosition = $value;
     }
     
+    /**
+     * Get Current Position
+     * 
+     * @return int
+     */
     public function getCurrentPosition()
     {
         return $this->currentPosition;
     }
+    
+    /**
+     * Get End Position
+     * 
+     * @return int
+     */
     public function getEndPosition()
     {
         return $this->endPosition;
     }
 
+    /**
+     * set End Position
+     * 
+     * @param int $endPosition 
+     * 
+     * @return void
+     */
     public function setEndPosition($endPosition)
     {
         if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
@@ -179,11 +259,23 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         }
     }
     
+    /**
+     * Set Report
+     * 
+     * @param \RevPDFLib\Report $report Report
+     * 
+     * @return void
+     */
     public function setReport(\RevPDFLib\Report $report)
     {
         $this->report = $report;
     }
     
+    /**
+     * Get Report
+     * 
+     * @return \RevPDFLib\Report
+     */
     public function getReport()
     {
         return $this->report;

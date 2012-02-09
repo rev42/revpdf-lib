@@ -29,6 +29,17 @@
 
 namespace RevPDFLib\DataProvider;
 
+/**
+ * DataProvider Interface
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage DataProvider
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 interface DataProviderInterface
 {
     
