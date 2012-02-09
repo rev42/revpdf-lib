@@ -66,7 +66,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
     </reportHeader>
 </RevPDFLib>';
         
-        $data = array(
+        $expected = array(
             "report"=> array(
                 "shortname" => "short",
                 "fullname" => "full",
@@ -140,6 +140,6 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             "details" => array()
         );
         
-        $this->assertSame($data, $this->reader->parseData($data));
+        $this->assertSame($expected, $this->reader->parseData($data));
     }
 }
