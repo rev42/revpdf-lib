@@ -77,9 +77,15 @@ abstract class AbstractPart
      */
     public function __construct(array $data)
     {
-        foreach ($data as $key => $value) {
-            $this->$key = $value;
-        }
+        $defaults = array(
+            'height' => 0,
+            'isVisible' => false,
+            'backgroundColor' => '#FFF'
+        );
+        $data = array_merge($defaults, $data);
+        $this->height = $data['height'];
+        $this->isVisible = (boolean) $data['isVisible'];
+        $this->backgroundColor = $data['backgroundColor'];
     }
 
     /**
@@ -167,6 +173,7 @@ abstract class AbstractPart
      */
     public function setElements(array $elements)
     {
+        $this->elements = array();
         foreach ($elements as $element) {
             $newElement = FactoryElement::getFactory($element['type']);
             $newElement->setProperties($element);

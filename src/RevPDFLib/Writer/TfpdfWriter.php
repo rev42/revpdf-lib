@@ -52,25 +52,25 @@ class TfpdfWriter extends \tFPDF
 {
 
     /**
-     * Set all Page Header elements
+     * Set Page Header part
      * 
-     * @param array $elements Elements
+     * @param array $part Part
      * 
      * @return void
      */
-    public function setPageHeaderElements($elements)
+    public function setPageHeader($part)
     {
-        $this->pageHeaderElements = $elements;
+        $this->pageHeader = $part;
     }
 
     /**
-     * Get all Page Header Elements
+     * Get Page Header part
      * 
      * @return array
      */
-    public function getPageHeaderElements()
+    public function getPageHeader()
     {
-        return $this->pageHeaderElements;
+        return $this->pageHeader;
     }
 
     /**
@@ -100,7 +100,7 @@ class TfpdfWriter extends \tFPDF
      */
     public function header()
     {
-        $data = $this->getPageHeaderElements();
+        $data = $this->getPageHeader();
 
         if (count($data) <= 0 || $data->isVisible() === false) {
             return;
@@ -110,12 +110,12 @@ class TfpdfWriter extends \tFPDF
         //$this->report->getPart('pageHeader')->setStartPosition($this->tMargin);
         // The current position has to be reset at the Top Margin value
         //$this->setCurrentPosition($this->report->getTopMargin());
-        $data = $data->getElements();
-        if (count($data) <= 0) {
+        $elements = $data->getElements();
+        if (count($elements) <= 0) {
             return false;
         }
 
-        foreach ($data as $element) {
+        foreach ($elements as $element) {
             $this->setXY(
                 $element->getPosX() + $this->getLeftMargin(),
                 $element->getPosY() + $this->getTopMargin()
