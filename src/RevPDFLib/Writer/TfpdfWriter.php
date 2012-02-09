@@ -36,26 +36,62 @@ require_once BASE_DIR . 'vendors/tfpdf/tFPDF.php';
 
 use \tFPDF;
 
+/**
+ * TfpdfWriter Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Writer
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 class TfpdfWriter extends \tFPDF
 {
+    /**
+     * Set all Page Header elements
+     * 
+     * @param array $elements Elements
+     */
     public function setPageHeaderElements($elements) {
         $this->pageHeaderElements = $elements;
     }
     
+    /**
+     * Get all Page Header Elements
+     * 
+     * @return array
+     */
     public function getPageHeaderElements() {
         return $this->pageHeaderElements;
     }
     
+    /**
+     * Get Left Margin
+     * 
+     * @return int
+     */
     public function getLeftMargin()
     {
         return $this->lMargin;
     }
     
+    /**
+     * Get Top Margin
+     * 
+     * @return int
+     */
     public function getTopMargin()
     {
         return $this->tMargin;
     }
     
+    /**
+     * Write Report Header
+     * 
+     * @return boolean 
+     */
     public function header()
     {
         $data = $this->getPageHeaderElements();

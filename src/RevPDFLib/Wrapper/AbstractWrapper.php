@@ -29,6 +29,17 @@
 
 namespace RevPDFLib\Wrapper;
 
+/**
+ * AbstractWrapper Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Wrapper
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 abstract class AbstractWrapper
 {
     abstract function openDocument();

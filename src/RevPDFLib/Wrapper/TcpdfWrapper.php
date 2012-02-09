@@ -32,6 +32,17 @@ namespace RevPDFLib\Wrapper;
 use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
 
+/**
+ * TcpdfWrapper Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Wrapper
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 class TcpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')

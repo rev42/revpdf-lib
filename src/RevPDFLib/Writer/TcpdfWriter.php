@@ -35,8 +35,24 @@ require_once BASE_DIR . 'vendors/tcpdf/tcpdf.php';
 
 use \TCPDF;
 
+/**
+ * TcpdfWriter Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Writer
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 class TcpdfWriter extends \TCPDF
 {
+    /**
+     * Write Report Header
+     * 
+     * @return boolean 
+     */
     public function header()
     {
         $data = $this->report->getPart('pageHeader')->getElements();

@@ -38,6 +38,17 @@ use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
 use RevPDFLib\Writer\TfpdfWriter;
 
+/**
+ * TfpdfWrapper Class
+ *
+ * @category   PDF
+ * @package    RevPDFLib
+ * @subpackage Wrapper
+ * @author     Olivier Cornu <contact@revpdf.org>
+ * @license    GNU General Public License v3.0
+ * @version    Release: $Revision:$
+ * @link       http://www.revpdf.org
+ */
 class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
     var $currentPosition = 0;
