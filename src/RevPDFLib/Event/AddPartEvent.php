@@ -44,13 +44,13 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class AddPartEvent extends Event
 {
-    private $part;
-    private $offset;
+    protected $part;
+    protected $offset;
  
     /**
      * Constructor
      * 
-     * @param \RevPDFLib\Items\Part\AbstractPart $part Part
+     * @param AbstractPart $part Part
      * @param int $offset
      * 
      * @return void
@@ -64,7 +64,7 @@ class AddPartEvent extends Event
     /**
      * Get Part
      * 
-     * @return \RevPDFLib\Items\Part\AbstractPart
+     * @return AbstractPart
      */
     public function getPart()
     {

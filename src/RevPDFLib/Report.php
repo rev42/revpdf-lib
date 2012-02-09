@@ -347,8 +347,8 @@ class Report
     /**
      * Add new part to report
      * 
-     * @param string $type Part type
-     * @param \RevPDFLib\Items\Part\AbstractPart $part 
+     * @param string       $type Part type
+     * @param AbstractPart $part Part
      */
     public function addPart($type, \RevPDFLib\Items\Part\AbstractPart $part)
     {

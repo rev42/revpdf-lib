@@ -183,8 +183,8 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Write Elements into document
      * 
-     * @param \RevPDFLib\Items\Part\AbstractPart $part Part
-     * @param array $data Data
+     * @param AbstractPart $part Part
+     * @param array        $data Data
      * 
      * @return boolean 
      */
@@ -262,7 +262,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Set Report
      * 
-     * @param \RevPDFLib\Report $report Report
+     * @param Report $report Report
      * 
      * @return void
      */
@@ -274,7 +274,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Get Report
      * 
-     * @return \RevPDFLib\Report
+     * @return Report
      */
     public function getReport()
     {
