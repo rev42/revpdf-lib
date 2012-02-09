@@ -19,8 +19,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
     
     public function testParseData()
     {
-        $data = '
-<?xml version="1.0" encoding="UTF-8"?>
+        $data = '<?xml version="1.0" encoding="UTF-8"?>
 <RevPDFLib
     shortname="short"
     fullname="full"
