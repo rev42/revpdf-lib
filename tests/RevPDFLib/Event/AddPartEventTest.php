@@ -15,6 +15,11 @@ class AddPartEventTest extends \PHPUnit_Framework_TestCase
         $this->event = new AddPartEvent($part, 10);
     }
     
+    public function tearDown()
+    {
+        $this->event = null;
+    }
+    
     public function testGetPart()
     {
         $this->assertInstanceOf('RevPDFLib\Items\Part\PageHeader', $this->event->getPart());
