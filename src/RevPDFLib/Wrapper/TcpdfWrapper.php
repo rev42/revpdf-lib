@@ -4,7 +4,7 @@ namespace RevPDFLib\Wrapper;
 use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
 
-class TcpdfWrapper extends AbstractWrapper implements InterfaceWrapper
+class TcpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {

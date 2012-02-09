@@ -10,7 +10,7 @@ use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
 use RevPDFLib\Writer\TfpdfWriter;
 
-class TfpdfWrapper extends AbstractWrapper implements InterfaceWrapper
+class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
     var $currentPosition = 0;
     var $endPosition = 0;
