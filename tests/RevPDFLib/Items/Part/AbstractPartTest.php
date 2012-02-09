@@ -43,7 +43,7 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
     
     public function testGetIdentifier()
     {
-        $this->assertEquals(1, $this->part->getIdentifier());
+        $this->assertEquals(null, $this->part->getIdentifier());
     }
     
     public function testIsDisplayed()
