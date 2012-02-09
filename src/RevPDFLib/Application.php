@@ -76,7 +76,7 @@ class Application
     /**
      * Register data provider into dic
      * 
-     * @param string $value 
+     * @param string $value Data Provider name
      * 
      * @return void
      */

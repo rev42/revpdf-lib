@@ -31,7 +31,7 @@
 namespace RevPDFLib\Items\Part;
 
 use RevPDFLib\Report;
-use RevPDFLib\Element;
+use RevPDFLib\Items\Element\FactoryElement;
 
 /**
  * Part Abstract Class
@@ -168,7 +168,7 @@ abstract class AbstractPart
     public function setElements(array $elements)
     {
         foreach ($elements as $element) {
-            $newElement = \RevPDFLib\Items\Element\FactoryElement::getFactory($element['type']);
+            $newElement = FactoryElement::getFactory($element['type']);
             $newElement->setProperties($element);
             $this->elements[] = $newElement;
         }

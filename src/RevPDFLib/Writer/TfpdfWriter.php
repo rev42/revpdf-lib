@@ -55,6 +55,8 @@ class TfpdfWriter extends \tFPDF
      * Set all Page Header elements
      * 
      * @param array $elements Elements
+     * 
+     * @return void
      */
     public function setPageHeaderElements($elements)
     {
