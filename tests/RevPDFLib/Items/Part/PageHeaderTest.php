@@ -66,11 +66,27 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
     
     public function testSetElements()
     {
-        $elements = array();
-        $elements[] = $this->getMockBuilder('RevPDFLib\Items\Element\Textfield')
-                           ->getMock();
-        $elements[] = $this->getMockBuilder('RevPDFLib\Items\Element\Textzone')
-                           ->getMock();
+        $elements = array(
+            array(
+                "value" => "pageHeader textField1",
+                "type" => "textField",
+                "format" => "text",
+                "posX" => "0",
+                "posY" => "0",
+                "height" => "5",
+                "width" => "20"
+            ),
+            array(
+                "value" => "pageHeader textField2",
+                "type" => "textField",
+                "format" => "text",
+                "posX" => "0",
+                "posY" => "5",
+                "height" => "5",
+                "width" => "20",
+            )
+        );
+        
         $this->part->setElements($elements);
         
         $this->assertCount(2, $this->part->getElements());
