@@ -31,6 +31,7 @@ namespace RevPDFLib;
 
 use Symfony\Component\DependencyInjection;
 use Symfony\Component\DependencyInjection\Reference;
+use RevPDFLib\DependencyInjection\DiExtension;
 
 /**
  * Application Class
@@ -69,8 +70,34 @@ class Application
      */
     public function __construct()
     {
-        $this->dic = new DependencyInjection\ContainerBuilder();
-        $this->dic->register('exporter', 'RevPDFLib\Exporter\PdfExporter');
+        $dependency = new DiExtension();
+        
+        try {
+            $this->setDic($dependency->getContainer());
+        } catch (Exception $e) {
+            exit($e->getMessage());
+        }
+        $this->dispatcher = $this->getDic()->get('revpdflib.event_dispatcher');
+    }
+    
+    /**
+     * Get Container
+     * 
+     * @return \Symfony\Component\DependencyInjection\ContainerBuilder
+     */
+    public function getDic()
+    {
+        return $this->dic;
+    }
+    
+    /**
+     * Set Container
+     * 
+     * @param string \Symfony\Component\DependencyInjection\ContainerBuilder
+     */
+    public function setDic(\Symfony\Component\DependencyInjection\ContainerBuilder $value)
+    {
+        $this->dic = $value;
     }
     
     /**
@@ -82,7 +109,7 @@ class Application
      */
     protected function selectDataProvider($value)
     {
-        $this->dic->register('provider', 'RevPDFLib\DataProvider\\' . $value);
+        $this->dic->register('revpdflib.provider', 'RevPDFLib\DataProvider\\' . $value);
     }
     
     /**
@@ -98,29 +125,29 @@ class Application
     {
         switch (gettype($data)) {
         case 'array':
-            $this->dic->register('reader', 'RevPDFLib\Reader\ArrayReader');
+            $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
             break;
         case 'object':
             if (get_class($data) == 'SimpleXMLElement') {
-                $this->dic->register('reader', 'RevPDFLib\Reader\SimpleXMLReader');
+                $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
             }
             break;
         default:
             throw new Exception();
         }
         // Get data properly formatted
-        $report = $this->dic->get('reader')->parseData($data);
+        $report = $this->getDic()->get('revpdflib.reader')->parseData($data);
         if (!is_array($report)) {
             return null;
         }
         
         // Get data provider and parse data
         $this->selectDataProvider($report['source']['provider']);
-        $this->dic->get('provider')->parse($report['source']['value']);
-        $data = $this->dic->get('provider')->data;
+        $this->getDic()->get('revpdflib.provider')->parse($report['source']['value']);
+        $data = $this->getDic()->get('revpdflib.provider')->data;
         
         // Build document and generate it
-        $document = $this->dic->get('exporter')->buildDocument($report, $data);
+        $document = $this->getDic()->get('revpdflib.exporter')->buildDocument($report, $data);
 
         return $document;
     }
