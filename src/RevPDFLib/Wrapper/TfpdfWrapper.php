@@ -61,13 +61,13 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Constructor
      * 
-     * @param string $pageOrientation Page Orientation ("P": Portrait, "L": Landscape)
-     * @param string $paperUnit       Paper Unit (mm)
-     * @param string $paperFormat     Paper Format (A4)
+     * @param string $orientation Page Orientation (Portrait/Landscape)
+     * @param string $unit        Paper Unit (mm)
+     * @param string $format      Paper Format (A4)
      */
-    public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
+    public function __construct($orientation = 'P', $unit = 'mm', $format = 'A4')
     {
-        $this->writer = new TfpdfWriter($pageOrientation, $paperUnit, $paperFormat);
+        $this->writer = new TfpdfWriter($orientation, $unit, $format);
         $this->writer->AddFont('Deja Vu Sans', '', 'DejaVuSans.ttf', true);
         $this->writer->AddFont('Deja Vu Sans', 'B', 'DejaVuSans-Bold.ttf', true);
         $this->writer->AddFont('Deja Vu Sans', 'BI', 'DejaVuSans-BoldOblique.ttf', true);

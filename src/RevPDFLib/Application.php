@@ -151,8 +151,8 @@ class Application
         
         // Generate document
         $document = $this->getDic()
-                         ->get('revpdflib.exporter')
-                         ->generateDocument($data);
+            ->get('revpdflib.exporter')
+            ->generateDocument($data);
         return $document;
     }
 }

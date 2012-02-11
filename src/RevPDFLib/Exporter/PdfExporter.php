@@ -52,8 +52,8 @@ class PdfExporter
     /**
      * Constructor
      * 
-     * @param RevPDFLib\Wrapper\WrapperInterface $wrapper
-     * @param RevPDFLib\Report $report 
+     * @param RevPDFLib\Wrapper\WrapperInterface $wrapper Wrapper
+     * @param RevPDFLib\Report                   $report  Report
      * 
      * @return void
      */
@@ -89,7 +89,8 @@ class PdfExporter
             $this->report->addPart('reportHeader', $part);
         }
         if (array_key_exists('details', $report)
-                && count($report['details']) > 0) {
+            && count($report['details']) > 0)
+        {
             $part = new Part\Details($report['details']);
             $part->setElements($report['reportHeader']['elements']);
             

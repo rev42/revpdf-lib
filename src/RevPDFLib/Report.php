@@ -102,7 +102,7 @@ class Report
     /**
      * Set all object properties
      * 
-     * @param type $data 
+     * @param array $data Data
      * 
      * @return void
      */
@@ -417,7 +417,7 @@ class Report
     /**
      * Calculate Start Position for Part
      * 
-     * @param \Part\AbstractPart $part
+     * @param \Part\AbstractPart $part Part
      * 
      * @return int 
      */
