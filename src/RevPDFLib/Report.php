@@ -415,10 +415,10 @@ class Report
         if ($part instanceof \RevPDFLib\Items\Part\PageHeader) {
             $offset = $this->getTopMargin();
         } elseif ($part instanceof \RevPDFLib\Items\Part\ReportHeader) {
-            if (is_null($this->getPart('PageHeader'))) {
+            if (is_null($this->getPart('pageHeader'))) {
                 $offset = 0;
             } else {
-                $offset = $this->getPart('PageHeader')->getStartPosition();
+                $offset = $this->getPart('pageHeader')->getStartPosition();
             }
             $offset = $this->getTopMargin()+ $offset;
         } else {
