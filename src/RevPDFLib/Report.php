@@ -284,7 +284,7 @@ class Report
      */
     public function getTopMargin()
     {
-        return $this->topMargin;
+        return (int) $this->topMargin;
     }
 
     /**
@@ -306,7 +306,7 @@ class Report
      */
     public function getRightMargin()
     {
-        return $this->rightMargin;
+        return (int) $this->rightMargin;
     }
 
     /**
@@ -328,7 +328,7 @@ class Report
      */
     public function getBottomMargin()
     {
-        return $this->bottomMargin;
+        return (int) $this->bottomMargin;
     }
 
     /**
@@ -397,7 +397,8 @@ class Report
             unset($this->parts[$type]);
             
             foreach ($this->parts as $key => $part) {
-                $this->calculateStartPosition($part);
+                $offset = $this->calculateStartPosition($part);
+                $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
             }
             return true;
         }
@@ -421,9 +422,13 @@ class Report
             if (is_null($this->getPart('pageHeader'))) {
                 $offset = 0;
             } else {
-                $offset = $this->getPart('pageHeader')->getStartPosition();
+                if ($this->getPart('pageHeader')->isVisible() === false) {
+                    $offset = 0;
+                } else {
+                    $offset = $this->getPart('pageHeader')->getHeight();
+                }
             }
-            $offset = $this->getTopMargin()+ $offset;
+            $offset = $this->getTopMargin() + $offset;
         } else {
             $offset = 0;
         }

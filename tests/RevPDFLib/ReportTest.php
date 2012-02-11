@@ -25,7 +25,8 @@ class ReportTest extends \PHPUnit_Framework_TestCase
             ),
         );
         
-        $this->report = new Report($reportData);
+        $this->report = new Report();
+        $this->report->setAllProperties($reportData);
     }
     
     public function tearDown()
@@ -176,7 +177,10 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                            ->getMock();
         $pageHeader->expects($this->any())
                    ->method('getStartPosition')
-                   ->will($this->returnValue(20));
+                   ->will($this->returnValue(10));
+        $pageHeader->expects($this->any())
+                   ->method('getHeight')
+                   ->will($this->returnValue(40));
         $pageHeader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(true));
@@ -190,7 +194,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         
         $this->report->addPart('pageheader', $pageHeader);
         $this->assertEquals(10, $this->report->calculateStartPosition($pageHeader));
-        $this->assertEquals(30, $this->report->calculateStartPosition($reportHeader));
+        $this->assertEquals(50, $this->report->calculateStartPosition($reportHeader));
         
         $this->report->removePart('pageheader');
         $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
