@@ -2,15 +2,15 @@
 namespace RevPDFLib\Tests;
 
 use RevPDFLib\Items\Part\AbstractPart;
-use RevPDFLib\Items\Part\PageHeader;
+use RevPDFLib\Items\Part\ReportHeader;
 
-class PageHeaderTest extends \PHPUnit_Framework_TestCase
+class ReportHeaderTest extends \PHPUnit_Framework_TestCase
 {
     protected $part;
     
     public function setUp()
     {
-        $this->part = new \RevPDFLib\Items\Part\PageHeader(array());
+        $this->part = new \RevPDFLib\Items\Part\ReportHeader(array());
     }
     
     public function tearDown()
@@ -68,7 +68,7 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
     {
         $elements = array(
             array(
-                "value" => "pageHeader textField1",
+                "value" => "ReportHeader textField1",
                 "type" => "textField",
                 "format" => "text",
                 "posX" => "0",
@@ -77,7 +77,7 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
                 "width" => "20"
             ),
             array(
-                "value" => "pageHeader textField2",
+                "value" => "ReportHeader textField2",
                 "type" => "textField",
                 "format" => "text",
                 "posX" => "0",
