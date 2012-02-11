@@ -60,39 +60,78 @@ class PdfExporter
     public function __construct(WrapperInterface $wrapper, Report $report)
     {
         $this->wrapper = $wrapper;
+        $this->wrapper->setReport($report);
         $this->report = $report;
     }
     
     /**
+     * Get Wrapper
+     * 
+     * @return RevPDFLib\Wrapper\WrapperInterface 
+     */
+    public function getWrapper()
+    {
+        return $this->wrapper;
+    }
+
+    /**
+     * Set Wrapper 
+     * 
+     * @param RevPDFLib\Wrapper\WrapperInterface $wrapper Wrapper
+     * 
+     * @return void
+     */
+    public function setWrapper($wrapper)
+    {
+        $this->wrapper = $wrapper;
+    }
+
+    /**
+     * Get Report
+     * 
+     * @return RevPDF\Report 
+     */
+    public function getReport()
+    {
+        return $this->report;
+    }
+
+    /**
+     * Set Report
+     * 
+     * @param RevPDF\Report $report Report
+     */
+    public function setReport($report)
+    {
+        $this->report = $report;
+    }
+
+        
+    /**
      * Build document 
      * 
-     * @param array $report Report
-     * @param array $data   Data
+     * @param array $reportData Data
      * 
-     * @return boolean 
+     * @return void 
      */
-    public function buildDocument(array $report)
+    public function buildDocument(array $reportData)
     {
-        $this->report->setAllProperties($report);
-        $this->wrapper->setReport($this->report);
+        $this->report->setAllProperties($reportData);
         
-        if (array_key_exists('pageHeader', $report)) {
-            $part = new Part\PageHeader($report['pageHeader']);
-            $part->setElements($report['pageHeader']['elements']);
+        if (array_key_exists('pageHeader', $reportData)) {
+            $part = new Part\PageHeader($reportData['pageHeader']);
             
             $this->report->addPart('pageHeader', $part);
         }
-        if (array_key_exists('reportHeader', $report)) {
-            $part = new Part\ReportHeader($report['reportHeader']);
-            $part->setElements($report['reportHeader']['elements']);
+        if (array_key_exists('reportHeader', $reportData)) {
+            $part = new Part\ReportHeader($reportData['reportHeader']);
             
             $this->report->addPart('reportHeader', $part);
         }
-        if (array_key_exists('details', $report)
-            && count($report['details']) > 0)
+        if (array_key_exists('details', $reportData)
+            && count($reportData['details']) > 0)
         {
-            $part = new Part\Details($report['details']);
-            $part->setElements($report['reportHeader']['elements']);
+            $part = new Part\Details($reportData['details']);
             
             $this->report->addPart('details', $part);
         }

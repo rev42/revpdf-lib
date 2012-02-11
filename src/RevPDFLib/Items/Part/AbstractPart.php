@@ -86,6 +86,10 @@ abstract class AbstractPart
         $this->height = $data['height'];
         $this->isVisible = (boolean) $data['isVisible'];
         $this->backgroundColor = $data['backgroundColor'];
+        
+        if (isset($data['elements'])) {
+            $this->setElements($data['elements']);
+        }
     }
 
     /**
