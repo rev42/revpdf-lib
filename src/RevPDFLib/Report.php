@@ -33,6 +33,7 @@ namespace RevPDFLib;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use RevPDFLib\Listener\PartListener;
 use RevPDFLib\Event\AddPartEvent;
+use RevPDFLib\Items\Part;
 
 /**
  * Report Class
@@ -88,9 +89,9 @@ class Report
     protected $dispatcher;
 
     /**
-     * Constructeur de l'objet
+     * Constructor
      * 
-     * @param array $data Data
+     * @return void
      */
     public function __construct()
     {
@@ -98,6 +99,13 @@ class Report
         $this->dispatcher->addSubscriber(new PartListener());
     }
     
+    /**
+     * Set all object properties
+     * 
+     * @param type $data 
+     * 
+     * @return void
+     */
     public function setAllProperties($data)
     {
         $this->author = $data['report']['author'];
@@ -377,7 +385,7 @@ class Report
      * 
      * @return void
      */
-    public function addPart($type, \RevPDFLib\Items\Part\AbstractPart $part)
+    public function addPart($type, Part\AbstractPart $part)
     {
         $this->parts[strtolower($type)] = $part;
         $offset = $this->calculateStartPosition($part);
@@ -409,16 +417,16 @@ class Report
     /**
      * Calculate Start Position for Part
      * 
-     * @param \RevPDFLib\Items\Part\AbstractPart $part
+     * @param \Part\AbstractPart $part
      * 
      * @return int 
      */
-    public function calculateStartPosition(\RevPDFLib\Items\Part\AbstractPart $part) {
+    public function calculateStartPosition(Part\AbstractPart $part) {
         $offset = 0;
         
-        if ($part instanceof \RevPDFLib\Items\Part\PageHeader) {
+        if ($part instanceof Part\PageHeader) {
             $offset = $this->getTopMargin();
-        } elseif ($part instanceof \RevPDFLib\Items\Part\ReportHeader) {
+        } elseif ($part instanceof Part\ReportHeader) {
             if (is_null($this->getPart('pageHeader'))) {
                 $offset = 0;
             } else {

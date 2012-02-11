@@ -29,9 +29,8 @@
 
 namespace RevPDFLib\Exporter;
 
-use RevPDFLib\Wrapper\TfpdfWrapper;
-use RevPDFLib\Wrapper\TcpdfWrapper;
-
+use RevPDFLib\Wrapper\WrapperInterface;
+use RevPDFLib\Report;
 use RevPDFLib\Items\Part;
 
 /**
@@ -53,9 +52,12 @@ class PdfExporter
     /**
      * Constructor
      * 
+     * @param RevPDFLib\Wrapper\WrapperInterface $wrapper
+     * @param RevPDFLib\Report $report 
+     * 
      * @return void
      */
-    public function __construct($wrapper, $report)
+    public function __construct(WrapperInterface $wrapper, Report $report)
     {
         $this->wrapper = $wrapper;
         $this->report = $report;
@@ -86,7 +88,8 @@ class PdfExporter
             
             $this->report->addPart('reportHeader', $part);
         }
-        if (array_key_exists('details', $report) && count($report['details']) > 0) {
+        if (array_key_exists('details', $report)
+                && count($report['details']) > 0) {
             $part = new Part\Details($report['details']);
             $part->setElements($report['reportHeader']['elements']);
             

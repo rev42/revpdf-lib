@@ -37,6 +37,9 @@ require_once BASE_DIR . 'vendors/tfpdf/tFPDF.php';
 use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
 use RevPDFLib\Writer\TfpdfWriter;
+use RevPDFLib\Items\Part\AbstractPart;
+use RevPDFLib\Report;
+use RevPDFLib\Application;
 
 /**
  * TfpdfWrapper Class
@@ -56,13 +59,15 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     var $report = null;
     
     /**
-     * Constructor 
+     * Constructor
      * 
-     * @return void
+     * @param string $pageOrientation Page Orientation ("P": Portrait, "L": Landscape)
+     * @param string $paperUnit       Paper Unit (mm)
+     * @param string $paperFormat     Paper Format (A4)
      */
     public function __construct($pageOrientation = 'P', $paperUnit = 'mm', $paperFormat = 'A4')
     {
-        $this->writer = new \RevPDFLib\Writer\TfpdfWriter($pageOrientation, $paperUnit, $paperFormat);
+        $this->writer = new TfpdfWriter($pageOrientation, $paperUnit, $paperFormat);
         $this->writer->AddFont('Deja Vu Sans', '', 'DejaVuSans.ttf', true);
         $this->writer->AddFont('Deja Vu Sans', 'B', 'DejaVuSans-Bold.ttf', true);
         $this->writer->AddFont('Deja Vu Sans', 'BI', 'DejaVuSans-BoldOblique.ttf', true);
@@ -88,7 +93,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Configure Report
      * 
-     * @param array $report 
+     * @param array $report Report
      * 
      * @return void
      */
@@ -97,7 +102,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->setEndPosition($report['bottomMargin']);
         $this->setCurrentPosition($report['topMargin']);
         $this->writer->SetAuthor($report['author']);
-        $this->writer->SetCreator(\RevPDFLib\Application::NAME);
+        $this->writer->SetCreator(Application::NAME);
         $this->writer->SetDisplayMode(
             $report['displayModeZoom'], 
             $report['displayModeLayout']
@@ -161,7 +166,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Set Current Part Number
      * 
-     * @param int $value 
+     * @param int $value Value
      * 
      * @return void
      */
@@ -183,12 +188,12 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Write Elements into document
      * 
-     * @param AbstractPart $part Part
-     * @param array        $data Data
+     * @param \RevPDFLib\Items\Part\AbstractPart $part Part
+     * @param array                              $data Data
      * 
      * @return boolean 
      */
-    public function writePDF(\RevPDFLib\Items\Part\AbstractPart $part, array $data)
+    public function writePDF(AbstractPart $part, array $data)
     {
         // Set current position at Part start position
         $this->setCurrentPosition($part->getStartPosition());
@@ -203,9 +208,16 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
                 $this->writer->AddPage($this->report->getPageOrientation());
                 $this->setCurrentPosition($part->getStartPosition());
             }
-            $this->writer->setXY($element->getPosX() + $this->getReport()->getLeftMargin(), $element->getPosY() + $part->getStartPosition());
-            //$this->writer->Cell($element->getWidth(), $element->getHeight(), $element->getValue(), $element->getBorder());
-            $this->writer->Cell($element->getWidth(), $element->getHeight(), $this->writer->x.'/'.$this->writer->y.'h='.$element->getHeight(), $element->getBorder());
+            $this->writer->setXY(
+                $element->getPosX() + $this->getReport()->getLeftMargin(), 
+                $element->getPosY() + $part->getStartPosition()
+            );
+            $this->writer->Cell(
+                $element->getWidth(),
+                $element->getHeight(),
+                $element->getValue(),
+                $element->getBorder()
+            );
         }
         
         return true;
@@ -244,7 +256,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * set End Position
      * 
-     * @param int $endPosition 
+     * @param int $endPosition End Position Y for each page
      * 
      * @return void
      */
@@ -262,11 +274,11 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Set Report
      * 
-     * @param Report $report Report
+     * @param \RevPDFLib\Report $report Report
      * 
      * @return void
      */
-    public function setReport(\RevPDFLib\Report $report)
+    public function setReport(Report $report)
     {
         $this->report = $report;
     }
