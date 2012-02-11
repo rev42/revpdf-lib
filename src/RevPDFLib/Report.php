@@ -376,7 +376,7 @@ class Report
      */
     public function addPart($type, \RevPDFLib\Items\Part\AbstractPart $part)
     {
-        $this->parts[$type] = $part;
+        $this->parts[strtolower($type)] = $part;
         $offset = $this->calculateStartPosition($part);
         $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
     }
@@ -447,8 +447,8 @@ class Report
      */
     public function getPart($type)
     {
-        if (isset($this->parts[$type])) {
-            return $this->parts[$type];
+        if (isset($this->parts[strtolower($type)])) {
+            return $this->parts[strtolower($type)];
         } else {
             return null;
         }

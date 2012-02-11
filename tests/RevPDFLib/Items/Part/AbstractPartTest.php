@@ -34,6 +34,9 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
         $this->part->expects($this->any())
                    ->method('getBackgroundColor')
                    ->will($this->returnValue('#FFF'));
+        $this->part->expects($this->any())
+                   ->method('getBorder')
+                   ->will($this->returnValue('1'));
     }
     
     public function tearDown()
@@ -97,7 +100,8 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
                 "posX" => "0",
                 "posY" => "0",
                 "height" => "5",
-                "width" => "20"
+                "width" => "20",
+                "border" => "1"
             ),
             array(
                 "value" => "pageHeader textField2",
@@ -107,6 +111,7 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
                 "posY" => "5",
                 "height" => "5",
                 "width" => "20",
+                "border" => "1"
             )
         );
         

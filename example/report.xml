@@ -18,23 +18,23 @@
     <source provider="CsvProvider">
         <value>books.csv</value>
     </source>
-    <pageHeader height="15" isVisible="1" backgroundColor="#F00">
-        <textField format="text" posX="0" posY="0" height="5" width="20" border="1">pageHeader textField1</textField>
-        <textField format="text" posX="0" posY="5" height="5" width="20" border="1">pageHeader textField2</textField>
-        <textZone format="text" posX="0" posY="10" height="5" width="20" border="1">pageHeader textZone</textZone>
+    <pageHeader height="20" isVisible="1" backgroundColor="#F00">
+        <textField format="text" posX="0" posY="0" height="5" width="60" border="1">pageHeader textField1</textField>
+        <textField format="text" posX="0" posY="5" height="5" width="60" border="1">pageHeader textField2</textField>
+        <textZone format="text" posX="0" posY="10" height="10" width="60" border="1">pageHeader textZone</textZone>
     </pageHeader>
-    <reportHeader height="20" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="0" posY="0" height="5" width="20" border="1">reportHeader textField1</textField>
-        <textField format="text" posX="0" posY="5" height="5" width="20" border="1">reportHeader textField2</textField>
-        <textZone format="text" posX="5" posY="10" height="5" width="20" border="1">reportHeader textZone</textZone>
-        <textZone format="text" posX="5" posY="50" height="50" width="20" border="1">reportHeader textZone2</textZone>
-        <textZone format="text" posX="5" posY="150" height="150" width="20" border="1">reportHeader textZone3</textZone>
+    <reportHeader height="250" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posX="60" posY="0" height="5" width="60" border="1">reportHeader textField1</textField>
+        <textField format="text" posX="60" posY="5" height="5" width="60" border="1">reportHeader textField2</textField>
+        <textZone format="text" posX="60" posY="10" height="40" width="60" border="1">reportHeader textZone</textZone>
+        <textZone format="text" posX="60" posY="50" height="50" width="60" border="1">reportHeader textZone2</textZone>
+        <textZone format="text" posX="60" posY="100" height="150" width="60" border="1">reportHeader textZone3</textZone>
     </reportHeader>
     <!--
     <details height="20" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="5" posY="15" height="5" width="20">data textField1</textField>
-        <textField format="text" posX="10" posY="25" height="5" width="20">data textField2</textField>
-        <textZone format="text" posX="15" posY="35" height="5" width="20">data textZone</textZone>
+        <textField format="text" posX="5" posY="15" height="5" width="60">data textField1</textField>
+        <textField format="text" posX="10" posY="25" height="5" width="60">data textField2</textField>
+        <textZone format="text" posX="15" posY="35" height="5" width="60">data textZone</textZone>
     </details>
     -->
 </RevPDFLib>

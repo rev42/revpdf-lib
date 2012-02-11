@@ -176,20 +176,23 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                            ->getMock();
         $pageHeader->expects($this->any())
                    ->method('getStartPosition')
-                   ->will($this->returnValue(10));
+                   ->will($this->returnValue(20));
+        $pageHeader->expects($this->any())
+                   ->method('isVisible')
+                   ->will($this->returnValue(true));
         
         $reportHeader = $this->getMockBuilder('RevPDFLib\Items\Part\ReportHeader')
                              ->disableOriginalConstructor()
                              ->getMock();
         
-        $this->report->addPart('ReportHeader', $reportHeader);
+        $this->report->addPart('reportheader', $reportHeader);
         $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
         
-        $this->report->addPart('PageHeader', $pageHeader);
+        $this->report->addPart('pageheader', $pageHeader);
         $this->assertEquals(10, $this->report->calculateStartPosition($pageHeader));
-        $this->assertEquals(20, $this->report->calculateStartPosition($reportHeader));
+        $this->assertEquals(30, $this->report->calculateStartPosition($reportHeader));
         
-        $this->report->removePart('PageHeader');
+        $this->report->removePart('pageheader');
         $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
     }
     
@@ -203,19 +206,19 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                              ->disableOriginalConstructor()
                              ->getMock();
         
-        $this->report->addPart('PageHeader', $pageHeader);
-        $this->report->addPart('ReportHeader', $reportHeader);
+        $this->report->addPart('pageheader', $pageHeader);
+        $this->report->addPart('reportheader', $reportHeader);
         $this->assertCount(2, $this->report->getParts());
         
-        $result = $this->report->removePart('PageHeader');
+        $result = $this->report->removePart('pageheader');
         $this->assertCount(1, $this->report->getParts());
         $this->assertEquals(true, $result);
         
-        $result = $this->report->removePart('ReportHeader');
+        $result = $this->report->removePart('reportheader');
         $this->assertCount(0, $this->report->getParts());
         $this->assertEquals(true, $result);
         
-        $result = $this->report->removePart('ReportHeader');
+        $result = $this->report->removePart('reportheader');
         $this->assertCount(0, $this->report->getParts());
         $this->assertEquals(false, $result);
     }

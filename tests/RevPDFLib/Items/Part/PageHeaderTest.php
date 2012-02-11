@@ -74,7 +74,8 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
                 "posX" => "0",
                 "posY" => "0",
                 "height" => "5",
-                "width" => "20"
+                "width" => "20",
+                "border" => 1,
             ),
             array(
                 "value" => "pageHeader textField2",
@@ -84,6 +85,7 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
                 "posY" => "5",
                 "height" => "5",
                 "width" => "20",
+                "border" => 1,
             )
         );
         

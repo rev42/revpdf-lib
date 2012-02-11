@@ -120,11 +120,14 @@ class TfpdfWriter extends \tFPDF
                 $element->getPosX() + $this->getLeftMargin(),
                 $element->getPosY() + $this->getTopMargin()
             );
+            $this->Cell($element->getWidth(), $element->getHeight(), $this->x.'/'.$this->y.'h='.$element->getHeight(), $element->getBorder());
+            /*
             $this->Cell(
                 $element->getWidth(),
                 $element->getHeight(),
-                $element->getValue()
-            );
+                $element->getValue(),
+                $element->getBorder()
+            );*/
         }
     }
 

@@ -190,12 +190,12 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
      */
     public function writePDF(\RevPDFLib\Items\Part\AbstractPart $part, array $data)
     {
+        // Set current position at Part start position
+        $this->setCurrentPosition($part->getStartPosition());
+        
         if (count($data) <= 0) {
             return false;
         }
-        
-        // Set current position at Part start position
-        $this->setCurrentPosition($part->getStartPosition());
         
         foreach ($data as $element) {
             // Create new page if overlapping
@@ -203,9 +203,9 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
                 $this->writer->AddPage($this->report->getPageOrientation());
                 $this->setCurrentPosition($part->getStartPosition());
             }
-            
-            $this->writer->setXY($element->getPosX() + $this->getReport()->getLeftMargin(), $element->getPosY() + $this->getCurrentPosition());
-            $this->writer->Cell($element->getWidth(), $element->getHeight(), $element->getValue());
+            $this->writer->setXY($element->getPosX() + $this->getReport()->getLeftMargin(), $element->getPosY() + $part->getStartPosition());
+            //$this->writer->Cell($element->getWidth(), $element->getHeight(), $element->getValue(), $element->getBorder());
+            $this->writer->Cell($element->getWidth(), $element->getHeight(), $this->writer->x.'/'.$this->writer->y.'h='.$element->getHeight(), $element->getBorder());
         }
         
         return true;
