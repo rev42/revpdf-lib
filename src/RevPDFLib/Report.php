@@ -404,7 +404,7 @@ class Report
         if (array_key_exists($type, $this->parts)) {
             unset($this->parts[$type]);
             
-            foreach ($this->parts as $key => $part) {
+            foreach ($this->parts as $part) {
                 $offset = $this->calculateStartPosition($part);
                 $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
             }

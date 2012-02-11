@@ -501,10 +501,11 @@ abstract class AbstractElement
      * @param string &$pdfDoc instance of PDF class
      *
      * @return void
-     */
+     
     function setField(&$pdfDoc)
     {
-    }
+    }*/
+    
     /**
      * get Field
      *

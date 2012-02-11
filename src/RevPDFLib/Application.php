@@ -75,7 +75,7 @@ class Application
         try {
             $this->setDic($dependency->getContainer());
         } catch (Exception $e) {
-            exit($e->getMessage());
+            return $e->getMessage();
         }
         $this->dispatcher = $this->getDic()->get('revpdflib.event_dispatcher');
     }
