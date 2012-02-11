@@ -168,4 +168,22 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         
         $this->assertCount(2, $this->report->getParts());
     }
+    
+    public function testAddPartsAndCheckStartPartPosition()
+    {
+        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+        $pageHeader->expects($this->any())
+                   ->method('getStartPosition')
+                   ->will($this->returnValue(10));
+        
+        $reportHeader = $this->getMockBuilder('RevPDFLib\Items\Part\ReportHeader')
+                             ->disableOriginalConstructor()
+                             ->getMock();
+        $this->report->addPart('PageHeader', $pageHeader);
+        $this->report->addPart('ReportHeader', $reportHeader);
+        
+        $this->assertCount(20, $this->report->getPart('reportHeader')->getStartPosition());
+    }
 }
