@@ -81,6 +81,7 @@ class PdfExporter
         }
         if (array_key_exists('reportHeader', $report)) {
             $this->dic->register('reportHeader', 'RevPDFLib\Items\Part\ReportHeader')->addArgument($report['reportHeader']);
+            $this->dic->get('pageHeader')->setIsVisible($report['reportHeader']['isVisible']);
             $this->dic->get('reportHeader')->setElements($report['reportHeader']['elements']);
             $this->dic->get('report')->addPart('reportHeader', $this->dic->get('reportHeader'));
         }
