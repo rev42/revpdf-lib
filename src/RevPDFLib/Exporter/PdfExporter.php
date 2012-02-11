@@ -73,19 +73,19 @@ class PdfExporter
     {
         $this->dic->register('report', 'RevPDFLib\Report')->addArgument($report);
         $this->dic->get('wrapper')->setReport($this->dic->get('report'));
-        if ($report->getPart('pageHeader')) {
+        if (array_key_exists('pageHeader', $report)) {
             $this->dic->register('pageHeader', 'RevPDFLib\Items\Part\PageHeader')->addArgument($report['pageHeader']);
             $this->dic->get('pageHeader')->setIsVisible($report['pageHeader']['isVisible']);
             $this->dic->get('pageHeader')->setElements($report['pageHeader']['elements']);
             $this->dic->get('report')->addPart('pageHeader', $this->dic->get('pageHeader'));
         }
-        if ($report->getPart('reportHeader')) {
+        if (array_key_exists('reportHeader', $report)) {
             $this->dic->register('reportHeader', 'RevPDFLib\Items\Part\ReportHeader')->addArgument($report['reportHeader']);
             $this->dic->get('reportHeader')->setIsVisible($report['reportHeader']['isVisible']);
             $this->dic->get('reportHeader')->setElements($report['reportHeader']['elements']);
             $this->dic->get('report')->addPart('reportHeader', $this->dic->get('reportHeader'));
         }
-        if ($report->getPart('details') && count($report['details']) > 0) {
+        if (array_key_exists('details', $report) && count($report['details']) > 0) {
             $this->dic->register('details', 'RevPDFLib\RevPDFLib\Items\Part\Details')->addArgument($report['details']);
             $this->dic->get('details')->setStartPosition(intval($this->dic->get('report')->getTopMargin()));
             $this->dic->get('details')->setElements($report['details']['elements']);
