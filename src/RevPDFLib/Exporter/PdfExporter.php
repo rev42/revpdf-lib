@@ -100,6 +100,8 @@ class PdfExporter
      * Set Report
      * 
      * @param RevPDF\Report $report Report
+     * 
+     * @return void
      */
     public function setReport($report)
     {
@@ -129,8 +131,8 @@ class PdfExporter
             $this->report->addPart('reportHeader', $part);
         }
         if (array_key_exists('details', $reportData)
-            && count($reportData['details']) > 0)
-        {
+            && count($reportData['details']) > 0
+           ) {
             $part = new Part\Details($reportData['details']);
             
             $this->report->addPart('details', $part);
