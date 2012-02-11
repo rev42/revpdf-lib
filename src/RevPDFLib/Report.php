@@ -377,18 +377,55 @@ class Report
     public function addPart($type, \RevPDFLib\Items\Part\AbstractPart $part)
     {
         $this->parts[$type] = $part;
-        switch ($type) {
-        case 'PageHeader':
-            $offset = $this->getTopMargin();
-            break;
-        case 'ReportHeader':
-            $offset = $this->getTopMargin() + $this->getPart('PageHeader')->getStartPosition();
-            break;
-        default:
-            $offset = 0;
-            break;
-        }
+        $offset = $this->calculateStartPosition($part);
         $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
+    }
+    
+    /**
+     * Remove a part
+     * 
+     * @param string $type 
+     * 
+     * @return boolean
+     */
+    public function removePart($type)
+    {
+        if (array_key_exists($type, $this->parts)) {
+            unset($this->parts[$type]);
+            
+            foreach ($this->parts as $key => $part) {
+                $this->calculateStartPosition($part);
+            }
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Calculate Start Position for Part
+     * 
+     * @param \RevPDFLib\Items\Part\AbstractPart $part
+     * 
+     * @return int 
+     */
+    public function calculateStartPosition(\RevPDFLib\Items\Part\AbstractPart $part) {
+        $offset = 0;
+        
+        if ($part instanceof \RevPDFLib\Items\Part\PageHeader) {
+            $offset = $this->getTopMargin();
+        } elseif ($part instanceof \RevPDFLib\Items\Part\ReportHeader) {
+            if (is_null($this->getPart('PageHeader'))) {
+                $offset = 0;
+            } else {
+                $offset = $this->getPart('PageHeader')->getStartPosition();
+            }
+            $offset = $this->getTopMargin()+ $offset;
+        } else {
+            $offset = 0;
+        }
+        
+        return $offset;
     }
 
     /**
@@ -416,5 +453,5 @@ class Report
             return null;
         }
     }
-
+    
 }
