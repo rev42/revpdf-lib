@@ -92,11 +92,14 @@ class Report
      * 
      * @param array $data Data
      */
-    public function __construct($data)
+    public function __construct()
     {
         $this->dispatcher = new EventDispatcher();
         $this->dispatcher->addSubscriber(new PartListener());
-
+    }
+    
+    public function setAllProperties($data)
+    {
         $this->author = $data['report']['author'];
         $this->displayModeZoom = $data['report']['displayModeZoom'];
         $this->displayModeLayout = $data['report']['displayModeLayout'];

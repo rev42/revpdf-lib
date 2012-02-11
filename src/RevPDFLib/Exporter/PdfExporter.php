@@ -32,8 +32,7 @@ namespace RevPDFLib\Exporter;
 use RevPDFLib\Wrapper\TfpdfWrapper;
 use RevPDFLib\Wrapper\TcpdfWrapper;
 
-use Symfony\Component\DependencyInjection;
-use Symfony\Component\DependencyInjection\Reference;
+use RevPDFLib\Items\Part;
 
 /**
  * PdfExporter Class
@@ -48,17 +47,18 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class PdfExporter
 {
-    protected $dic = null;
+    protected $wrapper = null;
+    protected $report = null;
 
     /**
      * Constructor
      * 
      * @return void
      */
-    public function __construct()
+    public function __construct($wrapper, $report)
     {
-        $this->dic = new DependencyInjection\ContainerBuilder();
-        $this->dic->register('revpdflib.wrapper', 'RevPDFLib\Wrapper\TfpdfWrapper');
+        $this->wrapper = $wrapper;
+        $this->report = $report;
     }
     
     /**
@@ -69,53 +69,62 @@ class PdfExporter
      * 
      * @return boolean 
      */
-    public function buildDocument(array $report, array $data)
+    public function buildDocument(array $report)
     {
-        $this->dic->register('revpdflib.report', 'RevPDFLib\Report')->addArgument($report);
-        $this->dic->get('revpdflib.wrapper')->setReport($this->dic->get('revpdflib.report'));
+        $this->report->setAllProperties($report);
+        $this->wrapper->setReport($this->report);
+        
         if (array_key_exists('pageHeader', $report)) {
-            $this->dic->register('revpdflib.pageHeader', 'RevPDFLib\Items\Part\PageHeader')->addArgument($report['pageHeader']);
-            $this->dic->get('revpdflib.pageHeader')->setIsVisible($report['pageHeader']['isVisible']);
-            $this->dic->get('revpdflib.pageHeader')->setElements($report['pageHeader']['elements']);
-            $this->dic->get('revpdflib.report')->addPart('pageHeader', $this->dic->get('revpdflib.pageHeader'));
+            $part = new Part\PageHeader($report['pageHeader']);
+            $part->setElements($report['pageHeader']['elements']);
+            
+            $this->report->addPart('pageHeader', $part);
         }
         if (array_key_exists('reportHeader', $report)) {
-            $this->dic->register('revpdflib.reportHeader', 'RevPDFLib\Items\Part\ReportHeader')->addArgument($report['reportHeader']);
-            $this->dic->get('revpdflib.reportHeader')->setIsVisible($report['reportHeader']['isVisible']);
-            $this->dic->get('revpdflib.reportHeader')->setElements($report['reportHeader']['elements']);
-            $this->dic->get('revpdflib.report')->addPart('reportHeader', $this->dic->get('revpdflib.reportHeader'));
+            $part = new Part\ReportHeader($report['reportHeader']);
+            $part->setElements($report['reportHeader']['elements']);
+            
+            $this->report->addPart('reportHeader', $part);
         }
         if (array_key_exists('details', $report) && count($report['details']) > 0) {
-            $this->dic->register('revpdflib.details', 'RevPDFLib\RevPDFLib\Items\Part\Details')->addArgument($report['details']);
-            $this->dic->get('revpdflib.details')->setStartPosition(intval($this->dic->get('revpdflib.report')->getTopMargin()));
-            $this->dic->get('revpdflib.details')->setElements($report['details']['elements']);
-            $this->dic->get('revpdflib.report')->addPart('details', $this->dic->get('revpdflib.details'));
+            $part = new Part\Details($report['details']);
+            $part->setElements($report['reportHeader']['elements']);
+            
+            $this->report->addPart('details', $part);
         }
         
-        $this->dic->get('revpdflib.wrapper')->configure($this->dic->get('revpdflib.report')->getAllProperties());
-        
-        $this->dic->get('revpdflib.wrapper')->openDocument();
+        $this->wrapper->configure($this->report->getAllProperties());
+    }
+    
+    /**
+     * Generate document
+     * 
+     * @return boolean 
+     */
+    public function generateDocument($data)
+    {
+        $this->wrapper->openDocument();
         
         $rowsCount = count($data);
         
         for ($i = 0; $i < $rowsCount; $i++) {
-            if ($this->dic->get('revpdflib.reportHeader')->isDisplayed() === false) {
-                $this->dic->get('revpdflib.wrapper')->writePDF($this->dic->get('revpdflib.reportHeader'), $this->dic->get('revpdflib.reportHeader')->getElements());
-                $this->dic->get('revpdflib.reportHeader')->setIsDisplayed(true);
+            if ($this->report->getPart('reportheader')->isDisplayed() === false) {
+                $this->wrapper->writePDF($this->report->getPart('reportheader'), $this->report->getPart('reportheader')->getElements());
+                $this->report->getPart('reportheader')->setIsDisplayed(true);
             }
-            if (count($report['details']) > 0) {
-                if ($report['details']['isVisible'] != 1) {
+            if (!is_null($this->report->getPart('details'))) {
+                if ($this->report->getPart('details')->isVisible === false) {
                     return false;
                 }
             
-                $return = $this->dic->get('revpdflib.wrapper')->writePDF($this->dic->get('revpdflib.details'), $this->dic->get('revpdflib.details')->getElements());
+                $return = $this->wrapper->writePDF($this->report->getPart('details'), $this->report->getPart('details')->getElements());
 
                 if ($return === false) {
                     break;
                 }
             }
         }
-        $this->dic->get('revpdflib.wrapper')->closeDocument();
-        $this->dic->get('revpdflib.wrapper')->outputDocument();
+        $this->wrapper->closeDocument();
+        $this->wrapper->outputDocument();
     }
 }

@@ -10,11 +10,34 @@
         
         <!-- RevPDFLib Exporter -->
         <parameter key="revpdflib.exporter.class">RevPDFLib\Exporter\PdfExporter</parameter>
+        
+        <!-- PDF Wrapper -->
+        <parameter key="revpdflib.tcpdfwrapper.class">RevPDFLib\Wrapper\TcpdfWrapper</parameter>
+        <parameter key="revpdflib.tfpdfwrapper.class">RevPDFLib\Wrapper\TfpdfWrapper</parameter>
+        
+        <!-- PDF Writer -->
+        <parameter key="revpdflib.tcpdfwriter.class">RevPDFLib\Writer\TcpdfWriter</parameter>
+        <parameter key="revpdflib.tfpdfwriter.class">RevPDFLib\Writer\TfpdfWriter</parameter>
+        
+        <!-- Report -->
+        <parameter key="revpdflib.report.class">RevPDFLib\Report</parameter>
     </parameters>
     
     <services>
         <service id="revpdflib.event_dispatcher" class="%revpdflib.event_dispatcher.class%" />
-        <service id="revpdflib.exporter" class="%revpdflib.exporter.class%" />
+        
+        <service id="revpdflib.tfpdfwriter" class="%revpdflib.tfpdfwriter.class%" />
+        <service id="revpdflib.tfpdfwriter" class="%revpdflib.tfpdfwriter.class%" />
+        
+        <service id="revpdflib.tcpdfwrapper" class="%revpdflib.tfpdfwrapper.class%" />
+        <service id="revpdflib.tfpdfwrapper" class="%revpdflib.tfpdfwrapper.class%" />
+        
+        <service id="revpdflib.report" class="%revpdflib.report.class%" />
+        
+        <service id="revpdflib.exporter" class="%revpdflib.exporter.class%">
+            <argument type="service" id="revpdflib.tfpdfwrapper"/>
+            <argument type="service" id="revpdflib.report"/>
+        </service>
     </services>
     
 </container>

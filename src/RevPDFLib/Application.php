@@ -147,8 +147,8 @@ class Application
         $data = $this->getDic()->get('revpdflib.provider')->data;
         
         // Build document and generate it
-        $document = $this->getDic()->get('revpdflib.exporter')->buildDocument($report, $data);
-
+        $this->getDic()->get('revpdflib.exporter')->buildDocument($report);
+        $document = $this->getDic()->get('revpdflib.exporter')->generateDocument($data);
         return $document;
     }
 }
