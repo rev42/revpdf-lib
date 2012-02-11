@@ -532,7 +532,7 @@ abstract class AbstractElement
         //$this->fontSize = $elementInfo['size'];
         $this->width = $elementInfo['width'];
         $this->height = $elementInfo['height'];
-        //$this->border = $elementInfo['border'];
+        $this->border = $elementInfo['border'];
         //$this->borderWidth = $elementInfo['borderWidth'];
         //$this->alignment = $elementInfo['alignment'];
         //$this->setFillColor($elementInfo['fillColor']);
