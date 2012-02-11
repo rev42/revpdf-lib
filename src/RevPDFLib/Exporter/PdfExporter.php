@@ -132,7 +132,7 @@ class PdfExporter
         }
         if (array_key_exists('details', $reportData)
             && count($reportData['details']) > 0
-           ) {
+        ) {
             $part = new Part\Details($reportData['details']);
             
             $this->report->addPart('details', $part);
