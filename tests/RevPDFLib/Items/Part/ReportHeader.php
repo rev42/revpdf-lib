@@ -44,7 +44,6 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
     {
         $this->part->setStartPosition(10);
         $this->assertEquals(10, $this->part->getStartPosition());
-        
     }
     
     public function testGetHeight()
