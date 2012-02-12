@@ -562,6 +562,17 @@ abstract class AbstractElement
      */
     function setProperties($elementInfo)
     {
+        $defaults = array(
+            'posX' => 0,
+            'posY' => 0,
+            'width' => 50,
+            'height' => 10,
+            'border' => 0,
+            'type' => 'textfield',
+            'value' => ''
+        );
+        $elementInfo = array_merge($defaults, $elementInfo);
+        
         $this->posx = $elementInfo['posX'];
         $this->posy = $elementInfo['posY'];
         //$this->font = $elementInfo['fontFamily'];
