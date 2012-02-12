@@ -50,7 +50,62 @@ use \tFPDF;
  */
 class TfpdfWriter extends \tFPDF
 {
+    var $endPosition;
+    var $currentPosition;
+    
+    /**
+     * Set Current Position
+     * 
+     * @param int $value Position
+     * 
+     * @return void
+     */
+    public function setCurrentPosition($value)
+    {
+        $this->currentPosition = $value;
+    }
+    
+    /**
+     * Get Current Position
+     * 
+     * @return int
+     */
+    public function getCurrentPosition()
+    {
+        return $this->currentPosition;
+    }
+    
+    /**
+     * Get End Position
+     * 
+     * @return int
+     */
+    public function getEndPosition()
+    {
+        return $this->endPosition;
+    }
 
+    /**
+     * set End Position
+     * 
+     * @param int $endPosition End Position Y for each page
+     * 
+     * @return void
+     */
+    public function setEndPosition($endPosition)
+    {
+        $this->endPosition = $endPosition;
+        /*
+        if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
+            $this->endPosition = intval($this->writer->h - $endPosition - $this->getReport()->getPart('partFooter')->getHeight());
+            $this->SetAutoPageBreak(1, $endPosition + $this->getReport()->getPart('partFooter')->getHeight());
+        } else {
+            $this->endPosition = intval($this->writer->h - $endPosition);
+            $this->SetAutoPageBreak(1, $endPosition);
+        }   
+         */
+    }
+    
     /**
      * Set Page Header part
      * 
@@ -111,6 +166,8 @@ class TfpdfWriter extends \tFPDF
         if (count($elements) <= 0) {
             return false;
         }
+        
+        $this->setCurrentPosition($this->getTopMargin());
 
         foreach ($elements as $element) {
             $this->setXY(
@@ -124,6 +181,8 @@ class TfpdfWriter extends \tFPDF
                 $element->getBorder()
             );
         }
+        $newPosition = $this->getTopMargin() + $data->getHeight();
+        $this->setCurrentPosition($newPosition);
     }
 
 }

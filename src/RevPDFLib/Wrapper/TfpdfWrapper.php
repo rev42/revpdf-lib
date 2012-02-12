@@ -99,8 +99,14 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
      */
     public function configure($report)
     {
-        $this->setEndPosition($report['bottomMargin']);
-        $this->setCurrentPosition($report['topMargin']);
+        if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
+            $this->writer->setEndPosition(intval($this->writer->h - $report['bottomMargin'] - $this->getReport()->getPart('partFooter')->getHeight()));
+            $this->writer->SetAutoPageBreak(1, $report['bottomMargin'] + $this->getReport()->getPart('partFooter')->getHeight());
+        } else {
+            $this->writer->setEndPosition(intval($this->writer->h - $report['bottomMargin']));
+            $this->writer->SetAutoPageBreak(1, $report['bottomMargin']+10);
+        }
+        $this->writer->setCurrentPosition($report['topMargin']);
         $this->writer->SetAuthor($report['author']);
         $this->writer->SetCreator(Application::NAME);
         $this->writer->SetDisplayMode(
@@ -195,84 +201,36 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
      */
     public function writePDF(AbstractPart $part, array $data)
     {
-        // Set current position at Part start position
-        $this->setCurrentPosition($part->getStartPosition());
-        
         if (count($data) <= 0) {
             return false;
         }
         
         foreach ($data as $element) {
             // Create new page if overlapping
-            if ($this->getCurrentPosition() + $element->getHeight() >= $this->getEndPosition()) {
+            if (intval($this->writer->getCurrentPosition() + $element->getPosY() + $element->getHeight()) >= intval($this->writer->getEndPosition())) {
                 $this->writer->AddPage($this->report->getPageOrientation());
-                $this->setCurrentPosition($part->getStartPosition());
+                $this->writer->setCurrentPosition($part->getStartPosition());
             }
+                
             $this->writer->setXY(
                 $element->getPosX() + $this->getReport()->getLeftMargin(), 
-                $element->getPosY() + $part->getStartPosition()
+                $element->getPosY() + $this->writer->getCurrentPosition()
             );
             $this->writer->Cell(
                 $element->getWidth(),
                 $element->getHeight(),
-                $element->getValue(),
+                //$element->getValue(),
+                $element->getPosY() + $this->writer->getCurrentPosition().' - '.$element->getHeight(),
                 $element->getBorder()
             );
         }
         
+        $newPosition = $this->writer->getCurrentPosition() + $part->getHeight();
+        $this->writer->setCurrentPosition($newPosition);
+        
         return true;
     }
-    
-    /**
-     * Set Current Position
-     * 
-     * @param int $value Position
-     * 
-     * @return void
-     */
-    public function setCurrentPosition($value)
-    {
-        $this->currentPosition = $value;
-    }
-    
-    /**
-     * Get Current Position
-     * 
-     * @return int
-     */
-    public function getCurrentPosition()
-    {
-        return $this->currentPosition;
-    }
-    
-    /**
-     * Get End Position
-     * 
-     * @return int
-     */
-    public function getEndPosition()
-    {
-        return $this->endPosition;
-    }
 
-    /**
-     * set End Position
-     * 
-     * @param int $endPosition End Position Y for each page
-     * 
-     * @return void
-     */
-    public function setEndPosition($endPosition)
-    {
-        if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
-            $this->endPosition = intval($this->writer->h - $endPosition - $this->getReport()->getPart('partFooter')->getHeight());
-            $this->writer->SetAutoPageBreak(1, $endPosition + $this->getReport()->getPart('partFooter')->getHeight());
-        } else {
-            $this->endPosition = intval($this->writer->h - $endPosition);
-            $this->writer->SetAutoPageBreak(1, $endPosition);
-        }
-    }
-    
     /**
      * Set Report
      * 
@@ -293,6 +251,18 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     public function getReport()
     {
         return $this->report;
+    }
+    
+    /**
+     * Alias Nb Pages 
+     * 
+     * @param string $alias Alias
+     * 
+     * @return void
+     */
+    public function aliasNbPages($alias='{nb}')
+    {
+        $this->writer->AliasNbPages($alias);
     }
 }
 

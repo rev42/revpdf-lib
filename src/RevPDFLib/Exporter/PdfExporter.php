@@ -155,6 +155,7 @@ class PdfExporter
         $rowsCount = count($data);
         
         for ($i = 0; $i < $rowsCount; $i++) {
+            $this->wrapper->aliasNbPages();
             if ($this->report->getPart('reportheader')->isDisplayed() === false) {
                 $this->wrapper->writePDF($this->report->getPart('reportheader'), $this->report->getPart('reportheader')->getElements());
                 $this->report->getPart('reportheader')->setIsDisplayed(true);
@@ -165,7 +166,7 @@ class PdfExporter
                 }
             
                 $return = $this->wrapper->writePDF($this->report->getPart('details'), $this->report->getPart('details')->getElements());
-
+                
                 if ($return === false) {
                     break;
                 }

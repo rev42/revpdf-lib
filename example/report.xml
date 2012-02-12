@@ -19,19 +19,16 @@
         <value>books.csv</value>
     </source>
     <pageHeader height="20" isVisible="1" backgroundColor="#F00">
-        <textField format="text" posX="0" posY="0" height="5" width="60" border="1">pageHeader textField1</textField>
-        <textField format="text" posX="0" posY="5" height="5" width="60" border="1">pageHeader textField2</textField>
-        <textZone format="text" posX="0" posY="10" height="10" width="60" border="1">pageHeader textZone</textZone>
+        <textField format="text" posX="80" posY="5" height="5" width="42" border="1">Liste des articles</textField>
     </pageHeader>
-    <reportHeader height="100" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="60" posY="0" height="5" width="60" border="1">reportHeader textField1</textField>
-        <textField format="text" posX="60" posY="5" height="5" width="60" border="1">reportHeader textField2</textField>
-        <textZone format="text" posX="60" posY="10" height="40" width="60" border="1">reportHeader textZone</textZone>
-        <textZone format="text" posX="60" posY="50" height="50" width="60" border="1">reportHeader textZone2</textZone>
+    <reportHeader height="10" isVisible="1" backgroundColor="#FFF">
+        <textField format="text" posX="0" posY="0" height="10" width="100" border="1">reportHeader Désignation</textField>
+        <textField format="text" posX="100" posY="0" height="10" width="25" border="1">reportHeader Prix achat</textField>
+        <textField format="text" posX="125" posY="0" height="10" width="25" border="1">reportHeader Prix vente</textField>
     </reportHeader>
-    <details height="15" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="0" posY="0" height="5" width="60" border="1">data textField1</textField>
-        <textField format="text" posX="0" posY="5" height="5" width="60" border="1">data textField2</textField>
-        <textZone format="text" posX="0" posY="10" height="5" width="60" border="1">data textZone</textZone>
+    <details height="40" isVisible="1" backgroundColor="#FFF">
+        <textZone format="text" posX="0" posY="0" height="40" width="100" border="1">data Désignation</textZone>
+        <textZone format="text" posX="100" posY="0" height="40" width="25" border="1">data prixachat</textZone>
+        <textZone format="text" posX="125" posY="0" height="40" width="25" border="1">data prixvente</textZone>
     </details>
 </RevPDFLib>
