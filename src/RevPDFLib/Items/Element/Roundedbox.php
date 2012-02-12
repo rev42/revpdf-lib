@@ -30,7 +30,7 @@
 namespace RevPDFLib\Items\Element;
 
 /**
- * Element Factory Class
+ * Roundedbox Class
  *
  * @category   PDF
  * @package    RevPDFLib
@@ -40,45 +40,7 @@ namespace RevPDFLib\Items\Element;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class FactoryElement
+class Roundedbox extends AbstractElement
 {
     
-    /**
-     * Element factory
-     *
-     * @param string $type type of Element to generate
-     *
-     * @return object
-     */
-    public static function getFactory($type)
-    {
-        switch (strtolower($type)) {
-        case 'textzone':
-            return new Textzone();
-            break;
-        case 'pagenumber':
-            return new Pagenumber();
-            break;
-        case 'textfield':
-            return new Textfield();
-            break;
-        case 'image':
-            return new Image();
-            break;
-        case 'roundedbox':
-            return new Roundedbox();
-            break;
-        case 'rectangle':
-            return new Rectangle();
-            break;
-        case 'line':
-            return new Line();
-            break;
-        default:
-            throw new \InvalidArgumentException('This element type is not supported : ' . $type);
-            break;
-        }
-    }
 }
-
-?>
