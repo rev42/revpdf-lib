@@ -105,12 +105,9 @@ class TfpdfWriter extends \tFPDF
         if (count($data) <= 0 || $data->isVisible() === false) {
             return;
         }
-        //$this->setCurrentRevPDFLib\Items\Part\AbstractPartNumber($data->number);
-        // If we have an header, the startPosition is the TopMargin + header height
-        //$this->report->getPart('pageHeader')->setStartPosition($this->tMargin);
-        // The current position has to be reset at the Top Margin value
-        //$this->setCurrentPosition($this->report->getTopMargin());
+        
         $elements = $data->getElements();
+        
         if (count($elements) <= 0) {
             return false;
         }
@@ -120,14 +117,12 @@ class TfpdfWriter extends \tFPDF
                 $element->getPosX() + $this->getLeftMargin(),
                 $element->getPosY() + $this->getTopMargin()
             );
-            $this->Cell($element->getWidth(), $element->getHeight(), $this->x.'/'.$this->y.'h='.$element->getHeight(), $element->getBorder());
-            /*
             $this->Cell(
                 $element->getWidth(),
                 $element->getHeight(),
                 $element->getValue(),
                 $element->getBorder()
-            );*/
+            );
         }
     }
 
