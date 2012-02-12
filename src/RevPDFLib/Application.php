@@ -93,7 +93,7 @@ class Application
     /**
      * Set Container
      * 
-     * @param string \Symfony\Component\DependencyInjection\ContainerBuilder
+     * @param string ContainerBuilder ContainerBuilder
      */
     public function setDic(\Symfony\Component\DependencyInjection\ContainerBuilder $value)
     {
@@ -144,7 +144,7 @@ class Application
         // Get data provider and parse data
         $this->selectDataProvider($report['source']['provider']);
         $this->getDic()->get('revpdflib.provider')->parse($report['source']['value']);
-        $data = $this->getDic()->get('revpdflib.provider')->data;
+        $data = $this->getDic()->get('revpdflib.provider')->getData();
         
         // Build document
         $this->getDic()->get('revpdflib.exporter')->buildDocument($report);
