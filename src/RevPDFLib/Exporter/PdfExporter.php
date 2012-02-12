@@ -160,7 +160,7 @@ class PdfExporter
                 $this->report->getPart('reportheader')->setIsDisplayed(true);
             }
             if (!is_null($this->report->getPart('details'))) {
-                if ($this->report->getPart('details')->isVisible === false) {
+                if ($this->report->getPart('details')->isVisible() === false) {
                     return false;
                 }
             
