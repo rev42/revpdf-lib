@@ -350,7 +350,11 @@ abstract class AbstractElement
      */
     public function setBorder($border)
     {
-        $this->border = $border;
+        $allowedValues = array('L', 'R', 'B', 'T');
+        $values = str_split($border);
+        $result = array_intersect($allowedValues, $values);
+        
+        $this->border = implode('', $result);
     }
     /**
      * get Border Width
@@ -384,12 +388,16 @@ abstract class AbstractElement
     /**
      * set Alignment
      *
-     * @param string $alignment Horizontal alignment
+     * @param string $alignment Horizontal alignment (L, C or R)
      *
      * @return void
      */
     public function setAlignment($alignment)
     {
+        $allowedAlignements = array('L', 'C', 'R');
+        if (!in_array($alignment, $allowedAlignements)) {
+            $alignment = 'L';
+        }
         $this->alignment = $alignment;
     }
     /**
@@ -410,7 +418,10 @@ abstract class AbstractElement
      */
     public function setFillColor($fillColor)
     {
-        $this->fillColor = "#" . $fillColor;
+        if ($fillColor[0] != '#') {
+            $fillColor = "#" . $fillColor;
+        }
+        $this->fillColor = $fillColor;
     }
 
     /**
@@ -432,7 +443,11 @@ abstract class AbstractElement
      */
     public function setFillStyle($fillStyle)
     {
-        $this->fillStyle = $fillStyle;
+        $allowedValues = array('F', 'D');
+        $values = str_split($fillStyle);
+        $result = array_intersect($allowedValues, $values);
+        
+        $this->fillStyle = implode('', $result);
     }
 
     /**
