@@ -144,6 +144,8 @@ class PdfExporter
     /**
      * Generate document
      * 
+     * @param array $data Data
+     * 
      * @return boolean 
      */
     public function generateDocument($data)

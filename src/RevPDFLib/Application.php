@@ -94,8 +94,10 @@ class Application
      * Set Container
      * 
      * @param string ContainerBuilder ContainerBuilder
+     * 
+     * @return void
      */
-    public function setDic(\Symfony\Component\DependencyInjection\ContainerBuilder $value)
+    public function setDic(DependencyInjection\ContainerBuilder $value)
     {
         $this->dic = $value;
     }
@@ -115,7 +117,7 @@ class Application
     /**
      * Export data into PDF
      * 
-     * @param array $data
+     * @param array $data Data
      * 
      * @return array
      * 

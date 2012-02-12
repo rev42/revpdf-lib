@@ -42,6 +42,13 @@ namespace RevPDFLib\Wrapper;
  */
 abstract class AbstractWrapper
 {
+    /**
+     * Open Document
+     */
     abstract function openDocument();
+    
+    /**
+     * Close Document
+     */
     abstract function closeDocument();
 }

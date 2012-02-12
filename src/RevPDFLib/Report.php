@@ -395,7 +395,7 @@ class Report
     /**
      * Remove a part
      * 
-     * @param string $type 
+     * @param string $type Part Type
      * 
      * @return boolean
      */
@@ -421,7 +421,8 @@ class Report
      * 
      * @return int 
      */
-    public function calculateStartPosition(Part\AbstractPart $part) {
+    public function calculateStartPosition(Part\AbstractPart $part) 
+    {
         $offset = 0;
         
         if ($part instanceof Part\PageHeader) {
