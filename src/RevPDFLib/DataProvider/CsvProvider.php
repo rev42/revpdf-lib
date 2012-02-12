@@ -43,7 +43,7 @@ namespace RevPDFLib\DataProvider;
 class CsvProvider implements DataProviderInterface
 {
     protected $data;
-    
+    protected $headers = true;
     /**
      * Get Data
      * 
@@ -69,10 +69,17 @@ class CsvProvider implements DataProviderInterface
     /**
      * Parse data
      * 
+     * @param string $sourceValue CSV filename
+     * 
      * @return void 
      */
-    public function parse()
+    public function parse($sourceValue)
     {
-        
+        $data = array();
+        $reader = new \EasyCSV\Reader($sourceValue);
+        while ($row = $reader->getRow()) {
+            $data[] = $row;
+        }
+        $this->setData($data);
     }
 }

@@ -12,16 +12,31 @@
             "email": "contact@revpdf.org"
         }
     ],
+    "repositories": {
+        "jwageEasyCSV": {
+            "package": {
+                "name": "EasyCSV",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/jwage/EasyCSV.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    },
     "require": {
         "php": ">=5.3.2",
         "symfony/http-kernel": "2.1.*",
         "symfony/event-dispatcher": "2.1.*",
         "symfony/dependency-injection": "2.1.*",
-        "symfony/config":"2.1.*"
+        "symfony/config":"2.1.*",
+        "EasyCSV": "master"
     },
     "autoload": {
         "psr-0": {
-            "RevPDFLib": "src/"
+            "RevPDFLib": "src/",
+            "EasyCSV": "vendor/EasyCSV/lib/"
         }
     }
 }
