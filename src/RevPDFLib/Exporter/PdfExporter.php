@@ -110,7 +110,7 @@ class PdfExporter
 
         
     /**
-     * Build document 
+     * Configure report object by setting properties and adding parts
      * 
      * @param array $reportData Data
      * 
