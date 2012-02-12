@@ -104,7 +104,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
             $this->writer->SetAutoPageBreak(1, $report['bottomMargin'] + $this->getReport()->getPart('partFooter')->getHeight());
         } else {
             $this->writer->setEndPosition(intval($this->writer->h - $report['bottomMargin']));
-            $this->writer->SetAutoPageBreak(1, $report['bottomMargin']+10);
+            $this->writer->SetAutoPageBreak(1, $report['bottomMargin']);
         }
         $this->writer->setCurrentPosition($report['topMargin']);
         $this->writer->SetAuthor($report['author']);
@@ -204,10 +204,10 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         if (count($data) <= 0) {
             return false;
         }
-        
+
         foreach ($data as $element) {
             // Create new page if overlapping
-            if (intval($this->writer->getCurrentPosition() + $element->getPosY() + $element->getHeight()) >= intval($this->writer->getEndPosition())) {
+            if (intval($this->writer->getCurrentPosition() + $element->getHeight()) >= intval($this->writer->getEndPosition())) {
                 $this->writer->AddPage($this->report->getPageOrientation());
                 $this->writer->setCurrentPosition($part->getStartPosition());
             }

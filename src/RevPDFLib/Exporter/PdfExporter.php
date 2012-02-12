@@ -159,6 +159,7 @@ class PdfExporter
             if ($this->report->getPart('reportheader')->isDisplayed() === false) {
                 $this->wrapper->writePDF($this->report->getPart('reportheader'), $this->report->getPart('reportheader')->getElements());
                 $this->report->getPart('reportheader')->setIsDisplayed(true);
+                $this->report->getPart('details')->setStartPosition($this->report->getPart('details')->getStartPosition() - $this->report->getPart('reportheader')->getHeight());
             }
             if (!is_null($this->report->getPart('details'))) {
                 if ($this->report->getPart('details')->isVisible() === false) {
