@@ -56,7 +56,7 @@ class FactoryElementTest extends \PHPUnit_Framework_TestCase {
      * @covers RevPDFLib\Items\Element\FactoryElement::getFactory
      * 
      * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage This element type is not supported : qsd
+     * @expectedExceptionMessage Type NOT supported : qsd
      */
     public function testException()
     {

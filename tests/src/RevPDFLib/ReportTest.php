@@ -170,7 +170,26 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(2, $this->report->getParts());
     }
     
-    public function testCalculateStartPosition()
+    public function testCalculateStartPositionPageHeader()
+    {
+        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+        $pageHeader->expects($this->any())
+                   ->method('getStartPosition')
+                   ->will($this->returnValue(10));
+        $pageHeader->expects($this->any())
+                   ->method('getHeight')
+                   ->will($this->returnValue(40));
+        $pageHeader->expects($this->any())
+                   ->method('isVisible')
+                   ->will($this->returnValue(true));
+        
+        $this->report->addPart('pageheader', $pageHeader);
+        $this->assertEquals(10, $this->report->calculateStartPosition($pageHeader));
+    }
+    
+    public function testCalculateStartPositionReportHeader()
     {
         $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
@@ -200,6 +219,21 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
     }
     
+    public function testCalculateStartPositionDetails()
+    {
+        $pageHeader = $this->getPageHeader();
+        $reportHeader = $this->getReportHeader();
+        
+        $details = $this->getMockBuilder('RevPDFLib\Items\Part\Details')
+                        ->disableOriginalConstructor()
+                        ->getMock();
+        
+        $this->report->addPart('pageheader', $pageHeader);
+        $this->report->addPart('reportheader', $reportHeader);
+        $this->report->addPart('details', $details);
+        $this->assertEquals(70, $this->report->calculateStartPosition($details));
+    }
+    
     public function testRemovePart()
     {
         $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
@@ -225,5 +259,38 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $result = $this->report->removePart('reportheader');
         $this->assertCount(0, $this->report->getParts());
         $this->assertEquals(false, $result);
+    }
+    
+    protected function getPageHeader()
+    {
+        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+        $pageHeader->expects($this->any())
+                   ->method('getStartPosition')
+                   ->will($this->returnValue(10));
+        $pageHeader->expects($this->any())
+                   ->method('getHeight')
+                   ->will($this->returnValue(40));
+        $pageHeader->expects($this->any())
+                   ->method('isVisible')
+                   ->will($this->returnValue(true));
+        
+        return $pageHeader;
+    }
+    
+    protected function getReportHeader()
+    {
+        $reportHeader = $this->getMockBuilder('RevPDFLib\Items\Part\ReportHeader')
+                             ->disableOriginalConstructor()
+                             ->getMock();
+        $reportHeader->expects($this->any())
+                     ->method('getHeight')
+                     ->will($this->returnValue(20));
+        $reportHeader->expects($this->any())
+                     ->method('isVisible')
+                     ->will($this->returnValue(true));
+        
+        return $reportHeader;
     }
 }

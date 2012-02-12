@@ -438,6 +438,14 @@ class Report
                 }
             }
             $offset = $this->getTopMargin() + $offset;
+        } elseif ($part instanceof Part\Details) {
+            if (!is_null($this->getPart('pageHeader')) && $this->getPart('pageHeader')->isVisible()) {
+                $offset += $this->getPart('pageHeader')->getHeight();
+            }
+            if (!is_null($this->getPart('reportHeader')) && $this->getPart('reportHeader')->isVisible()) {
+                $offset += $this->getPart('reportHeader')->getHeight();
+            }
+            $offset += $this->getTopMargin();
         } else {
             $offset = 0;
         }
