@@ -75,7 +75,7 @@ class FactoryElement
             return new Line();
             break;
         default:
-            throw new \InvalidArgumentException('This element type is not supported : ' . $type);
+            throw new \InvalidArgumentException('Type NOT supported : ' . $type);
             break;
         }
     }
