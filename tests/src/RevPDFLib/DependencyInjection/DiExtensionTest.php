@@ -36,7 +36,10 @@ class DiExtensionTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testGetContainer().
      */
     public function testGetContainer() {
-        $this->assertInstanceOf('Symfony\Component\DependencyInjection\ContainerBuilder', $this->object->getContainer());
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+                'This test has not been implemented yet.'
+        );
     }
 
 }
