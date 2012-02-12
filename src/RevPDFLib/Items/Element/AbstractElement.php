@@ -219,7 +219,7 @@ abstract class AbstractElement
      */
     public function isAutoExtend()
     {
-        return $this->isAutoExtend;
+        return (int) $this->isAutoExtend;
     }
     /**
      * setIsAutoExtend
@@ -250,7 +250,11 @@ abstract class AbstractElement
      */
     public function setStyle($style)
     {
-        $this->style = $style;
+        $allowedValues = array('U', 'I', 'B', 'N');
+        $values = str_split($style);
+        $result = array_intersect($allowedValues, $values);
+        
+        $this->style = implode('', $result);
     }
     /**
      * get Font Size
@@ -270,6 +274,9 @@ abstract class AbstractElement
      */
     public function setFontSize($fontSize)
     {
+        if ($fontSize <= 0 || !is_numeric($fontSize)) {
+            $fontSize = 12;
+        }
         $this->fontSize = $fontSize;
     }
     /**
@@ -279,7 +286,7 @@ abstract class AbstractElement
      */
     public function getWidth()
     {
-        return $this->width;
+        return intval($this->width);
     }
     /**
      * set Width
@@ -290,7 +297,7 @@ abstract class AbstractElement
      */
     public function setWidth($width)
     {
-        $this->width = $width;
+        $this->width = (int) $width;
     }
     /**
      * get Height
@@ -310,7 +317,7 @@ abstract class AbstractElement
      */
     public function setHeight($height)
     {
-        $this->height = $height;
+        $this->height = (int) $height;
     }
     /**
      * get Height Offset
@@ -468,7 +475,10 @@ abstract class AbstractElement
      */
     public function setTextColor($textColor)
     {
-        $this->textColor = "#" . $textColor;
+        if ($textColor[0] != '#') {
+            $textColor = "#" . $textColor;
+        }
+        $this->textColor = $textColor;
     }
     /**
      * get Format
@@ -529,6 +539,18 @@ abstract class AbstractElement
     function getValue()
     {
         return $this->value;
+    }
+    
+    /**
+     * set Field
+     *
+     * @param string $value Value
+     * 
+     * @return string Element field
+     */
+    function setValue($value)
+    {
+        $this->value = $value;
     }
 
     /**

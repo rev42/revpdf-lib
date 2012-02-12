@@ -35,15 +35,12 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testGetPosx().
      */
     public function testGetPosx() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setPosx(50);
+        $this->assertEquals(50, $this->object->getPosx());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setPosx
-     * @todo Implement testSetPosx().
      */
     public function testSetPosx() {
         $this->object->setPosx(50);
@@ -55,15 +52,12 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testGetPosy().
      */
     public function testGetPosy() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setPosy(100);
+        $this->assertEquals(100, $this->object->getPosy());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setPosy
-     * @todo Implement testSetPosy().
      */
     public function testSetPosy() {
         $this->object->setPosy(100);
@@ -72,57 +66,52 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getFont
-     * @todo Implement testGetFont().
      */
     public function testGetFont() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFont('arial');
+        $this->assertEquals('arial', $this->object->getFont());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setFont
-     * @todo Implement testSetFont().
      */
     public function testSetFont() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFont('arial');
+        $this->assertEquals('arial', $this->object->getFont());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::isAutoExtend
-     * @todo Implement testIsAutoExtend().
      */
     public function testIsAutoExtend() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setIsAutoExtend(1);
+        $this->assertEquals(1, $this->object->isAutoExtend());
+        $this->object->setIsAutoExtend(0);
+        $this->assertEquals(0, $this->object->isAutoExtend());
+        $this->object->setIsAutoExtend('yes');
+        $this->assertEquals(0, $this->object->isAutoExtend());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setIsAutoExtend
-     * @todo Implement testSetIsAutoExtend().
      */
     public function testSetIsAutoExtend() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setIsAutoExtend(1);
+        $this->assertEquals(1, $this->object->isAutoExtend());
+        $this->object->setIsAutoExtend(0);
+        $this->assertEquals(0, $this->object->isAutoExtend());
+        $this->object->setIsAutoExtend('yes');
+        $this->assertEquals(0, $this->object->isAutoExtend());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getStyle
-     * @todo Implement testGetStyle().
      */
     public function testGetStyle() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setStyle('UIBN');
+        $this->assertEquals('UIBN', $this->object->getStyle());
+        $this->object->setStyle('UIBNEZ');
+        $this->assertEquals('UIBN', $this->object->getStyle());
     }
 
     /**
@@ -130,21 +119,20 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testSetStyle().
      */
     public function testSetStyle() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setStyle('UIBN');
+        $this->assertEquals('UIBN', $this->object->getStyle());
+        $this->object->setStyle('UIBNEZ');
+        $this->assertEquals('UIBN', $this->object->getStyle());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getFontSize
-     * @todo Implement testGetFontSize().
      */
     public function testGetFontSize() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFontSize('12');
+        $this->assertEquals('12', $this->object->getFontSize());
+        $this->object->setFontSize('A');
+        $this->assertEquals('12', $this->object->getFontSize());
     }
 
     /**
@@ -152,43 +140,40 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testSetFontSize().
      */
     public function testSetFontSize() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFontSize('12');
+        $this->assertEquals('12', $this->object->getFontSize());
+        $this->object->setFontSize('A');
+        $this->assertEquals('12', $this->object->getFontSize());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getWidth
-     * @todo Implement testGetWidth().
      */
     public function testGetWidth() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setWidth('12');
+        $this->assertEquals(12, $this->object->getWidth());
+        $this->object->setWidth('A');
+        $this->assertEquals(0, $this->object->getWidth());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setWidth
-     * @todo Implement testSetWidth().
      */
     public function testSetWidth() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setWidth('12');
+        $this->assertEquals(12, $this->object->getWidth());
+        $this->object->setWidth('A');
+        $this->assertEquals(0, $this->object->getWidth());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getHeight
-     * @todo Implement testGetHeight().
      */
     public function testGetHeight() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setHeight('12');
+        $this->assertEquals(12, $this->object->getHeight());
+        $this->object->setHeight('A');
+        $this->assertEquals(0, $this->object->getHeight());
     }
 
     /**
@@ -196,48 +181,50 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testSetHeight().
      */
     public function testSetHeight() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setHeight('12');
+        $this->assertEquals(12, $this->object->getHeight());
+        $this->object->setHeight('A');
+        $this->assertEquals(0, $this->object->getHeight());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getHeightOffset
-     * @todo Implement testGetHeightOffset().
      */
     public function testGetHeightOffset() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setHeightOffset('12');
+        $this->assertEquals(12, $this->object->getHeightOffset());
+        $this->object->setHeightOffset('A');
+        $this->assertEquals(0, $this->object->getHeightOffset());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setHeightOffset
-     * @todo Implement testSetHeightOffset().
      */
     public function testSetHeightOffset() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setHeightOffset('12');
+        $this->assertEquals(12, $this->object->getHeightOffset());
+        $this->object->setHeightOffset('A');
+        $this->assertEquals(0, $this->object->getHeightOffset());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getBorder
-     * @todo Implement testGetBorder().
      */
     public function testGetBorder() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setBorder('L');
+        $this->assertEquals('L', $this->object->getBorder());
+        $this->object->setBorder('LR');
+        $this->assertEquals('LR', $this->object->getBorder());
+        $this->object->setBorder('LRB');
+        $this->assertEquals('LRB', $this->object->getBorder());
+        $this->object->setBorder('LRBT');
+        $this->assertEquals('LRBT', $this->object->getBorder());
+        $this->object->setBorder('LRéBTAé');
+        $this->assertEquals('LRBT', $this->object->getBorder());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setBorder
-     * @todo Implement testSetBorder().
      */
     public function testSetBorder() {
         $this->object->setBorder('L');
@@ -254,18 +241,16 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getBorderWidth
-     * @todo Implement testGetBorderWidth().
      */
     public function testGetBorderWidth() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setBorderWidth('1');
+        $this->assertEquals('1', $this->object->getBorderWidth());
+        $this->object->setBorderWidth('0.2');
+        $this->assertEquals('0.2', $this->object->getBorderWidth());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setBorderWidth
-     * @todo Implement testSetBorderWidth().
      */
     public function testSetBorderWidth() {
         $this->object->setBorderWidth('1');
@@ -276,18 +261,20 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getAlignment
-     * @todo Implement testGetAlignment().
      */
     public function testGetAlignment() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setAlignment('L');
+        $this->assertEquals('L', $this->object->getAlignment());
+        $this->object->setAlignment('C');
+        $this->assertEquals('C', $this->object->getAlignment());
+        $this->object->setAlignment('R');
+        $this->assertEquals('R', $this->object->getAlignment());
+        $this->object->setAlignment('Z');
+        $this->assertEquals('L', $this->object->getAlignment());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setAlignment
-     * @todo Implement testSetAlignment().
      */
     public function testSetAlignment() {
         $this->object->setAlignment('L');
@@ -302,18 +289,16 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getFillColor
-     * @todo Implement testGetFillColor().
      */
     public function testGetFillColor() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFillColor('FFF');
+        $this->assertEquals('#FFF', $this->object->getFillColor());
+        $this->object->setFillColor('#FFF');
+        $this->assertEquals('#FFF', $this->object->getFillColor());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setFillColor
-     * @todo Implement testSetFillColor().
      */
     public function testSetFillColor() {
         $this->object->setFillColor('FFF');
@@ -324,18 +309,20 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getFillStyle
-     * @todo Implement testGetFillStyle().
      */
     public function testGetFillStyle() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFillStyle('F');
+        $this->assertEquals('F', $this->object->getFillStyle());
+        $this->object->setFillStyle('D');
+        $this->assertEquals('D', $this->object->getFillStyle());
+        $this->object->setFillStyle('FD');
+        $this->assertEquals('FD', $this->object->getFillStyle());
+        $this->object->setFillStyle('FDX');
+        $this->assertEquals('FD', $this->object->getFillStyle());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setFillStyle
-     * @todo Implement testSetFillStyle().
      */
     public function testSetFillStyle() {
         $this->object->setFillStyle('F');
@@ -350,79 +337,70 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getTextColor
-     * @todo Implement testGetTextColor().
      */
     public function testGetTextColor() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setTextColor('FFF');
+        $this->assertEquals('#FFF', $this->object->getTextColor());
+        $this->object->setTextColor('#FFF');
+        $this->assertEquals('#FFF', $this->object->getTextColor());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setTextColor
-     * @todo Implement testSetTextColor().
      */
     public function testSetTextColor() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setTextColor('FFF');
+        $this->assertEquals('#FFF', $this->object->getTextColor());
+        $this->object->setTextColor('#FFF');
+        $this->assertEquals('#FFF', $this->object->getTextColor());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getFormat
-     * @todo Implement testGetFormat().
      */
     public function testGetFormat() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFormat('string');
+        $this->assertEquals('string', $this->object->getFormat());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setFormat
-     * @todo Implement testSetFormat().
      */
     public function testSetFormat() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setFormat('string');
+        $this->assertEquals('string', $this->object->getFormat());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getType
-     * @todo Implement testGetType().
      */
     public function testGetType() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setType('string');
+        $this->assertEquals('string', $this->object->getType());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setType
-     * @todo Implement testSetType().
      */
     public function testSetType() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setType('string');
+        $this->assertEquals('string', $this->object->getType());
     }
 
     /**
      * @covers RevPDFLib\Items\Element\AbstractElement::getValue
-     * @todo Implement testGetValue().
      */
     public function testGetValue() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->object->setValue('string');
+        $this->assertEquals('string', $this->object->getValue());
+    }
+    
+    /**
+     * @covers RevPDFLib\Items\Element\AbstractElement::setValue
+     */
+    public function testSetValue() {
+        $this->object->setValue('string');
+        $this->assertEquals('string', $this->object->getValue());
     }
 
     /**
@@ -430,10 +408,24 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testSetProperties().
      */
     public function testSetProperties() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
+        $data = array(
+            'posX' => 10,
+            'posY' => 12,
+            'width' => 50,
+            'height' => 60,
+            'border' => 1,
+            'type' => 'textfield',
+            'value' => 'éàç€',
         );
+        $this->object->setProperties($data);
+        
+        $this->assertEquals(10, $this->object->getPosx());
+        $this->assertEquals(12, $this->object->getPosy());
+        $this->assertEquals(50, $this->object->getWidth());
+        $this->assertEquals(60, $this->object->getHeight());
+        $this->assertEquals(1, $this->object->getBorder());
+        $this->assertEquals('textfield', $this->object->getType());
+        $this->assertEquals('éàç€', $this->object->getValue());
     }
 
     /**
