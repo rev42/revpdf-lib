@@ -44,11 +44,15 @@ abstract class AbstractWrapper
 {
     /**
      * Open Document
+     * 
+     * @return void
      */
     abstract function openDocument();
     
     /**
      * Close Document
+     * 
+     * @return void
      */
     abstract function closeDocument();
 }

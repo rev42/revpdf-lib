@@ -93,13 +93,13 @@ class Application
     /**
      * Set Container
      * 
-     * @param string ContainerBuilder ContainerBuilder
+     * @param string DependencyInjection\ContainerBuilder $val ContainerBuilder
      * 
      * @return void
      */
-    public function setDic(DependencyInjection\ContainerBuilder $value)
+    public function setDic(DependencyInjection\ContainerBuilder $val)
     {
-        $this->dic = $value;
+        $this->dic = $val;
     }
     
     /**
