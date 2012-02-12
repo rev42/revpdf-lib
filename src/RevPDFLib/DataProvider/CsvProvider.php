@@ -57,7 +57,7 @@ class CsvProvider implements DataProviderInterface
     /**
      * Set Data
      * 
-     * @param array $data 
+     * @param array $data Data
      * 
      * @return void
      */

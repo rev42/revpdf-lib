@@ -93,7 +93,7 @@ class Application
     /**
      * Set Container
      * 
-     * @param string DependencyInjection\ContainerBuilder $val ContainerBuilder
+     * @param DependencyInjection\ContainerBuilder $val ContainerBuilder
      * 
      * @return void
      */

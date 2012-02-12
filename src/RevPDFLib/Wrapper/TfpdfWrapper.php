@@ -76,7 +76,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->AddFont('Deja Vu Serif', 'B', 'DejaVuSerif-Bold.ttf', true);
         $this->writer->AddFont('Deja Vu Serif', 'BI', 'DejaVuSerif-BoldItalic.ttf', true);
         $this->writer->AddFont('Deja Vu Serif', 'I', 'DejaVuSerif-Italic.ttf', true);
-        $this->writer->AddFont('DejaVu', '','DejaVuSansCondensed.ttf',true);
+        $this->writer->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
         $this->writer->SetFont('DejaVu', '',14);
     }
     
