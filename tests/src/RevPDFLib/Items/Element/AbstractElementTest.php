@@ -388,22 +388,6 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers RevPDFLib\Items\Element\AbstractElement::getValue
-     */
-    public function testGetValue() {
-        $this->object->setValue('string');
-        $this->assertEquals('string', $this->object->getValue());
-    }
-    
-    /**
-     * @covers RevPDFLib\Items\Element\AbstractElement::setValue
-     */
-    public function testSetValue() {
-        $this->object->setValue('string');
-        $this->assertEquals('string', $this->object->getValue());
-    }
-
-    /**
      * @covers RevPDFLib\Items\Element\AbstractElement::setProperties
      * @todo Implement testSetProperties().
      */
@@ -425,7 +409,7 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(60, $this->object->getHeight());
         $this->assertEquals(1, $this->object->getBorder());
         $this->assertEquals('textfield', $this->object->getType());
-        $this->assertEquals('éàç€', $this->object->getValue());
+        $this->assertEquals('éàç€', $this->object->getField());
     }
 
     /**

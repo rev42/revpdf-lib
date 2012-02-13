@@ -16,7 +16,7 @@ class TfpdfWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $this->wrapper = null;
     }
-    
+    /*
     public function testWritePDF()
     {
         $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
@@ -48,5 +48,5 @@ class TfpdfWrapperTest extends \PHPUnit_Framework_TestCase
         
         $this->wrapper->writePDF($reportHeader, array());
         $this->assertEquals(20, $this->wrapper->getCurrentPosition());
-    }
+    }*/
 }
