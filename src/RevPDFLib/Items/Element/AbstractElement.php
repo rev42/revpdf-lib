@@ -520,37 +520,15 @@ abstract class AbstractElement
     {
         $this->type = $type;
     }
-    /**
-     * set Field
-     *
-     * @param string &$pdfDoc instance of PDF class
-     *
-     * @return void
-     
-    function setField(&$pdfDoc)
-    {
-    }*/
     
     /**
-     * get Field
+     * getField
      *
      * @return string Element field
      */
-    function getValue()
+    function getField($iterator = null)
     {
-        return $this->value;
-    }
-    
-    /**
-     * set Field
-     *
-     * @param string $value Value
-     * 
-     * @return string Element field
-     */
-    function setValue($value)
-    {
-        $this->value = $value;
+        return $this->field;
     }
 
     /**
@@ -568,8 +546,8 @@ abstract class AbstractElement
             'width' => 50,
             'height' => 10,
             'border' => 0,
-            'type' => 'textfield',
-            'value' => ''
+            'type' => 'textField',
+            'field' => ''
         );
         $elementInfo = array_merge($defaults, $elementInfo);
         
@@ -590,7 +568,7 @@ abstract class AbstractElement
         //$this->textColor = $elementInfo['textColor'];
         //$this->format = $elementInfo['format'];
         $this->type = $elementInfo['type'];
-        $this->value = $elementInfo['value'];
+        $this->field = $elementInfo['value'];
         /*
         // calculate the cell height after extension
         if ($this->isAutoExtend != '0') {

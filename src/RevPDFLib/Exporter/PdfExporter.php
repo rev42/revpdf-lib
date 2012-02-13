@@ -48,6 +48,7 @@ class PdfExporter
 {
     protected $wrapper = null;
     protected $report = null;
+    protected $recordIterator = null;
 
     /**
      * Constructor
@@ -152,7 +153,11 @@ class PdfExporter
     {
         $this->wrapper->openDocument();
         
-        $rowsCount = count($data);
+        $object = new \ArrayObject($data);
+        $this->recordIterator = $object->getIterator();
+        $iterator = $object->getIterator();
+        
+        $rowsCount = count($iterator);
         
         for ($i = 0; $i < $rowsCount; $i++) {
             $this->wrapper->aliasNbPages();
@@ -166,11 +171,13 @@ class PdfExporter
                     return false;
                 }
             
-                $return = $this->wrapper->writePDF($this->report->getPart('details'), $this->report->getPart('details')->getElements());
+                $return = $this->wrapper->writePDF($this->report->getPart('details'), $this->report->getPart('details')->getElements(), $iterator);
                 
                 if ($return === false) {
                     break;
                 }
+                $iterator->next();
+                $this->recordIterator = $iterator;
             }
         }
         $this->wrapper->closeDocument();

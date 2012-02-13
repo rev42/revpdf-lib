@@ -42,5 +42,26 @@ namespace RevPDFLib\Items\Element;
  */
 class Textzone extends AbstractElement
 {
-    
+    /**
+     * Set Textzone Value 
+     * 
+     * @param array $iterator Record iterator
+     * 
+     * @return void
+     */
+    public function getField($iterator=null)
+    {
+        $field = '';
+        $elementField = $this->field;
+        
+        $recordRows = $iterator->current();
+        if (is_array($recordRows) === false) {
+            $recordRows = (array) $recordRows;
+        }
+        if (in_array($elementField, array_keys($recordRows))) {
+            $field = $recordRows[$elementField];
+        }
+
+        return $field;
+    }
 }

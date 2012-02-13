@@ -146,7 +146,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     public function openDocument()
     {
         $this->writer->Open();
-        $this->writer->AddPage();
+        $this->writer->AddPage($this->getReport()->getPageOrientation());
     }
     
     /**
@@ -199,7 +199,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
      * 
      * @return boolean 
      */
-    public function writePDF(AbstractPart $part, array $data)
+    public function writePDF(AbstractPart $part, array $data, $iterator=null)
     {
         if (count($data) <= 0) {
             return false;
@@ -216,11 +216,12 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
                 $element->getPosX() + $this->getReport()->getLeftMargin(), 
                 $element->getPosY() + $this->writer->getCurrentPosition()
             );
+
             $this->writer->Cell(
                 $element->getWidth(),
                 $element->getHeight(),
-                //$element->getValue(),
-                $element->getPosY() + $this->writer->getCurrentPosition().' - '.$element->getHeight(),
+                $element->getField($iterator),
+                //$element->getPosY() + $this->writer->getCurrentPosition().' - '.$element->getHeight(),
                 $element->getBorder()
             );
         }

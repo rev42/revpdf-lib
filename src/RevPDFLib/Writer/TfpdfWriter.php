@@ -177,7 +177,7 @@ class TfpdfWriter extends \tFPDF
             $this->Cell(
                 $element->getWidth(),
                 $element->getHeight(),
-                $element->getValue(),
+                $element->getField(),
                 $element->getBorder()
             );
         }
