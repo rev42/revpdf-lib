@@ -400,6 +400,15 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
             'border' => 1,
             'type' => 'textfield',
             'value' => 'éàç€',
+            'forecolor' => '#FDA',
+            'backcolor' => '#ADF',
+            'font' => array(
+                'name' => 'courier',
+                'size' => 14,
+                'isUnderline' => true,
+                'isBold' => false,
+                'isItalic' => true
+            )
         );
         $this->object->setProperties($data);
         
@@ -410,6 +419,11 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(1, $this->object->getBorder());
         $this->assertEquals('textfield', $this->object->getType());
         $this->assertEquals('éàç€', $this->object->getField());
+        $this->assertEquals('UI', $this->object->getStyle());
+        $this->assertEquals('courier', $this->object->getFont());
+        $this->assertEquals('14', $this->object->getFontSize());
+        $this->assertEquals('#FDA', $this->object->getTextColor());
+        $this->assertEquals('#ADF', $this->object->getFillColor());
     }
 
     /**

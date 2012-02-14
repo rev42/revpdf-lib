@@ -550,24 +550,37 @@ abstract class AbstractElement
             'field' => '',
             'textAlignment' => '',
             'backcolor' => '#FFF',
+            'forecolor' => '#000',
             'font' => array(
                 'name' => 'arial',
                 'size' => 12,
-                'textColor' => '#000',
-                'style' => ''
+                'isUnderline' => 'false',
+                'isBold' => 'false',
+                'isItalic' => 'false',
             )
         );
         $elementInfo = array_merge($defaults, $elementInfo);
         $this->posx = $elementInfo['posX'];
         $this->posy = $elementInfo['posY'];
+        $this->setTextColor($elementInfo['forecolor']);
         
         //$this->isAutoExtend = $elementInfo['isAutoExtend'];
         if (isset($elementInfo['font'])) {
             $this->font = $elementInfo['font']['name'];
             $this->fontSize = $elementInfo['font']['size'];
-            $this->setTextColor($elementInfo['font']['textColor']);
-            $this->style = $elementInfo['font']['style'];
+            $style = '';
+            if ($elementInfo['font']['isUnderline'] == true) {
+                $style .= 'U';
+            }
+            if ($elementInfo['font']['isBold'] == true) {
+                $style .= 'B';
+            }
+            if ($elementInfo['font']['isItalic'] == true) {
+                $style .= 'I';
+            }
+            $this->setStyle($style);
         }
+        
         $this->width = $elementInfo['width'];
         $this->height = $elementInfo['height'];
         $this->border = $elementInfo['border'];

@@ -25,8 +25,8 @@
         </textField>
     </pageHeader>
     <reportHeader height="10" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="0" posY="0" height="10" width="20" border="1" backcolor="#FFFF00">
-            <font name="courier" size="16" textColor="#3366FF" style="B" />
+        <textField format="text" posX="0" posY="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00">
+            <font isUnderline="false" isBold="true" isItalic="true" name="courier" size="16" />
             Rating
         </textField>
         <textField textAlignment="R" format="text" posX="20" posY="0" height="10" width="50" border="1">
