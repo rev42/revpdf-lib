@@ -211,7 +211,8 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
                 $this->writer->AddPage($this->report->getPageOrientation());
                 $this->writer->setCurrentPosition($part->getStartPosition());
             }
-            
+            $this->writer->SetLineWidth($element->getBorderWidth());
+            $this->writer->setFillColor($element->getFillColor());
             $this->writer->setTextColor($element->getTextColor());
             $this->writer->SetFont($element->getFont(), $element->getStyle(), $element->getFontSize());
             $this->writer->setXY(
@@ -224,7 +225,9 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
                 $element->getHeight(),
                 $element->getField($iterator),
                 //$element->getPosY() + $this->writer->getCurrentPosition().' - '.$element->getHeight(),
-                $element->getBorder()
+                $element->getBorder(),
+                0,
+                $element->getAlignment()
             );
         }
         

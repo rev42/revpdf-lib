@@ -246,5 +246,23 @@ class TfpdfWriter extends \tFPDF
         $g = hexdec(substr($c, 3, 2));
         $b = hexdec(substr($c, 5, 2));
     }
+    
+    /**
+     * Set fill color
+     *
+     * @param mixed $r     Could be string or int. If string, it must be HTML code
+     * @param int   $g     Green value (optional)
+     * @param int   $b     Blue value (optional)
+     * @param int   $black Black value (optional)
+     *
+     * @return void
+     */
+    public function setFillColor($r, $g = -1, $b = -1, $black = -1)
+    {
+        if (is_string($r)) {
+            $this->html2rgb($r, $r, $g, $b);
+        }
+        parent::SetFillColor($r, $g, $b);
+    }
 
 }

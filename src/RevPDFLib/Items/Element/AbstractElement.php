@@ -548,6 +548,8 @@ abstract class AbstractElement
             'border' => 0,
             'type' => 'textField',
             'field' => '',
+            'textAlignment' => '',
+            'backcolor' => '#FFF',
             'font' => array(
                 'name' => 'arial',
                 'size' => 12,
@@ -570,9 +572,8 @@ abstract class AbstractElement
         $this->height = $elementInfo['height'];
         $this->border = $elementInfo['border'];
         //$this->borderWidth = $elementInfo['borderWidth'];
-        //$this->alignment = $elementInfo['alignment'];
-        //$this->setFillColor($elementInfo['fillColor']);
-        //$this->fillColor = $elementInfo['fillColor'];
+        $this->alignment = $elementInfo['textAlignment'];
+        $this->setFillColor($elementInfo['backcolor']);
         //$this->format = $elementInfo['format'];
         $this->type = $elementInfo['type'];
         $this->field = $elementInfo['value'];
