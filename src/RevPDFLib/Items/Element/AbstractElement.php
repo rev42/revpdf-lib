@@ -552,7 +552,7 @@ abstract class AbstractElement
             'backcolor' => '#FFF',
             'forecolor' => '#000',
             'font' => array(
-                'name' => 'arial',
+                'fontName' => 'arial',
                 'size' => 12,
                 'isUnderline' => 'false',
                 'isBold' => 'false',
@@ -566,7 +566,7 @@ abstract class AbstractElement
         
         //$this->isAutoExtend = $elementInfo['isAutoExtend'];
         if (isset($elementInfo['font'])) {
-            $this->font = $elementInfo['font']['name'];
+            $this->font = $elementInfo['font']['fontName'];
             $this->fontSize = $elementInfo['font']['size'];
             $style = '';
             if ($elementInfo['font']['isUnderline'] == true) {

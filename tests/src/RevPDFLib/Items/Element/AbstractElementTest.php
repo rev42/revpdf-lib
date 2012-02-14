@@ -403,7 +403,7 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
             'forecolor' => '#FDA',
             'backcolor' => '#ADF',
             'font' => array(
-                'name' => 'courier',
+                'fontName' => 'courier',
                 'size' => 14,
                 'isUnderline' => true,
                 'isBold' => false,
