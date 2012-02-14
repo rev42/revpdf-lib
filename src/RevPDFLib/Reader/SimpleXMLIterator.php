@@ -1,4 +1,5 @@
 <?php
+
 /**
  * $Id:$
  *
@@ -29,8 +30,11 @@
 
 namespace RevPDFLib\Reader;
 
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\Config\FileLocator;
+
 /**
- * SimpleXMLReader Class
+ * SimpleXMLIterator Class
  *
  * @category   PDF
  * @package    RevPDFLib
@@ -40,8 +44,8 @@ namespace RevPDFLib\Reader;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class SimpleXMLReader implements ReaderInterface
-{
+class SimpleXMLIterator implements ReaderInterface {
+
     /**
      * Parse data
      * 
@@ -49,32 +53,35 @@ class SimpleXMLReader implements ReaderInterface
      * 
      * @return array
      */
-    public function parseData($data)
-    {
+    public function parseData($data) {
         $formattedData = array();
-        foreach ($data->attributes() as $key => $value) {
-            $formattedData['report'][$key] = (string) $value;
-        }
-        
-        foreach ($data->source->attributes() as $key => $value) {
-            $formattedData['source'][$key] = (string) $value;
-        }
-        foreach ($data->source->children() as $key => $elements) {
-            $formattedData['source'][$key] = (string) $elements[0];
-        }
-        
-        $formattedData['pageHeader'] = $this->getPartData('pageHeader', $data);
-        $formattedData['reportHeader'] = $this->getPartData('reportHeader', $data);
-        $formattedData['details'] = $this->getPartData('details', $data);
-        
-        /*
+        $formattedData = $this->sxiToArray($data);
+
         echo '<pre>';
         print_r($formattedData);
-        echo '</pre>';exit;
-        */
+        echo '</pre>';
+        exit;
+
         return $formattedData;
     }
-    
+
+    function sxiToArray($sxi) 
+    {
+        $a = array();
+        for( $sxi->rewind(); $sxi->valid(); $sxi->next() ) {
+            if(!array_key_exists($sxi->key(), $a)){
+            $a[$sxi->key()] = array();
+            }
+            if($sxi->hasChildren()){
+            $a[$sxi->key()][] = $this->sxiToArray($sxi->current());
+            }
+            else{
+            $a[$sxi->key()][] = strval($sxi->current());
+            }
+        }
+        return $a;
+    }
+
     /**
      * Get Part data
      * 
@@ -83,33 +90,27 @@ class SimpleXMLReader implements ReaderInterface
      * 
      * @return array
      */
-    protected function getPartData($node, $data)
-    {
+    protected function getPartData($node, $data) {
         $formattedData = array();
-        
+
         if (isset($data->$node) && count($data->$node->attributes()) > 0) {
             foreach ($data->$node->attributes() as $key => $value) {
                 $formattedData[$node][$key] = (string) $value;
             }
             $formattedData[$node]['elements'] = array();
             foreach ($data->$node->children() as $key => $elements) {
-                $element['value'] = (string) trim($elements[0]);
+                $element['value'] = (string) $elements[0];
                 $element['type'] = $elements->getName();
                 foreach ($elements->attributes() as $j => $value) {
                     $element[$j] = (string) $value;
                 }
-                foreach ($elements->children() as $key => $children) {
-                    $element[$children->getName()] = array();
-                    foreach ($children->attributes() as $k => $val) {
-                        $element[$children->getName()][$k] = (string) $val;
-                    }
-                }
                 $formattedData[$node]['elements'][] = $element;
             }
-            
+
             return $formattedData[$node];
         } else {
             return array();
         }
     }
+
 }

@@ -547,25 +547,32 @@ abstract class AbstractElement
             'height' => 10,
             'border' => 0,
             'type' => 'textField',
-            'field' => ''
+            'field' => '',
+            'font' => array(
+                'name' => 'arial',
+                'size' => 12,
+                'textColor' => '#000',
+                'style' => ''
+            )
         );
         $elementInfo = array_merge($defaults, $elementInfo);
-        
         $this->posx = $elementInfo['posX'];
         $this->posy = $elementInfo['posY'];
-        //$this->font = $elementInfo['fontFamily'];
+        
         //$this->isAutoExtend = $elementInfo['isAutoExtend'];
-        //$this->style = $elementInfo['style'];
-        //$this->fontSize = $elementInfo['size'];
+        if (isset($elementInfo['font'])) {
+            $this->font = $elementInfo['font']['name'];
+            $this->fontSize = $elementInfo['font']['size'];
+            $this->setTextColor($elementInfo['font']['textColor']);
+            $this->style = $elementInfo['font']['style'];
+        }
         $this->width = $elementInfo['width'];
         $this->height = $elementInfo['height'];
         $this->border = $elementInfo['border'];
         //$this->borderWidth = $elementInfo['borderWidth'];
         //$this->alignment = $elementInfo['alignment'];
         //$this->setFillColor($elementInfo['fillColor']);
-        //$this->setTextColor($elementInfo['textColor']);
         //$this->fillColor = $elementInfo['fillColor'];
-        //$this->textColor = $elementInfo['textColor'];
         //$this->format = $elementInfo['format'];
         $this->type = $elementInfo['type'];
         $this->field = $elementInfo['value'];

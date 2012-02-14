@@ -15,14 +15,20 @@
     displayModeLayout="continuous"
     pageOrientation="L"
     >
+    <font name="courier" size="16" textColor="#3366FF" style="B" />
     <source provider="CsvProvider">
         <value>books.csv</value>
     </source>
     <pageHeader height="20" isVisible="1" backgroundColor="#F00">
-        <textField format="text" posX="80" posY="5" height="5" width="42" border="1">MOVIES</textField>
+        <textField format="text" posX="80" posY="5" height="5" width="42" border="1">
+            MOVIES
+        </textField>
     </pageHeader>
     <reportHeader height="10" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="0" posY="0" height="10" width="20" border="1">Rating</textField>
+        <textField format="text" posX="0" posY="0" height="10" width="20" border="1">
+            <font name="courier" size="16" textColor="#3366FF" style="B" />
+            Rating
+        </textField>
         <textField format="text" posX="20" posY="0" height="10" width="50" border="1">Title</textField>
         <textField format="text" posX="70" posY="0" height="10" width="50" border="1">Author</textField>
         <textField format="text" posX="120" posY="0" height="10" width="20" border="1">Type</textField>

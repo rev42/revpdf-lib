@@ -130,7 +130,9 @@ class Application
             $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
             break;
         case 'object':
-            if (get_class($data) == 'SimpleXMLElement') {
+            if (get_class($data) == 'SimpleXMLIterator') {
+                $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLIterator');
+            } elseif (get_class($data) == 'SimpleXMLElement') {
                 $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
             }
             break;

@@ -78,6 +78,7 @@ $data = array(
 );
 
 $data = simplexml_load_file('report.xml');
+//$data = new SimpleXMLIterator('report.xml',null,true);
 $lib->export($data);
 
 /*
