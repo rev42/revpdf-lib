@@ -281,7 +281,7 @@ abstract class AbstractPart
     /**
      * Set Page Jump
      * 
-     * @param boolean $isPageJump 
+     * @param boolean $isPageJump isPageJump
      * 
      * @return void
      */

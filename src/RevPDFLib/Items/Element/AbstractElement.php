@@ -649,34 +649,34 @@ abstract class AbstractElement
     /**
      * Format field 
      * 
-     * @param string $value
+     * @param string $value Value
      * 
      * @return string
      */
     function format($value)
     {
         switch ($this->format) {
-            case "number":
-                $value = round($value, 2);
-                $value = number_format($value, 2, '.', '');
-                break;
+        case "number":
+            $value = round($value, 2);
+            $value = number_format($value, 2, '.', '');
+            break;
 
-            case "Fulldate":
-                $value = date(
-                    ApplicationSettingTable::getSetting('fullDateFormat'),
-                    strtotime($value)
-                );
-                break;
+        case "Fulldate":
+            $value = date(
+                ApplicationSettingTable::getSetting('fullDateFormat'),
+                strtotime($value)
+            );
+            break;
 
-            case "AbrevDate":
-                $value = date(
-                    ApplicationSettingTable::getSetting('shortDateFormat'),
-                    strtotime($value)
-                );
-                break;
+        case "AbrevDate":
+            $value = date(
+                ApplicationSettingTable::getSetting('shortDateFormat'),
+                strtotime($value)
+            );
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
 
         return $value;

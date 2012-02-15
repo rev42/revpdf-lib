@@ -210,7 +210,8 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         
         // Add page jump if set
         if ($part->isPageJump() 
-        && !($part instanceof \RevPDFLib\Items\Part\PageHeader)) {
+        && !($part instanceof \RevPDFLib\Items\Part\PageHeader)
+        ) {
             $this->writer->AddPage($this->getReport()->getPageOrientation());
             $this->writer->setCurrentPosition($part->getStartPosition());
         }
