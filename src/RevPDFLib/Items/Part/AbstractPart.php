@@ -64,11 +64,13 @@ abstract class AbstractPart
      * @var int
      */
     protected $currentPosition = 0;
-    protected $height = 0;
     protected $elements = array();
-    protected $isVisible = false;
-    protected $backgroundColor = '#FFF';
     protected $identifier = null;
+    
+    protected $height;
+    protected $isVisible;
+    protected $backgroundColor;
+    protected $isPageJump;
 
     /**
      * Constructor
@@ -80,12 +82,14 @@ abstract class AbstractPart
         $defaults = array(
             'height' => 0,
             'isVisible' => false,
-            'backgroundColor' => '#FFF'
+            'backgroundColor' => '#FFF',
+            'isPageJump' => false,
         );
         $data = array_merge($defaults, $data);
         $this->height = $data['height'];
         $this->isVisible = (boolean) $data['isVisible'];
         $this->backgroundColor = $data['backgroundColor'];
+        $this->isPageJump = (boolean) $data['isPageJump'];
         
         if (isset($data['elements'])) {
             $this->setElements($data['elements']);
@@ -258,7 +262,31 @@ abstract class AbstractPart
      */
     public function setBackgroundColor($backgroundColor)
     {
+        if ($backgroundColor[0] != '#') {
+            $backgroundColor = "#" . $backgroundColor;
+        }
         $this->backgroundColor = $backgroundColor;
     }
-
+    
+    /**
+     * Get Page Jump
+     * 
+     * @return boolean
+     */
+    public function isPageJump() 
+    {
+        return $this->isPageJump;
+    }
+    
+    /**
+     * Set Page Jump
+     * 
+     * @param boolean $isPageJump 
+     * 
+     * @return void
+     */
+    public function setIsPageJump($isPageJump)
+    {
+        $this->isPageJump = (bool) $isPageJump;
+    }
 }

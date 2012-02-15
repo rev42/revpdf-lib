@@ -146,13 +146,22 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
     
     public function testGetBackgroundColor()
     {
+        $this->part->setBackgroundColor('#FFF');
         $this->assertEquals('#FFF', $this->part->getBackgroundColor());
     }
     
     public function testSetBackgroundColor()
     {
         $this->part->setBackgroundColor('F00');
-        $this->assertEquals('F00', $this->part->getBackgroundColor());
+        $this->assertEquals('#F00', $this->part->getBackgroundColor());
+    }
+    
+    public function testSetIsPageJump()
+    {
+        $this->part->setIsPageJump(true);
+        $this->assertTrue($this->part->isPageJump());
         
+        $this->part->setIsPageJump(false);
+        $this->assertFalse($this->part->isPageJump());
     }
 }

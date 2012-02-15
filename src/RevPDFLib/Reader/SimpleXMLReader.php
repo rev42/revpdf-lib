@@ -97,12 +97,12 @@ class SimpleXMLReader implements ReaderInterface
                 $element['value'] = (string) trim($elements[0]);
                 $element['type'] = $elements->getName();
                 foreach ($elements->attributes() as $j => $value) {
-                    $element[$j] = (string) $value;
+                    $element[$j] = $this->getBool((string) $value);
                 }
                 foreach ($elements->children() as $key => $children) {
                     $element[$children->getName()] = array();
                     foreach ($children->attributes() as $k => $val) {
-                        $element[$children->getName()][$k] = (string) $val;
+                        $element[$children->getName()][$k] = $this->getBool((string) $val);
                     }
                 }
                 $formattedData[$node]['elements'][] = $element;
@@ -113,4 +113,28 @@ class SimpleXMLReader implements ReaderInterface
             return array();
         }
     }
+    
+    /**
+     * Retrieve boolean value from string 
+     * 
+     * @param string $value
+     * 
+     * @return boolean|null 
+     */
+    public function getBool($value) {
+        switch (strtolower($value)) {
+            case 'true': 
+                return true;
+            break;
+        
+            case 'false':
+                return false;
+            break;
+        
+            default: 
+                return $value;
+            break;
+        }
+    }
+
 }
