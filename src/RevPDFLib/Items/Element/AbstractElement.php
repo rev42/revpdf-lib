@@ -548,12 +548,13 @@ abstract class AbstractElement
             'border' => 0,
             'borderWidth' => 0,
             'type' => 'textField',
-            'field' => '',
+            'value' => '',
             'textAlignment' => '',
+            'format' => 'text',
             'backcolor' => '#FFF',
             'forecolor' => '#000',
             'font' => array(
-                'fontName' => 'arial',
+                'fontName' => 'DejaVu',
                 'size' => 12,
                 'isUnderline' => 'false',
                 'isBold' => 'false',
@@ -570,13 +571,13 @@ abstract class AbstractElement
             $this->font = $elementInfo['font']['fontName'];
             $this->fontSize = $elementInfo['font']['size'];
             $style = '';
-            if ($elementInfo['font']['isUnderline'] == true) {
+            if ($elementInfo['font']['isUnderline'] == "true") {
                 $style .= 'U';
             }
-            if ($elementInfo['font']['isBold'] == true) {
+            if ($elementInfo['font']['isBold'] == "true") {
                 $style .= 'B';
             }
-            if ($elementInfo['font']['isItalic'] == true) {
+            if ($elementInfo['font']['isItalic'] == "true") {
                 $style .= 'I';
             }
             $this->setStyle($style);

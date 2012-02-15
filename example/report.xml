@@ -41,6 +41,8 @@
         <textZone format="text" posX="20" posY="0" height="20" width="50" border="1">title</textZone>
         <textZone format="text" posX="70" posY="0" height="20" width="50" border="1">author</textZone>
         <textZone format="text" posX="120" posY="0" height="20" width="20" border="1">type</textZone>
-        <textZone format="text" posX="140" posY="0" height="20" width="120" border="1">review</textZone>
+        <textZone format="text" posX="140" posY="0" height="20" width="120" border="1">
+            review
+        </textZone>
     </details>
 </RevPDFLib>
