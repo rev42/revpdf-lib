@@ -19,7 +19,7 @@
     <source provider="CsvProvider">
         <value>books.csv</value>
     </source>
-    <pageHeader height="20" isVisible="0" backgroundColor="#F00">
+    <pageHeader height="20" isVisible="1" backgroundColor="#F00">
         <textField format="text" posX="80" posY="5" height="5" width="42" border="1">
             MOVIES
         </textField>
