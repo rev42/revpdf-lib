@@ -528,7 +528,7 @@ abstract class AbstractElement
      */
     function getField($iterator = null)
     {
-        return $this->field;
+        return $this->format($this->field);
     }
 
     /**
@@ -588,7 +588,7 @@ abstract class AbstractElement
         $this->borderWidth = $elementInfo['borderWidth'];
         $this->alignment = $elementInfo['textAlignment'];
         $this->setFillColor($elementInfo['backcolor']);
-        //$this->format = $elementInfo['format'];
+        $this->format = $elementInfo['format'];
         $this->type = $elementInfo['type'];
         $this->field = $elementInfo['value'];
         /*
@@ -643,5 +643,41 @@ abstract class AbstractElement
                 1
             );
         }
+    }
+    
+    /**
+     * Format field 
+     * 
+     * @param string $value
+     * 
+     * @return string
+     */
+    function format($value)
+    {
+        switch ($this->format) {
+            case "number":
+                $value = round($value, 2);
+                $value = number_format($value, 2, '.', '');
+                break;
+
+            case "Fulldate":
+                $value = date(
+                    ApplicationSettingTable::getSetting('fullDateFormat'),
+                    strtotime($value)
+                );
+                break;
+
+            case "AbrevDate":
+                $value = date(
+                    ApplicationSettingTable::getSetting('shortDateFormat'),
+                    strtotime($value)
+                );
+                break;
+
+            default:
+                break;
+        }
+
+        return $value;
     }
 }

@@ -62,6 +62,6 @@ class Textzone extends AbstractElement
             $field = $recordRows[$elementField];
         }
 
-        return $field;
+        return $this->format($field);
     }
 }
