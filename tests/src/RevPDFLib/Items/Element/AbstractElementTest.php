@@ -398,8 +398,11 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
             'width' => 50,
             'height' => 60,
             'border' => 1,
+            'borderWidth' => '0.5',
             'type' => 'textfield',
             'value' => 'éàç€',
+            'textAlignment' => '',
+            'format' => 'text',
             'forecolor' => '#FDA',
             'backcolor' => '#ADF',
             'font' => array(
@@ -417,6 +420,8 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(50, $this->object->getWidth());
         $this->assertEquals(60, $this->object->getHeight());
         $this->assertEquals(1, $this->object->getBorder());
+        $this->assertEquals('0.5', $this->object->getBorderWidth());
+        $this->assertEquals('UI', $this->object->getStyle());
         $this->assertEquals('textfield', $this->object->getType());
         $this->assertEquals('éàç€', $this->object->getField());
         $this->assertEquals('UI', $this->object->getStyle());
@@ -424,6 +429,34 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('14', $this->object->getFontSize());
         $this->assertEquals('#FDA', $this->object->getTextColor());
         $this->assertEquals('#ADF', $this->object->getFillColor());
+    }
+    
+    public function testStyle()
+    {
+        $data = array(
+            'posX' => 10,
+            'posY' => 12,
+            'width' => 50,
+            'height' => 60,
+            'border' => 1,
+            'borderWidth' => '0.5',
+            'type' => 'textfield',
+            'value' => 'éàç€',
+            'textAlignment' => '',
+            'format' => 'text',
+            'forecolor' => '#FDA',
+            'backcolor' => '#ADF',
+            'font' => array(
+                'fontName' => 'DejaVu',
+                'size' => 14,
+                'isUnderline' => false,
+                'isBold' => false,
+                'isItalic' => false
+            )
+        );
+        $this->object->setProperties($data);
+        
+        $this->assertEquals('', $this->object->getStyle());
     }
 
     /**

@@ -54,12 +54,14 @@ class Textzone extends AbstractElement
         $field = '';
         $elementField = $this->field;
         
-        $recordRows = $iterator->current();
-        if (is_array($recordRows) === false) {
-            $recordRows = (array) $recordRows;
-        }
-        if (in_array($elementField, array_keys($recordRows))) {
-            $field = $recordRows[$elementField];
+        if (!is_null($iterator)) {
+            $recordRows = $iterator->current();
+            if (is_array($recordRows) === false) {
+                $recordRows = (array) $recordRows;
+            }
+            if (in_array($elementField, array_keys($recordRows))) {
+                $field = $recordRows[$elementField];
+            }
         }
 
         return $this->format($field);
