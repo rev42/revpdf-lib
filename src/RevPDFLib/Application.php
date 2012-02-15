@@ -64,6 +64,13 @@ class Application
     protected $dic = null;
     
     /**
+     * Data source
+     * 
+     * @var object
+     */
+    protected $dataSource = null;
+    
+    /**
      * Application Constructor 
      * 
      * @return void
@@ -147,9 +154,10 @@ class Application
         
         // Get data provider and parse data
         $this->selectDataProvider($report['source']['provider']);
+        $this->getDic()->get('revpdflib.provider')->setConnector($this->dataSource);
         $this->getDic()->get('revpdflib.provider')->parse($report['source']['value']);
         $data = $this->getDic()->get('revpdflib.provider')->getData();
-        
+
         // Build document
         $this->getDic()->get('revpdflib.exporter')->buildDocument($report);
         
@@ -158,5 +166,27 @@ class Application
             ->get('revpdflib.exporter')
             ->generateDocument($data);
         return $document;
+    }
+    
+    /**
+     * Get Data source connection
+     * 
+     * @return object
+     */
+    public function getDataSource()
+    {
+        return $this->dataSource;
+    }
+
+    /**
+     * Set Data source connection
+     * 
+     * @param type $dataSource DataSource connection
+     * 
+     * @return void
+     */
+    public function setDataSource($dataSource)
+    {
+        $this->dataSource = $dataSource;
     }
 }

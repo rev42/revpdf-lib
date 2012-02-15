@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RevPDFLib
+    shortname="short"
+    fullname="full"
+    author="moi"
+    keywords="test, pdf, RevPDFLib"
+    subject="un test"
+    title="RevPDF test 1"
+    comments="any comment"
+    topMargin="10"
+    bottomMargin="10"
+    rightMargin="10"
+    leftMargin="10"
+    displayModeZoom="fullpage"
+    displayModeLayout="continuous"
+    pageOrientation="L"
+    >
+    <font name="courier" size="16" textColor="#3366FF" style="B" />
+    <source provider="PdoProvider">
+        <value><![CDATA[Select * from _r_article]]></value>
+    </source>
+    <pageHeader height="20" isVisible="1" backgroundColor="#F00">
+        <textField format="text" posX="80" posY="5" height="5" width="42" border="1">
+            Article
+        </textField>
+    </pageHeader>
+    <reportHeader height="10" isVisible="1" backgroundColor="#FFF" isPageJump="0">
+        <textField format="text" posX="0" posY="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
+            <font isUnderline="false" isBold="true" isItalic="true" fontName="courier" size="14" />
+            <![CDATA[ID]]>
+        </textField>
+        <textField format="text" posX="20" posY="0" height="10" width="150" border="1" zindex="0">
+            <![CDATA[Désignation]]>
+        </textField>
+        <textField format="text" posX="170" posY="0" height="10" width="30" border="1" zindex="0">
+            <![CDATA[Prix d'achat]]>
+        </textField>
+        <textField textAlignment="R" format="text" posX="200" posY="0" height="10" width="30" border="1" borderWidth="0.8" zindex="0">
+            <![CDATA[Prix de vente]]>
+        </textField>
+    </reportHeader>
+    <details height="20" isVisible="1" backgroundColor="#FFF">
+        <textZone format="text" posX="0" posY="0" height="20" width="20" border="1" zindex="0">id</textZone>
+        <textZone format="text" posX="20" posY="0" height="20" width="150" border="1" zindex="0">designation</textZone>
+        <textZone format="number" posX="170" posY="0" height="20" width="30" border="1" zindex="0" textAlignment="R">
+            prixachat
+        </textZone>
+        <textZone format="number" posX="200" posY="0" height="20" width="30" border="1" zindex="0" textAlignment="R">
+            prixvente
+        </textZone>
+    </details>
+</RevPDFLib>

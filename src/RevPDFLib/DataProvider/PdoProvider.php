@@ -30,7 +30,7 @@
 namespace RevPDFLib\DataProvider;
 
 /**
- * Csv Provider Interface
+ * Pdo Provider
  *
  * @category   PDF
  * @package    RevPDFLib
@@ -40,10 +40,61 @@ namespace RevPDFLib\DataProvider;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class CsvProvider implements DataProviderInterface
+class PdoProvider implements DataProviderInterface
 {
-    protected $data;
-    protected $headers = true;
+    protected $connector = null;
+    
+    /**
+     * Get DB connection
+     * 
+     * @return object 
+     */
+    public function getConnector()
+    {
+        return $this->connector;
+    }
+
+    /**
+     * Set DB Connection
+     * 
+     * @param type $conn 
+     * 
+     * @return void
+     */
+    public function setConnector($conn)
+    {
+        $this->connector = $conn;
+    }
+
+    /**
+     * Execute SQL Query
+     * 
+     * @param string $sql SQL query
+     * 
+     * @see RevPDF_DataSource_Db_Interface::executeQuery()
+     * 
+     * @return array
+     */
+    public function executeQuery($sql)
+    {
+        $recordset = $this->prepareSQL($sql);
+        $recordset->execute();
+
+        return $recordset->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    
+    /**
+     * Prepate SQL query
+     * 
+     * @param string $sql sql query
+     * 
+     * @return string
+     */
+    private function prepareSQL($sql)
+    {
+        return $this->connector->prepare($sql);
+    }
+    
     /**
      * Get Data
      * 
@@ -75,9 +126,14 @@ class CsvProvider implements DataProviderInterface
      */
     public function parse($sourceValue)
     {
+        if ($this->connector === null) {
+            throw new \Exception('Connector is NOT set');
+        }
+        
+        $rows = $this->executeQuery($sourceValue);
+        
         $data = array();
-        $reader = new \EasyCSV\Reader($sourceValue);
-        while ($row = $reader->getRow()) {
+        foreach ($rows as $row) {
             $data[] = $row;
         }
         $this->setData($data);
