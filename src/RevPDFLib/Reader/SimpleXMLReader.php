@@ -117,22 +117,22 @@ class SimpleXMLReader implements ReaderInterface
     /**
      * Retrieve boolean value from string 
      * 
-     * @param string $value
+     * @param string $value Value
      * 
      * @return boolean|null 
      */
     public function getBool($value) {
         switch (strtolower($value)) {
-            case 'true': 
-                return true;
+        case 'true': 
+            return true;
             break;
-        
-            case 'false':
-                return false;
+
+        case 'false':
+            return false;
             break;
-        
-            default: 
-                return $value;
+
+        default: 
+            return $value;
             break;
         }
     }
