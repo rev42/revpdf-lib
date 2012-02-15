@@ -201,7 +201,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
      */
     public function writePDF(AbstractPart $part, array $data, $iterator=null)
     {
-        if (count($data) <= 0) {
+        if (count($data) <= 0 || $part->isVisible() === false) {
             return false;
         }
 
@@ -239,7 +239,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         if ($part->isPageJump() 
         && !($part instanceof \RevPDFLib\Items\Part\PageHeader)) {
             $this->writer->AddPage();
-            $this->writer->setCurrentPosition($this->getStartPosition());
+            $this->writer->setCurrentPosition($part->getStartPosition());
         }
         
         return true;
