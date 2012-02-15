@@ -38,7 +38,6 @@ use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
 use RevPDFLib\Writer\TfpdfWriter;
 use RevPDFLib\Items\Part\AbstractPart;
-use RevPDFLib\Report;
 use RevPDFLib\Application;
 
 /**
@@ -54,10 +53,6 @@ use RevPDFLib\Application;
  */
 class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
-    var $currentPosition = 0;
-    var $endPosition = 0;
-    var $report = null;
-    
     /**
      * Constructor
      * 
@@ -170,28 +165,6 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     }
     
     /**
-     * Set Current Part Number
-     * 
-     * @param int $value Value
-     * 
-     * @return void
-     */
-    public function setCurrentPartNumber($value)
-    {
-        $this->currentPartNumber = $value;
-    }
-    
-    /**
-     * Get Current Part Number
-     * 
-     * @return int
-     */
-    public function getCurrentPartNumber()
-    {
-        return $this->currentPartNumber;
-    }
-    
-    /**
      * Write Elements into document
      * 
      * @param \RevPDFLib\Items\Part\AbstractPart $part Part
@@ -243,28 +216,6 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         }
         
         return true;
-    }
-
-    /**
-     * Set Report
-     * 
-     * @param \RevPDFLib\Report $report Report
-     * 
-     * @return void
-     */
-    public function setReport(Report $report)
-    {
-        $this->report = $report;
-    }
-    
-    /**
-     * Get Report
-     * 
-     * @return Report
-     */
-    public function getReport()
-    {
-        return $this->report;
     }
     
     /**

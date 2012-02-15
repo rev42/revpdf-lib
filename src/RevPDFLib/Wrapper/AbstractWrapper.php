@@ -29,6 +29,8 @@
 
 namespace RevPDFLib\Wrapper;
 
+use RevPDFLib\Report;
+
 /**
  * AbstractWrapper Class
  *
@@ -42,6 +44,11 @@ namespace RevPDFLib\Wrapper;
  */
 abstract class AbstractWrapper
 {
+    protected $currentPosition = 0;
+    protected $endPosition = 0;
+    protected $report = null;
+    protected $writer = null;
+
     /**
      * Open Document
      * 
@@ -55,4 +62,27 @@ abstract class AbstractWrapper
      * @return void
      */
     abstract function closeDocument();
+    
+    
+    /**
+     * Set Report
+     * 
+     * @param \RevPDFLib\Report $report Report
+     * 
+     * @return void
+     */
+    public function setReport(Report $report)
+    {
+        $this->report = $report;
+    }
+    
+    /**
+     * Get Report
+     * 
+     * @return Report
+     */
+    public function getReport()
+    {
+        return $this->report;
+    }
 }
