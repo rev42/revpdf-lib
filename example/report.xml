@@ -29,11 +29,11 @@
             <font isUnderline="false" isBold="true" isItalic="true" fontName="courier" size="16" />
             Rating
         </textField>
-        <textField textAlignment="R" format="text" posX="20" posY="0" height="10" width="50" border="1">
+        <textField format="text" posX="20" posY="0" height="10" width="50" border="1">
             Title
         </textField>
         <textField format="text" posX="70" posY="0" height="10" width="50" border="1">Author</textField>
-        <textField format="text" posX="120" posY="0" height="10" width="20" border="1">Type</textField>
+        <textField textAlignment="R" format="text" posX="120" posY="0" height="10" width="20" border="1" borderWidth="0.8">Type</textField>
         <textField format="text" posX="140" posY="0" height="10" width="120" border="1">Review</textField>
     </reportHeader>
     <details height="20" isVisible="1" backgroundColor="#FFF">

@@ -546,6 +546,7 @@ abstract class AbstractElement
             'width' => 50,
             'height' => 10,
             'border' => 0,
+            'borderWidth' => 0,
             'type' => 'textField',
             'field' => '',
             'textAlignment' => '',
@@ -584,7 +585,7 @@ abstract class AbstractElement
         $this->width = $elementInfo['width'];
         $this->height = $elementInfo['height'];
         $this->border = $elementInfo['border'];
-        //$this->borderWidth = $elementInfo['borderWidth'];
+        $this->borderWidth = $elementInfo['borderWidth'];
         $this->alignment = $elementInfo['textAlignment'];
         $this->setFillColor($elementInfo['backcolor']);
         //$this->format = $elementInfo['format'];
