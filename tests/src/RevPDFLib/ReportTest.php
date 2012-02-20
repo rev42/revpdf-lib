@@ -21,7 +21,8 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                 'topMargin' => '10',
                 'rightMargin' => '5',
                 'bottomMargin' => '15',
-                'pageOrientation' => 'P'
+                'pageOrientation' => 'P',
+                'paperFormat' => 'A3'
             ),
         );
         
@@ -89,6 +90,11 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('P', $this->report->getPageOrientation());
     }
     
+    public function testGetPaperFormat()
+    {
+        $this->assertEquals('A3', $this->report->getPaperFormat());
+    }
+    
     public function testGetAllProperties()
     {
         $this->assertNotEmpty($this->report->getAllProperties());
@@ -146,6 +152,12 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         
         $this->report->setPageOrientation('X');
         $this->assertEquals('P', $this->report->getPageOrientation());
+        
+        $this->report->setPaperFormat('A4');
+        $this->assertEquals('A4', $this->report->getPageOrientation());
+        
+        $this->report->setPaperFormat('A12');
+        $this->assertEquals('A4', $this->report->getPageOrientation());
     }
     
     public function testGetPart()

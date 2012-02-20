@@ -85,6 +85,7 @@ class Report
     protected $rightMargin;
     protected $bottomMargin;
     protected $pageOrientation;
+    protected $paperFormat;
     protected $parts = array();
     protected $dispatcher;
 
@@ -119,6 +120,7 @@ class Report
         $this->rightMargin = $data['report']['rightMargin'];
         $this->bottomMargin = $data['report']['bottomMargin'];
         $this->pageOrientation = $data['report']['pageOrientation'];
+        $this->paperFormat = $data['report']['paperFormat'];
     }
 
     /**
@@ -374,6 +376,31 @@ class Report
 
         if (in_array($pageOrientation, array('P', 'L'))) {
             $this->pageOrientation = $pageOrientation;
+        }
+    }
+    /**
+     * Get Paper format
+     * 
+     * @return string
+     */
+    public function getPaperFormat()
+    {
+        return $this->paperFormat;
+    }
+
+    /**
+     * Set Page Orientation
+     * 
+     * @param char $pageOrientation Page Orientation
+     * 
+     * @return void
+     */
+    public function setPaperFormat($paperFormat)
+    {
+        $this->paperFormat = 'A4';
+
+        if (in_array($paperFormat, array('A4', 'A3'))) {
+            $this->paperFormat = $paperFormat;
         }
     }
 
