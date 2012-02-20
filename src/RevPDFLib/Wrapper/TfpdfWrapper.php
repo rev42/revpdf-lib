@@ -29,11 +29,6 @@
 
 namespace RevPDFLib\Wrapper;
 
-defined('BASE_DIR') or define('BASE_DIR', dirname(__file__) . '/../../../');
-
-require_once BASE_DIR . 'vendors/tfpdf/font/unifont/ttfonts.php';
-require_once BASE_DIR . 'vendors/tfpdf/tFPDF.php';
-
 use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
 use RevPDFLib\Writer\TfpdfWriter;
@@ -53,26 +48,10 @@ use RevPDFLib\Application;
  */
 class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
-    /**
-     * Constructor
-     * 
-     * @param string $orientation Page Orientation (Portrait/Landscape)
-     * @param string $unit        Paper Unit (mm)
-     * @param string $format      Paper Format (A4)
-     */
-    public function __construct($orientation = 'P', $unit = 'mm', $format = 'A4')
+    
+    public function __construct(\RevPDFLib\Writer\WriterInterface $writer)
     {
-        $this->writer = new TfpdfWriter($orientation, $unit, $format);
-        $this->writer->AddFont('Deja Vu Sans', '', 'DejaVuSans.ttf', true);
-        $this->writer->AddFont('Deja Vu Sans', 'B', 'DejaVuSans-Bold.ttf', true);
-        $this->writer->AddFont('Deja Vu Sans', 'BI', 'DejaVuSans-BoldOblique.ttf', true);
-        $this->writer->AddFont('Deja Vu Sans', 'I', 'DejaVuSans-Oblique.ttf', true);
-        $this->writer->AddFont('Deja Vu Serif', '', 'DejaVuSerif.ttf', true);
-        $this->writer->AddFont('Deja Vu Serif', 'B', 'DejaVuSerif-Bold.ttf', true);
-        $this->writer->AddFont('Deja Vu Serif', 'BI', 'DejaVuSerif-BoldItalic.ttf', true);
-        $this->writer->AddFont('Deja Vu Serif', 'I', 'DejaVuSerif-Italic.ttf', true);
-        $this->writer->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
-        $this->writer->SetFont('DejaVu', '',14);
+        $this->writer = $writer;
     }
     
     /**

@@ -48,10 +48,26 @@ use \tFPDF;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class TfpdfWriter extends \tFPDF
+class TfpdfWriter extends \tFPDF implements WriterInterface
 {
     var $endPosition;
     var $currentPosition;
+    
+    public function __construct($orientation='P', $unit='mm', $format='A4')
+    {
+        var_dump($orientation, $unit, $format);exit;
+        parent::__construct($orientation, $unit, $format);
+        $this->AddFont('Deja Vu Sans', '', 'DejaVuSans.ttf', true);
+        $this->AddFont('Deja Vu Sans', 'B', 'DejaVuSans-Bold.ttf', true);
+        $this->AddFont('Deja Vu Sans', 'BI', 'DejaVuSans-BoldOblique.ttf', true);
+        $this->AddFont('Deja Vu Sans', 'I', 'DejaVuSans-Oblique.ttf', true);
+        $this->AddFont('Deja Vu Serif', '', 'DejaVuSerif.ttf', true);
+        $this->AddFont('Deja Vu Serif', 'B', 'DejaVuSerif-Bold.ttf', true);
+        $this->AddFont('Deja Vu Serif', 'BI', 'DejaVuSerif-BoldItalic.ttf', true);
+        $this->AddFont('Deja Vu Serif', 'I', 'DejaVuSerif-Italic.ttf', true);
+        $this->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
+        $this->SetFont('DejaVu', '',14);
+    }
     
     /**
      * Set Current Position
@@ -97,10 +113,10 @@ class TfpdfWriter extends \tFPDF
         $this->endPosition = $endPosition;
         /*
         if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
-            $this->endPosition = intval($this->writer->h - $endPosition - $this->getReport()->getPart('partFooter')->getHeight());
+            $this->endPosition = intval($this->h - $endPosition - $this->getReport()->getPart('partFooter')->getHeight());
             $this->SetAutoPageBreak(1, $endPosition + $this->getReport()->getPart('partFooter')->getHeight());
         } else {
-            $this->endPosition = intval($this->writer->h - $endPosition);
+            $this->endPosition = intval($this->h - $endPosition);
             $this->SetAutoPageBreak(1, $endPosition);
         }   
          */

@@ -157,7 +157,7 @@ class Application
         $this->getDic()->get('revpdflib.provider')->setConnector($this->dataSource);
         $this->getDic()->get('revpdflib.provider')->parse($report['source']['value']);
         $data = $this->getDic()->get('revpdflib.provider')->getData();
-
+        
         // Build document
         $this->getDic()->get('revpdflib.exporter')->buildDocument($report);
         
