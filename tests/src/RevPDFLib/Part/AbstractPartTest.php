@@ -97,8 +97,8 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
                 "value" => "pageHeader textField1",
                 "type" => "textField",
                 "format" => "text",
-                "posX" => "0",
-                "posY" => "0",
+                "x" => "0",
+                "y" => "0",
                 "height" => "5",
                 "width" => "20",
                 "border" => "1"
@@ -107,8 +107,8 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
                 "value" => "pageHeader textField2",
                 "type" => "textField",
                 "format" => "text",
-                "posX" => "0",
-                "posY" => "5",
+                "x" => "0",
+                "y" => "5",
                 "height" => "5",
                 "width" => "20",
                 "border" => "1"

@@ -541,8 +541,8 @@ abstract class AbstractElement
     function setProperties($elementInfo)
     {
         $defaults = array(
-            'posX' => 0,
-            'posY' => 0,
+            'x' => 0,
+            'y' => 0,
             'width' => 50,
             'height' => 10,
             'border' => 0,
@@ -562,8 +562,8 @@ abstract class AbstractElement
             )
         );
         $elementInfo = array_merge($defaults, $elementInfo);
-        $this->posx = $elementInfo['posX'];
-        $this->posy = $elementInfo['posY'];
+        $this->posx = $elementInfo['x'];
+        $this->posy = $elementInfo['y'];
         $this->setTextColor($elementInfo['forecolor']);
         
         //$this->isAutoExtend = $elementInfo['isAutoExtend'];

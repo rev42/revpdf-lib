@@ -40,12 +40,12 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
         <value>books.csv</value>
     </source>
     <pageHeader height="15" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="0" posY="0" height="5" width="20">pageHeader textField1</textField>
-        <textField format="text" posX="0" posY="5" height="5" width="20">pageHeader textField2</textField>
-        <textZone format="text" posX="0" posY="10" height="5" width="20">pageHeader textZone</textZone>
+        <textField format="text" x="0" y="0" height="5" width="20">pageHeader textField1</textField>
+        <textField format="text" x="0" y="5" height="5" width="20">pageHeader textField2</textField>
+        <textZone format="text" x="0" y="10" height="5" width="20">pageHeader textZone</textZone>
     </pageHeader>
     <reportHeader height="20" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" posX="0" posY="0" height="5" width="20">reportHeader textField1</textField>
+        <textField format="text" x="0" y="0" height="5" width="20">reportHeader textField1</textField>
     </reportHeader>
 </RevPDFLib>';
         

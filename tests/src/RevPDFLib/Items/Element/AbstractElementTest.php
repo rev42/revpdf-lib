@@ -393,8 +393,8 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
      */
     public function testSetProperties() {
         $data = array(
-            'posX' => 10,
-            'posY' => 12,
+            'x' => 10,
+            'y' => 12,
             'width' => 50,
             'height' => 60,
             'border' => 1,
@@ -415,8 +415,8 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
         );
         $this->object->setProperties($data);
         
-        $this->assertEquals(10, $this->object->getPosx());
-        $this->assertEquals(12, $this->object->getPosy());
+        $this->assertEquals(10, $this->object->getPosX());
+        $this->assertEquals(12, $this->object->getPosY());
         $this->assertEquals(50, $this->object->getWidth());
         $this->assertEquals(60, $this->object->getHeight());
         $this->assertEquals(1, $this->object->getBorder());
