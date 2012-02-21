@@ -403,14 +403,14 @@ class Report
         $offset = 0;
         ksort($this->orderedParts, SORT_NUMERIC);
         $obj = new \ArrayObject($this->orderedParts);
-        $it = $obj->getIterator();
-        while ($it->valid()) {
-            $itPart = $it->current();
+        $iterator = $obj->getIterator();
+        while ($iterator->valid()) {
+            $itPart = $iterator->current();
             $itPart->setStartPosition($offset+$this->getTopMargin());
             if ($itPart->isVisible()) {
                 $offset += $itPart->getHeight();
             }
-            $it->next();
+            $iterator->next();
         }
     }
 
