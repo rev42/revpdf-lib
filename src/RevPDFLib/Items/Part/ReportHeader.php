@@ -45,18 +45,13 @@ use RevPDFLib\Items\Part\AbstractPart;
 class ReportHeader extends AbstractPart
 {
     /**
-     * Par Identifier
-     */
-    const PART_REPORT_HEADER = 1;
-    
-    /**
      * Constructor
      * 
      * @param array $data Data
      */
     public function __construct($data)
     {
-        $this->identifier = self::PART_REPORT_HEADER;
+        $this->identifier = array_search('reportHeader', $this->partIds);
         parent::__construct($data);
     }
 }

@@ -48,32 +48,6 @@ use RevPDFLib\Items\Part;
  */
 class Report
 {
-    /**
-     * Part Group Header constant
-     */
-
-    const PART_GROUP_HEADER = 2;
-
-    /**
-     * Part Data constant
-     */
-    const PART_DATA = 3;
-
-    /**
-     * Part Group Footer constant
-     */
-    const PART_GROUP_FOOTER = 4;
-
-    /**
-     * Part Footer constant
-     */
-    const PART_FOOTER = 5;
-
-    /**
-     * Part Report Footer constant
-     */
-    const PART_REPORT_FOOTER = 6;
-
     protected $author;
     protected $displayModeZoom;
     protected $displayModeLayout;
@@ -415,8 +389,8 @@ class Report
     public function addPart($type, Part\AbstractPart $part)
     {
         $this->parts[strtolower($type)] = $part;
-        $offset = $this->calculateStartPosition($part);
-        $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
+        $this->orderedParts[$part->getIdentifier()] = $part;
+        $this->calculateStartPosition();
     }
     
     /**
@@ -431,10 +405,7 @@ class Report
         if (array_key_exists($type, $this->parts)) {
             unset($this->parts[$type]);
             
-            foreach ($this->parts as $part) {
-                $offset = $this->calculateStartPosition($part);
-                $this->dispatcher->dispatch('response', new AddPartEvent($part, $offset));
-            }
+            $this->calculateStartPosition();
             return true;
         }
         
@@ -442,42 +413,25 @@ class Report
     }
     
     /**
-     * Calculate Start Position for Part
+     * Recalculate Start Position for all Parts
      * 
-     * @param \Part\AbstractPart $part Part
-     * 
-     * @return int 
+     * @return void
      */
-    public function calculateStartPosition(Part\AbstractPart $part) 
+    public function calculateStartPosition() 
     {
         $offset = 0;
-        
-        if ($part instanceof Part\PageHeader) {
-            $offset = $this->getTopMargin();
-        } elseif ($part instanceof Part\ReportHeader) {
-            if (is_null($this->getPart('pageHeader'))) {
-                $offset = 0;
-            } else {
-                if ($this->getPart('pageHeader')->isVisible() === false) {
-                    $offset = 0;
-                } else {
-                    $offset = $this->getPart('pageHeader')->getHeight();
-                }
+        ksort($this->orderedParts, SORT_NUMERIC);
+        $obj = new \ArrayObject($this->orderedParts);
+        $it = $obj->getIterator();
+        while ($it->valid())
+        {
+            $itPart = $it->current();
+            $itPart->setStartPosition($offset+$this->getTopMargin());
+            if ($itPart->isVisible()) {
+                $offset += $itPart->getHeight();
             }
-            $offset = $this->getTopMargin() + $offset;
-        } elseif ($part instanceof Part\Details) {
-            if (!is_null($this->getPart('pageHeader')) && $this->getPart('pageHeader')->isVisible()) {
-                $offset += $this->getPart('pageHeader')->getHeight();
-            }
-            if (!is_null($this->getPart('reportHeader')) && $this->getPart('reportHeader')->isVisible()) {
-                $offset += $this->getPart('reportHeader')->getHeight();
-            }
-            $offset += $this->getTopMargin();
-        } else {
-            $offset = 0;
+            $it->next();
         }
-        
-        return $offset;
     }
 
     /**

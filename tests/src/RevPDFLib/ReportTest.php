@@ -181,6 +181,25 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         
         $this->assertCount(2, $this->report->getParts());
     }
+//    
+//    public function testCalculateStartPositionPageHeader()
+//    {
+//        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+//                           ->disableOriginalConstructor()
+//                           ->getMock();
+//        $pageHeader->expects($this->any())
+//                   ->method('getStartPosition')
+//                   ->will($this->returnValue(10));
+//        $pageHeader->expects($this->any())
+//                   ->method('getHeight')
+//                   ->will($this->returnValue(40));
+//        $pageHeader->expects($this->any())
+//                   ->method('isVisible')
+//                   ->will($this->returnValue(true));
+//        
+//        $this->report->addPart('pageheader', $pageHeader);
+//        $this->assertEquals(10, $this->report->calculateStartPosition($pageHeader));
+//    }
     
     public function testCalculateStartPositionPageHeader()
     {
@@ -198,8 +217,39 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                    ->will($this->returnValue(true));
         
         $this->report->addPart('pageheader', $pageHeader);
-        $this->assertEquals(10, $this->report->calculateStartPosition($pageHeader));
+        $this->assertEquals(10, $pageHeader->getStartPosition());
     }
+//    
+//    public function testCalculateStartPositionReportHeader()
+//    {
+//        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+//                           ->disableOriginalConstructor()
+//                           ->getMock();
+//        $pageHeader->expects($this->any())
+//                   ->method('getStartPosition')
+//                   ->will($this->returnValue(10));
+//        $pageHeader->expects($this->any())
+//                   ->method('getHeight')
+//                   ->will($this->returnValue(40));
+//        $pageHeader->expects($this->any())
+//                   ->method('isVisible')
+//                   ->will($this->returnValue(true));
+//        
+//        $reportHeader = $this->getMockBuilder('RevPDFLib\Items\Part\ReportHeader')
+//                             ->disableOriginalConstructor()
+//                             ->getMock();
+//        
+//        $this->report->addPart('reportheader', $reportHeader);
+//        $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
+//        
+//        $this->report->addPart('pageheader', $pageHeader);
+//        $this->assertEquals(10, $this->report->calculateStartPosition($pageHeader));
+//        $this->assertEquals(50, $this->report->calculateStartPosition($reportHeader));
+//        
+//        $this->report->removePart('pageheader');
+//        $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
+//    }
+    
     
     public function testCalculateStartPositionReportHeader()
     {
@@ -221,14 +271,14 @@ class ReportTest extends \PHPUnit_Framework_TestCase
                              ->getMock();
         
         $this->report->addPart('reportheader', $reportHeader);
-        $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
+        $this->assertEquals(10, $reportHeader->getStartPosition());
         
         $this->report->addPart('pageheader', $pageHeader);
-        $this->assertEquals(10, $this->report->calculateStartPosition($pageHeader));
-        $this->assertEquals(50, $this->report->calculateStartPosition($reportHeader));
+        $this->assertEquals(10, $pageHeader->getStartPosition());
+        $this->assertEquals(50, $reportHeader->getStartPosition());
         
         $this->report->removePart('pageheader');
-        $this->assertEquals(10, $this->report->calculateStartPosition($reportHeader));
+        $this->assertEquals(10, $reportHeader->getStartPosition());
     }
     
     public function testCalculateStartPositionDetails()

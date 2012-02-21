@@ -46,7 +46,25 @@ use RevPDFLib\Items\Element\FactoryElement;
  */
 abstract class AbstractPart
 {
-
+    /*
+    const PART_HEADER = 0;
+    const PART_REPORT_HEADER = 1;
+    const PART_GROUP_HEADER = 2;
+    const PART_DATA = 3;
+    const PART_GROUP_FOOTER = 4;
+    const PART_FOOTER = 5;
+    const PART_REPORT_FOOTER = 6;
+    */
+    protected $partIds = array(
+        'header',
+        'reportHeader',
+        'groupHeader',
+        'data',
+        'groupFooter',
+        'reportFooter',
+        'footer'
+    );
+    
     /**
      * Is Displayed
      * @var boolean
@@ -71,7 +89,7 @@ abstract class AbstractPart
     protected $isVisible;
     protected $backgroundColor;
     protected $isPageJump;
-
+    
     /**
      * Constructor
      * 
