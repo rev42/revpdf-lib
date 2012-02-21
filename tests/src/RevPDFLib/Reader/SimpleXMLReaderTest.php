@@ -35,6 +35,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
     displayModeZoom="fullpage"
     displayModeLayout="continuous"
     pageOrientation="P"
+    pageLayout="A4"
     >
     <source provider="CsvProvider">
         <value>books.csv</value>
@@ -64,7 +65,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 "leftMargin" => "10",
                 "displayModeZoom" => "fullpage",
                 "displayModeLayout" => "continuous",
-                "pageOrientation" => "P"
+                "pageOrientation" => "P",
+                "pageLayout" => "A4"
             ),
             "source" => array(
                 "provider" => "CsvProvider",
@@ -79,8 +81,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "value" => "pageHeader textField1",
                         "type" => "textField",
                         "format" => "text",
-                        "posX" => "0",
-                        "posY" => "0",
+                        "x" => "0",
+                        "y" => "0",
                         "height" => "5",
                         "width" => "20"
                     ),
@@ -88,8 +90,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "value" => "pageHeader textField2",
                         "type" => "textField",
                         "format" => "text",
-                        "posX" => "0",
-                        "posY" => "5",
+                        "x" => "0",
+                        "y" => "5",
                         "height" => "5",
                         "width" => "20",
                     ),
@@ -97,8 +99,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "value" => "pageHeader textZone",
                         "type" => "textZone",
                         "format" => "text",
-                        "posX" => "0",
-                        "posY" => "10",
+                        "x" => "0",
+                        "y" => "10",
                         "height" => "5",
                         "width" => "20" 
                     )
@@ -113,8 +115,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "value" => "reportHeader textField1",
                         "type" => "textField",
                         "format" => "text",
-                        "posX" => "0",
-                        "posY" => "0",
+                        "x" => "0",
+                        "y" => "0",
                         "height" => "5",
                         "width" => "20"
                     ),

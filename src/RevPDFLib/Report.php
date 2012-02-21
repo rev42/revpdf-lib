@@ -394,25 +394,6 @@ class Report
     }
     
     /**
-     * Remove a part
-     * 
-     * @param string $type Part Type
-     * 
-     * @return boolean
-     */
-    public function removePart($type)
-    {
-        if (array_key_exists($type, $this->parts)) {
-            unset($this->parts[$type]);
-            
-            $this->calculateStartPosition();
-            return true;
-        }
-        
-        return false;
-    }
-    
-    /**
      * Recalculate Start Position for all Parts
      * 
      * @return void
