@@ -53,7 +53,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
     var $endPosition;
     var $currentPosition;
     
-    public function __construct($orientation, $unit, $format)
+    public function __construct($orientation="P", $unit="mm", $format="A4")
     {
         parent::__construct($orientation, $unit, $format);
         $this->AddFont('Deja Vu Sans', '', 'DejaVuSans.ttf', true);

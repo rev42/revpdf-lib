@@ -154,10 +154,10 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('P', $this->report->getPageOrientation());
         
         $this->report->setPaperFormat('A4');
-        $this->assertEquals('A4', $this->report->getPageOrientation());
+        $this->assertEquals('A4', $this->report->getPaperFormat());
         
         $this->report->setPaperFormat('A12');
-        $this->assertEquals('A4', $this->report->getPageOrientation());
+        $this->assertEquals('A4', $this->report->getPaperFormat());
     }
     
     public function testGetPart()
