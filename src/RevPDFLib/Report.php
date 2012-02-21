@@ -389,9 +389,9 @@ class Report
     }
 
     /**
-     * Set Page Orientation
+     * Set Paper Format
      * 
-     * @param char $pageOrientation Page Orientation
+     * @param char $paperFormat Paper Format
      * 
      * @return void
      */
