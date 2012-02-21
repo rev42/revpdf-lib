@@ -65,6 +65,18 @@ class CsvProvider implements DataProviderInterface
     {
         $this->data = $data;
     }
+    
+    /**
+     * Set File Connection
+     * 
+     * @param type $conn 
+     * 
+     * @return void
+     */
+    public function setConnector($sourceFile)
+    {
+        $this->connector = $sourceFile;
+    }
 
     /**
      * Parse data

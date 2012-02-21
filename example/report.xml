@@ -14,6 +14,7 @@
     displayModeZoom="fullpage"
     displayModeLayout="continuous"
     pageOrientation="L"
+    paperFormat="A4"
     >
     <font name="courier" size="16" textColor="#3366FF" style="B" />
     <source provider="CsvProvider">
