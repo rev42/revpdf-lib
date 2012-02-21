@@ -404,8 +404,7 @@ class Report
         ksort($this->orderedParts, SORT_NUMERIC);
         $obj = new \ArrayObject($this->orderedParts);
         $it = $obj->getIterator();
-        while ($it->valid())
-        {
+        while ($it->valid()) {
             $itPart = $it->current();
             $itPart->setStartPosition($offset+$this->getTopMargin());
             if ($itPart->isVisible()) {
