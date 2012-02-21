@@ -25,13 +25,6 @@
     <services>
         <service id="revpdflib.event_dispatcher" class="%revpdflib.event_dispatcher.class%" />
         
-        <service id="revpdflib.tcpdfwriter" class="%revpdflib.tcpdfwriter.class%" />
-        <service id="revpdflib.tfpdfwriter" class="%revpdflib.tfpdfwriter.class%" >
-            <argument>L</argument>
-            <argument>mm</argument>
-            <argument>A4</argument>
-        </service>
-        
         <service id="revpdflib.pdfwrapper" class="%revpdflib.pdfwrapper.class%">
             <argument type="service" id="revpdflib.tfpdfwriter"/>
         </service>
