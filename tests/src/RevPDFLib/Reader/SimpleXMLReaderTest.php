@@ -48,6 +48,11 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
     <reportHeader height="20" isVisible="1" backgroundColor="#FFF">
         <textField format="text" x="0" y="0" height="5" width="20">reportHeader textField1</textField>
     </reportHeader>
+    <pageFooter height="10" isVisible="1" backgroundColor="#F00">
+        <textField format="text" x="10" y="0" height="5" width="40" border="1">
+            Footer
+        </textField>
+    </pageFooter>
 </RevPDFLib>';
         
         $expected = array(
@@ -122,7 +127,24 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                     ),
                  ),
             ),
-            "details" => array()
+            "details" => array(),
+            "pageFooter" => array(
+                "height" => "10",
+                "isVisible" => "1",
+                "backgroundColor" =>"#F00",
+                "elements" => array(
+                    array(
+                        "value" => "Footer",
+                        "type" => "textField",
+                        "format" => "text",
+                        "x" => "10",
+                        "y" => "0",
+                        "height" => "5",
+                        "width" => "40",
+                        "border" => "1"
+                    ),
+                ),
+            )
         );
         
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_string($data)));

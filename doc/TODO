@@ -25,5 +25,4 @@ Le reader doit
 ## Code
 
  - Gérer toutes les sections
- - Modifier la façon dont sont calculées les startPosition
  - Faire un état des lieux de ce qui est supporté sur Element, Part, Report

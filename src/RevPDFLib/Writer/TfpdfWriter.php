@@ -97,7 +97,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
      */
     public function getEndPosition()
     {
-        return $this->endPosition;
+        return intval($this->endPosition);
     }
 
     /**
@@ -109,16 +109,13 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
      */
     public function setEndPosition($endPosition)
     {
-        $this->endPosition = $endPosition;
-        /*
-        if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
-            $this->endPosition = intval($this->h - $endPosition - $this->getReport()->getPart('partFooter')->getHeight());
-            $this->SetAutoPageBreak(1, $endPosition + $this->getReport()->getPart('partFooter')->getHeight());
+        if (!is_null($this->getPageFooter()) && $this->getPageFooter()->isVisible() !== false) {
+            $this->endPosition = intval($this->h - $endPosition - $this->getPageFooter()->getHeight());
+            $this->SetAutoPageBreak(1, $endPosition + $this->getPageFooter()->getHeight());
         } else {
             $this->endPosition = intval($this->h - $endPosition);
             $this->SetAutoPageBreak(1, $endPosition);
-        }   
-         */
+        }
     }
     
     /**
@@ -142,6 +139,28 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
     {
         return $this->pageHeader;
     }
+    
+    /**
+     * Set Page Footer part
+     * 
+     * @param array $part Part
+     * 
+     * @return void
+     */
+    public function setPageFooter($part)
+    {
+        $this->pageFooter = $part;
+    }
+
+    /**
+     * Get Page Footer part
+     * 
+     * @return array
+     */
+    public function getPageFooter()
+    {
+        return $this->pageFooter;
+    }
 
     /**
      * Get Left Margin
@@ -162,6 +181,16 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
     {
         return $this->tMargin;
     }
+    
+    /**
+     * Get Bottom Margin
+     * 
+     * @return int
+     */
+    public function getBottomMargin()
+    {
+        return $this->bMargin;
+    }
 
     /**
      * Write Report Header
@@ -170,13 +199,13 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
      */
     public function header()
     {
-        $data = $this->getPageHeader();
+        $part = $this->getPageHeader();
 
-        if (count($data) <= 0 || $data->isVisible() === false) {
+        if (count($part) <= 0 || $part->isVisible() === false) {
             return;
         }
         
-        $elements = $data->getElements();
+        $elements = $part->getElements();
         
         if (count($elements) <= 0) {
             return false;
@@ -196,8 +225,44 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
                 $element->getBorder()
             );
         }
-        $newPosition = $this->getTopMargin() + $data->getHeight();
+        $newPosition = $this->getTopMargin() + $part->getHeight();
         $this->setCurrentPosition($newPosition);
+    }
+    
+    /**
+     * Write Report Footer
+     * 
+     * @return boolean 
+     */
+    public function footer()
+    {
+        $part = $this->getPageFooter();
+        
+        if (count($part) <= 0 || $part->isVisible() === false) {
+            return;
+        }
+        
+        $elements = $part->getElements();
+        
+        if (count($elements) <= 0) {
+            return false;
+        }
+        
+        // The current position has to be reset at the Bottom Margin value - page Footer height
+        $this->setCurrentPosition((int) $this->getEndPosition());
+        
+        foreach ($elements as $element) {
+            $this->setXY(
+                $element->getPosX() + $this->getLeftMargin(),
+                $this->getCurrentPosition() - $element->getPosY()
+            );
+            $this->Cell(
+                $element->getWidth(),
+                $element->getHeight(),
+                $element->getField(),
+                $element->getBorder()
+            );
+        }
     }
     
     /**

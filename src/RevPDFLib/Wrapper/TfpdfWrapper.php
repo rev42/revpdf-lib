@@ -73,13 +73,6 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
      */
     public function configure($report)
     {
-        if (!is_null($this->getReport()->getPart('partFooter')) && $this->getReport()->getPart('partFooter')->isVisible() != 0) {
-            $this->writer->setEndPosition(intval($this->writer->h - $report['bottomMargin'] - $this->getReport()->getPart('partFooter')->getHeight()));
-            $this->writer->SetAutoPageBreak(1, $report['bottomMargin'] + $this->getReport()->getPart('partFooter')->getHeight());
-        } else {
-            $this->writer->setEndPosition(intval($this->writer->h - $report['bottomMargin']));
-            $this->writer->SetAutoPageBreak(1, $report['bottomMargin']);
-        }
         $this->writer->setCurrentPosition($report['topMargin']);
         $this->writer->SetAuthor($report['author']);
         $this->writer->SetCreator(Application::NAME);
@@ -95,11 +88,14 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
             $report['topMargin'],
             $report['rightMargin']
         );
-        // Page header is a special part because it is automatically called when
-        // a new page is created. header() doesn't support parameters
+        // Page header/footer are special parts because they are automatically 
+        // called when new page is created. header() and footer() doesn't 
+        // support parameters
         $this->writer->setPageHeader($this->getReport()->getPart('pageHeader'));
+        $this->writer->setPageFooter($this->getReport()->getPart('pageFooter'));
         $this->writer->SetTopMargin($this->getReport()->getTopMargin());
         $this->writer->SetLeftMargin($this->getReport()->getLeftMargin());
+        $this->writer->setEndPosition($report['bottomMargin']);
     }
     
     /**
@@ -160,6 +156,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         foreach ($data as $element) {
             // Create new page if overlapping
             if (intval($this->writer->getCurrentPosition() + $element->getHeight()) >= intval($this->writer->getEndPosition())) {
+                //echo $this->writer->getCurrentPosition() + $element->getHeight() . "/" . intval($this->writer->getEndPosition());exit;
                 $this->writer->AddPage($this->report->getPageOrientation());
                 $this->writer->setCurrentPosition($part->getStartPosition());
             }
@@ -176,7 +173,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
                 $element->getWidth(),
                 $element->getHeight(),
                 $element->getField($iterator),
-                //$element->getPosY() + $this->writer->getCurrentPosition().' - '.$element->getHeight(),
+                //$this->writer->getCurrentPosition() ."+". $element->getHeight().' - '.$this->writer->getEndPosition(),
                 $element->getBorder(),
                 0,
                 $element->getAlignment(),

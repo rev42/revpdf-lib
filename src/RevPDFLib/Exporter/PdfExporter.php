@@ -138,6 +138,11 @@ class PdfExporter
             
             $this->report->addPart('details', $part);
         }
+        if (array_key_exists('pageFooter', $reportData)) {
+            $part = new Part\PageFooter($reportData['pageFooter']);
+            
+            $this->report->addPart('pagefooter', $part);
+        }
         
         $this->wrapper->configure($this->report->getAllProperties());
     }
