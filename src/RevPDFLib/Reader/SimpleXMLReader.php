@@ -66,6 +66,7 @@ class SimpleXMLReader implements ReaderInterface
         $formattedData['pageHeader'] = $this->getPartData('pageHeader', $data);
         $formattedData['reportHeader'] = $this->getPartData('reportHeader', $data);
         $formattedData['details'] = $this->getPartData('details', $data);
+        $formattedData['reportFooter'] = $this->getPartData('reportFooter', $data);
         $formattedData['pageFooter'] = $this->getPartData('pageFooter', $data);
         
         /*

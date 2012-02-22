@@ -138,6 +138,11 @@ class PdfExporter
             
             $this->report->addPart('details', $part);
         }
+        if (array_key_exists('reportFooter', $reportData)) {
+            $part = new Part\ReportFooter($reportData['reportFooter']);
+            
+            $this->report->addPart('reportFooter', $part);
+        }
         if (array_key_exists('pageFooter', $reportData)) {
             $part = new Part\PageFooter($reportData['pageFooter']);
             
@@ -184,6 +189,9 @@ class PdfExporter
                 $iterator->next();
                 $this->recordIterator = $iterator;
             }
+        }
+        if ($this->report->getPart('reportfooter')->isDisplayed() === false) {
+            $this->wrapper->writePDF($this->report->getPart('reportfooter'), $this->report->getPart('reportfooter')->getElements());
         }
         $this->wrapper->closeDocument();
         $this->wrapper->outputDocument();
