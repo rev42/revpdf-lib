@@ -24,20 +24,46 @@
                     "reference": "master"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "tcpdf",
+                "version": "master",
+                "source": {
+                    "url": "git://tcpdf.git.sourceforge.net/gitroot/tcpdf/tcpdf",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "tfpdf",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/rev42/tFPDF.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
         }
     ],
     "require": {
         "php": ">=5.3.2",
+        "tfpdf" : "master",
+        "EasyCSV": "master",
         "symfony/http-kernel": "2.0.7",
         "symfony/event-dispatcher": "2.0.7",
         "symfony/dependency-injection": "2.0.7",
-        "symfony/config":"2.0.7",
-        "EasyCSV": "master"
+        "symfony/config":"2.0.7"
     },
-    "autoload": {
+   "autoload": {
         "psr-0": {
             "RevPDFLib": "src/",
-            "EasyCSV": "vendor/EasyCSV/lib/"
+            "EasyCSV": "vendor/EasyCSV/lib/",
+            "tFPDF": "vendor/tfpdf/src/"
         }
     }
 }

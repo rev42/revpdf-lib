@@ -155,8 +155,6 @@ class Application
         // Configure Writers
         $pdfwriter = new \RevPDFLib\Writer\TfpdfWriter($report['report']['pageOrientation'], 'mm', $report['report']['paperFormat']);
         $this->getDic()->set('revpdflib.tfpdfwriter', $pdfwriter);
-        $pdfwriter = new \RevPDFLib\Writer\TcpdfWriter($report['report']['pageOrientation'], 'mm', $report['report']['paperFormat']);
-        $this->getDic()->set('revpdflib.tcpdfwriter', $pdfwriter);
         
         // Get data provider and parse data
         $this->selectDataProvider($report['source']['provider']);

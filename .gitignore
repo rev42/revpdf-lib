@@ -8,3 +8,4 @@ nb-configuration.xml
 /vendor/.composer/
 /vendor/
 /composer.lock
+composer.phar
