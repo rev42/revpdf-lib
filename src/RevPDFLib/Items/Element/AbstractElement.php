@@ -547,7 +547,7 @@ abstract class AbstractElement
             'height' => 10,
             'border' => 0,
             'borderWidth' => 0,
-            'type' => 'textField',
+            'type' => 'textfield',
             'value' => '',
             'textAlignment' => '',
             'format' => 'text',

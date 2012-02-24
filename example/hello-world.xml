@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RevPDFLib>
+    <font name="courier" size="16" textColor="#3366FF" style="B" />
+    <details height="20" isVisible="1" backgroundColor="#FFF">
+        <textfield format="number" x="0" y="0" height="20" width="20" border="1" zindex="0">Hello World!</textfield>
+    </details>
+</RevPDFLib>

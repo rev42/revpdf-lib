@@ -21,53 +21,53 @@
         <value><![CDATA[Select * from _r_article]]></value>
     </source>
     <pageHeader height="20" isVisible="1" backgroundColor="#F00">
-        <textField format="text" x="80" y="5" height="5" width="42" border="1">
+        <textfield format="text" x="80" y="5" height="5" width="42" border="1">
             Article
-        </textField>
+        </textfield>
     </pageHeader>
     <reportHeader height="10" isVisible="1" backgroundColor="#FFF" isPageJump="0">
-        <textField format="text" x="0" y="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
+        <textfield format="text" x="0" y="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
             <font isUnderline="false" isBold="true" isItalic="true" fontName="courier" size="14" />
             <![CDATA[ID]]>
-        </textField>
-        <textField format="text" x="20" y="0" height="10" width="110" border="1" zindex="0">
+        </textfield>
+        <textfield format="text" x="20" y="0" height="10" width="110" border="1" zindex="0">
             <![CDATA[Désignation]]>
-        </textField>
-        <textField format="text" x="130" y="0" height="10" width="30" border="1" zindex="0">
+        </textfield>
+        <textfield format="text" x="130" y="0" height="10" width="30" border="1" zindex="0">
             <![CDATA[Prix d'achat]]>
-        </textField>
-        <textField textAlignment="R" format="text" x="160" y="0" height="10" width="30" border="1" borderWidth="0.8" zindex="0">
+        </textfield>
+        <textfield textAlignment="R" format="text" x="160" y="0" height="10" width="30" border="1" borderWidth="0.8" zindex="0">
             <![CDATA[Prix de vente]]>
-        </textField>
+        </textfield>
     </reportHeader>
     <details height="20" isVisible="1" backgroundColor="#FFF">
-        <textZone format="text" x="0" y="0" height="20" width="20" border="1" zindex="0">id</textZone>
-        <textZone format="text" x="20" y="0" height="20" width="110" border="1" zindex="0">designation</textZone>
-        <textZone format="number" x="130" y="0" height="20" width="30" border="1" zindex="0" textAlignment="R">
+        <textzone format="text" x="0" y="0" height="20" width="20" border="1" zindex="0">id</textzone>
+        <textzone format="text" x="20" y="0" height="20" width="110" border="1" zindex="0">designation</textzone>
+        <textzone format="number" x="130" y="0" height="20" width="30" border="1" zindex="0" textAlignment="R">
             prixachat
-        </textZone>
-        <textZone format="number" x="160" y="0" height="20" width="30" border="1" zindex="0" textAlignment="R">
+        </textzone>
+        <textzone format="number" x="160" y="0" height="20" width="30" border="1" zindex="0" textAlignment="R">
             prixvente
-        </textZone>
+        </textzone>
     </details>
     <reportFooter height="10" isVisible="1" backgroundColor="#FFF" isPageJump="0">
-        <textField format="text" x="0" y="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
+        <textfield format="text" x="0" y="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
             <font isUnderline="false" isBold="true" isItalic="true" fontName="courier" size="14" />
             <![CDATA[ID]]>
-        </textField>
-        <textField format="text" x="20" y="0" height="10" width="110" border="1" zindex="0">
+        </textfield>
+        <textfield format="text" x="20" y="0" height="10" width="110" border="1" zindex="0">
             <![CDATA[Désignation]]>
-        </textField>
-        <textField format="text" x="130" y="0" height="10" width="30" border="1" zindex="0">
+        </textfield>
+        <textfield format="text" x="130" y="0" height="10" width="30" border="1" zindex="0">
             <![CDATA[Prix d'achat]]>
-        </textField>
-        <textField textAlignment="R" format="text" x="160" y="0" height="10" width="30" border="1" borderWidth="0.8" zindex="0">
+        </textfield>
+        <textfield textAlignment="R" format="text" x="160" y="0" height="10" width="30" border="1" borderWidth="0.8" zindex="0">
             <![CDATA[Prix de vente]]>
-        </textField>
+        </textfield>
     </reportFooter>
     <pageFooter height="20" isVisible="1" backgroundColor="#F00">
-        <textField format="text" x="0" y="0" height="20" width="180" border="1">
+        <textfield format="text" x="0" y="0" height="20" width="180" border="1">
             Pied de page
-        </textField>
+        </textfield>
     </pageFooter>
 </RevPDFLib>

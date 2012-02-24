@@ -68,8 +68,8 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
     {
         $elements = array(
             array(
-                "value" => "pageHeader textField1",
-                "type" => "textField",
+                "value" => "pageHeader textfield1",
+                "type" => "textfield",
                 "format" => "text",
                 "posX" => "0",
                 "posY" => "0",
@@ -78,8 +78,8 @@ class PageHeaderTest extends \PHPUnit_Framework_TestCase
                 "border" => 1,
             ),
             array(
-                "value" => "pageHeader textField2",
-                "type" => "textField",
+                "value" => "pageHeader textfield2",
+                "type" => "textfield",
                 "format" => "text",
                 "posX" => "0",
                 "posY" => "5",

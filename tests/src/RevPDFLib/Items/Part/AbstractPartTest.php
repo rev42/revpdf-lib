@@ -94,8 +94,8 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
     {
         $elements = array(
             array(
-                "value" => "pageHeader textField1",
-                "type" => "textField",
+                "value" => "pageHeader textfield1",
+                "type" => "textfield",
                 "format" => "text",
                 "x" => "0",
                 "y" => "0",
@@ -104,8 +104,8 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
                 "border" => "1"
             ),
             array(
-                "value" => "pageHeader textField2",
-                "type" => "textField",
+                "value" => "pageHeader textfield2",
+                "type" => "textfield",
                 "format" => "text",
                 "x" => "0",
                 "y" => "5",

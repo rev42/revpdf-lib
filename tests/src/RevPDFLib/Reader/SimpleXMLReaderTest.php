@@ -41,17 +41,17 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
         <value>books.csv</value>
     </source>
     <pageHeader height="15" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" x="0" y="0" height="5" width="20">pageHeader textField1</textField>
-        <textField format="text" x="0" y="5" height="5" width="20">pageHeader textField2</textField>
-        <textZone format="text" x="0" y="10" height="5" width="20">pageHeader textZone</textZone>
+        <textfield format="text" x="0" y="0" height="5" width="20">pageHeader textfield1</textfield>
+        <textfield format="text" x="0" y="5" height="5" width="20">pageHeader textfield2</textfield>
+        <textzone format="text" x="0" y="10" height="5" width="20">pageHeader textzone</textzone>
     </pageHeader>
     <reportHeader height="20" isVisible="1" backgroundColor="#FFF">
-        <textField format="text" x="0" y="0" height="5" width="20">reportHeader textField1</textField>
+        <textfield format="text" x="0" y="0" height="5" width="20">reportHeader textfield1</textfield>
     </reportHeader>
     <pageFooter height="10" isVisible="1" backgroundColor="#F00">
-        <textField format="text" x="10" y="0" height="5" width="40" border="1">
+        <textfield format="text" x="10" y="0" height="5" width="40" border="1">
             Footer
-        </textField>
+        </textfield>
     </pageFooter>
 </RevPDFLib>';
         
@@ -83,8 +83,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 "backgroundColor" =>"#FFF",
                 "elements" => array(
                     array(
-                        "value" => "pageHeader textField1",
-                        "type" => "textField",
+                        "value" => "pageHeader textfield1",
+                        "type" => "textfield",
                         "format" => "text",
                         "x" => "0",
                         "y" => "0",
@@ -92,8 +92,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "width" => "20"
                     ),
                     array(
-                        "value" => "pageHeader textField2",
-                        "type" => "textField",
+                        "value" => "pageHeader textfield2",
+                        "type" => "textfield",
                         "format" => "text",
                         "x" => "0",
                         "y" => "5",
@@ -101,8 +101,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "width" => "20",
                     ),
                     array(
-                        "value" => "pageHeader textZone",
-                        "type" => "textZone",
+                        "value" => "pageHeader textzone",
+                        "type" => "textzone",
                         "format" => "text",
                         "x" => "0",
                         "y" => "10",
@@ -117,8 +117,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 "backgroundColor" => "#FFF",
                 "elements" => array(
                     array(
-                        "value" => "reportHeader textField1",
-                        "type" => "textField",
+                        "value" => "reportHeader textfield1",
+                        "type" => "textfield",
                         "format" => "text",
                         "x" => "0",
                         "y" => "0",
@@ -135,7 +135,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 "elements" => array(
                     array(
                         "value" => "Footer",
-                        "type" => "textField",
+                        "type" => "textfield",
                         "format" => "text",
                         "x" => "10",
                         "y" => "0",

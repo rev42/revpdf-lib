@@ -21,31 +21,31 @@
         <value>books.csv</value>
     </source>
     <pageHeader height="20" isVisible="1" backgroundColor="#F00">
-        <textField format="text" x="80" y="5" height="5" width="42" border="1">
+        <textfield format="text" x="80" y="5" height="5" width="42" border="1">
             MOVIES
-        </textField>
+        </textfield>
     </pageHeader>
     <reportHeader height="10" isVisible="1" backgroundColor="#FFF" isPageJump="0">
-        <textField format="text" x="0" y="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
+        <textfield format="text" x="0" y="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
             <font isUnderline="false" isBold="true" isItalic="true" fontName="courier" size="14" />
             <![CDATA[Rating]]>
-        </textField>
-        <textField format="text" x="20" y="0" height="10" width="50" border="1" zindex="0">
+        </textfield>
+        <textfield format="text" x="20" y="0" height="10" width="50" border="1" zindex="0">
             <![CDATA[Title]]>
-        </textField>
-        <textField format="text" x="70" y="0" height="10" width="50" border="1" zindex="0">
+        </textfield>
+        <textfield format="text" x="70" y="0" height="10" width="50" border="1" zindex="0">
             <![CDATA[Author]]>
-        </textField>
-        <textField textAlignment="R" format="text" x="120" y="0" height="10" width="20" border="1" borderWidth="0.8" zindex="0">
+        </textfield>
+        <textfield textAlignment="R" format="text" x="120" y="0" height="10" width="20" border="1" borderWidth="0.8" zindex="0">
             <![CDATA[Type]]>
-        </textField>
-        <textField format="text" x="140" y="0" height="10" width="120" border="1" zindex="0">Review</textField>
+        </textfield>
+        <textfield format="text" x="140" y="0" height="10" width="120" border="1" zindex="0">Review</textfield>
     </reportHeader>
     <details height="20" isVisible="1" backgroundColor="#FFF">
-        <textZone format="number" x="0" y="0" height="20" width="20" border="1" zindex="0">rating</textZone>
-        <textZone format="text" x="20" y="0" height="20" width="50" border="1" zindex="0">title</textZone>
-        <textZone format="text" x="70" y="0" height="20" width="50" border="1" zindex="0">author</textZone>
-        <textZone format="text" x="120" y="0" height="20" width="20" border="1" zindex="0">type</textZone>
-        <textZone format="text" x="140" y="0" height="20" width="120" border="1" zindex="0">review</textZone>
+        <textzone format="number" x="0" y="0" height="20" width="20" border="1" zindex="0">rating</textzone>
+        <textzone format="text" x="20" y="0" height="20" width="50" border="1" zindex="0">title</textzone>
+        <textzone format="text" x="70" y="0" height="20" width="50" border="1" zindex="0">author</textzone>
+        <textzone format="text" x="120" y="0" height="20" width="20" border="1" zindex="0">type</textzone>
+        <textzone format="text" x="140" y="0" height="20" width="120" border="1" zindex="0">review</textzone>
     </details>
 </RevPDFLib>

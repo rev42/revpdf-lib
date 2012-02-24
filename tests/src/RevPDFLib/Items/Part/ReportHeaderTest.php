@@ -193,8 +193,8 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
     {
         $elements = array(
             array(
-                "value" => "ReportHeader textField1",
-                "type" => "textField",
+                "value" => "ReportHeader textfield1",
+                "type" => "textfield",
                 "format" => "text",
                 "posX" => "0",
                 "posY" => "0",
@@ -203,8 +203,8 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
                 "border" => 1,
             ),
             array(
-                "value" => "ReportHeader textField2",
-                "type" => "textField",
+                "value" => "ReportHeader textfield2",
+                "type" => "textfield",
                 "format" => "text",
                 "posX" => "0",
                 "posY" => "5",
