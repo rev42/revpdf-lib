@@ -83,6 +83,18 @@ class Report
      */
     public function setAllProperties($data)
     {
+        $data['report'] = array_merge(array(
+            'author' => '',
+            'keywords' => '',
+            'subject' => '',
+            'title' => '',
+            'leftMargin' => 10,
+            'topMargin' => 10,
+            'rightMargin' => 10,
+            'bottomMargin' => 10,
+            'displayModeZoom' => 'default',
+            'displayModeLayout' => 'default',
+        ), $data['report']);
         $this->author = $data['report']['author'];
         $this->displayModeZoom = $data['report']['displayModeZoom'];
         $this->displayModeLayout = $data['report']['displayModeLayout'];
