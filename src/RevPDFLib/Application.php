@@ -147,7 +147,15 @@ class Application
             throw new Exception();
         }
         // Get data properly formatted
-        $report = $this->getDic()->get('revpdflib.reader')->parseData($data);
+        $params = array(
+            'report' => array(
+                'pageOrientation' => 'P',
+                'paperFormat' => 'A4'
+            ),
+            'source' => null
+        );
+        
+        $report = array_merge($params, $this->getDic()->get('revpdflib.reader')->parseData($data));
         if (!is_array($report)) {
             return null;
         }
@@ -157,10 +165,13 @@ class Application
         $this->getDic()->set('revpdflib.tfpdfwriter', $pdfwriter);
         
         // Get data provider and parse data
-        $this->selectDataProvider($report['source']['provider']);
-        $this->getDic()->get('revpdflib.provider')->setConnector($this->dataSource);
-        $this->getDic()->get('revpdflib.provider')->parse($report['source']['value']);
-        $data = $this->getDic()->get('revpdflib.provider')->getData();
+        $data = array('fake');
+        if (isset($report['source']['provider'])) {
+            $this->selectDataProvider($report['source']['provider']);
+            $this->getDic()->get('revpdflib.provider')->setConnector($this->dataSource);
+            $this->getDic()->get('revpdflib.provider')->parse($report['source']['value']);
+            $data = $this->getDic()->get('revpdflib.provider')->getData();
+        }
         
         // Build document
         $this->getDic()->get('revpdflib.exporter')->buildDocument($report);

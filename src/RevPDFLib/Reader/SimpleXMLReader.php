@@ -52,15 +52,19 @@ class SimpleXMLReader implements ReaderInterface
     public function parseData($data)
     {
         $formattedData = array();
-        foreach ($data->attributes() as $key => $value) {
-            $formattedData['report'][$key] = (string) $value;
+        if (is_array($data->attributes())) {
+            foreach ($data->attributes() as $key => $value) {
+                $formattedData['report'][$key] = (string) $value;
+            }
         }
         
-        foreach ($data->source->attributes() as $key => $value) {
-            $formattedData['source'][$key] = (string) $value;
-        }
-        foreach ($data->source->children() as $key => $elements) {
-            $formattedData['source'][$key] = (string) $elements[0];
+        if (is_array($data->source->attributes())) {
+            foreach ($data->source->attributes() as $key => $value) {
+                $formattedData['source'][$key] = (string) $value;
+            }
+            foreach ($data->source->children() as $key => $elements) {
+                $formattedData['source'][$key] = (string) $elements[0];
+            }
         }
         
         $formattedData['pageHeader'] = $this->getPartData('pageHeader', $data);
