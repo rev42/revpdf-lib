@@ -618,7 +618,8 @@ abstract class AbstractElement
     /**
      * Write content into instance of PDF class
      *
-     * @param object &$writer instance of PDF class
+     * @param object &$writer  instance of PDF writer
+     * @param object $iterator Data iterator
      *
      * @return void
      */

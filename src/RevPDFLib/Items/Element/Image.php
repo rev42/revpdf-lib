@@ -45,7 +45,8 @@ class Image extends AbstractElement
     /**
      * Write content into instance of PDF class
      * 
-     * @param object &$pdfDoc instance of PDF class
+     * @param object &$writer  instance of PDF writer
+     * @param object $iterator Data iterator
      * 
      * @see RevPDF_Element_Abstract::writeContent()
      * 
@@ -53,7 +54,7 @@ class Image extends AbstractElement
      */
     public function writeContent(&$writer, $iterator)
     {
-        if ($this->getField() != "") {
+        if (getimagesize($this->getField()) !== false) {
             $writer->Image(
                 $this->getField(), 
                 $writer->GetX(), 

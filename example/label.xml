@@ -36,14 +36,14 @@ jk@moon.com</textfield>
 Boston, MA</textfield>
   <image format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="19" y="8" width="8" height="5" zindex="0" textAlignment="L">
    <font fontName="helvetica" size="12" isBold="0" isItalic="0" isUnderline="0"/>
-images/en_US.png</image>
+en_US.png</image>
   <textfield format="text" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="110" y="0" width="80" height="50" zindex="0" textAlignment="L">
 
    <font fontName="helvetica" size="12" isBold="0" isItalic="0" isUnderline="0"/>
 </textfield>
   <image format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="127" y="8" width="8" height="5" zindex="0" textAlignment="L">
    <font fontName="helvetica" size="12" isBold="0" isItalic="0" isUnderline="0"/>
-images/en_US.png</image>
+en_US.png</image>
   <textfield format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="138" y="22" width="50" height="6" zindex="0" textAlignment="L">
    <font fontName="helvetica" size="10" isBold="0" isItalic="0" isUnderline="0"/>
 Boston Lobster Fishing</textfield>
