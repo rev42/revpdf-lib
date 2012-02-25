@@ -65,6 +65,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         $this->AddFont('Deja Vu Serif', 'BI', 'DejaVuSerif-BoldItalic.ttf', true);
         $this->AddFont('Deja Vu Serif', 'I', 'DejaVuSerif-Italic.ttf', true);
         $this->AddFont('DejaVu', '', 'DejaVuSansCondensed.ttf', true);
+        $this->AddFont('DejaVu', 'BI', 'DejaVuSansCondensed.ttf', true);
         $this->SetFont('DejaVu', '',14);
     }
     
