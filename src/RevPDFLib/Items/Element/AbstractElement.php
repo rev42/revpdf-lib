@@ -664,14 +664,14 @@ abstract class AbstractElement
 
         case "Fulldate":
             $value = date(
-                ApplicationSettingTable::getSetting('fullDateFormat'),
+                'd/m/Y H:i:s',
                 strtotime($value)
             );
             break;
 
         case "AbrevDate":
             $value = date(
-                ApplicationSettingTable::getSetting('shortDateFormat'),
+                'd/m/Y',
                 strtotime($value)
             );
             break;
