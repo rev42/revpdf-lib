@@ -170,17 +170,6 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
             );
             
             $element->writeContent($this->writer, $iterator);
-
-            $this->writer->Cell(
-                $element->getWidth(),
-                $element->getHeight(),
-                $element->getField($iterator),
-                //$this->writer->getCurrentPosition() ."+". $element->getHeight().' - '.$this->writer->getEndPosition(),
-                $element->getBorder(),
-                0,
-                $element->getAlignment(),
-                true
-            );
         }
         
         $newPosition = $this->writer->getCurrentPosition() + $part->getHeight();
