@@ -108,7 +108,7 @@ abstract class AbstractPart
         $this->isVisible = (boolean) $data['isVisible'];
         $this->backgroundColor = $data['backgroundColor'];
         $this->isPageJump = (boolean) $data['isPageJump'];
-        
+
         if (isset($data['elements'])) {
             $this->setElements($data['elements']);
         }
@@ -293,7 +293,7 @@ abstract class AbstractPart
      */
     public function isPageJump() 
     {
-        return $this->isPageJump;
+        return (bool) $this->isPageJump;
     }
     
     /**

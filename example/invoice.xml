@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RevPDFLib shortname="invoice / devis" fullname="Invoice" author="RevPDF" keywords="RevPDF, Invoice" subject="Invoice" title="RevPDF - Invoice" displayModeZoom="fullpage" displayModeLayout="single" comments="" topMargin="10" bottomMargin="10" rightMargin="10" leftMargin="10" paperFormat="A4" pageOrientation="P">
+ <source provider="PdoProvider">
+  <value>select * from _r_invoice i left join _r_invoice_line il on i.id=il.invoice_id where i.id=1</value>
+ </source>
+ <pageHeader height="80" isVisible="true" backgroundColor="#FFFFFF" isPageJump="true" isIndivisible="true" isAutoExtend="true" isAutoReduc="true" sortOrder="asc">
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="6" y="34" width="20" height="5" zindex="0" textAlignment="L">
+   <font fontName="Deja Vu Sans" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_firstname</textzone>
+
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="26" y="34" width="20" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_lastname</textzone>
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="6" y="39" width="40" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_email</textzone>
+  <textfield format="text" backcolor="#FFFFFF" forecolor="#696969" border="B" borderWidth="0.50" x="5" y="0" width="30" height="8" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="14" isBold="false" isItalic="false" isUnderline="false"/>
+Estimate</textfield>
+
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#696969" border="B" borderWidth="0.50" x="35" y="0" width="25" height="8" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="14" isBold="false" isItalic="false" isUnderline="false"/>
+id</textzone>
+  <textzone format="AbrevDate" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="20" y="16" width="25" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+invoice_date</textzone>
+  <textfield format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="6" y="27" width="65" height="6" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="14" isBold="false" isItalic="false" isUnderline="true"/>
+Customer information:</textfield>
+
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="6" y="65" width="50" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_billing_street_address</textzone>
+  <textfield format="text" backcolor="#FFFFFF" forecolor="#000000" border="B" borderWidth="0.20" x="98" y="60" width="35" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+Shipping address:</textfield>
+  <textfield format="text" backcolor="#FFFFFF" forecolor="#000000" border="B" borderWidth="0.20" x="6" y="60" width="30" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+Billing address:</textfield>
+
+  <textfield format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="5" y="16" width="15" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+Date:</textfield>
+  <image format="text" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="140" y="0" width="50" height="20" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+./theme/default/images/revpdf_logo.png</image>
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="6" y="70" width="15" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_billing_postcode</textzone>
+
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="21" y="70" width="25" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_billing_city</textzone>
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="113" y="70" width="25" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_shipping_city</textzone>
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="98" y="65" width="50" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_shipping_street_address</textzone>
+
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="98" y="70" width="15" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+customer_shipping_postcode</textzone>
+ </pageHeader>
+ <pageFooter height="20" isVisible="true" backgroundColor="#FFFFFF" isPageJump="true" isIndivisible="true" isAutoExtend="true" isAutoReduc="true" sortOrder="asc">
+  <pagenumber format="text" backcolor="#FFFFFF" forecolor="#000000" border="T" borderWidth="0.20" x="0" y="10" width="190" height="10" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+Page {cur}/{nb}</pagenumber>
+ </pageFooter>
+
+ <reportHeader height="15" isVisible="true" backgroundColor="#FFFFFF" isPageJump="false" isIndivisible="false" isAutoExtend="false" isAutoReduc="false" sortOrder="asc">
+  <textfield format="text" backcolor="#DFDFDF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="0" y="5" width="100" height="10" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+DESCRIPTION</textfield>
+  <textfield format="text" backcolor="#DFDFDF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="100" y="5" width="10" height="10" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+QTY</textfield>
+  <textfield format="text" backcolor="#DFDFDF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="135" y="5" width="25" height="10" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+
+TOTAL</textfield>
+  <textfield format="text" backcolor="#DFDFDF" forecolor="#0" border="LRBT" borderWidth="0.20" x="110" y="5" width="25" height="10" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+UNIT COST</textfield>
+ </reportHeader>
+ <details height="10" isVisible="true" backgroundColor="#FFFFFF" isPageJump="false" isIndivisible="false" isAutoExtend="false" isAutoReduc="false" sortOrder="asc">
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="100" y="0" width="10" height="10" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+quantity</textzone>
+
+  <textzone format="number" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="135" y="0" width="25" height="10" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+total_price</textzone>
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#0" border="LRBT" borderWidth="0.20" x="0" y="0" width="100" height="10" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+description</textzone>
+  <textzone format="number" backcolor="#FFFFFF" forecolor="#0" border="LRBT" borderWidth="0.20" x="110" y="0" width="25" height="10" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+unit_cost</textzone>
+
+ </details>
+ <reportFooter height="50" isVisible="true" backgroundColor="#FFFFFF" isPageJump="false" isIndivisible="false" isAutoExtend="false" isAutoReduc="false" sortOrder="asc">
+  <textzone format="number" backcolor="#FFFFFF" forecolor="#0" border="LRBT" borderWidth="0.20" x="136" y="19" width="25" height="8" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+invoice_net</textzone>
+  <textzone format="text" backcolor="#DFDFDF" forecolor="#0" border="LRBT" borderWidth="0.20" x="111" y="27" width="25" height="8" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+invoice_taxrate</textzone>
+  <textzone format="number" backcolor="#FFFFFF" forecolor="#0" border="LRBT" borderWidth="0.20" x="136" y="27" width="25" height="8" zindex="0" textAlignment="R">
+
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+invoice_tax</textzone>
+  <textfield format="number" backcolor="#FFFFFF" forecolor="#000000" border="T" borderWidth="0.50" x="111" y="42" width="25" height="8" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+Total:</textfield>
+  <textfield format="number" backcolor="#DFDFDF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="111" y="19" width="25" height="8" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+Net:</textfield>
+  <textfield format="text" backcolor="#DFDFDF" forecolor="#000000" border="LBT" borderWidth="0.20" x="111" y="27" width="10" height="8" zindex="0" textAlignment="R">
+
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+Tax:</textfield>
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="T" borderWidth="0.50" x="136" y="42" width="25" height="8" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+invoice_gross</textzone>
+ </reportFooter>
+</RevPDFLib>

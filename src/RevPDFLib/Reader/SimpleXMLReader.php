@@ -52,13 +52,13 @@ class SimpleXMLReader implements ReaderInterface
     public function parseData($data)
     {
         $formattedData = array();
-        if (is_array($data->attributes())) {
+        if ($data->attributes() instanceof \SimpleXMLElement) {
             foreach ($data->attributes() as $key => $value) {
                 $formattedData['report'][$key] = (string) $value;
             }
         }
         
-        if (is_array($data->source->attributes())) {
+        if ($data->source->attributes() instanceof \SimpleXMLElement) {
             foreach ($data->source->attributes() as $key => $value) {
                 $formattedData['source'][$key] = (string) $value;
             }
@@ -113,7 +113,7 @@ class SimpleXMLReader implements ReaderInterface
                 }
                 $formattedData[$node]['elements'][] = $element;
             }
-            
+
             return $formattedData[$node];
         } else {
             return array();

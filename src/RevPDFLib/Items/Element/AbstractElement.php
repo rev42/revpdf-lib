@@ -618,24 +618,24 @@ abstract class AbstractElement
     /**
      * Write content into instance of PDF class
      *
-     * @param object &$pdfDoc instance of PDF class
+     * @param object &$writer instance of PDF class
      *
      * @return void
      */
-    function writeContent(&$pdfDoc)
+    function writeContent(&$writer, $iterator)
     {
-        if ($this->isAutoExtend == '0') {
-            $pdfDoc->Cell(
+        if (empty($this->isAutoExtend)) {
+            $writer->Cell(
                 $this->width,
                 $this->height,
-                $pdfDoc->transformElementField($this->field),
+                $this->getField($iterator),
                 $this->border,
                 0,
                 $this->alignment,
-                1
+                true
             );
         } else {
-            $pdfDoc->MultiCell(
+            $writer->MultiCell(
                 $this->width,
                 $this->height,
                 $this->field,

@@ -42,5 +42,25 @@ namespace RevPDFLib\Items\Element;
  */
 class Image extends AbstractElement
 {
-    
+    /**
+     * Write content into instance of PDF class
+     * 
+     * @param object &$pdfDoc instance of PDF class
+     * 
+     * @see RevPDF_Element_Abstract::writeContent()
+     * 
+     * @return void
+     */
+    public function writeContent(&$writer, $iterator)
+    {
+        if ($this->getField() != "") {
+            $writer->Image(
+                $this->getField(), 
+                $writer->GetX(), 
+                $writer->GetY(), 
+                $this->getWidth(),
+                $this->getHeight()
+            );
+        }
+    }    
 }

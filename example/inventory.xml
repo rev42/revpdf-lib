@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RevPDFLib shortname="ListeArticle" fullname="Liste des articles" author="RevPDF" keywords="RevPDF" subject="RevPDF" title="RevPDF" displayModeZoom="fullpage" displayModeLayout="continuous" comments="Tous les articles de la base de données" topMargin="10" bottomMargin="10" rightMargin="10" leftMargin="10" paperFormat="A4" pageOrientation="P">
+ <source provider="PdoProvider">
+  <value>select * from _r_article order by id</value>
+ </source>
+ <pageFooter height="7" isVisible="true" backgroundColor="#FFFFFF" isPageJump="false" isIndivisible="true" isAutoExtend="true" isAutoReduc="true" sortOrder="asc">
+  <pagenumber format="text" backcolor="#FFFFFF" forecolor="#000000" border="0" borderWidth="0.20" x="86" y="0" width="17" height="5" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+Page {cur}/{nb}</pagenumber>
+
+ </pageFooter>
+ <details height="40" isVisible="true" backgroundColor="#FFFFFF" isPageJump="false" isIndivisible="true" isAutoExtend="true" isAutoReduc="true" sortOrder="asc">
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="0" y="0" width="100" height="40" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+designation</textzone>
+  <textzone format="number" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="100" y="0" width="25" height="40" zindex="0" textAlignment="R">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+prixachat</textzone>
+  <textzone format="number" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="125" y="0" width="25" height="40" zindex="0" textAlignment="R">
+
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+prixvente</textzone>
+  <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="" borderWidth="0.20" x="150" y="0" width="40" height="40" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+designation</textzone>
+ </details>
+ <reportHeader height="10" isVisible="true" backgroundColor="#FFFFFF" isPageJump="false" isIndivisible="true" isAutoExtend="true" isAutoReduc="true" sortOrder="asc">
+  <textfield format="text" backcolor="#CCCCCC" forecolor="#000000" border="LRBT" borderWidth="0.20" x="0" y="0" width="100" height="10" zindex="0" textAlignment="L">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+
+Désignation</textfield>
+  <textfield format="text" backcolor="#CCCCCC" forecolor="#000000" border="LRBT" borderWidth="0.20" x="100" y="0" width="25" height="10" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+Prix d'achat</textfield>
+  <textfield format="text" backcolor="#CCCCCC" forecolor="#000000" border="LRBT" borderWidth="0.20" x="125" y="0" width="25" height="10" zindex="0" textAlignment="C">
+   <font fontName="helvetica" size="10" isBold="false" isItalic="false" isUnderline="false"/>
+Prix de vente</textfield>
+ </reportHeader>
+ <pageHeader height="20" isVisible="true" backgroundColor="#FFFFFF" isPageJump="true" isIndivisible="true" isAutoExtend="true" isAutoReduc="true" sortOrder="asc">
+
+  <roundedbox format="text" backcolor="#91B0FF" forecolor="#FF0000" border="" borderWidth="0.20" x="80" y="5" width="42" height="5" zindex="8" textAlignment="C">
+   <font fontName="helvetica" size="12" isBold="false" isItalic="false" isUnderline="false"/>
+Liste des articles</roundedbox>
+ </pageHeader>
+</RevPDFLib>

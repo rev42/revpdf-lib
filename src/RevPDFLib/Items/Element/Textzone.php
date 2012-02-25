@@ -59,7 +59,8 @@ class Textzone extends AbstractElement
             if (is_array($recordRows) === false) {
                 $recordRows = (array) $recordRows;
             }
-            if (in_array($elementField, array_keys($recordRows))) {
+            
+            if (isset($recordRows[$elementField])) {
                 $field = $recordRows[$elementField];
             }
         }
