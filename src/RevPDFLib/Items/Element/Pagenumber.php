@@ -42,5 +42,15 @@ namespace RevPDFLib\Items\Element;
  */
 class Pagenumber extends AbstractElement
 {
- 
+    /**
+     * Set Textzone Value 
+     * 
+     * @param array $iterator Record iterator
+     * 
+     * @return void
+     */
+    public function getField($writer=null, $iterator=null)
+    {
+        return str_replace("{cur}", $writer->PageNo(), $this->field);
+    }
 }

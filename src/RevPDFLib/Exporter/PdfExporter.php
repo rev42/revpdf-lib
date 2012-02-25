@@ -161,14 +161,14 @@ class PdfExporter
      */
     public function generateDocument($data)
     {
-        $this->wrapper->openDocument();
-        
         $object = new \ArrayObject($data);
         $this->recordIterator = $object->getIterator();
         $iterator = $object->getIterator();
-        
+        $this->wrapper->setIterator($iterator);
         $rowsCount = count($iterator);
         
+        $this->wrapper->openDocument();
+            
         for ($i = 0; $i < $rowsCount; $i++) {
             $this->wrapper->aliasNbPages();
             if ($this->report->getPart('reportheader')->isDisplayed() === false) {
@@ -191,7 +191,8 @@ class PdfExporter
             }
         }
         if ($this->report->getPart('reportfooter')->isDisplayed() === false) {
-            $this->wrapper->writePDF($this->report->getPart('reportfooter'), $this->report->getPart('reportfooter')->getElements());
+            $this->recordIterator->seek(0);
+            $this->wrapper->writePDF($this->report->getPart('reportfooter'), $this->report->getPart('reportfooter')->getElements(), $this->recordIterator);
         }
         $this->wrapper->closeDocument();
         $this->wrapper->outputDocument();

@@ -49,7 +49,7 @@ class Textzone extends AbstractElement
      * 
      * @return void
      */
-    public function getField($iterator=null)
+    public function getField($writer=null, $iterator=null)
     {
         $field = '';
         $elementField = $this->field;

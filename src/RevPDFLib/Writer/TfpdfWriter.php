@@ -51,6 +51,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 {
     var $endPosition;
     var $currentPosition;
+    var $iterator;
     
     public function __construct($orientation="P", $unit="mm", $format="A4")
     {
@@ -67,6 +68,26 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         $this->SetFont('DejaVu', '',14);
     }
     
+    /**
+     * Get Data iterator
+     * 
+     * @return object
+     */
+    public function getIterator()
+    {
+        return $this->iterator;
+    }
+
+    /**
+     * Set Data iterator
+     * 
+     * @param object $iterator Iterator
+     */
+    public function setIterator($iterator)
+    {
+        $this->iterator = $iterator;
+    }
+
     /**
      * Set Current Position
      * 
@@ -213,16 +234,15 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         $this->setCurrentPosition($this->getTopMargin());
 
         foreach ($elements as $element) {
+            $this->SetLineWidth($element->getBorderWidth());
+            $this->setFillColor($element->getFillColor());
+            $this->setTextColor($element->getTextColor());
+            $this->SetFont($element->getFont(), $element->getStyle(), $element->getFontSize());
             $this->setXY(
                 $element->getPosX() + $this->getLeftMargin(),
                 $element->getPosY() + $this->getTopMargin()
             );
-            $this->Cell(
-                $element->getWidth(),
-                $element->getHeight(),
-                $element->getField(),
-                $element->getBorder()
-            );
+            $element->writeContent($this, $this->iterator);
         }
         $newPosition = $this->getTopMargin() + $part->getHeight();
         $this->setCurrentPosition($newPosition);
@@ -251,16 +271,15 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         $this->setCurrentPosition((int) $this->getEndPosition());
         
         foreach ($elements as $element) {
+            $this->SetLineWidth($element->getBorderWidth());
+            $this->setFillColor($element->getFillColor());
+            $this->setTextColor($element->getTextColor());
+            $this->SetFont($element->getFont(), $element->getStyle(), $element->getFontSize());
             $this->setXY(
                 $element->getPosX() + $this->getLeftMargin(),
                 $this->getCurrentPosition() - $element->getPosY()
             );
-            $this->Cell(
-                $element->getWidth(),
-                $element->getHeight(),
-                $element->getField(),
-                $element->getBorder()
-            );
+            $element->writeContent($this, $this->iterator);
         }
     }
     

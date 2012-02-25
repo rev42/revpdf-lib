@@ -48,12 +48,24 @@ use RevPDFLib\Application;
  */
 class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
+    protected $iterator;
     
     public function __construct(\RevPDFLib\Writer\WriterInterface $writer)
     {
         $this->writer = $writer;
     }
     
+    public function getIterator()
+    {
+        return $this->iterator;
+    }
+
+    public function setIterator($iterator)
+    {
+        $this->iterator = $iterator;
+        $this->writer->setIterator($this->iterator);
+    }
+
     /**
      * Add Page 
      * 

@@ -419,7 +419,7 @@ abstract class AbstractElement
     /**
      * set Fill Color
      *
-     * @param string $fillColor color (hexadecimal without #)
+     * @param string $fillColor color
      *
      * @return void
      */
@@ -526,7 +526,7 @@ abstract class AbstractElement
      *
      * @return string Element field
      */
-    function getField($iterator = null)
+    function getField($writer = null, $iterator = null)
     {
         return $this->format($this->field);
     }
@@ -571,13 +571,13 @@ abstract class AbstractElement
             $this->font = $elementInfo['font']['fontName'];
             $this->fontSize = $elementInfo['font']['size'];
             $style = '';
-            if ($elementInfo['font']['isUnderline'] == "true") {
+            if (!empty($elementInfo['font']['isUnderline'])) {
                 $style .= 'U';
             }
-            if ($elementInfo['font']['isBold'] == "true") {
+            if (!empty($elementInfo['font']['isBold'])) {
                 $style .= 'B';
             }
-            if ($elementInfo['font']['isItalic'] == "true") {
+            if (!empty($elementInfo['font']['isItalic'])) {
                 $style .= 'I';
             }
             $this->setStyle($style);
@@ -629,11 +629,11 @@ abstract class AbstractElement
             $writer->Cell(
                 $this->width,
                 $this->height,
-                $this->getField($iterator),
+                $this->getField($writer, $iterator),
                 $this->border,
                 0,
                 $this->alignment,
-                true
+                1
             );
         } else {
             $writer->MultiCell(
