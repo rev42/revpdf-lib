@@ -54,7 +54,7 @@ class Image extends AbstractElement
      */
     public function writeContent(&$writer, $iterator)
     {
-        if (getimagesize($this->getField()) !== false) {
+        if (is_file($this->getField()) !== false) {
             $writer->Image(
                 $this->getField(), 
                 $writer->GetX(), 
