@@ -4,12 +4,13 @@
 MANUAL
 -------------------------------------
 ## Requirements
-RevPDFLib requires *PHP 5.3.2* or later to work.
-Your web server must allow executing PHAR archives.
+RevPDFLib requires *PHP 5.3.2* or later to work.  
+Your web server must allow executing PHAR archives.  
 In order to check whether you have this module or not, run the following command:
-	# php -m | grep -i phar
-If `Phar` is displayed, then the module is installed.  
 
+	# php -m | grep -i phar
+
+If `Phar` is displayed, then the module is installed.  
 it also requires some PHP libraries as per defined in composer.json
 
 ## How to install
