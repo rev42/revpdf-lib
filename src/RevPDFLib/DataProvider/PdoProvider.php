@@ -57,11 +57,11 @@ class PdoProvider implements DataProviderInterface
     /**
      * Set DB Connection
      * 
-     * @param type $conn 
+     * @param type $conn DB connection
      * 
      * @return void
      */
-    public function setConnector($conn)
+    public function setConnector(\PDO $conn)
     {
         $this->connector = $conn;
     }

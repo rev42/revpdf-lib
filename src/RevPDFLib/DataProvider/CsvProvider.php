@@ -69,7 +69,7 @@ class CsvProvider implements DataProviderInterface
     /**
      * Set File Connection
      * 
-     * @param type $conn 
+     * @param string $sourceFile path to data file
      * 
      * @return void
      */
