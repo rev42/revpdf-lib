@@ -88,6 +88,7 @@ footer), some others are displayed as long as they are data in rows (data).
 Elements are contained by Parts. There are different kind of elements: text,
 Text Zone... Depending of its type, the behavior and the rendering will be
 different.
+
  - Type:
    - textfield: simple text or text with some specific HTML tags
    - textzone: columns value. The value will be retrieved from source data
