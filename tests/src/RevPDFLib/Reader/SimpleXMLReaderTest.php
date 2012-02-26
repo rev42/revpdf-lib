@@ -128,6 +128,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                  ),
             ),
             "details" => array(),
+            "reportFooter" => array(),
             "pageFooter" => array(
                 "height" => "10",
                 "isVisible" => "1",
