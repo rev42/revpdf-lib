@@ -1,6 +1,3 @@
-# FAQ
+# RevPDFLib FAQ
 
-## Pourquoi ne peut-on pas générer un état avec un entête d'état mais sans détails ?
-L'entête d'état peut contenir des éléments de type "textzone". Il faut donc 
-disposer de données pour afficher ces éléments.
-Pour avoir des données, il faut donc une source de données ayant au moins 1 ligne.
+## ?
