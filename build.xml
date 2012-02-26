@@ -39,6 +39,10 @@
  <target name="vendor">
     <exec executable="php" failonerror="true">
         <arg value="composer.phar" />
+        <arg value="update" />
+    </exec>
+    <exec executable="php" failonerror="true">
+        <arg value="composer.phar" />
         <arg value="install" />
     </exec>
  </target>
