@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RevPDFLib
+    shortname="books"
+    fullname="Books review"
+    author="me"
+    keywords="books, review, RevPDFLib"
+    subject="review of my books"
+    title="Books review"
+    comments="some review"
+    topMargin="5"
+    bottomMargin="10"
+    rightMargin="15"
+    leftMargin="20"
+    displayModeZoom="fullpage"
+    displayModeLayout="continuous"
+    pageOrientation="L"
+    paperFormat="A4"
+    >
+    <source provider="PdoProvider">
+        <value><![CDATA[Select * from _r_article]]></value>
+    </source>
+</RevPDFLib>
