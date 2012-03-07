@@ -44,6 +44,8 @@ use RevPDFLib\Items\Part\AbstractPart;
  */
 class PageFooter extends AbstractPart
 {
+    const ID = 5;
+    
     /**
      * Constructor
      * 
