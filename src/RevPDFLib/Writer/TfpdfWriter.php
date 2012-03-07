@@ -30,9 +30,7 @@
 
 namespace RevPDFLib\Writer;
 
-defined('BASE_DIR') or define('BASE_DIR', dirname(__file__) . '/../../../');
-
-require_once BASE_DIR . 'vendor/tfpdf/src/font/unifont/ttfonts.php';
+require_once dirname(__file__) . '/../../../vendor/tfpdf/src/font/unifont/ttfonts.php';
 
 use \tFPDF;
 
