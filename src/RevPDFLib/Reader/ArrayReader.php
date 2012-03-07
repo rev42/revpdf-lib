@@ -53,6 +53,20 @@ class ArrayReader implements ReaderInterface
      */
     public function parseData($data)
     {
+        $parts = array(
+            'pageHeader',
+            'reportHeader',
+            'details',
+            'reportFooter',
+            'pageFooter'
+        );
+        
+        foreach ($parts as $part) {
+            if (!isset($data[$part])) {
+                $data[$part] = array();
+            }
+        }
+
         return $data;
     }
 }
