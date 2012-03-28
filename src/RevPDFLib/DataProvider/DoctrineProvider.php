@@ -80,7 +80,7 @@ class DoctrineProvider implements DataProviderInterface
         $recordset = $this->prepareSQL($sql);
         $recordset->execute();
 
-        return $recordset->fetchAll();
+        return $recordset->fetchAll(\Doctrine::FETCH_ASSOC);
     }
     
     /**
