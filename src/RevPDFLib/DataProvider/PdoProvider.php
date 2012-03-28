@@ -90,7 +90,7 @@ class PdoProvider implements DataProviderInterface
      * 
      * @return string
      */
-    private function prepareSQL($sql)
+    protected function prepareSQL($sql)
     {
         return $this->connector->prepare($sql);
     }

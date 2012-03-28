@@ -40,20 +40,8 @@ namespace RevPDFLib\DataProvider;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class DoctrineProvider implements DataProviderInterface
+class DoctrineProvider extends PdoProvider implements DataProviderInterface
 {
-    protected $connector = null;
-    
-    /**
-     * Get DB connection
-     * 
-     * @return object 
-     */
-    public function getConnector()
-    {
-        return $this->connector;
-    }
-
     /**
      * Set DB Connection
      * 
@@ -81,61 +69,5 @@ class DoctrineProvider implements DataProviderInterface
         $recordset->execute();
 
         return $recordset->fetchAll(\Doctrine::FETCH_ASSOC);
-    }
-    
-    /**
-     * Prepate SQL query
-     * 
-     * @param string $sql sql query
-     * 
-     * @return string
-     */
-    private function prepareSQL($sql)
-    {
-        return $this->connector->prepare($sql);
-    }
-    
-    /**
-     * Get Data
-     * 
-     * @return array 
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-    /**
-     * Set Data
-     * 
-     * @param array $data Data
-     * 
-     * @return void
-     */
-    public function setData($data)
-    {
-        $this->data = $data;
-    }
-
-    /**
-     * Parse data
-     * 
-     * @param string $sourceValue CSV filename
-     * 
-     * @return void 
-     */
-    public function parse($sourceValue)
-    {
-        if ($this->connector === null) {
-            throw new \Exception('Connector is NOT set');
-        }
-        
-        $rows = $this->executeQuery($sourceValue);
-        
-        $data = array();
-        foreach ($rows as $row) {
-            $data[] = $row;
-        }
-        $this->setData($data);
     }
 }
