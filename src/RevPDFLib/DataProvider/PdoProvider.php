@@ -129,7 +129,7 @@ class PdoProvider implements DataProviderInterface
         if ($this->connector === null) {
             throw new \Exception('Connector is NOT set');
         }
-        
+
         $rows = $this->executeQuery($sourceValue);
         
         $data = array();

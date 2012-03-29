@@ -30,7 +30,7 @@
 namespace RevPDFLib\DataProvider;
 
 /**
- * Pdo Provider
+ * Doctrine Provider
  *
  * @category   PDF
  * @package    RevPDFLib
