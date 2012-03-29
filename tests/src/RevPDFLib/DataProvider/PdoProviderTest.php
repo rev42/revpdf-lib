@@ -10,7 +10,7 @@ use RevPDFLib\DataProvider\PdoProvider;
  */
 class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
 {
-    protected $pdo;
+    protected $connection;
     protected $datasetFolder;
     
     /**
@@ -18,15 +18,9 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
      */
     protected $object;
     
-    public function __construct()
-    {
-        $this->datasetFolder =  __DIR__ . '/../../../db/';
-        $this->pdo = new \PDO('mysql:dbname=revpdf;host=ubuntu-server', 'root', 'password');
-    }
-    
     protected function getConnection()
     {
-        return $this->createDefaultDBConnection($this->pdo, 'mysql');
+        return $this->createDefaultDBConnection($this->connection, 'mysql');
     }
     
     protected function getDataSet()
@@ -40,8 +34,11 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
      */
     protected function setUp()
     {
+        $this->db = new \DbConnection('pdo');
+        $this->connection = $this->db->getConnection();
+        
         $this->object = new PdoProvider;
-        $this->object->setConnector($this->pdo);
+        $this->object->setConnector($this->connection);
     }
 
     /**
@@ -58,7 +55,7 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
      */
     public function testGetConnector()
     {
-        $this->object->setConnector($this->pdo);
+        $this->object->setConnector($this->connection);
         $this->assertTrue($this->object->getConnector() instanceof \PDO);
     }
 
@@ -67,7 +64,7 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
      */
     public function testSetConnector()
     {
-        $this->object->setConnector($this->pdo);
+        $this->object->setConnector($this->connection);
         $this->assertTrue($this->object->getConnector() instanceof \PDO);
     }
 
