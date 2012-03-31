@@ -17,4 +17,9 @@ class PageFooterTest extends \PHPUnit_Framework_TestCase
     {
         $this->object = null;
     }
+    
+    public function testGetIdentifier()
+    {
+        $this->assertEquals(6, $this->object->getIdentifier());
+    }
 }
