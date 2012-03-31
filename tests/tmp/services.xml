@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <!-- Event Dispatcher -->
+        <parameter key="revpdflib.event_dispatcher.class">Symfony\Component\EventDispatcher\EventDispatcher</parameter>
+        
+        <!-- RevPDFLib Exporter -->
+        <parameter key="revpdflib.exporter.class">RevPDFLib\Exporter\PdfExporter</parameter>
+        
+        <!-- PDF Wrapper -->
+        <parameter key="revpdflib.pdfwrapper.class">RevPDFLib\Wrapper\TfpdfWrapper</parameter>
+        
+        <!-- PDF Writer -->
+        <parameter key="revpdflib.tcpdfwriter.class">RevPDFLib\Writer\TcpdfWriter</parameter>
+        <parameter key="revpdflib.tfpdfwriter.class">RevPDFLib\Writer\TfpdfWriter</parameter>
+        
+        <!-- Report -->
+        <parameter key="revpdflib.report.class">RevPDFLib\Report</parameter>
+    </parameters>
+    
+    <services>
+        <service id="revpdflib.event_dispatcher" class="%revpdflib.event_dispatcher.class%" />
+        
+        <service id="revpdflib.pdfwrapper" class="%revpdflib.pdfwrapper.class%">
+            <argument type="service" id="revpdflib.tfpdfwriter"/>
+        </service>
+        
+        <service id="revpdflib.report" class="%revpdflib.report.class%" />
+        
+        <service id="revpdflib.exporter" class="%revpdflib.exporter.class%">
+            <argument type="service" id="revpdflib.pdfwrapper"/>
+            <argument type="service" id="revpdflib.report"/>
+        </service>
+    </services>
+    
+</container>

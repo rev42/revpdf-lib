@@ -54,11 +54,10 @@ class DiExtension
      * 
      * @return void
      */
-    public function __construct()
+    public function __construct($path)
     {
         // Loads all services
-        $this->servicePath = realpath(__DIR__.'/config/');
-        
+        $this->servicePath = realpath($path);
         $this->container = new ContainerBuilder();
         $loader = new XmlFileLoader($this->container, new FileLocator($this->servicePath));
         $loader->load('services.xml');

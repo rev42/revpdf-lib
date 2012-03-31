@@ -20,7 +20,7 @@ class DiExtensionTest extends \PHPUnit_Framework_TestCase {
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        //$this->object = new DiExtension;
+        $this->object = new DiExtension(dirname(__DIR__) . '/../../tmp/');
     }
 
     /**
@@ -36,10 +36,7 @@ class DiExtensionTest extends \PHPUnit_Framework_TestCase {
      * @todo Implement testGetContainer().
      */
     public function testGetContainer() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $this->assertTrue($this->object->getContainer() instanceof \Symfony\Component\DependencyInjection\ContainerBuilder);
     }
 
 }

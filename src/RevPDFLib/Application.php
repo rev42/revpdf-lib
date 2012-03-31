@@ -77,7 +77,7 @@ class Application
      */
     public function __construct()
     {
-        $dependency = new DiExtension();
+        $dependency = new DiExtension(__DIR__.'/DependencyInjection/config/');
         
         try {
             $this->setDic($dependency->getContainer());
