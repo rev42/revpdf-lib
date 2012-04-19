@@ -37,6 +37,10 @@
  </target>
  
  <target name="vendor">
+     <exec executable="php" failonerror="true">
+        <arg value="composer.phar" />
+        <arg value="self-update" />
+    </exec>
     <exec executable="php" failonerror="true">
         <arg value="composer.phar" />
         <arg value="update" />
