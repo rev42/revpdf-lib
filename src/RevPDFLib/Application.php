@@ -142,13 +142,16 @@ class Application
     {
         switch (gettype($data)) {
         case 'array':
-            $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
+            $this->getDic()
+                 ->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
             break;
         case 'object':
             if (get_class($data) == 'SimpleXMLIterator') {
-                $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLIterator');
+                $this->getDic()
+                     ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLIterator');
             } elseif (get_class($data) == 'SimpleXMLElement') {
-                $this->getDic()->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
+                $this->getDic()
+                     ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
             }
             break;
         default:
@@ -163,21 +166,33 @@ class Application
             'source' => null
         );
         
-        $report = array_merge($params, $this->getDic()->get('revpdflib.reader')->parseData($data));
+        $report = array_merge(
+            $params,
+            $this->getDic()->get('revpdflib.reader')->parseData($data)
+        );
         if (!is_array($report)) {
             return null;
         }
         
         // Configure Writers
-        $pdfwriter = new \RevPDFLib\Writer\TfpdfWriter($report['report']['pageOrientation'], 'mm', $report['report']['paperFormat']);
+        $pdfwriter = new \RevPDFLib\Writer\TfpdfWriter(
+            $report['report']['pageOrientation'],
+            'mm',
+            $report['report']['paperFormat']
+        );
         $this->getDic()->set('revpdflib.tfpdfwriter', $pdfwriter);
         
         // Get data provider and parse data
         $data = array('fake');
         if (isset($report['source']['provider'])
-            && !empty($report['source']['provider'])) {
+            && !empty($report['source']['provider']))
+        {
             $this->selectDataProvider($report['source']['provider']);
-            $this->getDic()->get('revpdflib.provider')->setConnector($this->dataSource);
+            
+            $this->getDic()
+                 ->get('revpdflib.provider')
+                 ->setConnector($this->dataSource);
+            
             $this->getDic()->get('revpdflib.provider')->parse($report);
             $data = $this->getDic()->get('revpdflib.provider')->getData();
         }
