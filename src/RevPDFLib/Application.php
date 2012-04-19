@@ -214,6 +214,6 @@ class Application
     }
     
     public static function getSupportedParts() {
-        return static::supportedParts;
+        return static::$supportedParts;
     }
 }
