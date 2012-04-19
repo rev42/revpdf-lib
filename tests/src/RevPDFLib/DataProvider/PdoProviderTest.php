@@ -94,7 +94,9 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
      */
     public function testParse()
     {
-        $this->object->parse('(select 1) union (select 2) union (select 3) union (select 4) union (select 5)');
+        $report = array();
+        $report['source']['value'] = '(select 1) union (select 2) union (select 3) union (select 4) union (select 5)';
+        $this->object->parse($report);
         $this->assertCount(5, $this->object->getData());
     }
 
