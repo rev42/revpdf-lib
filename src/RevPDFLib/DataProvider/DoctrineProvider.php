@@ -42,17 +42,6 @@ namespace RevPDFLib\DataProvider;
  */
 class DoctrineProvider extends PdoProvider implements DataProviderInterface
 {
-    /**
-     * Set DB Connection
-     * 
-     * @param type $conn DB connection
-     * 
-     * @return void
-     */
-    public function setConnector(\Doctrine_Connection $conn)
-    {
-        $this->connector = $conn;
-    }
 
     /**
      * Execute SQL Query

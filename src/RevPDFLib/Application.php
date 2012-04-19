@@ -56,6 +56,14 @@ class Application
      */
     const VERSION = '2.0.0 (20120129)';
     
+    protected static $supportedParts = array(
+        'pageHeader',
+        'reportHeader',
+        'details',
+        'reportFooter',
+        'pageFooter'
+    );
+    
     /**
      * Store all dependencies
      * 
@@ -166,10 +174,10 @@ class Application
         
         // Get data provider and parse data
         $data = array('fake');
-        if (isset($report['source']['provider'])) {
+        if (isset($report['source']['provider']) && !empty($report['source']['provider'])) {
             $this->selectDataProvider($report['source']['provider']);
             $this->getDic()->get('revpdflib.provider')->setConnector($this->dataSource);
-            $this->getDic()->get('revpdflib.provider')->parse($report['source']['value']);
+            $this->getDic()->get('revpdflib.provider')->parse($report);
             $data = $this->getDic()->get('revpdflib.provider')->getData();
         }
         
@@ -203,5 +211,9 @@ class Application
     public function setDataSource($dataSource)
     {
         $this->dataSource = $dataSource;
+    }
+    
+    public static function getSupportedParts() {
+        return static::supportedParts;
     }
 }

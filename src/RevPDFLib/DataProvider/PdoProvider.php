@@ -40,32 +40,8 @@ namespace RevPDFLib\DataProvider;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class PdoProvider implements DataProviderInterface
+class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 {
-    protected $connector = null;
-    
-    /**
-     * Get DB connection
-     * 
-     * @return object 
-     */
-    public function getConnector()
-    {
-        return $this->connector;
-    }
-
-    /**
-     * Set DB Connection
-     * 
-     * @param type $conn DB connection
-     * 
-     * @return void
-     */
-    public function setConnector(\PDO $conn)
-    {
-        $this->connector = $conn;
-    }
-
     /**
      * Execute SQL Query
      * 
@@ -94,28 +70,6 @@ class PdoProvider implements DataProviderInterface
     {
         return $this->connector->prepare($sql);
     }
-    
-    /**
-     * Get Data
-     * 
-     * @return array 
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-    /**
-     * Set Data
-     * 
-     * @param array $data Data
-     * 
-     * @return void
-     */
-    public function setData($data)
-    {
-        $this->data = $data;
-    }
 
     /**
      * Parse data
@@ -124,13 +78,13 @@ class PdoProvider implements DataProviderInterface
      * 
      * @return void 
      */
-    public function parse($sourceValue)
+    public function parse($report)
     {
         if ($this->connector === null) {
             throw new \Exception('Connector is NOT set');
         }
 
-        $rows = $this->executeQuery($sourceValue);
+        $rows = $this->executeQuery($report['source']['value']);
         
         $data = array();
         foreach ($rows as $row) {

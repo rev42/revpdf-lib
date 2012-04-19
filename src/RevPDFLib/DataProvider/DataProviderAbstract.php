@@ -30,7 +30,7 @@
 namespace RevPDFLib\DataProvider;
 
 /**
- * Csv Provider Interface
+ * Doctrine Provider
  *
  * @category   PDF
  * @package    RevPDFLib
@@ -40,24 +40,53 @@ namespace RevPDFLib\DataProvider;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class CsvProvider extends DataProviderAbstract implements DataProviderInterface
+abstract class DataProviderAbstract implements DataProviderInterface
 {
-    protected $headers = true;
+    protected $connector = null;
+    protected $data = null;
+    
+        
+    /**
+     * Get Data
+     * 
+     * @return array 
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 
     /**
-     * Parse data
+     * Set Data
      * 
-     * @param string $sourceValue CSV filename
+     * @param array $data Data
      * 
-     * @return void 
+     * @return void
      */
-    public function parse($report)
+    public function setData($data)
     {
-        $data = array();
-        $reader = new \EasyCSV\Reader($report['source']['value']);
-        while ($row = $reader->getRow()) {
-            $data[] = $row;
-        }
-        $this->setData($data);
+        $this->data = $data;
+    }
+
+    /**
+     * Get DB connection
+     * 
+     * @return object 
+     */
+    public function getConnector()
+    {
+        return $this->connector;
+    }
+
+    /**
+     * Set DB Connection
+     * 
+     * @param type $conn DB connection
+     * 
+     * @return void
+     */
+    public function setConnector($conn)
+    {
+        $this->connector = $conn;
     }
 }

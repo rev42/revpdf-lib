@@ -53,13 +53,7 @@ class ArrayReader implements ReaderInterface
      */
     public function parseData($data)
     {
-        $parts = array(
-            'pageHeader',
-            'reportHeader',
-            'details',
-            'reportFooter',
-            'pageFooter'
-        );
+        $parts = \RevPDFLib\Application::getSupportedParts();
         
         foreach ($parts as $part) {
             if (!isset($data[$part])) {

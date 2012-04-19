@@ -30,7 +30,7 @@
 namespace RevPDFLib\DataProvider;
 
 /**
- * Csv Provider Interface
+ * Pdo Provider
  *
  * @category   PDF
  * @package    RevPDFLib
@@ -40,24 +40,35 @@ namespace RevPDFLib\DataProvider;
  * @version    Release: $Revision:$
  * @link       http://www.revpdf.org
  */
-class CsvProvider extends DataProviderAbstract implements DataProviderInterface
+class NullProvider extends DataProviderAbstract implements DataProviderInterface
 {
-    protected $headers = true;
-
     /**
      * Parse data
      * 
-     * @param string $sourceValue CSV filename
+     * @param array $report Report data
      * 
      * @return void 
      */
     public function parse($report)
     {
-        $data = array();
-        $reader = new \EasyCSV\Reader($report['source']['value']);
-        while ($row = $reader->getRow()) {
-            $data[] = $row;
+        if ($this->connector === null) {
+            throw new \Exception('Connector is NOT set');
         }
-        $this->setData($data);
+        
+        $data = array();
+        $parts = \RevPDFLib\Application::getSupportedParts();
+        
+        foreach ($parts as $part) {
+            if (array_key_exists($part, $report)) {
+                if (isset($report[$part]['elements'])) {
+                    foreach ($report[$part]['elements'] as $element) {
+                        if ($element['type'] == 'textzone') {
+                            $data[$element['value']] = $element['value'];
+                        }
+                    }
+                }
+            }
+        }
+        $this->setData(array($data));
     }
 }
