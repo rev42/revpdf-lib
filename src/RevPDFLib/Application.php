@@ -174,7 +174,8 @@ class Application
         
         // Get data provider and parse data
         $data = array('fake');
-        if (isset($report['source']['provider']) && !empty($report['source']['provider'])) {
+        if (isset($report['source']['provider'])
+            && !empty($report['source']['provider'])) {
             $this->selectDataProvider($report['source']['provider']);
             $this->getDic()->get('revpdflib.provider')->setConnector($this->dataSource);
             $this->getDic()->get('revpdflib.provider')->parse($report);
@@ -212,8 +213,14 @@ class Application
     {
         $this->dataSource = $dataSource;
     }
-    
-    public static function getSupportedParts() {
+
+    /**
+     * Get supported Parts
+     * 
+     * @return array
+     */
+    public static function getSupportedParts()
+    {
         return static::$supportedParts;
     }
 }
