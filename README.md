@@ -16,7 +16,9 @@ it also requires some PHP libraries as per defined in composer.json
 ## How to install
 Unzip archive and place it wherever you want on your server.
 Download required PHP libraries by calling:
+
 	# php composer.phar install
+	
 Then look at example folder to know how to call the library.
 
 ## How to render PDF
