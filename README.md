@@ -17,6 +17,7 @@ it also requires some PHP libraries as per defined in composer.json
 Unzip archive and place it wherever you want on your server.
 Download required PHP libraries by calling:
 
+        # curl -s http://getcomposer.org/installer | php
 	# php composer.phar install
 	
 Then look at example folder to know how to call the library.
