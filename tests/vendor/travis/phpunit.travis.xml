@@ -26,11 +26,11 @@
   </filter>
   
   <php>
-    <const name="DBMS" value="mysqli"/>
+    <const name="DBMS" value="pdo"/>
     <const name="DBHOST" value="127.0.0.1" />
     <const name="DBPORT" value="3306" />
-    <const name="DBNAME" value="revpdf" />
+    <const name="DBNAME" value="revpdf_test" />
     <const name="DBUSER" value="root" />
-    <const name="DBPASSWD" value="password" />
+    <const name="DBPASSWD" value="" />
   </php>
 </phpunit>

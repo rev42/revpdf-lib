@@ -34,7 +34,15 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
      */
     protected function setUp()
     {
-        $this->db = new \DbConnection('pdo');
+        $params = array(
+            'dbms' => 'pdo',
+            'dbhost' => DBHOST,
+            'dbport' => DBPORT,
+            'dbname' => DBNAME,
+            'dbuser' => DBUSER,
+            'dbpasswd' => DBPASSWD
+        );
+        $this->db = new \DbConnection($params);
         $this->connection = $this->db->getConnection();
         
         $this->object = new PdoProvider;

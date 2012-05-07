@@ -34,7 +34,15 @@ class DoctrineProviderTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->db = new \DbConnection('doctrine');
+        $params = array(
+            'dbms' => 'doctrine',
+            'dbhost' => DBHOST,
+            'dbport' => DBPORT,
+            'dbname' => DBNAME,
+            'dbuser' => DBUSER,
+            'dbpasswd' => DBPASSWD
+        );
+        $this->db = new \DbConnection($params);
         $this->connection = $this->db->getConnection();
         
         $this->object = new DoctrineProvider;
