@@ -8,3 +8,8 @@ php:
 before_script:
     - curl -s http://getcomposer.org/installer | php
     - php composer.phar install
+    - mysql -e 'create database IF NOT EXISTS revpdf_test;'
+    - pear install --force phpunit/DbUnit
+
+script:
+  - phpunit --configuration tests/vendor/travis/phpunit.travis.xml
