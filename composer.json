@@ -40,7 +40,7 @@
         {
             "type": "package",
             "package": {
-                "name": "tfpdf",
+                "name": "tFPDF",
                 "version": "master",
                 "source": {
                     "url": "https://github.com/rev42/tFPDF.git",
