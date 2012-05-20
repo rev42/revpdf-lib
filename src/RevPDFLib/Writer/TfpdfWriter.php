@@ -30,7 +30,7 @@
 
 namespace RevPDFLib\Writer;
 
-require_once dirname(__file__) . '/../../../vendor/rev42/tFDPF/src/font/unifont/ttfonts.php';
+require_once dirname(__file__) . '/../../../vendor/rev42/tFPDF/src/font/unifont/ttfonts.php';
 
 use \tFPDF;
 
