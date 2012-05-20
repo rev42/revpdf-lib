@@ -1,11 +1,11 @@
 {
     "name": "rev42/RevPDFLib",
     "type": "library",
-    "description": "The PHP micro-framework based on the Symfony2 Components",
+    "description": "PDF generating library",
     "keywords": ["revpdf", "pdf", "php"],
     "homepage": "http://www.revpdf.org",
-    "version": "2.0.0",
-    "license": "GPL",
+    "version": "2.0.0-dev",
+    "license": "GPL-3.0",
     "authors": [
         {
             "name": "Olivier Cornu",
