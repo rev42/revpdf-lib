@@ -23,7 +23,7 @@ and generates PDF file. This library can be used as a standalone application.
 Calling RevPDFLib is really easy:
 
     defined('BASE_DIR') or define('BASE_DIR', dirname(__file__) . '/../');
-    require BASE_DIR . 'vendor/.composer/autoload.php';
+    require BASE_DIR . 'vendor/autoload.php';
     
     $lib = new RevPDFLib\Application();
     $data = simplexml_load_file('helloworld.xml');
