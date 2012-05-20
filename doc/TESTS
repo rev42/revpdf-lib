@@ -1,1 +1,17 @@
-Install phpunit
+TESTS
+==================================================
+
+## Pre-requirements
+phpunit
+
+## Launching tests
+
+### Command-line
+cd ROOT_DIR (ie: /home/user/RevPDFLib)
+phpunit
+
+### Netbeans
+Under Project Properties > Sources,
+set Test Folder: /path/to/RevPDFLib/tests
+Under Project Properties > PHPUnit,
+set "User XML Configuration": /path/to/RevPDFLib/phpunit.xml.dist
