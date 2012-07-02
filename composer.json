@@ -39,7 +39,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.2",
+        "php": ">=5.3.3",
         "rev42/tFPDF" : "master",
         "EasyCSV": "master",
         "symfony/http-kernel": "2.1.*",
