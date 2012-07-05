@@ -1,5 +1,5 @@
 {
-    "name": "rev42/RevPDFLib",
+    "name": "rev42/revpdf-lib",
     "type": "library",
     "description": "PDF generating library",
     "keywords": ["revpdf", "pdf", "php"],
