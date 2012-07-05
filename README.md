@@ -1,4 +1,4 @@
-[RevPDFLib](http://www.revpdf.org) [![Build Status](https://secure.travis-ci.org/rev42/RevPDFLib.png?branch=master)](http://travis-ci.org/rev42/RevPDFLib)
+[RevPDFLib](http://www.revpdf.org) [![Build Status](https://secure.travis-ci.org/rev42/revpdf-lib.png?branch=master)](http://travis-ci.org/rev42/revpdf-lib)
 ==================================================
 RevPDFLib provides the building block to create PDF file for [RevPDF][] web application.
 
