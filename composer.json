@@ -39,7 +39,7 @@
    "autoload": {
         "psr-0": {
             "RevPDFLib": "src/",
-            "EasyCSV": "vendor/EasyCSV/lib/",
+            "EasyCSV": "vendor/jwage/EasyCSV/lib/",
             "tFPDF": "vendor/tfpdf/src/"
         }
     }
