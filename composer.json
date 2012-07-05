@@ -18,7 +18,7 @@
             "type": "package",
             "package": {
                 "name": "EasyCSV",
-                "version": "master",
+                "version": "dev-master",
                 "source": {
                     "url": "https://github.com/jwage/EasyCSV.git",
                     "type": "git",
@@ -30,7 +30,7 @@
             "type": "package",
             "package": {
                 "name": "tcpdf",
-                "version": "master",
+                "version": "dev-master",
                 "source": {
                     "url": "git://tcpdf.git.sourceforge.net/gitroot/tcpdf/tcpdf",
                     "type": "git",
@@ -41,8 +41,8 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "rev42/tFPDF" : "master",
-        "EasyCSV": "master",
+        "rev42/tFPDF" : "dev-master",
+        "EasyCSV": "dev-master",
         "symfony/http-kernel": "2.1.*",
         "symfony/event-dispatcher": "2.1.*",
         "symfony/dependency-injection": "2.1.*",
