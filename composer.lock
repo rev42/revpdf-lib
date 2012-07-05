@@ -1,8 +1,8 @@
 {
-    "hash": "4f9ca29411ded07f4df6ca810258c91e",
+    "hash": "7ee50ec2c5bbf99a55e2bd8d1bb572a0",
     "packages": [
         {
-            "package": "EasyCSV",
+            "package": "jwage/EasyCSV",
             "version": "dev-master",
             "source-reference": "master",
             "commit-date": "1314896514"
@@ -38,6 +38,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "easycsv": 20
+        "jwage/easycsv": 20
     }
 }

@@ -17,7 +17,7 @@
         {
             "type": "package",
             "package": {
-                "name": "EasyCSV",
+                "name": "jwage/EasyCSV",
                 "version": "dev-master",
                 "source": {
                     "url": "https://github.com/jwage/EasyCSV.git",
