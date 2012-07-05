@@ -25,6 +25,18 @@
                     "reference": "master"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "rev42/tfpdf",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/rev42/tfpdf.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
         }
     ],
     "require": {
