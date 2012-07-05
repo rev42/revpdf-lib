@@ -9,7 +9,7 @@
     "authors": [
         {
             "name": "Olivier Cornu",
-            "email": "olivier.cornu@gmail.com"
+            "email": "contact@revpdf.org"
         }
     ],
     "minimum-stability": "dev",
@@ -41,12 +41,12 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "rev42/tFPDF" : "dev-master",
-        "EasyCSV": "dev-master",
-        "symfony/http-kernel": "2.1.*",
-        "symfony/event-dispatcher": "2.1.*",
-        "symfony/dependency-injection": "2.1.*",
-        "symfony/config":"2.1.*"
+        "rev42/tFPDF" : "1.0",
+        "jwage/EasyCSV": "dev-master",
+        "symfony/http-kernel": "2.1.0-BETA1",
+        "symfony/event-dispatcher": "2.1.0-BETA1",
+        "symfony/dependency-injection": "2.1.0-BETA1",
+        "symfony/config":"2.1.0-BETA1"
     },
    "autoload": {
         "psr-0": {
