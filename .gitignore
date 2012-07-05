@@ -6,5 +6,4 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 /vendor/
-/composer.lock
-/composer.phar
+composer.phar

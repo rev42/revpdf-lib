@@ -12,6 +12,7 @@
             "email": "olivier.cornu@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "package",

@@ -1,0 +1,85 @@
+{
+    "hash": "064788ab745daf826a6afdfb107d6723",
+    "packages": [
+        {
+            "package": "EasyCSV",
+            "version": "master",
+            "source-reference": "master",
+            "commit-date": "1314896514"
+        },
+        {
+            "package": "rev42/tFPDF",
+            "version": "dev-master",
+            "source-reference": "3450fe08fdb44d2bb70b190d60a658c608f218bf",
+            "commit-date": "1330068371"
+        },
+        {
+            "package": "symfony/config",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/config",
+            "version": "dev-master",
+            "source-reference": "a261cb1571e1f3921a632541299a9f39753a62a7",
+            "commit-date": "1341329671"
+        },
+        {
+            "package": "symfony/dependency-injection",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/dependency-injection",
+            "version": "dev-master",
+            "source-reference": "d120ca9c0347e408f5ccc8a7de7e71b575afc8e9",
+            "commit-date": "1341415346"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-BETA1",
+            "commit-date": "1338018513"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "dev-master",
+            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8",
+            "commit-date": "1341379664"
+        },
+        {
+            "package": "symfony/http-kernel",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-kernel",
+            "version": "dev-master",
+            "source-reference": "6d6f55f6b07b8bfed741a192def8d1bfbf6c590f",
+            "commit-date": "1341332120"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
+}
