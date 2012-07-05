@@ -25,18 +25,6 @@
                     "reference": "master"
                 }
             }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "tcpdf",
-                "version": "dev-master",
-                "source": {
-                    "url": "git://tcpdf.git.sourceforge.net/gitroot/tcpdf/tcpdf",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
         }
     ],
     "require": {
