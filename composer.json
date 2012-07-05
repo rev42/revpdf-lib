@@ -41,7 +41,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "rev42/tFPDF" : "1.0",
+        "rev42/tfpdf" : "1.0",
         "jwage/EasyCSV": "dev-master",
         "symfony/http-kernel": "2.1.0-BETA1",
         "symfony/event-dispatcher": "2.1.0-BETA1",
