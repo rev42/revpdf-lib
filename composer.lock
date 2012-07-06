@@ -1,5 +1,5 @@
 {
-    "hash": "c9f7af592ea4aeaacf68ada04d303bc1",
+    "hash": "af0b6a9c4ba9a0c1f8d3d7c82f73a957",
     "packages": [
         {
             "package": "jwage/EasyCSV",
@@ -13,23 +13,63 @@
         },
         {
             "package": "symfony/config",
-            "version": "v2.1.0-BETA1"
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/config",
+            "version": "dev-master",
+            "source-reference": "a261cb1571e1f3921a632541299a9f39753a62a7",
+            "commit-date": "1341329671"
         },
         {
             "package": "symfony/dependency-injection",
-            "version": "v2.1.0-BETA1"
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/dependency-injection",
+            "version": "dev-master",
+            "source-reference": "d120ca9c0347e408f5ccc8a7de7e71b575afc8e9",
+            "commit-date": "1341415346"
         },
         {
             "package": "symfony/event-dispatcher",
-            "version": "v2.1.0-BETA1"
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "source-reference": "v2.1.0-BETA1",
+            "commit-date": "1338018513"
         },
         {
             "package": "symfony/http-foundation",
-            "version": "v2.1.0-BETA1"
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "dev-master",
+            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8",
+            "commit-date": "1341379664"
         },
         {
             "package": "symfony/http-kernel",
-            "version": "v2.1.0-BETA1"
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/http-kernel",
+            "version": "dev-master",
+            "source-reference": "6d6f55f6b07b8bfed741a192def8d1bfbf6c590f",
+            "commit-date": "1341332120"
         }
     ],
     "packages-dev": null,
