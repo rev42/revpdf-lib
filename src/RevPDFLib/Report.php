@@ -94,6 +94,8 @@ class Report
             'bottomMargin' => 10,
             'displayModeZoom' => 'default',
             'displayModeLayout' => 'default',
+            'paperFormat' => 'A4',
+            'pageOrientation' => 'P',
         ), $data['report']);
         $this->author = $data['report']['author'];
         $this->displayModeZoom = $data['report']['displayModeZoom'];
