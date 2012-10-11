@@ -60,6 +60,11 @@ class PdfExporterTest extends \PHPUnit_Framework_TestCase
         
         $this->exporter = new PdfExporter($wrapper, $report);
     }
+
+    public function testFake()
+    {
+
+    }
     
     public function tearDown()
     {
