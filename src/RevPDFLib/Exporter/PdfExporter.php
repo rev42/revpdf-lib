@@ -168,6 +168,8 @@ class PdfExporter
         $rowsCount = count($iterator);
         
         $this->wrapper->openDocument();
+
+        $detailsPart = $this->report->getPart('details');
             
         for ($i = 0; $i < $rowsCount; $i++) {
             $this->wrapper->aliasNbPages();
@@ -175,14 +177,13 @@ class PdfExporter
                 $this->wrapper->writePDF($this->report->getPart('reportheader'), $this->report->getPart('reportheader')->getElements());
                 $this->report->getPart('reportheader')->setIsDisplayed(true);
                 $this->report->getPart('details')->setStartPosition($this->report->getPart('details')->getStartPosition() - $this->report->getPart('reportheader')->getHeight());
-            }
-            if (!is_null($this->report->getPart('details'))) {
-                if ($this->report->getPart('details')->isVisible() === false) {
-                    return false;
+                if ($detailsPart) {
+                    $detailsPart->setStartPosition($detailsPart->getStartPosition() - $this->report->getPart('reportheader')->getHeight());
                 }
-            
-                $return = $this->wrapper->writePDF($this->report->getPart('details'), $this->report->getPart('details')->getElements(), $iterator);
-                
+            }
+            if ($detailsPart && !$detailsPart->isVisible() === false) {
+                $return = $this->wrapper->writePDF($detailsPart, $detailsPart->getElements(), $iterator);
+
                 if ($return === false) {
                     break;
                 }
