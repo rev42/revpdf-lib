@@ -124,7 +124,7 @@ class PdfExporter
         if (array_key_exists('pageHeader', $reportData)) {
             $part = new Part\PageHeader($reportData['pageHeader']);
             
-            $this->report->addPart('pageheader', $part);
+            $this->report->addPart('pageHeader', $part);
         }
         if (array_key_exists('reportHeader', $reportData)) {
             $part = new Part\ReportHeader($reportData['reportHeader']);
@@ -146,7 +146,7 @@ class PdfExporter
         if (array_key_exists('pageFooter', $reportData)) {
             $part = new Part\PageFooter($reportData['pageFooter']);
             
-            $this->report->addPart('pagefooter', $part);
+            $this->report->addPart('pageFooter', $part);
         }
         
         $this->wrapper->configure($this->report->getAllProperties());
