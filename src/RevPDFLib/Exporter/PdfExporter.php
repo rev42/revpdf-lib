@@ -170,13 +170,12 @@ class PdfExporter
         $this->wrapper->openDocument();
 
         $detailsPart = $this->report->getPart('details');
-            
+
         for ($i = 0; $i < $rowsCount; $i++) {
             $this->wrapper->aliasNbPages();
             if ($this->report->getPart('reportheader')->isDisplayed() === false) {
                 $this->wrapper->writePDF($this->report->getPart('reportheader'), $this->report->getPart('reportheader')->getElements());
                 $this->report->getPart('reportheader')->setIsDisplayed(true);
-                $this->report->getPart('details')->setStartPosition($this->report->getPart('details')->getStartPosition() - $this->report->getPart('reportheader')->getHeight());
                 if ($detailsPart) {
                     $detailsPart->setStartPosition($detailsPart->getStartPosition() - $this->report->getPart('reportheader')->getHeight());
                 }
