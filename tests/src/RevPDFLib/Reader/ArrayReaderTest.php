@@ -16,7 +16,7 @@ class ArrayReaderTest extends \PHPUnit_Framework_TestCase
     {
         $this->reader = null;
     }
-    
+
     public function testParseData()
     {
         $data = array(
@@ -33,13 +33,13 @@ class ArrayReaderTest extends \PHPUnit_Framework_TestCase
                 'bottomMargin' => '15',
                 'pageOrientation' => 'P'
             ),
-            'pageHeader' => array (),
-            'reportHeader' => array (),
+            'pageheader' => array (),
+            'reportheader' => array (),
             'details' => array (),
-            'reportFooter' => array (),
-            'pageFooter' => array (),
+            'reportfooter' => array (),
+            'pagefooter' => array (),
         );
-        
+
         $this->assertSame($data, $this->reader->parseData($data));
     }
 }

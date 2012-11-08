@@ -53,7 +53,7 @@ class ReportFooter extends AbstractPart
      */
     public function __construct($data)
     {
-        $this->identifier = array_search('reportFooter', $this->partIds);
+        $this->identifier = array_search('reportfooter', $this->partIds);
         parent::__construct($data);
     }
 }

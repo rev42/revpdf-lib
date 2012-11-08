@@ -53,7 +53,7 @@ class ReportHeader extends AbstractPart
      */
     public function __construct($data)
     {
-        $this->identifier = array_search('reportHeader', $this->partIds);
+        $this->identifier = array_search('reportheader', $this->partIds);
         parent::__construct($data);
     }
 }

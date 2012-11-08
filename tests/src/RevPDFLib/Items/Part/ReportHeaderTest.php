@@ -53,23 +53,23 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
         $report = new \RevPDFLib\Report();
         $report->setTopMargin(20);
         
-        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+        $pageheader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
                            ->getMock();
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getStartPosition')
                    ->will($this->returnValue(10));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getIdentifier')
                    ->will($this->returnValue(0));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getHeight')
                    ->will($this->returnValue(40));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(true));
         
-        $report->addPart('pageheader', $pageHeader);
+        $report->addPart('pageheader', $pageheader);
         $report->addPart('reportheader', $this->part);
         $this->assertEquals(60, $report->getPart('reportheader')->getStartPosition());
     }
@@ -79,24 +79,24 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
         $report = new \RevPDFLib\Report();
         $report->setTopMargin(20);
         
-        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+        $pageheader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
                            ->getMock();
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getStartPosition')
                    ->will($this->returnValue(10));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getIdentifier')
                    ->will($this->returnValue(0));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getHeight')
                    ->will($this->returnValue(40));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(true));
         
         $report->addPart('reportheader', $this->part);
-        $report->addPart('pageheader', $pageHeader);
+        $report->addPart('pageheader', $pageheader);
         $this->assertEquals(60, $report->getPart('reportheader')->getStartPosition());
     }
     
@@ -105,20 +105,20 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
         $report = new \RevPDFLib\Report();
         $report->setTopMargin(20);
         
-        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+        $pageheader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
                            ->getMock();
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getStartPosition')
                    ->will($this->returnValue(10));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getHeight')
                    ->will($this->returnValue(40));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(false));
         
-        $report->addPart('pageheader', $pageHeader);
+        $report->addPart('pageheader', $pageheader);
         $report->addPart('reportheader', $this->part);
         $this->assertEquals(20, $report->getPart('reportheader')->getStartPosition());
     }
@@ -128,19 +128,19 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
         $report = new \RevPDFLib\Report();
         $report->setTopMargin(15);
         
-        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+        $pageheader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
                            ->getMock();
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getStartPosition')
                    ->will($this->returnValue(10));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getIdentifier')
                    ->will($this->returnValue(0));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getHeight')
                    ->will($this->returnValue(40));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(true));
         
@@ -160,7 +160,7 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
                 ->method('isVisible')
                 ->will($this->returnValue(true));
         
-        $report->addPart('pageheader', $pageHeader);
+        $report->addPart('pageheader', $pageheader);
         $report->addPart('reportheader', $this->part);
         $report->addPart('details', $details);
         $this->assertEquals(55, $report->getPart('reportheader')->getStartPosition());

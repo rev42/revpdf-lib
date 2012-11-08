@@ -57,11 +57,11 @@ abstract class AbstractPart
     */
     protected $partIds = array(
         'header',
-        'reportHeader',
+        'reportheader',
         'groupHeader',
         'data',
         'groupFooter',
-        'reportFooter',
+        'reportfooter',
         'footer'
     );
     

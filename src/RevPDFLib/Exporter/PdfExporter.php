@@ -121,13 +121,13 @@ class PdfExporter
     {
         $this->report->setAllProperties($reportData);
         
-        if (array_key_exists('pageHeader', $reportData)) {
-            $part = new Part\PageHeader($reportData['pageHeader']);
+        if (array_key_exists('pageheader', $reportData)) {
+            $part = new Part\PageHeader($reportData['pageheader']);
             
-            $this->report->addPart('pageHeader', $part);
+            $this->report->addPart('pageheader', $part);
         }
-        if (array_key_exists('reportHeader', $reportData)) {
-            $part = new Part\ReportHeader($reportData['reportHeader']);
+        if (array_key_exists('reportheader', $reportData)) {
+            $part = new Part\ReportHeader($reportData['reportheader']);
             
             $this->report->addPart('reportheader', $part);
         }
@@ -138,15 +138,15 @@ class PdfExporter
             
             $this->report->addPart('details', $part);
         }
-        if (array_key_exists('reportFooter', $reportData)) {
-            $part = new Part\ReportFooter($reportData['reportFooter']);
+        if (array_key_exists('reportfooter', $reportData)) {
+            $part = new Part\ReportFooter($reportData['reportfooter']);
             
-            $this->report->addPart('reportFooter', $part);
+            $this->report->addPart('reportfooter', $part);
         }
-        if (array_key_exists('pageFooter', $reportData)) {
-            $part = new Part\PageFooter($reportData['pageFooter']);
+        if (array_key_exists('pagefooter', $reportData)) {
+            $part = new Part\PageFooter($reportData['pagefooter']);
             
-            $this->report->addPart('pageFooter', $part);
+            $this->report->addPart('pagefooter', $part);
         }
         
         $this->wrapper->configure($this->report->getAllProperties());

@@ -19,17 +19,17 @@
     <source provider="CsvProvider">
         <value>books.csv</value>
     </source>
-    <pageHeader height="15" isVisible="1" backgroundColor="#FFF">
-        <textfield format="text" x="0" y="0" height="5" width="20">pageHeader textfield1</textfield>
-        <textfield format="text" x="0" y="5" height="5" width="20">pageHeader textfield2</textfield>
-        <textzone format="text" x="0" y="10" height="5" width="20">pageHeader textzone</textzone>
-    </pageHeader>
-    <reportHeader height="20" isVisible="1" backgroundColor="#FFF">
-        <textfield format="text" x="0" y="0" height="5" width="20">reportHeader textfield1</textfield>
-    </reportHeader>
-    <pageFooter height="10" isVisible="1" backgroundColor="#F00">
+    <pageheader height="15" isVisible="1" backgroundColor="#FFF">
+        <textfield format="text" x="0" y="0" height="5" width="20">pageheader textfield1</textfield>
+        <textfield format="text" x="0" y="5" height="5" width="20">pageheader textfield2</textfield>
+        <textzone format="text" x="0" y="10" height="5" width="20">pageheader textzone</textzone>
+    </pageheader>
+    <reportheader height="20" isVisible="1" backgroundColor="#FFF">
+        <textfield format="text" x="0" y="0" height="5" width="20">reportheader textfield1</textfield>
+    </reportheader>
+    <pagefooter height="10" isVisible="1" backgroundColor="#F00">
         <textfield format="text" x="10" y="0" height="5" width="40" border="1">
             Footer
         </textfield>
-    </pageFooter>
+    </pagefooter>
 </RevPDFLib>

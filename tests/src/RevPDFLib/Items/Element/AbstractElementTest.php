@@ -459,17 +459,6 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('', $this->object->getStyle());
     }
 
-    /**
-     * @covers RevPDFLib\Items\Element\AbstractElement::writeContent
-     * @todo Implement testWriteContent().
-     */
-    public function testWriteContent() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
 }
 
 ?>

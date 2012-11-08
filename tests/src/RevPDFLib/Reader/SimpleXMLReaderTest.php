@@ -41,13 +41,13 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 "pageOrientation" => "L",
                 "paperFormat" => "A4"
             ),
-            'pageHeader' => array(),
-            'reportHeader' => array(),
+            'pageheader' => array(),
+            'reportheader' => array(),
             'details' => array(),
-            'reportFooter' => array(),
-            'pageFooter' => array(),
+            'reportfooter' => array(),
+            'pagefooter' => array(),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
     
@@ -77,11 +77,11 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 'provider' => 'PdoProvider',
                 'value' => 'Select * from _r_article'
             ),
-            'pageHeader' => array(),
-            'reportHeader' => array(),
+            'pageheader' => array(),
+            'reportheader' => array(),
             'details' => array(),
-            'reportFooter' => array(),
-            'pageFooter' => array(),
+            'reportfooter' => array(),
+            'pagefooter' => array(),
         );
         
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
@@ -109,7 +109,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 'pageOrientation' => 'L',
                 'paperFormat' => 'A4'
             ),
-            'pageHeader' => array(
+            'pageheader' => array(
                 'elements' => array(
                     0 => array(
                         'value' => 'MOVIES',
@@ -123,10 +123,10 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                     )
                 )
             ),
-            'reportHeader' => array(),
+            'reportheader' => array(),
             'details' => array(),
-            'reportFooter' => array(),
-            'pageFooter' => array(),
+            'reportfooter' => array(),
+            'pagefooter' => array(),
         );
         
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
@@ -154,7 +154,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 'pageOrientation' => 'L',
                 'paperFormat' => 'A4'
             ),
-            'pageHeader' => array(
+            'pageheader' => array(
                 'height' => '20',
                 'isVisible' => '1',
                 'backgroundColor' => '#F00',
@@ -171,10 +171,10 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                     )
                 )
             ),
-            'reportHeader' => array(),
+            'reportheader' => array(),
             'details' => array(),
-            'reportFooter' => array(),
-            'pageFooter' => array(),
+            'reportfooter' => array(),
+            'pagefooter' => array(),
         );
         
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
@@ -202,8 +202,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 'pageOrientation' => 'L',
                 'paperFormat' => 'A4'
             ),
-            'pageHeader' => array(),
-            'reportHeader' => array(),
+            'pageheader' => array(),
+            'reportheader' => array(),
             'details' => array(
                 'height' => '20',
                 'isVisible' => '1',
@@ -221,8 +221,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                     )
                 )
             ),
-            'reportFooter' => array(),
-            'pageFooter' => array(),
+            'reportfooter' => array(),
+            'pagefooter' => array(),
         );
         
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
@@ -250,8 +250,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 'pageOrientation' => 'L',
                 'paperFormat' => 'A4'
             ),
-            'pageHeader' => array(),
-            'reportHeader' => array(
+            'pageheader' => array(),
+            'reportheader' => array(
                 'height' => '20',
                 'isVisible' => '1',
                 'backgroundColor' => '#F00',
@@ -269,8 +269,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 )
             ),
             'details' => array(),
-            'reportFooter' => array(),
-            'pageFooter' => array(),
+            'reportfooter' => array(),
+            'pagefooter' => array(),
         );
         
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
@@ -298,10 +298,10 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 'pageOrientation' => 'L',
                 'paperFormat' => 'A4'
             ),
-            'pageHeader' => array(),
-            'reportHeader' => array(),
+            'pageheader' => array(),
+            'reportheader' => array(),
             'details' => array(),
-            'reportFooter' => array(
+            'reportfooter' => array(
                 'height' => '20',
                 'isVisible' => '1',
                 'backgroundColor' => '#F00',
@@ -318,7 +318,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                     )
                 )
             ),
-            'pageFooter' => array(),
+            'pagefooter' => array(),
         );
         
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
@@ -346,11 +346,11 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 'pageOrientation' => 'L',
                 'paperFormat' => 'A4'
             ),
-            'pageHeader' => array(),
-            'reportHeader' => array(),
+            'pageheader' => array(),
+            'reportheader' => array(),
             'details' => array(),
-            'reportFooter' => array(),
-            'pageFooter' => array(
+            'reportfooter' => array(),
+            'pagefooter' => array(
                 'height' => '20',
                 'isVisible' => '1',
                 'backgroundColor' => '#F00',
@@ -399,13 +399,13 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 "provider" => "CsvProvider",
                 "value" => "books.csv" 
             ),
-            "pageHeader" => array(
+            "pageheader" => array(
                 "height" => "15",
                 "isVisible" => "1",
                 "backgroundColor" =>"#FFF",
                 "elements" => array(
                     array(
-                        "value" => "pageHeader textfield1",
+                        "value" => "pageheader textfield1",
                         "type" => "textfield",
                         "format" => "text",
                         "x" => "0",
@@ -414,7 +414,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "width" => "20"
                     ),
                     array(
-                        "value" => "pageHeader textfield2",
+                        "value" => "pageheader textfield2",
                         "type" => "textfield",
                         "format" => "text",
                         "x" => "0",
@@ -423,7 +423,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "width" => "20",
                     ),
                     array(
-                        "value" => "pageHeader textzone",
+                        "value" => "pageheader textzone",
                         "type" => "textzone",
                         "format" => "text",
                         "x" => "0",
@@ -433,13 +433,13 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                     )
                 )
             ),
-            "reportHeader" => array(
+            "reportheader" => array(
                 "height" => "20",
                 "isVisible" => "1",
                 "backgroundColor" => "#FFF",
                 "elements" => array(
                     array(
-                        "value" => "reportHeader textfield1",
+                        "value" => "reportheader textfield1",
                         "type" => "textfield",
                         "format" => "text",
                         "x" => "0",
@@ -450,8 +450,8 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                  ),
             ),
             "details" => array(),
-            "reportFooter" => array(),
-            "pageFooter" => array(
+            "reportfooter" => array(),
+            "pagefooter" => array(
                 "height" => "10",
                 "isVisible" => "1",
                 "backgroundColor" =>"#F00",

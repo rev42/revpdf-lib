@@ -70,7 +70,7 @@ class PdfExporterTest extends \PHPUnit_Framework_TestCase {
                 'pageOrientation' => 'P',
                 'paperFormat' => 'A3'
             ),
-            'reportHeader' => array(
+            'reportheader' => array(
                 'height' => '10',
                 'isVisible' => '1',
                 'backgroundColor' => '#FFF',
@@ -102,7 +102,7 @@ class PdfExporterTest extends \PHPUnit_Framework_TestCase {
 
         $this->object->buildDocument($reportData);
         $this->assertCount(1, $this->object->getReport()->getParts());
-        $this->assertCount(2, $this->object->getReport()->getPart('reportHeader')->getElements());
+        $this->assertCount(2, $this->object->getReport()->getPart('reportheader')->getElements());
     }
 
 }

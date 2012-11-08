@@ -16,9 +16,9 @@
     pageOrientation="L"
     paperFormat="A4"
     >
-    <pageFooter height="20" isVisible="1" backgroundColor="#F00">
+    <pagefooter height="20" isVisible="1" backgroundColor="#F00">
         <textfield format="text" x="80" y="5" height="5" width="42" border="1">
             MOVIES
         </textfield>
-    </pageFooter>
+    </pagefooter>
 </RevPDFLib>

@@ -168,7 +168,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->report->addPart('details', $part);
         
         $this->assertInstanceOf('RevPDFLib\Items\Part\Details', $this->report->getPart('details'));
-        $this->assertNull($this->report->getPart('pageHeaders'));
+        $this->assertNull($this->report->getPart('pageheaders'));
     }
     
     public function testAddPart()
@@ -184,34 +184,34 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     
     protected function getPageHeader()
     {
-        $pageHeader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
+        $pageheader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
                            ->getMock();
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getStartPosition')
                    ->will($this->returnValue(10));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('getHeight')
                    ->will($this->returnValue(40));
-        $pageHeader->expects($this->any())
+        $pageheader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(true));
         
-        return $pageHeader;
+        return $pageheader;
     }
     
     protected function getReportHeader()
     {
-        $reportHeader = $this->getMockBuilder('RevPDFLib\Items\Part\ReportHeader')
+        $reportheader = $this->getMockBuilder('RevPDFLib\Items\Part\ReportHeader')
                              ->disableOriginalConstructor()
                              ->getMock();
-        $reportHeader->expects($this->any())
+        $reportheader->expects($this->any())
                      ->method('getHeight')
                      ->will($this->returnValue(20));
-        $reportHeader->expects($this->any())
+        $reportheader->expects($this->any())
                      ->method('isVisible')
                      ->will($this->returnValue(true));
         
-        return $reportHeader;
+        return $reportheader;
     }
 }

@@ -103,8 +103,8 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         // Page header/footer are special parts because they are automatically 
         // called when new page is created. header() and footer() doesn't 
         // support parameters
-        $this->writer->setPageHeader($this->getReport()->getPart('pageHeader'));
-        $this->writer->setPageFooter($this->getReport()->getPart('pageFooter'));
+        $this->writer->setPageHeader($this->getReport()->getPart('pageheader'));
+        $this->writer->setPageFooter($this->getReport()->getPart('pagefooter'));
         $this->writer->SetTopMargin($this->getReport()->getTopMargin());
         $this->writer->SetLeftMargin($this->getReport()->getLeftMargin());
         $this->writer->setEndPosition($report['bottomMargin']);

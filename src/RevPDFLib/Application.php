@@ -57,11 +57,11 @@ class Application
     const VERSION = '2.0.0 (20120419)';
     
     protected static $supportedParts = array(
-        'pageHeader',
-        'reportHeader',
+        'pageheader',
+        'reportheader',
         'details',
-        'reportFooter',
-        'pageFooter'
+        'reportfooter',
+        'pagefooter'
     );
     
     /**

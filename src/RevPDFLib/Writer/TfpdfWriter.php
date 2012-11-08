@@ -144,7 +144,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
      */
     public function setPageHeader($part)
     {
-        $this->pageHeader = $part;
+        $this->pageheader = $part;
     }
 
     /**
@@ -154,7 +154,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
      */
     public function getPageHeader()
     {
-        return $this->pageHeader;
+        return $this->pageheader;
     }
     
     /**
@@ -166,7 +166,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
      */
     public function setPageFooter($part)
     {
-        $this->pageFooter = $part;
+        $this->pagefooter = $part;
     }
 
     /**
@@ -176,7 +176,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
      */
     public function getPageFooter()
     {
-        return $this->pageFooter;
+        return $this->pagefooter;
     }
 
     /**
