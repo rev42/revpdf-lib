@@ -20,12 +20,12 @@
     <source provider="CsvProvider">
         <value>books.csv</value>
     </source>
-    <pageHeader height="20" isVisible="1" backgroundColor="#F00">
+    <pageheader height="20" isVisible="1" backgroundColor="#F00">
         <textfield format="text" x="80" y="5" height="5" width="42" border="1">
             MOVIES
         </textfield>
-    </pageHeader>
-    <reportHeader height="10" isVisible="1" backgroundColor="#FFF" isPageJump="0">
+    </pageheader>
+    <reportheader height="10" isVisible="1" backgroundColor="#FFF" isPageJump="0">
         <textfield format="text" x="0" y="0" height="10" width="20" border="1" forecolor="#3366FF" backcolor="#FFFF00" zindex="0">
             <font isUnderline="false" isBold="true" isItalic="true" fontName="courier" size="14" />
             <![CDATA[Rating]]>
@@ -40,7 +40,7 @@
             <![CDATA[Type]]>
         </textfield>
         <textfield format="text" x="140" y="0" height="10" width="120" border="1" zindex="0">Review</textfield>
-    </reportHeader>
+    </reportheader>
     <details height="20" isVisible="1" backgroundColor="#FFF">
         <textzone format="number" x="0" y="0" height="20" width="20" border="1" zindex="0">rating</textzone>
         <textzone format="text" x="20" y="0" height="20" width="50" border="1" zindex="0">title</textzone>

@@ -3,12 +3,12 @@
  <source provider="PdoProvider">
   <value>select * from _r_article order by id</value>
  </source>
- <pageFooter height="7" isVisible="1" backgroundColor="#FFFFFF" isPageJump="0" isIndivisible="1" isAutoExtend="1" isAutoReduc="1" sortOrder="asc">
+ <pagefooter height="7" isVisible="1" backgroundColor="#FFFFFF" isPageJump="0" isIndivisible="1" isAutoExtend="1" isAutoReduc="1" sortOrder="asc">
   <pagenumber format="text" backcolor="#FFFFFF" forecolor="#000000" border="0" borderWidth="0.20" x="86" y="0" width="17" height="5" zindex="0" textAlignment="L">
    <font fontName="helvetica" size="12" isBold="0" isItalic="0" isUnderline="0"/>
 Page {cur}/{nb}</pagenumber>
 
- </pageFooter>
+ </pagefooter>
  <details height="40" isVisible="1" backgroundColor="#FFFFFF" isPageJump="0" isIndivisible="1" isAutoExtend="1" isAutoReduc="1" sortOrder="asc">
   <textzone format="text" backcolor="#FFFFFF" forecolor="#000000" border="LRBT" borderWidth="0.20" x="0" y="0" width="100" height="40" zindex="0" textAlignment="L">
    <font fontName="helvetica" size="10" isBold="0" isItalic="0" isUnderline="0"/>
@@ -21,7 +21,7 @@ prixachat</textzone>
    <font fontName="helvetica" size="10" isBold="0" isItalic="0" isUnderline="0"/>
 prixvente</textzone>
  </details>
- <reportHeader height="10" isVisible="1" backgroundColor="#FFFFFF" isPageJump="0" isIndivisible="1" isAutoExtend="1" isAutoReduc="1" sortOrder="asc">
+ <reportheader height="10" isVisible="1" backgroundColor="#FFFFFF" isPageJump="0" isIndivisible="1" isAutoExtend="1" isAutoReduc="1" sortOrder="asc">
   <textfield format="text" backcolor="#CCCCCC" forecolor="#000000" border="LRBT" borderWidth="0.20" x="0" y="0" width="100" height="10" zindex="0" textAlignment="L">
    <font fontName="helvetica" size="10" isBold="0" isItalic="0" isUnderline="0"/>
 
@@ -32,11 +32,11 @@ Prix d'achat</textfield>
   <textfield format="text" backcolor="#CCCCCC" forecolor="#000000" border="LRBT" borderWidth="0.20" x="125" y="0" width="25" height="10" zindex="0" textAlignment="C">
    <font fontName="helvetica" size="10" isBold="0" isItalic="0" isUnderline="0"/>
 Prix de vente</textfield>
- </reportHeader>
- <pageHeader height="20" isVisible="1" backgroundColor="#FFFFFF" isPageJump="1" isIndivisible="1" isAutoExtend="1" isAutoReduc="1" sortOrder="asc">
+ </reportheader>
+ <pageheader height="20" isVisible="1" backgroundColor="#FFFFFF" isPageJump="1" isIndivisible="1" isAutoExtend="1" isAutoReduc="1" sortOrder="asc">
 
   <roundedbox format="text" backcolor="#91B0FF" forecolor="#FF0000" border="" borderWidth="0.20" x="80" y="5" width="42" height="5" zindex="8" textAlignment="C">
    <font fontName="helvetica" size="12" isBold="0" isItalic="0" isUnderline="0"/>
 Liste des articles</roundedbox>
- </pageHeader>
+ </pageheader>
 </RevPDFLib>
