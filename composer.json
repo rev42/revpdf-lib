@@ -13,24 +13,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "jwage/EasyCSV",
-                "version": "dev-master",
-                "source": {
-                    "url": "https://github.com/jwage/EasyCSV.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "rev42/tfpdf" : "1.0",
-        "jwage/EasyCSV": "dev-master",
+        "jwage/easy-csv": "dev-master",
         "symfony/http-kernel": "2.1.*",
         "symfony/event-dispatcher": "2.1.*",
         "symfony/dependency-injection": "2.1.*",
@@ -39,7 +25,6 @@
    "autoload": {
         "psr-0": {
             "RevPDFLib": "src/",
-            "EasyCSV": "vendor/jwage/EasyCSV/lib/",
             "tFPDF": "vendor/tfpdf/src/"
         }
     }
