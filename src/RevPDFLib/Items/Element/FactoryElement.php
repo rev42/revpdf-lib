@@ -42,7 +42,7 @@ namespace RevPDFLib\Items\Element;
  */
 class FactoryElement
 {
-    
+
     /**
      * Element factory
      *
@@ -80,5 +80,3 @@ class FactoryElement
         }
     }
 }
-
-?>

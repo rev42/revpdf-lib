@@ -51,34 +51,34 @@ abstract class AbstractWrapper
 
     /**
      * Open Document
-     * 
+     *
      * @return void
      */
-    abstract function openDocument();
-    
+    abstract public function openDocument();
+
     /**
      * Close Document
-     * 
+     *
      * @return void
      */
-    abstract function closeDocument();
-    
-    
+    abstract public function closeDocument();
+
+
     /**
      * Set Report
-     * 
+     *
      * @param \RevPDFLib\Report $report Report
-     * 
+     *
      * @return void
      */
     public function setReport(Report $report)
     {
         $this->report = $report;
     }
-    
+
     /**
      * Get Report
-     * 
+     *
      * @return Report
      */
     public function getReport()

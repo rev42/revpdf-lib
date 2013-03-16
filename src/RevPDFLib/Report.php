@@ -65,7 +65,7 @@ class Report
 
     /**
      * Constructor
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -73,12 +73,12 @@ class Report
         $this->dispatcher = new EventDispatcher();
         $this->dispatcher->addSubscriber(new PartListener());
     }
-    
+
     /**
      * Set all object properties
-     * 
+     *
      * @param array $data Data
-     * 
+     *
      * @return void
      */
     public function setAllProperties($data)
@@ -113,7 +113,7 @@ class Report
 
     /**
      * Return all object properties
-     * 
+     *
      * @return array
      */
     public function getAllProperties()
@@ -123,7 +123,7 @@ class Report
 
     /**
      * Get Author
-     * 
+     *
      * @return string
      */
     public function getAuthor()
@@ -133,9 +133,9 @@ class Report
 
     /**
      * Set author
-     * 
+     *
      * @param string $author Author
-     * 
+     *
      * @return void
      */
     public function setAuthor($author)
@@ -145,19 +145,19 @@ class Report
 
     /**
      * Get Display Mode Zoom
-     * 
+     *
      * @return string
      */
     public function getDisplayModeZoom()
     {
         return $this->displayModeZoom;
     }
-    
+
     /**
      * Set Display Mode Zoom
-     * 
+     *
      * @param string $displayModeZoom display Mode Zoom
-     * 
+     *
      * @return void
      */
     public function setDisplayModeZoom($displayModeZoom)
@@ -167,7 +167,7 @@ class Report
 
     /**
      * Get Display Mode Layout
-     * 
+     *
      * @return string
      */
     public function getDisplayModeLayout()
@@ -177,31 +177,31 @@ class Report
 
     /**
      * Set Display Mode Layout
-     * 
+     *
      * @param string $displayModeLayout display Mode Layout
-     * 
+     *
      * @return void
      */
     public function setDisplayModeLayout($displayModeLayout)
     {
         $this->displayModeLayout = $displayModeLayout;
     }
-    
+
     /**
      * Get Keywords
-     * 
+     *
      * @return string
      */
     public function getKeywords()
     {
         return $this->keywords;
     }
-    
+
     /**
      * Set Keywords
-     * 
+     *
      * @param string $keywords keywords
-     * 
+     *
      * @return void
      */
     public function setKeywords($keywords)
@@ -211,7 +211,7 @@ class Report
 
     /**
      * Get Subject
-     * 
+     *
      * @return string
      */
     public function getSubject()
@@ -221,9 +221,9 @@ class Report
 
     /**
      * Set Subject
-     * 
+     *
      * @param string $subject subject
-     * 
+     *
      * @return void
      */
     public function setSubject($subject)
@@ -233,7 +233,7 @@ class Report
 
     /**
      * Get Title
-     * 
+     *
      * @return string
      */
     public function getTitle()
@@ -243,9 +243,9 @@ class Report
 
     /**
      * Set Title
-     * 
+     *
      * @param string $title title
-     * 
+     *
      * @return void
      */
     public function setTitle($title)
@@ -255,19 +255,19 @@ class Report
 
     /**
      * Get Left Margin
-     * 
+     *
      * @return int
      */
     public function getLeftMargin()
     {
         return $this->leftMargin;
     }
-    
+
     /**
      * Set Left Margin
-     * 
+     *
      * @param int $leftMargin Left Margin
-     * 
+     *
      * @return void
      */
     public function setLeftMargin($leftMargin)
@@ -277,7 +277,7 @@ class Report
 
     /**
      * Get Top Margin
-     * 
+     *
      * @return int
      */
     public function getTopMargin()
@@ -287,9 +287,9 @@ class Report
 
     /**
      * Set Top Margin
-     * 
+     *
      * @param int $topMargin Top Margin
-     * 
+     *
      * @return void
      */
     public function setTopMargin($topMargin)
@@ -299,7 +299,7 @@ class Report
 
     /**
      * Get Right Margin
-     * 
+     *
      * @return int
      */
     public function getRightMargin()
@@ -309,9 +309,9 @@ class Report
 
     /**
      * Set Right Margin
-     * 
+     *
      * @param int $rightMargin Right Margin
-     * 
+     *
      * @return void
      */
     public function setRightMargin($rightMargin)
@@ -321,7 +321,7 @@ class Report
 
     /**
      * Get Bottom Margin
-     * 
+     *
      * @return int
      */
     public function getBottomMargin()
@@ -331,9 +331,9 @@ class Report
 
     /**
      * Set Bottom Margin
-     * 
+     *
      * @param int $bottomMargin Bottom Margin
-     * 
+     *
      * @return void
      */
     public function setBottomMargin($bottomMargin)
@@ -343,7 +343,7 @@ class Report
 
     /**
      * Get Page Orientation
-     * 
+     *
      * @return char
      */
     public function getPageOrientation()
@@ -353,9 +353,9 @@ class Report
 
     /**
      * Set Page Orientation
-     * 
+     *
      * @param char $pageOrientation Page Orientation
-     * 
+     *
      * @return void
      */
     public function setPageOrientation($pageOrientation)
@@ -368,7 +368,7 @@ class Report
     }
     /**
      * Get Paper format
-     * 
+     *
      * @return string
      */
     public function getPaperFormat()
@@ -378,9 +378,9 @@ class Report
 
     /**
      * Set Paper Format
-     * 
+     *
      * @param char $paperFormat Paper Format
-     * 
+     *
      * @return void
      */
     public function setPaperFormat($paperFormat)
@@ -394,10 +394,10 @@ class Report
 
     /**
      * Add new part to report
-     * 
+     *
      * @param string       $type Part type
      * @param AbstractPart $part Part
-     * 
+     *
      * @return void
      */
     public function addPart($type, Part\AbstractPart $part)
@@ -406,13 +406,13 @@ class Report
         $this->orderedParts[$part->getIdentifier()] = $part;
         $this->calculateStartPosition();
     }
-    
+
     /**
      * Recalculate Start Position for all Parts
-     * 
+     *
      * @return void
      */
-    public function calculateStartPosition() 
+    public function calculateStartPosition()
     {
         $offset = 0;
         ksort($this->orderedParts, SORT_NUMERIC);
@@ -430,7 +430,7 @@ class Report
 
     /**
      * Get Parts
-     * 
+     *
      * @return array
      */
     public function getParts()
@@ -440,9 +440,9 @@ class Report
 
     /**
      * Get Part
-     * 
+     *
      * @param string $type Part Type
-     * 
+     *
      * @return null|array
      */
     public function getPart($type)
@@ -453,5 +453,5 @@ class Report
             return null;
         }
     }
-    
+
 }

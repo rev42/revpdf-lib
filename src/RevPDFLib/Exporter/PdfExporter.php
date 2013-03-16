@@ -52,10 +52,10 @@ class PdfExporter
 
     /**
      * Constructor
-     * 
+     *
      * @param RevPDFLib\Wrapper\WrapperInterface $wrapper Wrapper
      * @param RevPDFLib\Report                   $report  Report
-     * 
+     *
      * @return void
      */
     public function __construct(WrapperInterface $wrapper, Report $report)
@@ -64,11 +64,11 @@ class PdfExporter
         $this->wrapper->setReport($report);
         $this->report = $report;
     }
-    
+
     /**
      * Get Wrapper
-     * 
-     * @return RevPDFLib\Wrapper\WrapperInterface 
+     *
+     * @return RevPDFLib\Wrapper\WrapperInterface
      */
     public function getWrapper()
     {
@@ -76,10 +76,10 @@ class PdfExporter
     }
 
     /**
-     * Set Wrapper 
-     * 
+     * Set Wrapper
+     *
      * @param RevPDFLib\Wrapper\WrapperInterface $wrapper Wrapper
-     * 
+     *
      * @return void
      */
     public function setWrapper($wrapper)
@@ -89,8 +89,8 @@ class PdfExporter
 
     /**
      * Get Report
-     * 
-     * @return RevPDF\Report 
+     *
+     * @return RevPDF\Report
      */
     public function getReport()
     {
@@ -99,9 +99,9 @@ class PdfExporter
 
     /**
      * Set Report
-     * 
+     *
      * @param RevPDF\Report $report Report
-     * 
+     *
      * @return void
      */
     public function setReport($report)
@@ -109,55 +109,55 @@ class PdfExporter
         $this->report = $report;
     }
 
-        
+
     /**
      * Configure report object by setting properties and adding parts
-     * 
+     *
      * @param array $reportData Data
-     * 
-     * @return void 
+     *
+     * @return void
      */
     public function buildDocument(array $reportData)
     {
         $this->report->setAllProperties($reportData);
-        
+
         if (array_key_exists('pageheader', $reportData)) {
             $part = new Part\PageHeader($reportData['pageheader']);
-            
+
             $this->report->addPart('pageheader', $part);
         }
         if (array_key_exists('reportheader', $reportData)) {
             $part = new Part\ReportHeader($reportData['reportheader']);
-            
+
             $this->report->addPart('reportheader', $part);
         }
         if (array_key_exists('details', $reportData)
             && count($reportData['details']) > 0
         ) {
             $part = new Part\Details($reportData['details']);
-            
+
             $this->report->addPart('details', $part);
         }
         if (array_key_exists('reportfooter', $reportData)) {
             $part = new Part\ReportFooter($reportData['reportfooter']);
-            
+
             $this->report->addPart('reportfooter', $part);
         }
         if (array_key_exists('pagefooter', $reportData)) {
             $part = new Part\PageFooter($reportData['pagefooter']);
-            
+
             $this->report->addPart('pagefooter', $part);
         }
-        
+
         $this->wrapper->configure($this->report->getAllProperties());
     }
-    
+
     /**
      * Generate document
-     * 
+     *
      * @param array $data Data
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      */
     public function generateDocument($data)
     {
@@ -166,7 +166,7 @@ class PdfExporter
         $iterator = $object->getIterator();
         $this->wrapper->setIterator($iterator);
         $rowsCount = count($iterator);
-        
+
         $this->wrapper->openDocument();
 
         $detailsPart = $this->report->getPart('details');

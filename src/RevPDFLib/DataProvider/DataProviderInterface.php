@@ -42,5 +42,5 @@ namespace RevPDFLib\DataProvider;
  */
 interface DataProviderInterface
 {
-    
+
 }

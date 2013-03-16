@@ -45,10 +45,10 @@ use RevPDFLib\Items\Part\AbstractPart;
 class Details extends AbstractPart
 {
     const ID = 3;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param array $data Data
      */
     public function __construct($data)

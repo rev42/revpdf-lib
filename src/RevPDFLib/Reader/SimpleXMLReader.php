@@ -44,9 +44,9 @@ class SimpleXMLReader implements ReaderInterface
 {
     /**
      * Parse data
-     * 
+     *
      * @param array $data Data
-     * 
+     *
      * @return array
      */
     public function parseData($data)
@@ -57,7 +57,7 @@ class SimpleXMLReader implements ReaderInterface
                 $formattedData['report'][$key] = (string) $value;
             }
         }
-        
+
         if ($data->source && $data->source->attributes()) {
             foreach ($data->source->attributes() as $key => $value) {
                 $formattedData['source'][$key] = (string) $value;
@@ -72,7 +72,6 @@ class SimpleXMLReader implements ReaderInterface
         $formattedData['details'] = $this->getPartData('details', $data);
         $formattedData['reportfooter'] = $this->getPartData('reportfooter', $data);
         $formattedData['pagefooter'] = $this->getPartData('pagefooter', $data);
-        
 
         /*echo '<pre>';
         print_r($formattedData);
@@ -80,19 +79,19 @@ class SimpleXMLReader implements ReaderInterface
 
         return $formattedData;
     }
-    
+
     /**
      * Get Part data
-     * 
+     *
      * @param array $node Node
      * @param array $data Data
-     * 
+     *
      * @return array
      */
     protected function getPartData($node, $data)
     {
         $formattedData = array();
-        
+
         if (isset($data->$node)) {
             if (count($data->$node->attributes()) > 0) {
                 foreach ($data->$node->attributes() as $key => $value) {
@@ -121,27 +120,26 @@ class SimpleXMLReader implements ReaderInterface
             return array();
         }
     }
-    
+
     /**
-     * Retrieve boolean value from string 
-     * 
+     * Retrieve boolean value from string
+     *
      * @param string $value Value
-     * 
-     * @return boolean|null 
+     *
+     * @return boolean|null
      */
-    public function getBool($value) {
+    public function getBool($value)
+    {
         switch (strtolower($value)) {
-        case 'true': 
-            return true;
-            break;
-
-        case 'false':
-            return false;
-            break;
-
-        default: 
-            return $value;
-            break;
+            case 'true':
+                return true;
+                break;
+            case 'false':
+                return false;
+                break;
+            default:
+                return $value;
+                break;
         }
     }
 

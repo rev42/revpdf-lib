@@ -47,22 +47,22 @@ class PartListener implements EventSubscriberInterface
 {
     /**
      * Method linked to subscribed events
-     * 
+     *
      * @param Event $event Event
-     * 
+     *
      * @return void
      */
     public function onResponse(Event $event)
     {
         $part = $event->getPart();
         $offset = $event->getOffset();
-        
+
         $part->setStartPosition($offset);
     }
-    
+
     /**
      * List of subscribed events
-     * 
+     *
      * @return array
      */
     public static function getSubscribedEvents()

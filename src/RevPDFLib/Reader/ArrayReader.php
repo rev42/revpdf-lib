@@ -46,15 +46,15 @@ class ArrayReader implements ReaderInterface
 {
     /**
      * Parse data
-     * 
+     *
      * @param array $data Data
-     * 
+     *
      * @return array
      */
     public function parseData($data)
     {
         $parts = \RevPDFLib\Application::getSupportedParts();
-        
+
         foreach ($parts as $part) {
             if (!isset($data[$part])) {
                 $data[$part] = array();

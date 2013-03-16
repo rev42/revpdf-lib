@@ -44,11 +44,11 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 {
     /**
      * Execute SQL Query
-     * 
+     *
      * @param string $sql SQL query
-     * 
+     *
      * @see RevPDF_DataSource_Db_Interface::executeQuery()
-     * 
+     *
      * @return array
      */
     public function executeQuery($sql)
@@ -58,12 +58,12 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 
         return $recordset->fetchAll(\PDO::FETCH_ASSOC);
     }
-    
+
     /**
      * Prepate SQL query
-     * 
+     *
      * @param string $sql sql query
-     * 
+     *
      * @return string
      */
     protected function prepareSQL($sql)
@@ -73,10 +73,10 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 
     /**
      * Parse data
-     * 
+     *
      * @param array $report Report data
-     * 
-     * @return void 
+     *
+     * @return void
      */
     public function parse($report)
     {
@@ -85,7 +85,7 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
         }
 
         $rows = $this->executeQuery($report['source']['value']);
-        
+
         $data = array();
         foreach ($rows as $row) {
             $data[] = $row;

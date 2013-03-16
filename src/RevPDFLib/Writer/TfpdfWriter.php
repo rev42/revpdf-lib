@@ -45,10 +45,10 @@ use \tFPDF;
  */
 class TfpdfWriter extends \tFPDF implements WriterInterface
 {
-    var $endPosition;
-    var $currentPosition;
-    var $iterator;
-    
+    public $endPosition;
+    public $currentPosition;
+    public $iterator;
+
     public function __construct($orientation="P", $unit="mm", $format="A4")
     {
         parent::__construct($orientation, $unit, $format);
@@ -64,10 +64,10 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         $this->AddFont('DejaVu', 'BI', 'DejaVuSansCondensed.ttf', true);
         $this->SetFont('DejaVu', '',14);
     }
-    
+
     /**
      * Get Data iterator
-     * 
+     *
      * @return object
      */
     public function getIterator()
@@ -77,7 +77,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * Set Data iterator
-     * 
+     *
      * @param object $iterator Iterator
      */
     public function setIterator($iterator)
@@ -87,29 +87,29 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * Set Current Position
-     * 
+     *
      * @param int $value Position
-     * 
+     *
      * @return void
      */
     public function setCurrentPosition($value)
     {
         $this->currentPosition = $value;
     }
-    
+
     /**
      * Get Current Position
-     * 
+     *
      * @return int
      */
     public function getCurrentPosition()
     {
         return $this->currentPosition;
     }
-    
+
     /**
      * Get End Position
-     * 
+     *
      * @return int
      */
     public function getEndPosition()
@@ -119,9 +119,9 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * set End Position
-     * 
+     *
      * @param int $endPosition End Position Y for each page
-     * 
+     *
      * @return void
      */
     public function setEndPosition($endPosition)
@@ -134,12 +134,12 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
             $this->SetAutoPageBreak(1, $endPosition);
         }
     }
-    
+
     /**
      * Set Page Header part
-     * 
+     *
      * @param array $part Part
-     * 
+     *
      * @return void
      */
     public function setPageHeader($part)
@@ -149,19 +149,19 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * Get Page Header part
-     * 
+     *
      * @return array
      */
     public function getPageHeader()
     {
         return $this->pageheader;
     }
-    
+
     /**
      * Set Page Footer part
-     * 
+     *
      * @param array $part Part
-     * 
+     *
      * @return void
      */
     public function setPageFooter($part)
@@ -171,7 +171,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * Get Page Footer part
-     * 
+     *
      * @return array
      */
     public function getPageFooter()
@@ -181,7 +181,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * Get Left Margin
-     * 
+     *
      * @return int
      */
     public function getLeftMargin()
@@ -191,17 +191,17 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * Get Top Margin
-     * 
+     *
      * @return int
      */
     public function getTopMargin()
     {
         return $this->tMargin;
     }
-    
+
     /**
      * Get Bottom Margin
-     * 
+     *
      * @return int
      */
     public function getBottomMargin()
@@ -211,8 +211,8 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
 
     /**
      * Write Report Header
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      */
     public function header()
     {
@@ -221,13 +221,13 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         if (count($part) <= 0 || $part->isVisible() === false) {
             return;
         }
-        
+
         $elements = $part->getElements();
-        
+
         if (count($elements) <= 0) {
             return false;
         }
-        
+
         $this->setCurrentPosition($this->getTopMargin());
 
         foreach ($elements as $element) {
@@ -244,29 +244,29 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         $newPosition = $this->getTopMargin() + $part->getHeight();
         $this->setCurrentPosition($newPosition);
     }
-    
+
     /**
      * Write Report Footer
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      */
     public function footer()
     {
         $part = $this->getPageFooter();
-        
+
         if (count($part) <= 0 || $part->isVisible() === false) {
             return;
         }
-        
+
         $elements = $part->getElements();
-        
+
         if (count($elements) <= 0) {
             return false;
         }
-        
+
         // The current position has to be reset at the Bottom Margin value - page Footer height
         $this->setCurrentPosition((int) $this->getEndPosition());
-        
+
         foreach ($elements as $element) {
             $this->SetLineWidth($element->getBorderWidth());
             $this->setFillColor($element->getFillColor());
@@ -279,7 +279,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
             $element->writeContent($this, $this->iterator);
         }
     }
-    
+
     /**
      * Set text color
      *
@@ -297,7 +297,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         }
         parent::SetTextColor($r, $g, $b);
     }
-    
+
     /**
      * Convert HTML color into RGB value
      * Set private properties ($r, $g, $b)
@@ -341,7 +341,7 @@ class TfpdfWriter extends \tFPDF implements WriterInterface
         $g = hexdec(substr($c, 3, 2));
         $b = hexdec(substr($c, 5, 2));
     }
-    
+
     /**
      * Set fill color
      *

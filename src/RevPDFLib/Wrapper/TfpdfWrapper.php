@@ -49,12 +49,12 @@ use RevPDFLib\Application;
 class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 {
     protected $iterator;
-    
+
     public function __construct(\RevPDFLib\Writer\WriterInterface $writer)
     {
         $this->writer = $writer;
     }
-    
+
     public function getIterator()
     {
         return $this->iterator;
@@ -67,8 +67,8 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     }
 
     /**
-     * Add Page 
-     * 
+     * Add Page
+     *
      * @return void
      */
     public function addPage()
@@ -78,9 +78,9 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
 
     /**
      * Configure Report
-     * 
+     *
      * @param array $report Report
-     * 
+     *
      * @return void
      */
     public function configure($report)
@@ -89,7 +89,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->SetAuthor($report['author']);
         $this->writer->SetCreator(Application::NAME);
         $this->writer->SetDisplayMode(
-            $report['displayModeZoom'], 
+            $report['displayModeZoom'],
             $report['displayModeLayout']
         );
         $this->writer->SetKeywords($report['keywords']);
@@ -100,8 +100,8 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
             $report['topMargin'],
             $report['rightMargin']
         );
-        // Page header/footer are special parts because they are automatically 
-        // called when new page is created. header() and footer() doesn't 
+        // Page header/footer are special parts because they are automatically
+        // called when new page is created. header() and footer() doesn't
         // support parameters
         $this->writer->setPageHeader($this->getReport()->getPart('pageheader'));
         $this->writer->setPageFooter($this->getReport()->getPart('pagefooter'));
@@ -109,20 +109,20 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->SetLeftMargin($this->getReport()->getLeftMargin());
         $this->writer->setEndPosition($report['bottomMargin']);
     }
-    
+
     /**
      * Output Document
-     * 
+     *
      * @return void
      */
     public function output()
     {
         $this->writer->Output();
     }
-    
+
     /**
-     * Open Document 
-     * 
+     * Open Document
+     *
      * @return void
      */
     public function openDocument()
@@ -130,34 +130,34 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->Open();
         $this->writer->AddPage($this->getReport()->getPageOrientation());
     }
-    
+
     /**
-     * Close Document 
-     * 
+     * Close Document
+     *
      * @return void
      */
     public function closeDocument()
     {
-        
+
     }
-    
+
     /**
      * Output Document
-     * 
+     *
      * @return void
      */
     public function outputDocument()
     {
         $this->writer->Output();
     }
-    
+
     /**
      * Write Elements into document
-     * 
+     *
      * @param \RevPDFLib\Items\Part\AbstractPart $part Part
      * @param array                              $data Data
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      */
     public function writePDF(AbstractPart $part, array $data, $iterator=null)
     {
@@ -177,32 +177,32 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
             $this->writer->setTextColor($element->getTextColor());
             $this->writer->SetFont($element->getFont(), $element->getStyle(), $element->getFontSize());
             $this->writer->setXY(
-                $element->getPosX() + $this->getReport()->getLeftMargin(), 
+                $element->getPosX() + $this->getReport()->getLeftMargin(),
                 $element->getPosY() + $this->writer->getCurrentPosition()
             );
-            
+
             $element->writeContent($this->writer, $iterator);
         }
-        
+
         $newPosition = $this->writer->getCurrentPosition() + $part->getHeight();
         $this->writer->setCurrentPosition($newPosition);
-        
+
         // Add page jump if set
-        if ($part->isPageJump() 
+        if ($part->isPageJump()
         && !($part instanceof \RevPDFLib\Items\Part\PageHeader)
         ) {
             $this->writer->AddPage($this->getReport()->getPageOrientation());
             $this->writer->setCurrentPosition($part->getStartPosition());
         }
-        
+
         return true;
     }
-    
+
     /**
-     * Alias Nb Pages 
-     * 
+     * Alias Nb Pages
+     *
      * @param string $alias Alias
-     * 
+     *
      * @return void
      */
     public function aliasNbPages($alias='{nb}')
@@ -210,5 +210,3 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         $this->writer->AliasNbPages($alias);
     }
 }
-
-?>

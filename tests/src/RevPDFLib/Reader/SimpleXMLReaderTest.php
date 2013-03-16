@@ -7,22 +7,22 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
 {
     protected $reader;
     protected $examplesFolder;
-    
+
     public function setUp()
     {
         $this->reader = new SimpleXMLReader();
         $this->examplesFolder =  __DIR__ . '/../../../example/xml/';
     }
-    
+
     public function tearDown()
     {
         $this->reader = null;
     }
-    
+
     public function testParseData1()
     {
         $file = $this->examplesFolder . '1.xml';
-        
+
         $expected = array(
             "report"=> array(
                 "shortname" => "books",
@@ -50,11 +50,11 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
+
     public function testParseData2()
     {
         $file = $this->examplesFolder . '2.xml';
-        
+
         $expected = array(
             'report'=> array(
                 'shortname' => 'books',
@@ -83,14 +83,14 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             'reportfooter' => array(),
             'pagefooter' => array(),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
+
     public function testParseData3()
     {
         $file = $this->examplesFolder . '3.xml';
-        
+
         $expected = array(
             'report'=> array(
                 'shortname' => 'books',
@@ -128,14 +128,14 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             'reportfooter' => array(),
             'pagefooter' => array(),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
+
     public function testParseData4()
     {
         $file = $this->examplesFolder . '4.xml';
-        
+
         $expected = array(
             'report'=> array(
                 'shortname' => 'books',
@@ -176,14 +176,14 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             'reportfooter' => array(),
             'pagefooter' => array(),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
+
     public function testParseData5()
     {
         $file = $this->examplesFolder . '5.xml';
-        
+
         $expected = array(
             'report'=> array(
                 'shortname' => 'books',
@@ -224,14 +224,14 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             'reportfooter' => array(),
             'pagefooter' => array(),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
+
     public function testParseData6()
     {
         $file = $this->examplesFolder . '6.xml';
-        
+
         $expected = array(
             'report'=> array(
                 'shortname' => 'books',
@@ -272,14 +272,14 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             'reportfooter' => array(),
             'pagefooter' => array(),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
+
     public function testParseData7()
     {
         $file = $this->examplesFolder . '7.xml';
-        
+
         $expected = array(
             'report'=> array(
                 'shortname' => 'books',
@@ -320,14 +320,14 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             ),
             'pagefooter' => array(),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
+
     public function testParseData8()
     {
         $file = $this->examplesFolder . '8.xml';
-        
+
         $expected = array(
             'report'=> array(
                 'shortname' => 'books',
@@ -368,15 +368,15 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 )
             ),
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
-    
-    
+
+
     public function testParseData()
     {
         $file = $this->examplesFolder . 'data.xml';
-        
+
         $expected = array(
             "report"=> array(
                 "shortname" => "short",
@@ -397,7 +397,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
             ),
             "source" => array(
                 "provider" => "CsvProvider",
-                "value" => "books.csv" 
+                "value" => "books.csv"
             ),
             "pageheader" => array(
                 "height" => "15",
@@ -429,7 +429,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                         "x" => "0",
                         "y" => "10",
                         "height" => "5",
-                        "width" => "20" 
+                        "width" => "20"
                     )
                 )
             ),
@@ -469,7 +469,7 @@ class SimpleXMLReaderTest extends \PHPUnit_Framework_TestCase
                 ),
             )
         );
-        
+
         $this->assertSame($expected, $this->reader->parseData(simplexml_load_file($file)));
     }
 }

@@ -2,7 +2,7 @@
 class DbConnection
 {
     protected $connection = null;
-    
+
     public function __construct($params=array())
     {
         switch($params['dbms']) {
@@ -19,7 +19,7 @@ class DbConnection
                 $this->connection->setAttribute(\Doctrine::ATTR_QUOTE_IDENTIFIER, true);
                 $this->connection->setCharset('utf8');
                 break;
-            
+
             case 'pdo':
                 $connectionString = sprintf('mysql:dbname=%s;host=%s',
                         $params['dbname'],
@@ -27,12 +27,12 @@ class DbConnection
                 );
                 $this->connection = new \PDO($connectionString, $params['dbuser'], $params['dbpasswd']);
                 break;
-            
+
             default:
                 throw new \BadMethodCallException();
         }
     }
-    
+
     public function getConnection()
     {
         return $this->connection;

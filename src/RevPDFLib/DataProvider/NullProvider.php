@@ -44,20 +44,20 @@ class NullProvider extends DataProviderAbstract implements DataProviderInterface
 {
     /**
      * Parse data
-     * 
+     *
      * @param array $report Report data
-     * 
-     * @return void 
+     *
+     * @return void
      */
     public function parse($report)
     {
         if ($this->connector === null) {
             throw new \Exception('Connector is NOT set');
         }
-        
+
         $data = array();
         $parts = \RevPDFLib\Application::getSupportedParts();
-        
+
         foreach ($parts as $part) {
             if (array_key_exists($part, $report)) {
                 if (isset($report[$part]['elements'])) {

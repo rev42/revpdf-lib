@@ -28,7 +28,7 @@
  */
 
 namespace RevPDFLib\Event;
- 
+
 use Symfony\Component\EventDispatcher\Event;
 
 /**
@@ -46,13 +46,13 @@ class AddPartEvent extends Event
 {
     protected $part;
     protected $offset;
- 
+
     /**
      * Constructor
-     * 
+     *
      * @param AbstractPart $part   Part
      * @param int          $offset Offset
-     * 
+     *
      * @return void
      */
     public function __construct(\RevPDFLib\Items\Part\AbstractPart $part, $offset)
@@ -60,20 +60,20 @@ class AddPartEvent extends Event
         $this->part = $part;
         $this->offset = $offset;
     }
- 
+
     /**
      * Get Part
-     * 
+     *
      * @return AbstractPart
      */
     public function getPart()
     {
         return $this->part;
     }
-    
+
     /**
      * Get Offset
-     * 
+     *
      * @return int
      */
     public function getOffset()

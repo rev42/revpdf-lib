@@ -64,7 +64,7 @@ abstract class AbstractPart
         'reportfooter',
         'footer'
     );
-    
+
     /**
      * Is Displayed
      * @var boolean
@@ -84,15 +84,15 @@ abstract class AbstractPart
     protected $currentPosition = 0;
     protected $elements = array();
     protected $identifier = null;
-    
+
     protected $height;
     protected $isVisible;
     protected $backgroundColor;
     protected $isPageJump;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param array $data Data
      */
     public function __construct(array $data)
@@ -116,8 +116,8 @@ abstract class AbstractPart
 
     /**
      * Get Part Identifier
-     * 
-     * @return int 
+     *
+     * @return int
      */
     public function getIdentifier()
     {
@@ -126,9 +126,9 @@ abstract class AbstractPart
 
     /**
      * Set Is Displayed
-     * 
+     *
      * @param boolean $value Value
-     * 
+     *
      * @return void
      */
     public function setIsDisplayed($value)
@@ -138,8 +138,8 @@ abstract class AbstractPart
 
     /**
      * Get Is Displayed
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      */
     public function isDisplayed()
     {
@@ -148,9 +148,9 @@ abstract class AbstractPart
 
     /**
      * Set Start Position
-     * 
+     *
      * @param int $value Value
-     * 
+     *
      * @return void
      */
     public function setStartPosition($value = 0)
@@ -160,7 +160,7 @@ abstract class AbstractPart
 
     /**
      * Get Start Position
-     * 
+     *
      * @return int
      */
     public function getStartPosition()
@@ -170,7 +170,7 @@ abstract class AbstractPart
 
     /**
      * Get Height
-     * 
+     *
      * @return int
      */
     public function getHeight()
@@ -180,9 +180,9 @@ abstract class AbstractPart
 
     /**
      * Set Height
-     * 
+     *
      * @param int $height Height value
-     * 
+     *
      * @return void
      */
     public function setHeight($height)
@@ -192,9 +192,9 @@ abstract class AbstractPart
 
     /**
      * Set Elements
-     * 
+     *
      * @param array $elements Elements
-     * 
+     *
      * @return void
      */
     public function setElements(array $elements)
@@ -209,7 +209,7 @@ abstract class AbstractPart
 
     /**
      * Get Elements
-     * 
+     *
      * @return array
      */
     public function getElements()
@@ -219,7 +219,7 @@ abstract class AbstractPart
 
     /**
      * Get Current Position
-     * 
+     *
      * @return int
      */
     public function getCurrentPosition()
@@ -229,9 +229,9 @@ abstract class AbstractPart
 
     /**
      * Set Current Position
-     * 
+     *
      * @param int $currentPosition Current Position
-     * 
+     *
      * @return void
      */
     public function setCurrentPosition($currentPosition)
@@ -241,7 +241,7 @@ abstract class AbstractPart
 
     /**
      * Get Is Visible
-     * 
+     *
      * @return boolean
      */
     public function isVisible()
@@ -251,9 +251,9 @@ abstract class AbstractPart
 
     /**
      * Set Is Visible
-     * 
+     *
      * @param boolean $isVisible Visible (true/false)
-     * 
+     *
      * @return void
      */
     public function setIsVisible($isVisible)
@@ -263,7 +263,7 @@ abstract class AbstractPart
 
     /**
      * Get Background Color
-     * 
+     *
      * @return string
      */
     public function getBackgroundColor()
@@ -273,9 +273,9 @@ abstract class AbstractPart
 
     /**
      * Set Background Color
-     * 
+     *
      * @param string $backgroundColor Background Color (#FFF)
-     * 
+     *
      * @return void
      */
     public function setBackgroundColor($backgroundColor)
@@ -285,22 +285,22 @@ abstract class AbstractPart
         }
         $this->backgroundColor = $backgroundColor;
     }
-    
+
     /**
      * Get Page Jump
-     * 
+     *
      * @return boolean
      */
-    public function isPageJump() 
+    public function isPageJump()
     {
         return (bool) $this->isPageJump;
     }
-    
+
     /**
      * Set Page Jump
-     * 
+     *
      * @param boolean $isPageJump isPageJump
-     * 
+     *
      * @return void
      */
     public function setIsPageJump($isPageJump)
