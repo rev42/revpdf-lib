@@ -6,12 +6,12 @@ use RevPDFLib\Reader\ArrayReader;
 class ArrayReaderTest extends \PHPUnit_Framework_TestCase
 {
     protected $reader;
-    
+
     public function setUp()
     {
         $this->reader = new ArrayReader();
     }
-    
+
     public function tearDown()
     {
         $this->reader = null;
@@ -41,5 +41,20 @@ class ArrayReaderTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame($data, $this->reader->parseData($data));
+    }
+
+    public function testParseEmptyData()
+    {
+        $inputData = array();
+
+        $outputData = array(
+            'pageheader' => array(),
+            'reportheader' => array(),
+            'details' => array(),
+            'reportfooter' => array(),
+            'pagefooter' => array(),
+        );
+
+        $this->assertSame($outputData, $this->reader->parseData($inputData));
     }
 }
