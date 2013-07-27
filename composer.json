@@ -12,7 +12,6 @@
             "email": "contact@revpdf.org"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
         "rev42/tfpdf" : "1.0",
