@@ -42,5 +42,4 @@ namespace RevPDFLib\Writer;
  */
 interface WriterInterface
 {
-
 }

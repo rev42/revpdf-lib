@@ -51,8 +51,6 @@ class DiExtension
 
     /**
      * Constructor
-     *
-     * @return void
      */
     public function __construct($path)
     {

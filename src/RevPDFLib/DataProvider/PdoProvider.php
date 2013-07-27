@@ -73,12 +73,11 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 
     /**
      * Parse data
-     *
      * @param array $report Report data
      *
-     * @return void
+     * @throws \Exception
      */
-    public function parse($report)
+    public function parse(array $report)
     {
         if ($this->connector === null) {
             throw new \Exception('Connector is NOT set');

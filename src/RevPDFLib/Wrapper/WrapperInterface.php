@@ -42,5 +42,4 @@ namespace RevPDFLib\Wrapper;
  */
 interface WrapperInterface
 {
-
 }

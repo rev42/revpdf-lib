@@ -50,10 +50,8 @@ class AddPartEvent extends Event
     /**
      * Constructor
      *
-     * @param AbstractPart $part   Part
-     * @param int          $offset Offset
-     *
-     * @return void
+     * @param \RevPDFLib\Items\Part\AbstractPart $part
+     * @param int $offset
      */
     public function __construct(\RevPDFLib\Items\Part\AbstractPart $part, $offset)
     {

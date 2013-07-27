@@ -80,12 +80,10 @@ class Application
 
     /**
      * Application Constructor
-     *
-     * @return void
      */
     public function __construct()
     {
-        $dependency = new DiExtension(__DIR__.'/DependencyInjection/config/');
+        $dependency = new DiExtension(__DIR__ . '/DependencyInjection/config/');
 
         try {
             $this->setDic($dependency->getContainer());
@@ -141,21 +139,21 @@ class Application
     public function export($data)
     {
         switch (gettype($data)) {
-        case 'array':
-            $this->getDic()
-                 ->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
-            break;
-        case 'object':
-            if (get_class($data) == 'SimpleXMLIterator') {
+            case 'array':
                 $this->getDic()
-                     ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLIterator');
-            } elseif (get_class($data) == 'SimpleXMLElement') {
-                $this->getDic()
-                     ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
-            }
-            break;
-        default:
-            throw new Exception();
+                    ->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
+                break;
+            case 'object':
+                if (get_class($data) == 'SimpleXMLIterator') {
+                    $this->getDic()
+                        ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLIterator');
+                } elseif (get_class($data) == 'SimpleXMLElement') {
+                    $this->getDic()
+                        ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
+                }
+                break;
+            default:
+                throw new Exception();
         }
         // Get data properly formatted
         $params = array(
@@ -185,13 +183,13 @@ class Application
         // Get data provider and parse data
         $data = array('fake');
         if (isset($report['source']['provider'])
-            && !empty($report['source']['provider']))
-        {
+            && !empty($report['source']['provider'])
+        ) {
             $this->selectDataProvider($report['source']['provider']);
 
             $this->getDic()
-                 ->get('revpdflib.provider')
-                 ->setConnector($this->dataSource);
+                ->get('revpdflib.provider')
+                ->setConnector($this->dataSource);
 
             $this->getDic()->get('revpdflib.provider')->parse($report);
             $data = $this->getDic()->get('revpdflib.provider')->getData();

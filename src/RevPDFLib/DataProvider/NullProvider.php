@@ -46,8 +46,6 @@ class NullProvider extends DataProviderAbstract implements DataProviderInterface
      * Parse data
      *
      * @param array $report Report data
-     *
-     * @return void
      */
     public function parse($report)
     {

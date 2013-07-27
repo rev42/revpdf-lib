@@ -32,7 +32,6 @@ namespace RevPDFLib;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use RevPDFLib\Listener\PartListener;
-use RevPDFLib\Event\AddPartEvent;
 use RevPDFLib\Items\Part;
 
 /**
@@ -65,8 +64,6 @@ class Report
 
     /**
      * Constructor
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -83,20 +80,22 @@ class Report
      */
     public function setAllProperties($data)
     {
-        $data['report'] = array_merge(array(
-            'author' => '',
-            'keywords' => '',
-            'subject' => '',
-            'title' => '',
-            'leftMargin' => 10,
-            'topMargin' => 10,
-            'rightMargin' => 10,
-            'bottomMargin' => 10,
-            'displayModeZoom' => 'default',
-            'displayModeLayout' => 'default',
-            'paperFormat' => 'A4',
-            'pageOrientation' => 'P',
-        ), $data['report']);
+        $data['report'] = array_merge(
+            array(
+                'author' => '',
+                'keywords' => '',
+                'subject' => '',
+                'title' => '',
+                'leftMargin' => 10,
+                'topMargin' => 10,
+                'rightMargin' => 10,
+                'bottomMargin' => 10,
+                'displayModeZoom' => 'default',
+                'displayModeLayout' => 'default',
+                'paperFormat' => 'A4',
+                'pageOrientation' => 'P',
+            ), $data['report']
+        );
         $this->author = $data['report']['author'];
         $this->displayModeZoom = $data['report']['displayModeZoom'];
         $this->displayModeLayout = $data['report']['displayModeLayout'];
@@ -396,9 +395,7 @@ class Report
      * Add new part to report
      *
      * @param string       $type Part type
-     * @param AbstractPart $part Part
-     *
-     * @return void
+     * @param Part\AbstractPart $part Part
      */
     public function addPart($type, Part\AbstractPart $part)
     {

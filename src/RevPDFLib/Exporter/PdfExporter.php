@@ -53,10 +53,9 @@ class PdfExporter
     /**
      * Constructor
      *
-     * @param RevPDFLib\Wrapper\WrapperInterface $wrapper Wrapper
-     * @param RevPDFLib\Report                   $report  Report
+     * @param WrapperInterface $wrapper Wrapper
+     * @param Report $report  Report
      *
-     * @return void
      */
     public function __construct(WrapperInterface $wrapper, Report $report)
     {

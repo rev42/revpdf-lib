@@ -154,8 +154,9 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
     /**
      * Write Elements into document
      *
-     * @param \RevPDFLib\Items\Part\AbstractPart $part Part
-     * @param array                              $data Data
+     * @param AbstractPart $part Part
+     * @param array $data Data
+     * @param ArrayIterator $iterator
      *
      * @return boolean
      */
