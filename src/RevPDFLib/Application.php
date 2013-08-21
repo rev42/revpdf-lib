@@ -54,7 +54,7 @@ class Application
     /**
      * Application Version
      */
-    const VERSION = '2.2.0 (20130821)';
+    const VERSION = '2.2.1 (20130821)';
 
     protected static $supportedParts = array(
         'pageheader',
