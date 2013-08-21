@@ -44,12 +44,12 @@ abstract class DataProviderAbstract implements DataProviderInterface
 {
     protected $connector = null;
     protected $data = null;
-    
-        
+
+
     /**
      * Get Data
-     * 
-     * @return array 
+     *
+     * @return array
      */
     public function getData()
     {
@@ -58,9 +58,9 @@ abstract class DataProviderAbstract implements DataProviderInterface
 
     /**
      * Set Data
-     * 
+     *
      * @param array $data Data
-     * 
+     *
      * @return void
      */
     public function setData($data)
@@ -70,8 +70,8 @@ abstract class DataProviderAbstract implements DataProviderInterface
 
     /**
      * Get DB connection
-     * 
-     * @return object 
+     *
+     * @return object
      */
     public function getConnector()
     {
@@ -80,9 +80,9 @@ abstract class DataProviderAbstract implements DataProviderInterface
 
     /**
      * Set DB Connection
-     * 
+     *
      * @param type $conn DB connection
-     * 
+     *
      * @return void
      */
     public function setConnector($conn)

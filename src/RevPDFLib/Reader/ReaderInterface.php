@@ -44,9 +44,9 @@ interface ReaderInterface
 {
     /**
      * Parse data
-     * 
+     *
      * @param array $data Data
-     * 
+     *
      * @return array
      */
     public function parseData($data);

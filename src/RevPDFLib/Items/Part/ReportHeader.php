@@ -45,10 +45,10 @@ use RevPDFLib\Items\Part\AbstractPart;
 class ReportHeader extends AbstractPart
 {
     const ID = 1;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param array $data Data
      */
     public function __construct($data)

@@ -45,11 +45,11 @@ class DoctrineProvider extends PdoProvider implements DataProviderInterface
 
     /**
      * Execute SQL Query
-     * 
+     *
      * @param string $sql SQL query
-     * 
+     *
      * @see RevPDF_DataSource_Db_Interface::executeQuery()
-     * 
+     *
      * @return array
      */
     public function executeQuery($sql)

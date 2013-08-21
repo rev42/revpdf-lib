@@ -44,11 +44,11 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 {
     /**
      * Execute SQL Query
-     * 
+     *
      * @param string $sql SQL query
-     * 
+     *
      * @see RevPDF_DataSource_Db_Interface::executeQuery()
-     * 
+     *
      * @return array
      */
     public function executeQuery($sql)
@@ -58,12 +58,12 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 
         return $recordset->fetchAll(\PDO::FETCH_ASSOC);
     }
-    
+
     /**
      * Prepate SQL query
-     * 
+     *
      * @param string $sql sql query
-     * 
+     *
      * @return string
      */
     protected function prepareSQL($sql)
@@ -73,19 +73,18 @@ class PdoProvider extends DataProviderAbstract implements DataProviderInterface
 
     /**
      * Parse data
-     * 
      * @param array $report Report data
-     * 
-     * @return void 
+     *
+     * @throws \Exception
      */
-    public function parse($report)
+    public function parse(array $report)
     {
         if ($this->connector === null) {
             throw new \Exception('Connector is NOT set');
         }
 
         $rows = $this->executeQuery($report['source']['value']);
-        
+
         $data = array();
         foreach ($rows as $row) {
             $data[] = $row;

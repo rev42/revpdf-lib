@@ -47,15 +47,15 @@ use RevPDFLib\DependencyInjection\DiExtension;
 class Application
 {
     /**
-     * Application Name 
+     * Application Name
      */
     const NAME = 'RevPDFLib';
-    
+
     /**
      * Application Version
      */
     const VERSION = '2.0.0 (20120419)';
-    
+
     protected static $supportedParts = array(
         'pageheader',
         'reportheader',
@@ -63,30 +63,28 @@ class Application
         'reportfooter',
         'pagefooter'
     );
-    
+
     /**
      * Store all dependencies
-     * 
+     *
      * @var object Dependency Injection Container
      */
     protected $dic = null;
-    
+
     /**
      * Data source
-     * 
+     *
      * @var object
      */
     protected $dataSource = null;
-    
+
     /**
-     * Application Constructor 
-     * 
-     * @return void
+     * Application Constructor
      */
     public function __construct()
     {
-        $dependency = new DiExtension(__DIR__.'/DependencyInjection/config/');
-        
+        $dependency = new DiExtension(__DIR__ . '/DependencyInjection/config/');
+
         try {
             $this->setDic($dependency->getContainer());
         } catch (Exception $e) {
@@ -94,68 +92,68 @@ class Application
         }
         $this->dispatcher = $this->getDic()->get('revpdflib.event_dispatcher');
     }
-    
+
     /**
      * Get Container
-     * 
+     *
      * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
     public function getDic()
     {
         return $this->dic;
     }
-    
+
     /**
      * Set Container
-     * 
+     *
      * @param DependencyInjection\ContainerBuilder $val ContainerBuilder
-     * 
+     *
      * @return void
      */
     public function setDic(DependencyInjection\ContainerBuilder $val)
     {
         $this->dic = $val;
     }
-    
+
     /**
      * Register data provider into dic
-     * 
+     *
      * @param string $value Data Provider name
-     * 
+     *
      * @return void
      */
     protected function selectDataProvider($value)
     {
         $this->dic->register('revpdflib.provider', 'RevPDFLib\DataProvider\\' . $value);
     }
-    
+
     /**
      * Export data into PDF
-     * 
+     *
      * @param array $data Data
-     * 
+     *
      * @return array
-     * 
-     * @throws Exception 
+     *
+     * @throws Exception
      */
     public function export($data)
     {
         switch (gettype($data)) {
-        case 'array':
-            $this->getDic()
-                 ->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
-            break;
-        case 'object':
-            if (get_class($data) == 'SimpleXMLIterator') {
+            case 'array':
                 $this->getDic()
-                     ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLIterator');
-            } elseif (get_class($data) == 'SimpleXMLElement') {
-                $this->getDic()
-                     ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
-            }
-            break;
-        default:
-            throw new Exception();
+                    ->register('revpdflib.reader', 'RevPDFLib\Reader\ArrayReader');
+                break;
+            case 'object':
+                if (get_class($data) == 'SimpleXMLIterator') {
+                    $this->getDic()
+                        ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLIterator');
+                } elseif (get_class($data) == 'SimpleXMLElement') {
+                    $this->getDic()
+                        ->register('revpdflib.reader', 'RevPDFLib\Reader\SimpleXMLReader');
+                }
+                break;
+            default:
+                throw new Exception();
         }
         // Get data properly formatted
         $params = array(
@@ -165,7 +163,7 @@ class Application
             ),
             'source' => null
         );
-        
+
         $report = array_merge(
             $params,
             $this->getDic()->get('revpdflib.reader')->parseData($data)
@@ -173,7 +171,7 @@ class Application
         if (!is_array($report)) {
             return null;
         }
-        
+
         // Configure Writers
         $pdfwriter = new \RevPDFLib\Writer\TfpdfWriter(
             $report['report']['pageOrientation'],
@@ -181,35 +179,35 @@ class Application
             $report['report']['paperFormat']
         );
         $this->getDic()->set('revpdflib.tfpdfwriter', $pdfwriter);
-        
+
         // Get data provider and parse data
         $data = array('fake');
         if (isset($report['source']['provider'])
-            && !empty($report['source']['provider']))
-        {
+            && !empty($report['source']['provider'])
+        ) {
             $this->selectDataProvider($report['source']['provider']);
-            
+
             $this->getDic()
-                 ->get('revpdflib.provider')
-                 ->setConnector($this->dataSource);
-            
+                ->get('revpdflib.provider')
+                ->setConnector($this->dataSource);
+
             $this->getDic()->get('revpdflib.provider')->parse($report);
             $data = $this->getDic()->get('revpdflib.provider')->getData();
         }
-        
+
         // Build document
         $this->getDic()->get('revpdflib.exporter')->buildDocument($report);
-        
+
         // Generate document
         $document = $this->getDic()
             ->get('revpdflib.exporter')
             ->generateDocument($data);
         return $document;
     }
-    
+
     /**
      * Get Data source connection
-     * 
+     *
      * @return object
      */
     public function getDataSource()
@@ -219,9 +217,9 @@ class Application
 
     /**
      * Set Data source connection
-     * 
+     *
      * @param type $dataSource DataSource connection
-     * 
+     *
      * @return void
      */
     public function setDataSource($dataSource)
@@ -231,7 +229,7 @@ class Application
 
     /**
      * Get supported Parts
-     * 
+     *
      * @return array
      */
     public static function getSupportedParts()
