@@ -42,5 +42,5 @@ namespace RevPDFLib\Items\Element;
  */
 class Roundedbox extends AbstractElement
 {
-    
+
 }

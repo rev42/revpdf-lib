@@ -45,10 +45,10 @@ use RevPDFLib\Items\Part\AbstractPart;
 class PageHeader extends AbstractPart
 {
     const ID = 0;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param array $data Data
      */
     public function __construct($data)

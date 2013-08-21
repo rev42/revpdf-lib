@@ -253,7 +253,7 @@ abstract class AbstractElement
         $allowedValues = array('U', 'I', 'B', 'N');
         $values = str_split($style);
         $result = array_intersect($allowedValues, $values);
-        
+
         $this->style = implode('', $result);
     }
     /**
@@ -360,7 +360,7 @@ abstract class AbstractElement
         $allowedValues = array('L', 'R', 'B', 'T');
         $values = str_split($border);
         $result = array_intersect($allowedValues, $values);
-        
+
         $this->border = implode('', $result);
     }
     /**
@@ -453,7 +453,7 @@ abstract class AbstractElement
         $allowedValues = array('F', 'D');
         $values = str_split($fillStyle);
         $result = array_intersect($allowedValues, $values);
-        
+
         $this->fillStyle = implode('', $result);
     }
 
@@ -520,13 +520,13 @@ abstract class AbstractElement
     {
         $this->type = $type;
     }
-    
+
     /**
      * getField
      *
      * @return string Element field
      */
-    function getField($writer = null, $iterator = null)
+    public function getField($writer = null, $iterator = null)
     {
         return $this->format($this->field);
     }
@@ -538,7 +538,7 @@ abstract class AbstractElement
      *
      * @return void
      */
-    function setProperties($elementInfo)
+    public function setProperties($elementInfo)
     {
         $defaults = array(
             'x' => 0,
@@ -565,7 +565,7 @@ abstract class AbstractElement
         $this->posx = $elementInfo['x'];
         $this->posy = $elementInfo['y'];
         $this->setTextColor($elementInfo['forecolor']);
-        
+
         //$this->isAutoExtend = $elementInfo['isAutoExtend'];
         if (isset($elementInfo['font'])) {
             $this->font = $elementInfo['font']['fontName'];
@@ -582,7 +582,7 @@ abstract class AbstractElement
             }
             $this->setStyle($style);
         }
-        
+
         $this->width = $elementInfo['width'];
         $this->height = $elementInfo['height'];
         $this->border = $elementInfo['border'];
@@ -623,7 +623,7 @@ abstract class AbstractElement
      *
      * @return void
      */
-    function writeContent(&$writer, $iterator)
+    public function writeContent(&$writer, $iterator)
     {
         if (empty($this->isAutoExtend)) {
             $writer->Cell(
@@ -646,15 +646,15 @@ abstract class AbstractElement
             );
         }
     }
-    
+
     /**
-     * Format field 
-     * 
+     * Format field
+     *
      * @param string $value Value
-     * 
+     *
      * @return string
      */
-    function format($value)
+    public function format($value)
     {
         switch ($this->format) {
         case "number":

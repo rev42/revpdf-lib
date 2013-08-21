@@ -12,17 +12,17 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
 {
     protected $connection;
     protected $datasetFolder;
-    
+
     /**
      * @var PdoProvider
      */
     protected $object;
-    
+
     protected function getConnection()
     {
         return $this->createDefaultDBConnection($this->connection, 'mysql');
     }
-    
+
     protected function getDataSet()
     {
         //return $this->createFlatXMLDataset($this->datasetFolder . 'report-seed.xml');
@@ -44,7 +44,7 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
         );
         $this->db = new \DbConnection($params);
         $this->connection = $this->db->getConnection();
-        
+
         $this->object = new PdoProvider;
         $this->object->setConnector($this->connection);
     }
@@ -55,7 +55,7 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
      */
     protected function tearDown()
     {
-        
+
     }
 
     /**
@@ -109,5 +109,3 @@ class PdoProviderTest extends \PHPUnit_Extensions_Database_TestCase
     }
 
 }
-
-?>

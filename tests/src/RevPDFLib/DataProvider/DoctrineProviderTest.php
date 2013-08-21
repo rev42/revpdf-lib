@@ -12,17 +12,17 @@ class DoctrineProviderTest extends \PHPUnit_Framework_TestCase
 {
     protected $connection;
     protected $datasetFolder;
-    
+
     /**
      * @var DoctrineProvider
      */
     protected $object;
-    
+
     protected function getConnection()
     {
         return $this->createDefaultDBConnection($this->connection, 'mysql');
     }
-    
+
     protected function getDataSet()
     {
         //return $this->createFlatXMLDataset($this->datasetFolder . 'report-seed.xml');
@@ -44,7 +44,7 @@ class DoctrineProviderTest extends \PHPUnit_Framework_TestCase
         );
         $this->db = new \DbConnection($params);
         $this->connection = $this->db->getConnection();
-        
+
         $this->object = new DoctrineProvider;
         $this->object->setConnector($this->connection);
     }
@@ -55,7 +55,7 @@ class DoctrineProviderTest extends \PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
-        
+
     }
 
     /**
@@ -79,5 +79,3 @@ class DoctrineProviderTest extends \PHPUnit_Framework_TestCase
     }
 
 }
-
-?>

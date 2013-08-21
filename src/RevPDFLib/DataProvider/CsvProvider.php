@@ -46,10 +46,10 @@ class CsvProvider extends DataProviderAbstract implements DataProviderInterface
 
     /**
      * Parse data
-     * 
+     *
      * @param array $report Report data
-     * 
-     * @return void 
+     *
+     * @return void
      */
     public function parse($report)
     {

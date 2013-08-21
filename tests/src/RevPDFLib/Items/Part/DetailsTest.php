@@ -29,12 +29,12 @@ class DetailsTest extends \PHPUnit_Framework_TestCase
     {
         $this->object = null;
     }
-    
+
     public function testGetIdentifier()
     {
         $this->assertEquals(3, $this->object->getIdentifier());
     }
-    
+
     public function testGetStartPositionDetailsOnly()
     {
         $report = new \RevPDFLib\Report();
@@ -42,12 +42,12 @@ class DetailsTest extends \PHPUnit_Framework_TestCase
         $report->addPart('details', $this->object);
         $this->assertEquals(10, $report->getPart('details')->getStartPosition());
     }
-    
+
     public function testGetStartPositionPageHeaderThenDetails()
     {
         $report = new \RevPDFLib\Report();
         $report->setTopMargin(20);
-        
+
         $pageheader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
                            ->getMock();
@@ -63,17 +63,17 @@ class DetailsTest extends \PHPUnit_Framework_TestCase
         $pageheader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(true));
-        
+
         $report->addPart('pageheader', $pageheader);
         $report->addPart('details', $this->object);
         $this->assertEquals(60, $report->getPart('details')->getStartPosition());
     }
-    
+
     public function testGetStartPositionInvisiblePageHeaderThenDetails()
     {
         $report = new \RevPDFLib\Report();
         $report->setTopMargin(20);
-        
+
         $pageheader = $this->getMockBuilder('RevPDFLib\Items\Part\PageHeader')
                            ->disableOriginalConstructor()
                            ->getMock();
@@ -89,12 +89,10 @@ class DetailsTest extends \PHPUnit_Framework_TestCase
         $pageheader->expects($this->any())
                    ->method('isVisible')
                    ->will($this->returnValue(false));
-        
+
         $report->addPart('details', $this->object);
         $report->addPart('pageheader', $pageheader);
         $this->assertEquals(20, $report->getPart('details')->getStartPosition());
     }
 
 }
-
-?>

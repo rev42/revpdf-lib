@@ -48,11 +48,9 @@ class DiExtension
 {
     protected $servicePath = null;
     protected $container = null;
-    
+
     /**
      * Constructor
-     * 
-     * @return void
      */
     public function __construct($path)
     {
@@ -62,11 +60,11 @@ class DiExtension
         $loader = new XmlFileLoader($this->container, new FileLocator($this->servicePath));
         $loader->load('services.xml');
     }
-    
+
     /**
      * Get Container
-     * 
-     * @return \Symfony\Component\DependencyInjection\ContainerBuilder 
+     *
+     * @return \Symfony\Component\DependencyInjection\ContainerBuilder
      */
     public function getContainer()
     {
