@@ -30,7 +30,7 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
 
     public function testSetIsDisplayed()
     {
-        $this->part->setIsDisplayed(true);
+        $this->part->setDisplayed(true);
         $this->assertEquals(true, $this->part->isDisplayed());
 
     }

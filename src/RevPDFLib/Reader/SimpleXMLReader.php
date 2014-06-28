@@ -73,10 +73,6 @@ class SimpleXMLReader implements ReaderInterface
         $formattedData['reportfooter'] = $this->getPartData('reportfooter', $data);
         $formattedData['pagefooter'] = $this->getPartData('pagefooter', $data);
 
-        /*echo '<pre>';
-        print_r($formattedData);
-        echo '</pre>';exit;*/
-
         return $formattedData;
     }
 

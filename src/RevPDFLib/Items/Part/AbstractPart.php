@@ -30,7 +30,6 @@
 
 namespace RevPDFLib\Items\Part;
 
-use RevPDFLib\Report;
 use RevPDFLib\Items\Element\FactoryElement;
 
 /**
@@ -46,15 +45,6 @@ use RevPDFLib\Items\Element\FactoryElement;
  */
 abstract class AbstractPart
 {
-    /*
-    const PART_HEADER = 0;
-    const PART_REPORT_HEADER = 1;
-    const PART_GROUP_HEADER = 2;
-    const PART_DATA = 3;
-    const PART_GROUP_FOOTER = 4;
-    const PART_FOOTER = 5;
-    const PART_REPORT_FOOTER = 6;
-    */
     protected $partIds = array(
         'header',
         'reportheader',
@@ -131,7 +121,7 @@ abstract class AbstractPart
      *
      * @return void
      */
-    public function setIsDisplayed($value)
+    public function setDisplayed($value)
     {
         $this->isDisplayed = $value;
     }

@@ -29,9 +29,7 @@
 
 namespace RevPDFLib\Wrapper;
 
-use RevPDFLib\Wrapper\InterfaceWrapper;
 use RevPDFLib\Wrapper\AbstractWrapper;
-use RevPDFLib\Writer\TfpdfWriter;
 use RevPDFLib\Items\Part\AbstractPart;
 use RevPDFLib\Application;
 
@@ -160,7 +158,7 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
      *
      * @return boolean
      */
-    public function writePDF(AbstractPart $part, array $data, $iterator=null)
+    public function writePDF(AbstractPart $part, array $data, $iterator = null)
     {
         if (count($data) <= 0 || $part->isVisible() === false) {
             return false;
@@ -169,7 +167,6 @@ class TfpdfWrapper extends AbstractWrapper implements WrapperInterface
         foreach ($data as $element) {
             // Create new page if overlapping
             if (intval($this->writer->getCurrentPosition() + $element->getHeight()) >= intval($this->writer->getEndPosition())) {
-                //echo $this->writer->getCurrentPosition() + $element->getHeight() . "/" . intval($this->writer->getEndPosition());exit;
                 $this->writer->AddPage($this->report->getPageOrientation());
                 $this->writer->setCurrentPosition($part->getStartPosition());
             }
