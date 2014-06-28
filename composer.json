@@ -15,7 +15,7 @@
     "require": {
         "php": ">=5.3",
         "rev42/tfpdf" : "1.0",
-        "jwage/easy-csv": "dev-master",
+        "jwage/easy-csv": "~0.0.2",
         "symfony/event-dispatcher": "~2.3",
         "symfony/dependency-injection": "~2.3",
         "symfony/config":"~2.3"

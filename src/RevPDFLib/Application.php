@@ -30,7 +30,6 @@
 namespace RevPDFLib;
 
 use Symfony\Component\DependencyInjection;
-use Symfony\Component\DependencyInjection\Reference;
 use RevPDFLib\DependencyInjection\DiExtension;
 
 /**
@@ -87,7 +86,7 @@ class Application
 
         try {
             $this->setDic($dependency->getContainer());
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return $e->getMessage();
         }
         $this->dispatcher = $this->getDic()->get('revpdflib.event_dispatcher');
@@ -134,7 +133,7 @@ class Application
      *
      * @return array
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function export($data)
     {
@@ -153,7 +152,7 @@ class Application
                 }
                 break;
             default:
-                throw new Exception();
+                throw new \Exception();
         }
         // Get data properly formatted
         $params = array(
@@ -208,7 +207,7 @@ class Application
     /**
      * Get Data source connection
      *
-     * @return object
+     * @return \PDO
      */
     public function getDataSource()
     {
@@ -218,11 +217,11 @@ class Application
     /**
      * Set Data source connection
      *
-     * @param type $dataSource DataSource connection
+     * @param \PDO $dataSource DataSource connection
      *
      * @return void
      */
-    public function setDataSource($dataSource)
+    public function setDataSource(\PDO $dataSource)
     {
         $this->dataSource = $dataSource;
     }

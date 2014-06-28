@@ -222,13 +222,13 @@ abstract class AbstractElement
         return (int) $this->isAutoExtend;
     }
     /**
-     * setIsAutoExtend
+     * setAutoExtend
      *
      * @param boolean $isAutoExtend auto-extend Element
      *
      * @return void
      */
-    public function setIsAutoExtend($isAutoExtend)
+    public function setAutoExtend($isAutoExtend)
     {
         $this->isAutoExtend = $isAutoExtend;
     }

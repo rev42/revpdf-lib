@@ -22,7 +22,7 @@ and generates PDF file. This library can be used as a standalone application.
 
 Calling RevPDFLib is really easy:
 
-    defined('BASE_DIR') or define('BASE_DIR', dirname(__file__) . '/../');
+    defined('BASE_DIR') || define('BASE_DIR', dirname(__file__) . '/../');
     require BASE_DIR . 'vendor/autoload.php';
     
     $lib = new RevPDFLib\Application();

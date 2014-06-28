@@ -92,24 +92,24 @@ class AbstractElementTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsAutoExtend()
     {
-        $this->object->setIsAutoExtend(1);
+        $this->object->setAutoExtend(1);
         $this->assertEquals(1, $this->object->isAutoExtend());
-        $this->object->setIsAutoExtend(0);
+        $this->object->setAutoExtend(0);
         $this->assertEquals(0, $this->object->isAutoExtend());
-        $this->object->setIsAutoExtend('yes');
+        $this->object->setAutoExtend('yes');
         $this->assertEquals(0, $this->object->isAutoExtend());
     }
 
     /**
-     * @covers RevPDFLib\Items\Element\AbstractElement::setIsAutoExtend
+     * @covers RevPDFLib\Items\Element\AbstractElement::setAutoExtend
      */
     public function testSetIsAutoExtend()
     {
-        $this->object->setIsAutoExtend(1);
+        $this->object->setAutoExtend(1);
         $this->assertEquals(1, $this->object->isAutoExtend());
-        $this->object->setIsAutoExtend(0);
+        $this->object->setAutoExtend(0);
         $this->assertEquals(0, $this->object->isAutoExtend());
-        $this->object->setIsAutoExtend('yes');
+        $this->object->setAutoExtend('yes');
         $this->assertEquals(0, $this->object->isAutoExtend());
     }
 
