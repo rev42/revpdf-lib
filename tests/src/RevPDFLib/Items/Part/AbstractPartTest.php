@@ -158,10 +158,10 @@ class AbstractPartTest extends \PHPUnit_Framework_TestCase
 
     public function testSetIsPageJump()
     {
-        $this->part->setIsPageJump(true);
+        $this->part->setPageJump(true);
         $this->assertTrue($this->part->isPageJump());
 
-        $this->part->setIsPageJump(false);
+        $this->part->setPageJump(false);
         $this->assertFalse($this->part->isPageJump());
     }
 }

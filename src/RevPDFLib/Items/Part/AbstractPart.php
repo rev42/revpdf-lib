@@ -293,7 +293,7 @@ abstract class AbstractPart
      *
      * @return void
      */
-    public function setIsPageJump($isPageJump)
+    public function setPageJump($isPageJump)
     {
         $this->isPageJump = (bool) $isPageJump;
     }
