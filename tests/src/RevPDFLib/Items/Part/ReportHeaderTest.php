@@ -238,7 +238,7 @@ class ReportHeaderTest extends \PHPUnit_Framework_TestCase
 
     public function testSetIsVisible()
     {
-        $this->part->setIsVisible(true);
+        $this->part->setVisible(true);
         $this->assertEquals(true, $this->part->isVisible());
 
     }

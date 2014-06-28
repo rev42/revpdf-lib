@@ -246,7 +246,7 @@ abstract class AbstractPart
      *
      * @return void
      */
-    public function setIsVisible($isVisible)
+    public function setVisible($isVisible)
     {
         $this->isVisible = (bool) $isVisible;
     }
