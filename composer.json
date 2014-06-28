@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.4",
         "rev42/tfpdf" : "1.0",
         "jwage/easy-csv": "~0.0.2",
         "symfony/event-dispatcher": "~2.3",
